@@ -1,0 +1,58 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(23) & WellDefinedness_numberordered.3,(_f(31) & _f(32) & _f(26) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(23) & WellDefinedness_numberordered.2,(_f(31) & _f(26) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(23) & WellDefinedness_numberordered.1,(_f(26) => _f(33));
+_f(1) & _f(2) & _f(8) & WellDefinedness_todispatch.1,(_f(13) & _f(26) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(13) & WellDefinedness_dispatchorder.1,(_f(26) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(13) & WellDefinedness_cancelorder.1,(_f(26) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(13) & WellDefinedness_findorder.1,(_f(26) => _f(30));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_addorder.1,(_f(29) & _f(23) & _f(28) & _f(26) => _f(27));
+_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(25) & _f(26) => _f(27));
+_f(1) & _f(2) & _f(8) & _f(13) & dispatchorder.2,(_f(3) & _f(6) => _f(22));
+_f(1) & _f(2) & _f(8) & _f(13) & dispatchorder.1,(_f(3) & _f(4) => _f(21));
+_f(1) & _f(2) & _f(8) & _f(13) & cancelorder.2,(_f(17) & _f(3) & _f(6) => _f(20));
+_f(1) & _f(2) & _f(8) & _f(13) & cancelorder.1,(_f(17) & _f(3) & _f(4) => _f(19));
+_f(1) & _f(2) & _f(8) & _f(9) & addorder.2,(_f(10) & _f(3) & _f(6) => _f(12));
+_f(1) & _f(2) & _f(8) & _f(9) & addorder.1,(_f(10) & _f(3) & _f(4) => _f(11));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+OID: FIN(INTEGER) & not(OID = {}) & PARTS: FIN(INTEGER) & not(PARTS = {}) & NAMES: FIN(INTEGER) & not(NAMES = {}) & ((maxorders) : ((NAT-{0})));
+"Invariant is preserved";
+"Check invariant ((orders) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL)))))";
+(({}) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL)))));
+"Check invariant (card(orders) <= maxorders)";
+(card({}) <= maxorders);
+((orders) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL))))) & (card(orders) <= maxorders);
+((cc) : (NAMES)) & ((pp) : (PARTS)) & ((nn) : ((NAT-{0}))) & (card(orders) +1 <= maxorders);
+((oid) : ((OID - dom(orders))));
+((((orders) \/ ({((oid) |-> (rec(cc,pp,nn,FALSE)))}))) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL)))));
+(card(((orders) \/ ({((oid) |-> (rec(cc,pp,nn,FALSE)))}))) <= maxorders);
+((oo) : (dom(orders)));
+((oo) : (OID));
+not(oo : dom(orders));
+not(not(oo : dom(orders)));
+(((((orders )(oo)) ' (o_disp))) = (FALSE));
+not((((((orders )(oo)) ' (o_disp))) = (FALSE)));
+(((orders - {((oo) |-> ((orders )(oo)))})) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL)))));
+(card((orders - {((oo) |-> ((orders )(oo)))})) <= maxorders);
+((((orders) <+ ({((oo) |-> (rec(o_cust$8888 >> (((orders )(oo)) ' (o_cust)),o_part$8888 >> (((orders )(oo)) ' (o_part)),o_quant$8888 >> (((orders )(oo)) ' (o_quant)),o_disp$8888 >> TRUE)))}))) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL)))));
+(card(((orders) <+ ({((oo) |-> (rec(o_cust$8888 >> (((orders )(oo)) ' (o_cust)),o_part$8888 >> (((orders )(oo)) ' (o_part)),o_quant$8888 >> (((orders )(oo)) ' (o_quant)),o_disp$8888 >> TRUE)))}))) <= maxorders);
+((pp) : (PARTS));
+OID: FIN(INTEGER) & not(OID = {});
+((orders) : (((OID) +-> (struct(o_cust$8888 >> NAMES,o_part$8888 >> PARTS,o_quant$8888 >> (NAT-{0}),o_disp$8888 >> BOOL)))));
+"Well definedness";
+((orders) : (FIN(orders)));
+((nn) : ((NAT-{0})));
+((cc) : (NAMES));
+((orders) : (((dom(orders)) +-> (ran(orders)))));
+((zz) : (dom(orders)));
+(((((orders )(zz)) ' (o_part))) = (pp));
+((SET(zz).(((zz) : (dom(orders))) & (((((orders )(zz)) ' (o_part))) = (pp)))) : (FIN(SET(zz).(((zz) : (dom(orders))) & (((((orders )(zz)) ' (o_part))) = (pp))))))
+END
+&
+THEORY EnumerateX
+END

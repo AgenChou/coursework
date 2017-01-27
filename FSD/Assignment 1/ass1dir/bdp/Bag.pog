@@ -1,0 +1,2437 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
+<Exp_Comparison op="=" translate="((NAT) = (((0) .. (2147483647))))">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" translate="((INT) = (((-2147483647) .. (2147483647))))">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv">
+<Nary_Pred op="&amp;" translate="((bag) : (((ELEM) +-> ((NAT-{0}))))) &amp; !(ee).(((((ee) : (dom(bag)))) => (((bag )(ee) &lt;= cap))))">
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" translate="((bag) : (((ELEM) +-> ((NAT-{0})))))">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Quantified_Pred initialTag="!(ee).(((((ee) : (dom(bag)))) => (((bag )(ee) &lt;= cap))))" translate="!(ee).(((((ee) : (dom(bag)))) => (((bag )(ee) &lt;= cap))))" type="!">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Body>
+<Binary_Pred op="=>">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="lprp"/>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="cst">
+<Nary_Pred op="&amp;" translate="ELEM: FIN(INTEGER) &amp; not(ELEM = {}) &amp; ((cap) : ((NAT-{0}))) &amp; cost : ELEM +-> NAT &amp; dom(cost) = ELEM &amp; ((cost) : (((ELEM) --> (NAT))))">
+<Set translate="ELEM: FIN(INTEGER) &amp; not(ELEM = {})">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:1:1" typref="3116522372" value="ELEM"/>
+</Set>
+<Exp_Comparison op=":" translate="((cap) : ((NAT-{0})))">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:2:1" typref="2701647786" value="cap"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:2:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+<Exp_Comparison op=":" translate="cost : ELEM +-> NAT &amp; dom(cost) = ELEM &amp; ((cost) : (((ELEM) --> (NAT))))">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:3:1" typref="1702910985" value="cost"/>
+<Binary_Exp op="-->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:3:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:3:2:2" typref="3603043417" value="NAT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Proof_Obligation>
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<EmptySet tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:5:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:5:1:1:1" typref="1702910985"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="2"/>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<EmptySet tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:5:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:5:1:1:1" typref="1702910985"/>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<EmptySet tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:5:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:5:1:1:1" typref="1702910985"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>addbag</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:2:1:1" typref="1091773589" value="ee"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:2:1:2" typref="3116522372" value="ELEM"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1," typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Binary_Exp op="&lt;+" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op="&lt;">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="5">
+<Unary_Pred op="not">
+<Exp_Comparison op="&lt;">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Local_Hyp num="6">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="7">
+<Exp_Comparison op=":">
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1," typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="8">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="9">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="6"/>
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<Binary_Exp op="&lt;+" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="6"/>
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Binary_Exp op="&lt;+" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:2:1:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2," typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="9"/>
+<Ref_Hyp num="8"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="9"/>
+<Ref_Hyp num="8"/>
+<Ref_Hyp num="7"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:3:1:2:1:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2," typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>rembag</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:2:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1," typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Binary_Exp op="&lt;+" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op=">">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Exp_Comparison op=":">
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1," typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="5">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="6">
+<Unary_Pred op="not">
+<Exp_Comparison op=">">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<Binary_Exp op="&lt;+" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Binary_Exp op="&lt;+" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:2:1:2:1:2:1:2:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2," typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="6"/>
+<Ref_Hyp num="5"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="6"/>
+<Ref_Hyp num="5"/>
+<Ref_Hyp num="4"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Binary_Exp op="-" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:1:1" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:1" typref="1702910985" value="bag"/>
+<Nary_Exp op="{" typref="1702910985">
+<Binary_Exp op="|->" typref="348924368">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:3:1:2:1:2:1:2" typref="2701647786" value="1"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Id suffix="1" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2," typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>contelm</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:3:1:1" typref="1091773589" value="ee"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:3:1:2" typref="3116522372" value="ELEM"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>totelms</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>isin</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:3:1:1" typref="1091773589" value="ee"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:3:1:2" typref="3116522372" value="ELEM"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>bagunion</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:2:1:1" typref="1702910985" value="bb"/>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:2:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:2:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:1:1" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:2" typref="1702910985" value="bag"/>
+</Binary_Exp>
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:1:1:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:2" typref="1702910985" value="bb"/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="3116522372">
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:2:1" typref="1702910985" value="bb"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:2:1:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:3:1" typref="2701647786" value="cap"/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+<Quantified_Set typref="3116522372">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:1:2:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:1:2:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=">=">
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Exp_Comparison>
+</Nary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:1:1" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:2" typref="1702910985" value="bag"/>
+</Binary_Exp>
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:1:1:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:2" typref="1702910985" value="bb"/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="3116522372">
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:2:1" typref="1702910985" value="bb"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:2:1:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:3:1" typref="2701647786" value="cap"/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:1:1" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:1:2" typref="1702910985" value="bag"/>
+</Binary_Exp>
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:1:1:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:1:2:2" typref="1702910985" value="bb"/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="3116522372">
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:2:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:2:1" typref="1702910985" value="bb"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:1:2:3:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:2:1:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:1:1" typref="3116522372" value="capelems"/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:3:1:2:1:2:3:1" typref="2701647786" value="cap"/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>outputseq</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:1:1" typref="978501326" value="ff"/>
+<Quantified_Set typref="2117703947">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:1:1" typref="978501326" value="seqs"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:2:1:1:1" typref="978501326" value="seqs"/>
+<Unary_Exp op="seq" typref="2117703947">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:2:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Unary_Exp op="ran" typref="1702910985">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:2:1:2:1:1" typref="978501326" value="seqs"/>
+</Unary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:2:1:2:2" typref="1702910985" value="bag"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>addinseq</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:2:1:1" typref="4078518729" value="ss"/>
+<Unary_Exp op="seq" typref="1244954576">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:2:1:2:1" typref="3116522372" value="ELEM"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:1:1" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:2" typref="1702910985" value="bag"/>
+</Binary_Exp>
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="3116522372">
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:2:1:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:3:1" typref="2701647786" value="cap"/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+<Quantified_Set typref="3116522372">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:1:2:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:1:2:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=">=">
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:2:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:2:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:2:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:2:1:1:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Exp_Comparison>
+</Nary_Pred>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:1:1" typref="1091773589" value="xx"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:2:1:1" typref="1091773589" value="xx"/>
+<Unary_Exp op="ran" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:2:1:2:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Unary_Exp op="card" typref="2701647786">
+<Quantified_Set typref="3603043417">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:1:1" typref="2701647786" value="yy"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:1" typref="2701647786" value="yy"/>
+<Unary_Exp op="dom" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:2:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="(" typref="1091773589">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:1" typref="4078518729" value="ss"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:2" typref="2701647786" value="yy"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:2" typref="1091773589" value="xx"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Unary_Exp>
+</Body>
+</Quantified_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:1:1" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:2" typref="1702910985" value="bag"/>
+</Binary_Exp>
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="3116522372">
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:2:1:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:3:1" typref="2701647786" value="cap"/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="&lt;=">
+<Binary_Exp op="(" typref="2701647786">
+<Binary_Exp op="\/" tag=",D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:1:1" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="\/" typref="1702910985">
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:1:2" typref="1702910985" value="bag"/>
+</Binary_Exp>
+<Binary_Exp op="&lt;|" typref="1702910985">
+<Binary_Exp op="-" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="-" typref="3116522372">
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+</Unary_Exp>
+</Binary_Exp>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:2:1:2:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op="+" typref="2701647786">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Binary_Exp op="(" typref="2701647786">
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:2:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:1:1" typref="1702910985" value="add"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:1:2:3:1:2:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp typref="1702910985" type="%">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:1:1" typref="1091773589" value="ee"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:2:1:1" typref="1091773589" value="ee"/>
+<Id suffix="" tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:2:1:2,D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:1:1" typref="3116522372" value="capelems"/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:3:1:3:1:2:1:2:3:1" typref="2701647786" value="cap"/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>totalcost</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessConstraints</Tag>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:2:1" typref="2701647786" value="cap"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:2:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Set>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:2:1:1:1" typref="3116522372" value="ELEM"/>
+</Set>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":" initialTag="((bag) : (((ELEM) +-> ((NAT-{0})))))">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:4:1:2:2:1:2:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_addbag</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_addbag</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:2:1:1" typref="1091773589" value="ee"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:2:1:2" typref="3116522372" value="ELEM"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op="&lt;">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op="&lt;">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:2" typref="2701647786" value="cap"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="3"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:1:3:1:2:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_rembag</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_rembag</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:2:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=">">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op=">">
+<Binary_Exp op="(" typref="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:2" typref="1091773589" value="ee"/>
+</Binary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:2" typref="2701647786" value="1"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:2:3:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_contelm</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_contelm</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:3:1:1" typref="1091773589" value="ee"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:3:1:2" typref="3116522372" value="ELEM"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:3:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_totelms</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_totelms</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:2:1:1" typref="2701647786" value="xx"/>
+<Unary_Exp op="ran" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="FIN">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:1:1:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="3"/>
+<Exp_Comparison op=":">
+<Quantified_Set>
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:1:1" typref="2701647786" value="xx"/>
+</Variables>
+<Body>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:2:1:1" typref="2701647786" value="xx"/>
+<Unary_Exp op="ran" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Body>
+</Quantified_Set>
+<Unary_Exp op="FIN">
+<Quantified_Set>
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:1:1" typref="2701647786" value="xx"/>
+</Variables>
+<Body>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:2:1:1" typref="2701647786" value="xx"/>
+<Unary_Exp op="ran" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:4:2:1:3:1:2:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Body>
+</Quantified_Set>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_isin</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_isin</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:3:1:1" typref="1091773589" value="ee"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:3:1:2" typref="3116522372" value="ELEM"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:1" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:5:4:1:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_bagunion</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_bagunion</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:2:1:1" typref="1702910985" value="bb"/>
+<Binary_Exp op="+->" typref="707442064">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:2:1:2:1" typref="3116522372" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:2:1:2:2" typref="3603043417" value="NAT1"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:1:1" typref="1091773589" value="ee"/>
+<Binary_Exp op="/\" typref="3116522372">
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:1:2:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:1:2:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:2" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:1:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:2" typref="1091773589" value="ee"/>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:6:3:1:2:1:1:2:1:2:1:2:1" typref="1702910985" value="bb"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_outputseq</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_outputseq</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:2:1:1:1" typref="978501326" value="seqs"/>
+<Unary_Exp op="seq" typref="2117703947">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:7:2:1:2:1:2:2:1:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_addinseq</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_addinseq</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:2:1:1" typref="4078518729" value="ss"/>
+<Unary_Exp op="seq" typref="1244954576">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:2:1:2:1" typref="3116522372" value="ELEM"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:1" typref="2701647786" value="yy"/>
+<Unary_Exp op="dom" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:2:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:2:1:1" typref="1091773589" value="xx"/>
+<Unary_Exp op="ran" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:2:1:2:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:1" typref="4078518729" value="ss"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="2"/>
+<Exp_Comparison op=":">
+<Quantified_Set typref="3603043417">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:1:1" typref="2701647786" value="yy"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:1" typref="2701647786" value="yy"/>
+<Unary_Exp op="dom" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:2:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="(" typref="1091773589">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:1" typref="4078518729" value="ss"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:2" typref="2701647786" value="yy"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:2" typref="1091773589" value="xx"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+<Unary_Exp op="FIN">
+<Quantified_Set typref="3603043417">
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:1:1" typref="2701647786" value="yy"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:1" typref="2701647786" value="yy"/>
+<Unary_Exp op="dom" typref="3603043417">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:1:2:1" typref="4078518729" value="ss"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="(" typref="1091773589">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:1" typref="4078518729" value="ss"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:1:2" typref="2701647786" value="yy"/>
+</Binary_Exp>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:8:3:1:2:1:1:3:1:1:2:1:2:2" typref="1091773589" value="xx"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_totalcost</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_totalcost</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:2:1:1" typref="1091773589" value="xx"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Quantified_Set>
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:1:1" typref="1091773589" value="xx"/>
+</Variables>
+<Body>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:2:1:1" typref="1091773589" value="xx"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Body>
+</Quantified_Set>
+<Unary_Exp op="FIN">
+<Quantified_Set>
+<Variables>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:1:1" typref="1091773589" value="xx"/>
+</Variables>
+<Body>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:2:1:1" typref="1091773589" value="xx"/>
+<Unary_Exp op="dom" typref="3116522372">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:2:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Body>
+</Quantified_Set>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:1:2" typref="1091773589" value="xx"/>
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:1:1" typref="1702910985" value="cost"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:1:1" typref="1702910985" value="cost"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:1:1" typref="1702910985" value="cost"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:1:1" typref="1702910985" value="cost"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:2:1" typref="1702910985" value="bag"/>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:6:9:2:1:2:1:3:1:2:1" typref="1702910985" value="bag"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="3116522372">
+<Unary_Exp op="POW">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:1:1:1" value="ELEM"/>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:2:1" value="INTEGER"/>
+</Type>
+<Type id="1702910985">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:3:1:1:1" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:3:1:1:2" value="INTEGER"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:4:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="707442064">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:5:1:1:1:1" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:5:1:1:1:2" value="INTEGER"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1091773589">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:6:1" value="ELEM"/>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:7:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="348924368">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:8:1:1" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:8:1:2" value="INTEGER"/>
+</Binary_Exp>
+</Type>
+<Type id="2043437594">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:9:1" value="BOOL"/>
+</Type>
+<Type id="978501326">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:10:1:1:1" value="INTEGER"/>
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:10:1:1:2:1" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:10:1:1:2:2" value="INTEGER"/>
+</Binary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="2117703947">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:11:1:1:1:1" value="INTEGER"/>
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:11:1:1:1:2:1" value="ELEM"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:11:1:1:1:2:2" value="INTEGER"/>
+</Binary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="4078518729">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:12:1:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:12:1:1:2" value="ELEM"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1244954576">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:13:1:1:1:1" value="INTEGER"/>
+<Id tag="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\Bag.bxml:1:7:13:1:1:1:2" value="ELEM"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

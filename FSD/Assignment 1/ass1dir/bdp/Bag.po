@@ -1,0 +1,99 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & WellDefinedness_totalcost.4,(_f(59) & _f(45) => _f(46));
+_f(1) & _f(2) & _f(8) & WellDefinedness_totalcost.3,(_f(59) & _f(45) => _f(62));
+_f(1) & _f(2) & _f(8) & WellDefinedness_totalcost.2,(_f(59) & _f(45) => _f(61));
+_f(1) & _f(2) & _f(8) & WellDefinedness_totalcost.1,(_f(45) => _f(60));
+_f(1) & _f(2) & _f(8) & _f(36) & WellDefinedness_addinseq.2,(_f(56) & _f(45) => _f(58));
+_f(1) & _f(2) & _f(8) & _f(36) & WellDefinedness_addinseq.1,(_f(56) & _f(55) & _f(45) => _f(57));
+_f(1) & _f(2) & _f(8) & _f(30) & WellDefinedness_bagunion.4,(_f(50) & _f(45) => _f(52));
+_f(1) & _f(2) & _f(8) & _f(30) & WellDefinedness_bagunion.3,(_f(50) & _f(45) => _f(51));
+_f(1) & _f(2) & _f(8) & _f(30) & WellDefinedness_bagunion.2,(_f(50) & _f(45) => _f(46));
+_f(1) & _f(2) & _f(8) & _f(30) & WellDefinedness_bagunion.1,(_f(50) & _f(45) => _f(13));
+_f(1) & _f(2) & _f(8) & WellDefinedness_totelms.2,(_f(29) & _f(45) => _f(49));
+_f(1) & _f(2) & _f(8) & WellDefinedness_totelms.1,(_f(45) => _f(48));
+_f(1) & _f(2) & _f(8) & _f(13) & WellDefinedness_rembag.1,(_f(45) => _f(46));
+_f(1) & _f(2) & _f(8) & _f(9) & WellDefinedness_addbag.1,(_f(13) & _f(45) => _f(46));
+_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(44) & _f(13) & _f(45) => _f(46));
+_f(1) & _f(2) & _f(8) & _f(36) & addinseq.2,(_f(39) & _f(38) & _f(37) & _f(4) => _f(41));
+_f(1) & _f(2) & _f(8) & _f(36) & addinseq.1,(_f(39) & _f(38) & _f(4) & _f(5) => _f(40));
+_f(1) & _f(2) & _f(8) & _f(30) & bagunion.2,(_f(32) & _f(31) & _f(4) => _f(34));
+_f(1) & _f(2) & _f(8) & _f(30) & bagunion.1,(_f(32) & _f(4) & _f(5) => _f(33));
+_f(1) & _f(2) & _f(8) & _f(13) & rembag.4,(_f(23) & _f(22) & _f(4) => _f(27));
+_f(1) & _f(2) & _f(8) & _f(13) & rembag.3,(_f(23) & _f(4) & _f(5) => _f(26));
+_f(1) & _f(2) & _f(8) & _f(13) & rembag.2,(_f(21) & _f(20) & _f(4) => _f(25));
+_f(1) & _f(2) & _f(8) & _f(13) & rembag.1,(_f(21) & _f(4) & _f(5) => _f(24));
+_f(1) & _f(2) & _f(8) & _f(9) & addbag.4,(_f(15) & _f(14) & _f(4) => _f(19));
+_f(1) & _f(2) & _f(8) & _f(9) & addbag.3,(_f(15) & _f(4) & _f(5) => _f(18));
+_f(1) & _f(2) & _f(8) & _f(9) & addbag.2,(_f(13) & _f(11) & _f(10) & _f(4) => _f(17));
+_f(1) & _f(2) & _f(8) & _f(9) & addbag.1,(_f(13) & _f(11) & _f(4) & _f(5) => _f(16));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(4) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(4) & _f(5) => _f(6))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+ELEM: FIN(INTEGER) & not(ELEM = {}) & ((cap) : ((NAT-{0}))) & cost : ELEM +-> NAT & dom(cost) = ELEM & ((cost) : (((ELEM) --> (NAT))));
+((ee) : (dom({})));
+"Invariant is preserved";
+"Check invariant ((bag) : (((ELEM) +-> ((NAT-{0})))))";
+(({}) : (((ELEM) +-> ((NAT-{0})))));
+(({} )(ee) <= cap);
+((bag) : (((ELEM) +-> ((NAT-{0}))))) & !(ee).(((((ee) : (dom(bag)))) => (((bag )(ee) <= cap))));
+((ee) : (ELEM));
+((ee$1) : (dom(((bag) <+ ({((ee) |-> (((bag )(ee) + 1)))})))));
+((bag )(ee) +1 <= cap);
+not(((bag )(ee) +1 <= cap));
+((ee) : (dom(bag)));
+((ee$1) : (dom(((bag) \/ ({((ee) |-> (1))})))));
+not(((ee) : (dom(bag))));
+((((bag) <+ ({((ee) |-> (((bag )(ee) + 1)))}))) : (((ELEM) +-> ((NAT-{0})))));
+((((bag) <+ ({((ee) |-> (((bag )(ee) + 1)))})) )(ee$1) <= cap);
+((((bag) \/ ({((ee) |-> (1))}))) : (((ELEM) +-> ((NAT-{0})))));
+((((bag) \/ ({((ee) |-> (1))})) )(ee$1) <= cap);
+((ee$1) : (dom(((bag) <+ ({((ee) |-> (((bag )(ee) - 1)))})))));
+(1 +1 <= (bag )(ee));
+((ee$1) : (dom((bag - {((ee) |-> (1))}))));
+not((1 +1 <= (bag )(ee)));
+((((bag) <+ ({((ee) |-> (((bag )(ee) - 1)))}))) : (((ELEM) +-> ((NAT-{0})))));
+((((bag) <+ ({((ee) |-> (((bag )(ee) - 1)))})) )(ee$1) <= cap);
+(((bag - {((ee) |-> (1))})) : (((ELEM) +-> ((NAT-{0})))));
+(((bag - {((ee) |-> (1))}) )(ee$1) <= cap);
+((card(dom(bag))) = (0));
+not(((card(dom(bag))) = (0)));
+((bb) : (((ELEM) +-> ((NAT-{0})))));
+((ee) : (dom((((((((((dom(bag) - dom(bb))) <| (bag))) \/ ((((dom(bb) - dom(bag))) <| (bb))))) \/ (%(ee).(((ee) : ((((dom(bag)) /\ (dom(bb))) - capelems))) | ((bag )(ee) + (bb )(ee)))))) \/ (%(ee).(((ee) : (capelems)) | cap))))));
+((capelems) = (SET(ee).(((ee) : (((dom(bag)) /\ (dom(bb))))) & (cap <= ((bag )(ee) + (bb )(ee))))));
+(((((((((((dom(bag) - dom(bb))) <| (bag))) \/ ((((dom(bb) - dom(bag))) <| (bb))))) \/ (%(ee).(((ee) : ((((dom(bag)) /\ (dom(bb))) - capelems))) | ((bag )(ee) + (bb )(ee)))))) \/ (%(ee).(((ee) : (capelems)) | cap)))) : (((ELEM) +-> ((NAT-{0})))));
+(((((((((((dom(bag) - dom(bb))) <| (bag))) \/ ((((dom(bb) - dom(bag))) <| (bb))))) \/ (%(ee).(((ee) : ((((dom(bag)) /\ (dom(bb))) - capelems))) | ((bag )(ee) + (bb )(ee)))))) \/ (%(ee).(((ee) : (capelems)) | cap))) )(ee) <= cap);
+((ff) : (SET(seqs).(seqs : NATURAL-{0} +-> bag & ((seqs) : (seq(bag))) & ((ran(seqs)) = (bag)))));
+ss : NATURAL-{0} +-> ELEM & ((ss) : (seq(ELEM)));
+((ee) : (dom((((((((((dom(bag) - dom(add))) <| (bag))) \/ ((((dom(add) - dom(bag))) <| (add))))) \/ (%(ee).(((ee) : ((((dom(bag)) /\ (dom(add))) - capelems))) | ((bag )(ee) + (add )(ee)))))) \/ (%(ee).(((ee) : (capelems)) | cap))))));
+((capelems) = (SET(ee).(((ee) : (((dom(bag)) /\ (dom(add))))) & (cap <= ((bag )(ee) + (add )(ee))))));
+((add) = (%(xx).(((xx) : (ran(ss))) | card(SET(yy).(((yy) : (dom(ss))) & (((ss )(yy)) = (xx)))))));
+(((((((((((dom(bag) - dom(add))) <| (bag))) \/ ((((dom(add) - dom(bag))) <| (add))))) \/ (%(ee).(((ee) : ((((dom(bag)) /\ (dom(add))) - capelems))) | ((bag )(ee) + (add )(ee)))))) \/ (%(ee).(((ee) : (capelems)) | cap)))) : (((ELEM) +-> ((NAT-{0})))));
+(((((((((((dom(bag) - dom(add))) <| (bag))) \/ ((((dom(add) - dom(bag))) <| (add))))) \/ (%(ee).(((ee) : ((((dom(bag)) /\ (dom(add))) - capelems))) | ((bag )(ee) + (add )(ee)))))) \/ (%(ee).(((ee) : (capelems)) | cap))) )(ee) <= cap);
+((cap) : ((NAT-{0})));
+ELEM: FIN(INTEGER) & not(ELEM = {});
+((bag) : (((ELEM) +-> ((NAT-{0})))));
+"Well definedness";
+((bag) : (((dom(bag)) +-> (ran(bag)))));
+((xx) : (ran(bag)));
+((dom(bag)) : (FIN(dom(bag))));
+((SET(xx).(((xx) : (ran(bag))))) : (FIN(SET(xx).(((xx) : (ran(bag)))))));
+((ee) : (((dom(bag)) /\ (dom(bb)))));
+((ee) : (dom(bb)));
+((bb) : (((dom(bb)) +-> (ran(bb)))));
+seqs : NATURAL-{0} +-> bag;
+((seqs) : (seq(bag)));
+((yy) : (dom(ss)));
+((xx) : (ran(ss)));
+((ss) : (((dom(ss)) +-> (ran(ss)))));
+((SET(yy).(((yy) : (dom(ss))) & (((ss )(yy)) = (xx)))) : (FIN(SET(yy).(((yy) : (dom(ss))) & (((ss )(yy)) = (xx))))));
+((xx) : (dom(bag)));
+((SET(xx).(((xx) : (dom(bag))))) : (FIN(SET(xx).(((xx) : (dom(bag)))))));
+((xx) : (dom(cost)));
+((cost) : (((dom(cost)) +-> (ran(cost)))))
+END
+&
+THEORY EnumerateX
+END

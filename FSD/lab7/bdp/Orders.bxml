@@ -1,0 +1,271 @@
+<Machine name='Orders' type='abstraction'>
+<Sees>
+<Referenced_Machine>
+<Name>Items</Name>
+</Referenced_Machine>
+</Sees>
+<Sets>
+<Set>
+<Id value='OID' typref='500207749'/>
+</Set>
+</Sets>
+<Abstract_Variables>
+<Id value='orderitem' typref='3109525665'/>
+<Id value='orderamt' typref='577605116'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='orderitem' typref='3109525665'/>
+<Binary_Exp op='+-&gt;' typref='1829442040'>
+<Id value='OID' typref='500207749'/>
+<Id value='ITEM' typref='1848642184'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='orderamt' typref='577605116'/>
+<Binary_Exp op='+-&gt;' typref='801459463'>
+<Id value='OID' typref='500207749'/>
+<Id value='NAT1' typref='3603043417'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orderitem' typref='3109525665'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orderamt' typref='577605116'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='orderitem' typref='3109525665'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='orderamt' typref='577605116'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Initialisation>
+<Operations>
+<Operation name='place_order'>
+<Input_Parameters>
+<Id value='ii' typref='1260513425'/>
+<Id value='nn' typref='2701647786'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='ii' typref='1260513425'/>
+<Id value='ITEM' typref='1848642184'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='nn' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<ANY_Sub>
+<Variables>
+<Id value='oid' typref='3496798590'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='oid' typref='3496798590'/>
+<Binary_Exp op='-' typref='500207749'>
+<Id value='OID' typref='500207749'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orderitem' typref='3109525665'/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='orderitem' typref='3109525665'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='3109525665'>
+<Id value='orderitem' typref='3109525665'/>
+<Nary_Exp op='{' typref='3109525665'>
+<Binary_Exp op='|-&gt;' typref='2226154040'>
+<Id value='oid' typref='3496798590'/>
+<Id value='ii' typref='1260513425'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='orderamt' typref='577605116'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='577605116'>
+<Id value='orderamt' typref='577605116'/>
+<Nary_Exp op='{' typref='577605116'>
+<Binary_Exp op='|-&gt;' typref='634434375'>
+<Id value='oid' typref='3496798590'/>
+<Id value='nn' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Then>
+</ANY_Sub>
+</Body>
+</Operation>
+<Operation name='service_order'>
+<Input_Parameters>
+<Id value='oo' typref='3496798590'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='oo' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orderitem' typref='3109525665'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='orderitem' typref='3109525665'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='3109525665'>
+<Id value='orderitem' typref='3109525665'/>
+<Nary_Exp op='{' typref='3109525665'>
+<Binary_Exp op='|-&gt;' typref='2226154040'>
+<Id value='oo' typref='3496798590'/>
+<Binary_Exp op='(' typref='1260513425'>
+<Id value='orderitem' typref='3109525665'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='orderamt' typref='577605116'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='577605116'>
+<Id value='orderamt' typref='577605116'/>
+<Nary_Exp op='{' typref='577605116'>
+<Binary_Exp op='|-&gt;' typref='634434375'>
+<Id value='oo' typref='3496798590'/>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='orderamt' typref='577605116'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='500207749'>
+<Unary_Exp op='POW'>
+<Id value='OID'/>
+</Unary_Exp>
+</Type>
+<Type id='3109525665'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Id value='ITEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='577605116'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1829442040'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Id value='ITEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1848642184'>
+<Unary_Exp op='POW'>
+<Id value='ITEM'/>
+</Unary_Exp>
+</Type>
+<Type id='801459463'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='1260513425'>
+<Id value='ITEM'/>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3496798590'>
+<Id value='OID'/>
+</Type>
+<Type id='2226154040'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Id value='ITEM'/>
+</Binary_Exp>
+</Type>
+<Type id='634434375'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

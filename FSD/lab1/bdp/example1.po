@@ -1,0 +1,47 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(5) & _f(16) & WellDefinedness_average.3,(_f(19) => _f(15));
+_f(1) & _f(2) & _f(5) & _f(16) & WellDefinedness_average.2,(_f(19) => _f(23));
+_f(1) & _f(2) & _f(5) & _f(16) & WellDefinedness_average.1,(_f(19) => _f(25));
+_f(1) & _f(2) & _f(5) & WellDefinedness_Precondition_average.1,(_f(19) => _f(23));
+_f(1) & _f(2) & _f(5) & WellDefinedness_is_empty.1,(_f(19) => _f(23));
+_f(1) & _f(2) & _f(5) & WellDefinedness_setsize.1,(_f(19) => _f(23));
+_f(1) & _f(2) & _f(5) & _f(10) & WellDefinedness_minimum.2,(_f(19) => _f(22));
+_f(1) & _f(2) & _f(5) & _f(10) & WellDefinedness_minimum.1,(_f(19) => _f(20));
+_f(1) & _f(2) & _f(5) & _f(10) & WellDefinedness_maximum.2,(_f(19) => _f(21));
+_f(1) & _f(2) & _f(5) & _f(10) & WellDefinedness_maximum.1,(_f(19) => _f(20));
+_f(1) & _f(2) & _f(5) & _f(8) & remove.1,(_f(3) => _f(9));
+_f(1) & _f(2) & _f(5) & _f(6) & enter.1,(_f(3) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((1..2)*{response}): FIN(NATURAL*{response}) & not(((1..2)*{response}) = {}) & ((max_val) = (99999));
+"Invariant is preserved";
+{} : POW( (NAT-{0}));
+numset : POW( (NAT-{0}));
+((new) : ((NAT-{0}))) & (new <= max_val);
+((numset) \/ ({new})) : POW( (NAT-{0}));
+((new) : (NAT));
+(numset - {new}) : POW( (NAT-{0}));
+not(numset = {});
+((num) : ((NAT-{0})));
+not(((numset) /\ ({num})) = {});
+not(not(((numset) /\ ({num})) = {}));
+((card(numset)) = (0));
+not(((card(numset)) = (0)));
+(0 +1 <= card(numset));
+((1..2)*{response}): FIN(NATURAL*{response}) & not(((1..2)*{response}) = {});
+((new) : ((NAT-{0})));
+"Well definedness";
+not(((numset) = ({})));
+((((numset) /\ (NATURAL))) : (FIN(NATURAL)));
+((((numset) /\ ((INTEGER - NATURAL)))) : (FIN(INTEGER)));
+((numset) : (FIN(numset)));
+((xx) : (numset));
+((SET(xx).(((xx) : (numset)))) : (FIN(SET(xx).(((xx) : (numset))))))
+END
+&
+THEORY EnumerateX IS
+response == {yes,no}
+END

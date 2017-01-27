@@ -1,0 +1,242 @@
+\documentclass[tikz]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{graphs}
+%\usegdlibrary{trees}
+
+\graphicspath{ {D:/Non-game stuff/CS notes/FoC/Assignment4/} }
+
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in} 
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+\title{Foundations of Computing Assignment 4: \\
+	Algorithms}
+\author{Agata~Borkowska,~UID: 1690550}
+\maketitle
+
+\section{}
+First note that in an hour we can perform $60 \cdot 60 \cdot 987 = 3553200$ simple operations.
+\subsection{$f(n) = n$}
+max. n = 3553200
+\subsection{$f(n) = n^3$}
+max. n = $\sqrt[3]{3553200} = 152.59 \approx 152 $ (rounded down)
+\subsection{$f(n) = 5 \cdot log_2(n) + 6$}
+max. n will be such that:\\
+$5 \cdot log_2(n) + 6 \leq 3553200$\\
+$\iff 5 \cdot log_2(n) \leq 3553194 $\\
+$\iff log_2(n) \leq 710638.8$ \\
+$ \iff n \leq 2^{710638.8}$ \\
+$ \iff n \leq 3.93444 \cdot 10^{213923}$
+\subsection{$f(n) = 2n \times log_2(n)$}
+max. n will be such that:\\
+$2n \cdot log_2(n) \leq 3553200$\\
+$ \iff n \cdot ln(n) \leq 1776600 \cdot ln(2)$\\
+$\iff n \leq e^{W(1776600ln(2))}$\\
+Where W is the product-log function, which gives the solution for $w$ in $z = we^w$. More specifically solutions for $xlog_b(x) = a$ are of the form $x = e^{W(aln(b))}$ \footnote{Source: https://en.wikipedia.org/wiki/Lambert\_W\_function\#Example\_5}
+
+Therefore $n \leq 106389$.
+\subsection{$f(n) = 2^n$}.
+
+
+max. n will be such that:\\
+$2^n \leq 3553200$\\
+$\iff n \leq log_2(3553200) = 21.76$\\
+Therefore n can be at most 21.
+
+\section{}
+Recall definitions:
+\begin{itemize}
+	\item A function $f(n)$ is $O(g(n))$ if there exists a constant $c>0$ such that $f(n) \leq cg(n)$ for all n sufficiently large.
+	\item A function $f(n)$ is $\Omega(g(n))$ if there exists a constant $c>0$ such that $f(n)\geq cg(n)$ for all n sufficiently large.
+	\item a function $f(n)$ is $\Theta(g(n))$ if there exist constants $c_1, c_2 >0$ such that $c_1 g(n) \leq f(n) \leq c_2 g(n)$ for all n sufficiently large.
+\end{itemize}
+
+\subsection{Claim: $f(n) = 12n^3 - 7n +6$ is $O(n^3)$}
+\textbf{True.} For $ n>0$, $-7n+6 < 0$ so $f(n) < 12n^3$, where $12n^3$ is $cg(n)$, with $c = 12$ and $g(n) = n^3$. Therefore it is $O(n^3)$.
+\subsection{Claim: $f(n) = 8n^2 + 4$ is $O(n^2)$}
+\textbf{True.} For $n>2$, $8n^2 + 4< 9n^2$, so take $c = 9$, $g = n^2$, and thus $f(n)$ is $O(n^2)$.
+\subsection{Claim: $f(n) = 3n^4 - 2n^2 +3$ is $\Omega(n^2)$.}
+\textbf{True.} For $n>1, (n^4 - n^2) > 0$, so f(n) can be rewritten as: $f(n) = n^4 + 2(n^4 - n^2) + 3 > n^4 > n^2$, so $f(n)$ is $\Omega(n^2)$.
+\subsection{Claim: $f(n) = 3n^4 - 2n^2 +3$ is $O(n^2)$.}
+\textbf{False.} We've shown above that $n^2$ is a lower bound on f(n), and so is $n^4$. Observe that for all $c \in \mathbb{N}$, there is a $k >0$ such that for all $n > k$, $n^4 > cn^2$. Therefore, $f(n) > n^4 > cn^2$, so $n^2$ cannot be an upper bound on f(n).
+\subsection{Claim: $18n + 19$ is $\Theta(n)$}
+\textbf{True.} Take $c_1 = 10, c_2 = 100$, then $10n<18n+19<100n$ for all $n>0$.
+
+\section{}
+Recall: Master Theorem applies to recurrence relations of the form $T(n) =  aT(\dfrac{n}{b}) + f(n)$, where:
+\begin{itemize}
+	\item a and b are constants
+	\item f(n) is a positive polynomial
+	\item recursive calls have the same problem size
+\end{itemize}
+(Following statements in the lecture notes.) Therefore:
+\subsection{$4T(\dfrac{n}{2})+16n^2$}
+$a = 4$, $b=2$, $f(n) = 16n^2$. The conditions of Master Theorem are satisfied, and we can apply it. 
+
+First note that $f(n) = 16n^2 \in \Theta(n^2 \cdot log^0(n))$, so $c = 2$, and $n^{log_b(a)} = n^{log_2(4)} = n^2$. \\
+Thus $c = log_b(a)$, and we can apply the 2nd case of the theorem, to get:
+\[ T(n) = \Theta(n^2 \cdot log(n)) \]
+\subsection{$8T(\dfrac{n}{2}) + 160n$}
+$a = 8$, $b = 2$, $f(n) = 160n$, and the conditions of Master Theorem are satisfied, so we can apply it.\\
+$f(n) \in O(n^1)$, so $c = 1$. \\
+$log^2(8) = 3 > c$, so we're in the 1st case of the theorem, and the term $n^{log_b(a)}$ is dominant, so we get:
+
+\[T(n) = \Theta(n^3)\]
+
+\subsection{$T(n) = 2^n \cdot T(\dfrac{n}{2}) + n$}
+$a = 2^n$ isn't constant, so we cannot apply Master Theorem.
+
+\subsection{$T(n) = 9T(\dfrac{n}{3}) +97n^3$}
+$a = 9$, $b=3$, and $f(n) = 97n^3 = \Theta(n^3)$. The conditions of the Master Theorem are satisfied (it's worth noting that n is positive-valued, therefore $n^3$ is also positive).
+
+$n^{log_b(a)} = n^{log_3(9)} = n^2$, so we're in the 3rd case of the Master Theorem. Thus:
+
+\[T(n) = \Theta(n^3)\]
+
+\subsection{$T(n) = T(\dfrac{2n}{3}) + 1$}
+$a = 1$, $b= \dfrac{3}{2}$, and $f(n)=1$, so $n^{log_b(a)} = n^{log_{3/2}(1)} = n^0 = 1$, so the 2nd case applies, with $f(n) = \Theta(1) = \Theta(n^{log_b(a)})$. Thus we get:
+
+\[T(n) = \Theta(log(n))\]
+
+\section{}
+Since all of the examples have unsorted integers 1-6, we could use \textbf{counting sort}\footnote{T.~Cormen et al., "Introduction to Algorithms", 3rd ed., Cambridge, MA: MIT Press, 2009, ch.~8, pp.~194-196 - aka CLRS}, which runs in $O(n)$, by creating an array of size 6 and inserting the elements into the correct places in this array, with that prior knowledge about their values.
+
+Otherwise\footnote{https://en.wikipedia.org/wiki/Sorting\_algorithm was of great help}:
+\subsection{1, 2, 3, 4, 6, 5}
+Use \textbf{insertion sort}, because it will terminate after scanning through the input once, and not making any swaps. Alternatively, \textbf{augmented bubble sort} - with the augmentation being a counter on the number of swaps performed in each pass, and the algorithm terminating when the counter is 0 after a pass.
+
+\subsection{6, 2, 3, 4, 5, 1}
+\textbf{Cocktail shaker sort}\footnote{https://en.wikipedia.org/wiki/Cocktail\_shaker\_sort} which is a bi-directional bubble sort. It will first move 6 to the end, then start from the end, and move 1 to the beginning. Again, we want it to terminate after the pass where no swaps are made. Similarly to bubble sort, it's done in place.
+
+\subsection{6, 5, 4, 3, 2, 1}
+\textbf{Heap sort} will be the best choice here, because the list is in reverse order, so initialising the algorithm will create a max-heap, and no swaps will be necessary. The time-complexity will be $O(n \cdot log(n))$, because the heapify operation is $O(n)$ and repeatedly extracting max is $O(n\dot log(n))$.
+
+While merge sort shares this property, heap sort can be done in place, while merge sort space complexity is $O(n)$.
+
+We do NOT want to use quicksort, as this is the exemplar worst case for it, and it would run in $O(n^2)$.
+
+\subsection{1, 5, 4, 6, 3, 2}
+There is no pattern to these numbers, so anything with a good average-case running time will be similarly appropriate. Therefore, my go-to algorithm would again be \textbf{heap sort}, because of in-place sorting and $O(n \cdot log(n))$ time complexity.
+
+\subsection{((9,3), (2,5), (2,4), (2,7), (1,4), (5,7))}
+We need a stable algorithm, so our choice is limited to bubble sort, insertion sort, and merge sort. Of those three, the first two are done in place, so we can exclude merge sort from further consideration.
+
+If the data is given as an array, I would pick \textbf{bubble sort}, which will require 8 swaps until the list is sorted (again assuming that the algorithm is augmented to recognize when no swaps are performed). 
+
+If the data is given as a linked list, \textbf{insertion sort} will be slightly faster, because inserting an element into the sorted list will require only updating pointers, while if it was an array, to achieve sorting in place, we would have to propagate swaps, and it would be a time-consuming procedure, not better than bubble sort.
+
+\section{}
+\begin{table}[h]
+	\centering
+
+\begin{tabular}{c|c|cccccc|c}
+
+	Stage& Current V & A & B & C & D & E & F & Visited set\\ 
+	\hline 
+	0 & A & - 0 & - $\infty$ & - $\infty$ &- $\infty$  &- $\infty$  &- $\infty$  & \{\}\\ 
+	1 & A & - 0 & A 19 & - $\infty$ & - $\infty$ &- $\infty$  &- $\infty$  & \{\}\\
+	2 & A & - 0 & A 19 & A 12&- $\infty$ &- $\infty$ &- $\infty$ & \{\} \\
+	3 & B & - 0 & A 19 & A 12 & B 23 & - $\infty$&- $\infty$ & \{A\}\\
+	4 & B & - 0 & A 19 & A 12 & B 23 & B 32 & - $\infty$ &\{A\}\\
+	5 & C & - 0 & A 19 & A 12 & B 23 & C 28 & - $\infty$ &\{A,B\}\\
+	6 & D & - 0 & A 19 & A 12 & B 23 & D 26 & - $\infty$ &\{A,B, C\}\\
+	7 & E & - 0 & A 19 & A 12 & B 23 & D 26 & F 27 &\{A,B,C,D\} \\
+	8 & F & - 0 & A 19 & A 12 & B 23 & D 26 & F 27 &\{A,B,C,D,E\} \\
+
+\end{tabular} 
+
+\caption{Dijkstra's algorithm performed on the given graph}
+\end{table}
+Short explanation: I find it helpful to keep track of "visited" nodes. When all neighbours of a current node have been considered, it is then added to the "visited" set. After the 8th iteration, F is added to this set, which now includes all nodes, and thus the algorithm terminates.
+\section{}
+As before, I am keeping track of the visited nodes. As this is a directed graph, it takes a few iterations between considering a node and considering all its neighbours. For example, A can be marked as visited only once we have considered C, which is the last node picked by the algorithm.
+
+In the case of a directed graph, visited nodes are marked when all incoming edges incident to them have been considered.
+
+ 
+\begin{table}[h]
+	\centering
+	
+	\begin{tabular}{c|c|cccccc|c}
+		
+		Stage& Current V & A & B & C & D & E & F & Visited\\ 
+		\hline 
+		0 & A & - 0 & - $\infty$ & - $\infty$ &- $\infty$  &- $\infty$  &- $\infty$  &\{\}\\ 
+		1 & A & - 0 & A 19 & - $\infty$ & - $\infty$ &- $\infty$  &- $\infty$ & \{\}\\
+		2 & B & - 0 & A 19 & - $\infty$ & - $\infty$ & B 32 & - $\infty$ & \{\} \\
+		3 & E & - 0 & A 19 & - $\infty$ & E 35 & B 32 & - $\infty$ & \{\} \\
+		4 & E & - 0 & A 19 & - $\infty$ & E 35 & B 32 & E 33  & \{D\}\\
+		5 & E & - 0 & A 19 & E 48 & E 35 & B 32 & E 33 & \{D,F\} \\
+		6 & D & - 0 & A 19 & E 48 & E 35 & B 32 & E 33 & \{D,F,C\} \\
+		7 & F &  - 0 & A 19 & E 48 & E 35 & B 32 & E 33  & \{D,F,C,B\}\\
+		8 & C & - 0 & A 19 & E 48 & E 35 & B 32 & E 33  & \{D,F,C,B,E\} \\
+		
+	\end{tabular} 
+	
+	\caption{Dijkstra's algorithm performed on the given graph}
+\end{table}
+
+\section{}
+\subsection{}
+\begin{table}[h]
+	\centering
+	
+	\begin{tabular}{c|c|c}
+		
+		Stage& V & E \\ 
+		\hline 
+		0 & \{A\} & \{\} \\
+		1 & \{A,C\} & \{(A,C)\} \\
+		2 & \{A,C,E\} & \{(A,C), (C,E)\} \\
+		3 & \{A,C,E,F\} & \{(A,C), (C,E), (E,F)\}\\
+		4 & \{A,C,E,F,D\} & \{(A,C), (C,E), (E,F), (E,D)\}\\
+		5 & \{A,C,E,F,D,B\} & \{(A,C), (C,E), (E,F), (E,D), (E,B)\}
+		
+		
+	\end{tabular} 
+	
+	\caption{Prim's algorithm performed on the given graph}
+\end{table}
+The weight of the MST is $8+5+1+3+6+32=55$
+
+\subsection{}
+\begin{table}[h]
+	\centering
+	
+	\begin{tabular}{c|c|c|c}
+		
+		Stage& Edges & Components & E \\ 
+		\hline 
+		0 & \parbox[t]{4cm}{AB = 11, AC = 8, BD = 19, BE = 6,  CE = 5, CG = 32, DE = 3, EF = 1}  &  \parbox[t]{4cm}{\{(A), (B), (C), (D), (E), (F),(G)\}} & \{\}\\
+		\hline
+		1 & \parbox[t]{4cm}{AB = 11, AC = 8, BD = 19, BE = 6,  CE = 5, CG = 32, DE = 3} & \parbox[t]{4cm}{\{(A), (B), (C), (D), (E, F), (G)\}} & \{(E, F)\} \\
+		\hline
+		2 & \parbox[t]{4cm}{AB = 11, AC = 8, BD = 19, BE = 6,  CE = 5, CG = 32} & \parbox[t]{4cm}{\{(A), (B), (C), (D, E, F), (G)\}} & \{(E, F), (D, E)\}\\
+		\hline
+		3 & \parbox[t]{4cm}{AB = 11, AC = 8, BD = 19, BE = 6, CG = 32} & \parbox[t]{4cm}{\{(A), (B), (C, D, E, F), (G)\}} & \{(E, F), (D, E), (C,E)\}\\
+		\hline
+		4 & \parbox[t]{4cm}{AB = 11, AC = 8, BD = 19, CG = 32} & \parbox[t]{4cm}{\{(A), (B, C, D, E, F), (G)\}} & \{(E, F), (D, E), (C,E), (B,E)\}\\
+		\hline
+		5 & \parbox[t]{4cm}{AB = 11, BD = 19, CG = 32} & \parbox[t]{4cm}{\{(A, B, C, D, E, F), (G)\}} & \{(E, F), (D, E), (C,E), (B,E), (A,C)\}\\
+\hline
+		6 & \parbox[t]{4cm}{BD = 19, CG = 32} & \parbox[t]{4cm}{\{(A, B, C, D, E, F), (G)\}} & \{(E, F), (D, E), (C,E), (B,E), (A,C)\}\\
+\hline
+		7 & \parbox[t]{4cm}{CG = 32} & \parbox[t]{4cm}{\{(A, B, C, D, E, F), (G)\}} & \{(E, F), (D, E), (C,E), (B,E), (A,C)\}\\
+		\hline
+				8 & \parbox[t]{4cm}{} & \parbox[t]{4cm}{\{(A, B, C, D, E, F, G)\}} & \{(E, F), (D, E), (C,E), (B,E), (A,C), (C,G)\}\\
+	\end{tabular} 
+	
+	\caption{Kruskal's algorithm performed on the given graph}
+\end{table}
+Weight of the MST is: $1+3+5+6+8+32 = 55$.
+\end{document}

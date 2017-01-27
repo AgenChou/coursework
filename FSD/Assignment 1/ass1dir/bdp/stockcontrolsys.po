@@ -1,0 +1,96 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & WellDefinedness_complicatedserviceorder.3,(_f(48) & _f(49) & _f(41) => _f(45));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & WellDefinedness_complicatedserviceorder.2,(_f(48) & _f(49) & _f(41) => _f(47));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & WellDefinedness_complicatedserviceorder.1,(_f(48) & _f(49) & _f(41) => _f(51));
+_f(1) & _f(2) & _f(3) & _f(11) & WellDefinedness_Precondition_complicatedserviceorder.1,(_f(41) => _f(42));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & WellDefinedness_serviceorder.2,(_f(41) => _f(55));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & WellDefinedness_serviceorder.1,(_f(41) => _f(42));
+_f(1) & _f(2) & _f(3) & _f(11) & WellDefinedness_Precondition_serviceorder.1,(_f(41) => _f(42));
+_f(1) & _f(2) & _f(3) & _f(11) & WellDefinedness_oneoflowest.3,(_f(52) & _f(41) => _f(54));
+_f(1) & _f(2) & _f(3) & _f(11) & WellDefinedness_oneoflowest.2,(_f(52) & _f(41) => _f(53));
+_f(1) & _f(2) & _f(3) & _f(11) & WellDefinedness_oneoflowest.1,(_f(52) & _f(41) => _f(45));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(20) & WellDefinedness_lowstock.2,(_f(19) & _f(41) => _f(45));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(20) & WellDefinedness_lowstock.1,(_f(19) & _f(41) => _f(47));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(19) & WellDefinedness_totordered.2,(_f(48) & _f(49) & _f(41) => _f(51));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(19) & WellDefinedness_totordered.1,(_f(41) => _f(50));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(19) & WellDefinedness_howmany.2,(_f(41) => _f(45));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(19) & WellDefinedness_howmany.1,(_f(41) => _f(47));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(17) & WellDefinedness_receivestock.3,(_f(43) & _f(41) => _f(46));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(17) & WellDefinedness_receivestock.2,(_f(43) & _f(41) => _f(45));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(17) & WellDefinedness_receivestock.1,(_f(43) & _f(41) => _f(44));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(12) & WellDefinedness_receiveorder.1,(_f(41) => _f(42));
+_f(1) & _f(2) & _f(3) & WellDefinednessInvariant.1,(_f(38) & _f(39) & _f(40) & _f(36) & _f(37) & _f(41) => _f(42));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & complicatedserviceorder.3,(_f(32) & _f(30) & _f(29) & _f(4) & _f(9) => _f(35));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & complicatedserviceorder.2,(_f(32) & _f(30) & _f(29) & _f(4) & _f(7) => _f(34));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & complicatedserviceorder.1,(_f(32) & _f(30) & _f(29) & _f(4) & _f(5) => _f(33));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & serviceorder.3,(_f(25) & _f(23) & _f(4) & _f(9) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & serviceorder.2,(_f(25) & _f(23) & _f(4) & _f(7) => _f(27));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(22) & serviceorder.1,(_f(25) & _f(23) & _f(4) & _f(5) => _f(26));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(17) & receivestock.1,(_f(4) & _f(5) => _f(18));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(12) & receiveorder.2,(_f(13) & _f(4) & _f(9) => _f(16));
+_f(1) & _f(2) & _f(3) & _f(11) & _f(12) & receiveorder.1,(_f(13) & _f(4) & _f(7) => _f(15));
+_f(1) & _f(2) & _f(3) & Initialisation.3,(_f(4) & _f(9) => _f(10));
+_f(1) & _f(2) & _f(3) & Initialisation.2,(_f(4) & _f(7) => _f(8));
+_f(1) & _f(2) & _f(3) & Initialisation.1,(_f(4) & _f(5) => _f(6))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((maxorders) : ((NAT-{0})));
+ITEMS: FIN(INTEGER) & not(ITEMS = {});
+"Invariant is preserved";
+"Check invariant ((stock) : (((ITEMS) --> (NAT))))";
+((%(ii).(((ii) : (ITEMS)) | 0)) : (((ITEMS) --> (NAT))));
+"Check invariant ((orders) : (seq(((ITEMS) <-> ((NAT-{0}))))))";
+(({}) : (seq(((ITEMS) <-> ((NAT-{0}))))));
+"Check invariant (size(orders) <= maxorders)";
+(size({}) <= maxorders);
+stock : ITEMS +-> NAT & dom(stock) = ITEMS & ((stock) : (((ITEMS) --> (NAT)))) & orders : NATURAL-{0} +-> ((ITEMS) <-> ((NAT-{0}))) & ((orders) : (seq(((ITEMS) <-> ((NAT-{0})))))) & (size(orders) <= maxorders);
+((oo) : (((ITEMS) <-> ((NAT-{0})))));
+(size(orders) +1 <= maxorders);
+not((size(orders) +1 <= maxorders));
+((((orders) <- (oo))) : (seq(((ITEMS) <-> ((NAT-{0}))))));
+(size(((orders) <- (oo))) <= maxorders);
+((ss) : (((ITEMS) +-> ((NAT-{0})))));
+((((stock) <+ (%(xx).(((xx) : (dom(ss))) | ((stock )(xx) + (ss )(xx)))))) : (((ITEMS) --> (NAT))));
+((ii) : (ITEMS));
+((nn) : ((NAT-{0})));
+((xx) : (SET(ss).(((ss) : (dom(stock))) & (((stock )(ss)) = (min(ran(stock)))))));
+(0 +1 <= size(orders));
+!(ii).(((((ii) : (dom(oo)))) => (((oo )(ii) <= (stock )(ii)))));
+not(!(ii).(((((ii) : (dom(oo)))) => (((oo )(ii) <= (stock )(ii))))));
+((oo) = (first(orders)));
+((((stock) <+ (%(ii).(((ii) : (dom(oo))) | ((stock )(ii) - (oo )(ii)))))) : (((ITEMS) --> (NAT))));
+((tail(orders)) : (seq(((ITEMS) <-> ((NAT-{0}))))));
+(size(tail(orders)) <= maxorders);
+((nn) = (min(dom(((orders) |> (oos))))));
+(0 +1 <= card(oos));
+not((0 +1 <= card(oos)));
+((oos) = (SET(oo).(((oo) : (ran(orders))) & !(ii).(((((ii) : (dom(oo)))) => (((oo )(ii) <= (stock )(ii))))))));
+((((stock) <+ (%(ii).(((ii) : (dom((orders )(nn)))) | ((stock )(ii) - ((orders )(nn) )(ii)))))) : (((ITEMS) --> (NAT))));
+((((((orders) /|\ ((nn - 1)))) ^ (((orders) \|/ (nn))))) : (seq(((ITEMS) <-> ((NAT-{0}))))));
+(size(((((orders) /|\ ((nn - 1)))) ^ (((orders) \|/ (nn))))) <= maxorders);
+orders : NATURAL-{0} +-> ((ITEMS) <-> ((NAT-{0})));
+((orders) : (seq(((ITEMS) <-> ((NAT-{0}))))));
+stock : ITEMS +-> NAT;
+dom(stock) = ITEMS;
+((stock) : (((ITEMS) --> (NAT))));
+"Well definedness";
+((orders) : (seq(ran(orders))));
+((xx) : (dom(ss)));
+((xx) : (dom(stock)));
+((stock) : (((dom(stock)) +-> (ran(stock)))));
+((ss) : (((dom(ss)) +-> (ran(ss)))));
+((ii) : (dom(stock)));
+((oo) : (ran(orders)));
+((ii) : (dom(oo)));
+((SET(oo).(((oo) : (ran(orders))) & ((ii) : (dom(oo))))) : (FIN(SET(oo).(((oo) : (ran(orders))) & ((ii) : (dom(oo)))))));
+((oo) : (((dom(oo)) +-> (ran(oo)))));
+((ss) : (dom(stock)));
+not(((ran(stock)) = ({})));
+((((ran(stock)) /\ ((INTEGER - NATURAL)))) : (FIN(INTEGER)));
+not(((orders) = ({})))
+END
+&
+THEORY EnumerateX
+END

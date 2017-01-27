@@ -1,0 +1,109 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(3) & _f(16) & WellDefinednessInvariant.4,(_f(59) & _f(60) & _f(61) & _f(58) & _f(57) & _f(56) & _f(55) & _f(62) => _f(66));
+_f(1) & _f(2) & _f(3) & _f(16) & WellDefinednessInvariant.3,(_f(59) & _f(60) & _f(61) & _f(58) & _f(57) & _f(56) & _f(55) & _f(62) => _f(65));
+_f(1) & _f(2) & _f(3) & _f(16) & WellDefinednessInvariant.2,(_f(59) & _f(60) & _f(61) & _f(58) & _f(57) & _f(56) & _f(55) & _f(62) => _f(64));
+_f(1) & _f(2) & _f(3) & _f(16) & WellDefinednessInvariant.1,(_f(59) & _f(60) & _f(61) & _f(58) & _f(57) & _f(62) => _f(63));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(53) & contentsquery.1,(_f(6) => _f(54));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(42) & fullquery.2,(_f(52) & _f(49) & _f(6) => _f(48));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(42) & fullquery.1,(_f(51) & _f(50) & _f(6) => _f(47));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(42) & emptyquery.2,(_f(46) & _f(43) & _f(6) => _f(48));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(42) & emptyquery.1,(_f(45) & _f(44) & _f(6) => _f(47));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.11,(_f(35) & _f(34) & _f(33) & _f(6) => _f(39));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.10,(_f(35) & _f(34) & _f(33) & _f(31) & _f(6) => _f(41));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.9,(_f(35) & _f(34) & _f(33) & _f(6) & _f(13) => _f(37));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.8,(_f(35) & _f(34) & _f(33) & _f(6) & _f(11) => _f(36));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.7,(_f(35) & _f(34) & _f(33) & _f(6) & _f(9) => _f(40));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.6,(_f(35) & _f(34) & _f(32) & _f(6) => _f(39));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.5,(_f(35) & _f(34) & _f(32) & _f(31) & _f(6) => _f(38));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.4,(_f(35) & _f(34) & _f(32) & _f(6) & _f(13) => _f(37));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.3,(_f(35) & _f(34) & _f(32) & _f(6) & _f(11) => _f(36));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(30) & remove.2,(_f(35) & _f(34) & _f(32) & _f(6) & _f(9) => _f(10));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(28) & remove.1,(_f(19) => _f(29));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(18) & add.6,(_f(22) & _f(21) & _f(6) => _f(27));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(18) & add.5,(_f(22) & _f(6) & _f(13) => _f(26));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(18) & add.4,(_f(22) & _f(6) & _f(11) => _f(25));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(18) & add.3,(_f(22) & _f(6) & _f(9) => _f(24));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(18) & add.2,(_f(22) & _f(6) & _f(7) => _f(23));
+_f(1) & _f(2) & _f(3) & _f(16) & _f(17) & _f(18) & add.1,(_f(19) => _f(20));
+_f(1) & _f(2) & _f(3) & Initialisation.5,(_f(5) & _f(4) & _f(6) => _f(15));
+_f(1) & _f(2) & _f(3) & Initialisation.4,(_f(5) & _f(6) & _f(13) => _f(14));
+_f(1) & _f(2) & _f(3) & Initialisation.3,(_f(5) & _f(6) & _f(11) => _f(12));
+_f(1) & _f(2) & _f(3) & Initialisation.2,(_f(5) & _f(6) & _f(9) => _f(10));
+_f(1) & _f(2) & _f(3) & Initialisation.1,(_f(5) & _f(6) & _f(7) => _f(8))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((1..2)*{RESP}): FIN(NATURAL*{RESP}) & not(((1..2)*{RESP}) = {});
+ELEM: FIN(INTEGER) & not(ELEM = {}) & ((qlen) : ((NAT-{0})));
+((xx) : (dom({})));
+((elem) : (ELEM));
+"Refinement is correct";
+"Check invariant ((aa$1) : (((((1) .. (qlen))) --> (ELEM))))";
+(((((1) .. (qlen)) * {elem})) : (((((1) .. (qlen))) --> (ELEM))));
+"Check invariant ((start$1) : (((1) .. (qlen))))";
+((1) : (((1) .. (qlen))));
+"Check invariant ((used$1) : (((0) .. (qlen))))";
+((0) : (((0) .. (qlen))));
+"Check invariant ((used$1) = (size(buff)))";
+((0) = (size({})));
+((({} )(xx)) = (((((1) .. (qlen)) * {elem}) )((((((1 + xx) - 2)) mod (qlen)) + 1))));
+buff : NATURAL-{0} +-> ELEM & ((buff) : (seq(ELEM))) & (size(buff) <= qlen);
+aa$1 : ((1) .. (qlen)) +-> ELEM & dom(aa$1) = ((1) .. (qlen)) & ((aa$1) : (((((1) .. (qlen))) --> (ELEM)))) & ((start$1) : (((1) .. (qlen)))) & ((used$1) : (((0) .. (qlen)))) & ((used$1) = (size(buff))) & !(xx).(((((xx) : (dom(buff)))) => ((((buff )(xx)) = ((aa$1 )((((((start$1 + xx) - 2)) mod (qlen)) + 1)))))));
+((xx) : (ELEM)) & (size(buff) +1 <= qlen);
+"Precondition can be deduced";
+(used$1 +1 <= qlen);
+((xx$1) : (dom(((buff) <- (xx)))));
+((index) = ((((((start$1 - 1) + used$1)) mod (qlen)) + 1)));
+((((aa$1) <+ ({((index) |-> (xx))}))) : (((((1) .. (qlen))) --> (ELEM))));
+(((((((start$1 - 1) + 1)) mod (qlen)) + 1)) : (((1) .. (qlen))));
+(((used$1 + 1)) : (((0) .. (qlen))));
+(((used$1 + 1)) = (size(((buff) <- (xx)))));
+(((((buff) <- (xx)) )(xx$1)) = ((((aa$1) <+ ({((index) |-> (xx))})) )(((((((((((start$1 - 1) + 1)) mod (qlen)) + 1) + xx$1) - 2)) mod (qlen)) + 1))));
+not(buff = {});
+(0 +1 <= used$1);
+not(buff = {}) & ((ee) = (ee$1));
+((xx) : (dom(tail(buff))));
+((start$1) = (qlen));
+not(((start$1) = (qlen)));
+((ee$2) : (ran((({index}) <| (aa$1)))));
+((index) = (start$1));
+(((used$1 - 1)) : (((0) .. (qlen))));
+(((used$1 - 1)) = (size(tail(buff))));
+(((tail(buff) )(xx)) = ((aa$1 )((((((1 + xx) - 2)) mod (qlen)) + 1))));
+((first(buff)) = (ee$2));
+(((start$1 + 1)) : (((1) .. (qlen))));
+(((tail(buff) )(xx)) = ((aa$1 )(((((((start$1 + 1) + xx) - 2)) mod (qlen)) + 1))));
+((rr) = (rr$1));
+((buff) = ({}));
+not(((buff) = ({})));
+((used$1) = (0));
+not(((used$1) = (0)));
+(((2|->RESP)) = ((1|->RESP)));
+(((1|->RESP)) = ((2|->RESP)));
+((size(buff)) = (qlen));
+not(((size(buff)) = (qlen)));
+((used$1) = (qlen));
+not(((used$1) = (qlen)));
+((oo) = (oo$1));
+((size(buff)) = (used$1));
+((xx) : (dom(buff)));
+((used$1) = (size(buff)));
+((used$1) : (((0) .. (qlen))));
+((start$1) : (((1) .. (qlen))));
+aa$1 : ((1) .. (qlen)) +-> ELEM;
+dom(aa$1) = ((1) .. (qlen));
+((aa$1) : (((((1) .. (qlen))) --> (ELEM))));
+"Well definedness";
+((buff) : (seq(ran(buff))));
+((buff) : (((dom(buff)) +-> (ran(buff)))));
+(((((((start$1 + xx) - 2)) mod (qlen)) + 1)) : (dom(aa$1)));
+((aa$1) : (((dom(aa$1)) +-> (ran(aa$1)))));
+((xx) : (ELEM));
+((xx) : (ELEM)) & (size(buff) +1 <= qlen) & ((xx) : (ELEM)) & (used$1 +1 <= qlen);
+not(buff = {}) & (0 +1 <= used$1)
+END
+&
+THEORY EnumerateX IS
+RESP == {yes,no}
+END

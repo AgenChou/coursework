@@ -1,0 +1,9 @@
+digraph {
+Big_business [ label=" Big_business " shape= box ]
+Items [ label=" Items " shape= box ]
+Orders [ label=" Orders " shape= box ]
+Warehouse [ label=" Warehouse " shape= box ]
+
+"Orders" -> "Items" [style= dotted ]
+"Warehouse" -> "Items" [style= dotted ]
+}

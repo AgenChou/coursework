@@ -1,0 +1,1014 @@
+<Proof_Obligations>
+<Define merge="=" name="B definitions">
+<Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
+<Exp_Comparison op="=">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define merge="=" name="ctx"/>
+<Define merge="=" name="seext"/>
+<Define merge="=" name="inv">
+<Nary_Pred op="&amp;" translate="bookings$1 : ((1) .. (50)) +-> pass &amp; bookings$1~ : pass +-> ((1) .. (50)) &amp; ((bookings$1) : (((((1) .. (50))) >+> (pass)))) &amp; ((ran(bookings$1)) = (pass))">
+<Exp_Comparison op=":" initialTag="((bookings$1) : (((((1) .. (50))) >+> (pass))))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:1," typref="2502465533" value="bookings"/>
+<Binary_Exp op=">+>" typref="1890248262">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:2" typref="1367874566" value="pass"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((ran(bookings$1)) = (pass))">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define merge="=" name="ass"/>
+<Define merge="=" name="lprp"/>
+<Define merge="=" name="inprp"/>
+<Define merge="=" name="inext"/>
+<Define merge="=" name="mchcst"/>
+<Define merge="=" name="aprp">
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:1:1:1" typref="1367874566" value="PID"/>
+</Set>
+</Define>
+<Define merge="=" name="abs">
+<Nary_Pred op="&amp;" translate="((pass) : (FIN(PID))) &amp; (card(pass) &lt;= 50)">
+<Exp_Comparison op=":" initialTag="((pass) : (FIN(PID)))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:3:1:1:1" typref="1367874566" value="pass"/>
+<Unary_Exp op="FIN" typref="1323222397">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:3:1:1:2:1" typref="1367874566" value="PID"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(pass) &lt;= 50)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:3:1:2:1:1" typref="1367874566" value="pass"/>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:3:1:2:2" typref="2701647786" value="50"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Proof_Obligation merge="=">
+<Comment>Initialisation dans un raffinement</Comment>
+<Tag>Initialisation</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal merge="">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((bookings$1) : (((((1) .. (50))) >+> (pass))))" goalTag="Refinement is correct">
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:4:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:4:1:1:1," typref="2502465533"/>
+<Binary_Exp op=">+>" typref="1890248262">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:4:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:2,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:4:1:1:1" typref="1367874566"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="=" initialTag="((ran(bookings$1)) = (pass))" goalTag="Refinement is correct">
+<Unary_Exp op="ran" typref="1367874566">
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:4:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:4:1:1:1," typref="2502465533"/>
+</Unary_Exp>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:4:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:2,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:4:1:1:1" typref="1367874566"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement / Precondition</Comment>
+<Tag>book</Tag>
+<Tag>PRECONDITION</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:3:1:1" typref="1367874566" value="pass"/>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:3:2" typref="2701647786" value="50"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Hypothesis>
+<Simple_Goal merge="0">
+<Tag>Precondition can be deduced</Tag>
+<Goal>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pp"/>
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:2:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Precondition can be deduced</Tag>
+<Goal>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:3:1:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:3:2" typref="2701647786" value="50"/>
+</Exp_Comparison>
+</Goal>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>book</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:3:1:1" typref="1367874566" value="pass"/>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:3:2" typref="2701647786" value="50"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id suffix="" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:1:1" typref="2701647786" value="xx"/>
+<Unary_Exp op="min" typref="2701647786">
+<Binary_Exp op="-" typref="3603043417">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Unary_Exp op="dom" typref="3603043417">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Local_Hyp>
+<Simple_Goal merge="0">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":" initialTag="((bookings$1) : (((((1) .. (50))) >+> (pass))))" goalTag="Refinement is correct">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:1:1," typref="2502465533">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:2:1:1," typref="2502465533" value="bookings"/>
+<Nary_Exp op="{" typref="2502465533">
+<Binary_Exp op="|->" typref="3483792902">
+<Id suffix="" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:2:1:2:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:1:1" typref="2701647786" value="xx"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:2:1:2:1:2" typref="3868805821" value="pp"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op=">+>" typref="1890248262">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:2,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:3:1:2:1:1" typref="1367874566" value="pass"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:3:1:2:1:2:1" typref="3868805821" value="pp"/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op="=" initialTag="((ran(bookings$1)) = (pass))" goalTag="Refinement is correct">
+<Unary_Exp op="ran" typref="1367874566">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:1:1," typref="2502465533">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:2:1:1," typref="2502465533" value="bookings"/>
+<Nary_Exp op="{" typref="2502465533">
+<Binary_Exp op="|->" typref="3483792902">
+<Id suffix="" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:2:1:2:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:1:1" typref="2701647786" value="xx"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:3:1:2:1:2:1:2" typref="3868805821" value="pp"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:2,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:3:1:2:1:1" typref="1367874566" value="pass"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:3:1:2:1:2:1" typref="3868805821" value="pp"/>
+</Nary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement / Precondition</Comment>
+<Tag>cancel</Tag>
+<Tag>PRECONDITION</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:2:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Hypothesis>
+<Simple_Goal merge="0">
+<Tag>Precondition can be deduced</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:2:1:1" typref="3868805821" value="pp"/>
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:2:1:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>cancel</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:2:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal merge="">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((bookings$1) : (((((1) .. (50))) >+> (pass))))" goalTag="Refinement is correct">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:1:1," typref="2502465533">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:2:1:1," typref="2502465533" value="bookings"/>
+<Binary_Exp op="|>" typref="2502465533">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:2:1:2:1," typref="2502465533" value="bookings"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:2:1:2:2:1" typref="3868805821" value="pp"/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+<Binary_Exp op=">+>" typref="1890248262">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:2,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:3:1:2:1:1" typref="1367874566" value="pass"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:3:1:2:1:2:1" typref="3868805821" value="pp"/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="=" initialTag="((ran(bookings$1)) = (pass))" goalTag="Refinement is correct">
+<Unary_Exp op="ran" typref="1367874566">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:1:1,,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:1:1," typref="2502465533">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:2:1:1," typref="2502465533" value="bookings"/>
+<Binary_Exp op="|>" typref="2502465533">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:2:1:2:1," typref="2502465533" value="bookings"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:3:1:2:1:2:2:1" typref="3868805821" value="pp"/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:2:2,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:3:1:2:1:1" typref="1367874566" value="pass"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:3:1:2:1:2:1" typref="3868805821" value="pp"/>
+</Nary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement / Precondition</Comment>
+<Tag>query</Tag>
+<Tag>PRECONDITION</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:3:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:3:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>query</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:3:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:3:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:1:1" typref="2043437594" value="oo"/>
+<Id suffix="1" typref="2043437594" value="oo"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal merge="0">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="=" goalTag="Refinement is correct">
+<Boolean_Exp tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:4:1:1:1" typref="2043437594">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:4:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:4:1:2:1:1:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+</Boolean_Exp>
+<Boolean_Exp tag=",,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:3:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:3:4:1:1:1," typref="2043437594">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:3:4:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:3:4:1:2:1:1:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Boolean_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement / Precondition</Comment>
+<Tag>spaces</Tag>
+<Tag>PRECONDITION</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;"/>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>spaces</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:4:1:1" typref="2701647786" value="oo"/>
+<Id suffix="1" typref="2701647786" value="oo"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal merge="">
+<Tag>Refinement is correct</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="=" goalTag="Refinement is correct">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:4:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:4:2:1:1:1" typref="2701647786">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:4:2:1:2:1:1" typref="2701647786" value="50"/>
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:4:2:1:2:1:2:1" typref="1367874566" value="pass"/>
+</Unary_Exp>
+</Binary_Exp>
+<Binary_Exp op="-" tag=",,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:4:1:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:4:2:1:1:1," typref="2701647786">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:4:2:1:2:1:1" typref="2701647786" value="50"/>
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:4:2:1:2:1:2:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Hypothesis/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":" initialTag="((bookings$1) : (((((1) .. (50))) >+> (pass))))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:1," typref="2502465533" value="bookings"/>
+<Binary_Exp op=">+>" typref="1890248262">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:3:1:1:2:2" typref="1367874566" value="pass"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_Precondition_book</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pp"/>
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:2:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal merge="0">
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:3:1:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+<Unary_Exp op="FIN">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:3:1:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),(?; 0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_book</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:3:1:1" typref="1367874566" value="pass"/>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:1:2:1:3:2" typref="2701647786" value="50"/>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pp"/>
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:2:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:3:1:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:2:1:3:2" typref="2701647786" value="50"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Hypothesis>
+<Simple_Goal merge="0">
+<Tag>Well definedness</Tag>
+<Goal>
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Binary_Exp op="-" typref="3603043417">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Unary_Exp op="dom" typref="3603043417">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Binary_Exp>
+<EmptySet/>
+</Exp_Comparison>
+</Unary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal merge="1">
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Binary_Exp op="/\">
+<Binary_Exp op="-" typref="3603043417">
+<Binary_Exp op=".." typref="3603043417">
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:1:1" typref="2701647786" value="1"/>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:1:2" typref="2701647786" value="50"/>
+</Binary_Exp>
+<Unary_Exp op="dom" typref="3603043417">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:1:3:1:2:1:1:1:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Binary_Exp>
+<Binary_Exp op="-">
+<Id value="INTEGER"/>
+<Id value="NATURAL"/>
+</Binary_Exp>
+</Binary_Exp>
+<Unary_Exp op="FIN">
+<Id value="INTEGER"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_Precondition_cancel</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_cancel</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:2:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:2:2:1:2:2" typref="1367874566" value="pass"/>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:2:1:1" typref="3868805821" value="pp"/>
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:2:2:1:2:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_Precondition_query</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_query</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:3:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:5:3:3:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:3:3:1:1" typref="3868805821" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:3:3:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_Precondition_spaces</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation merge="=">
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_spaces</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;"/>
+</Hypothesis>
+<Simple_Goal merge="">
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:4:2:1:2:1:2:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+<Unary_Exp op="FIN">
+<Unary_Exp op="ran" typref="1367874566">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:5:4:2:1:2:1:2:1:1," typref="2502465533" value="bookings"/>
+</Unary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+</Simple_Goal>
+</Proof_Obligation>
+<TypeInfos merge="=">
+<Type id="2502465533">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:1:1:1:1" value="INTEGER"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:1:1:1:2" value="PID"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1890248262">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:2:1:1:1:1" value="INTEGER"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:2:1:1:1:2" value="PID"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:3:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:4:1" value="INTEGER"/>
+</Type>
+<Type id="1367874566">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:5:1:1" value="PID"/>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:6:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="3868805821">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:7:1" value="PID"/>
+</Type>
+<Type id="3483792902">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:8:1:1" value="INTEGER"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:8:1:2" value="PID"/>
+</Binary_Exp>
+</Type>
+<Type id="2043437594">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers_r.bxml:1:6:9:1" value="BOOL"/>
+</Type>
+<Type id="1367874566">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:6:1:1:1" value="PID"/>
+</Unary_Exp>
+</Type>
+<Type id="1323222397">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:6:2:1:1:1" value="PID"/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:6:3:1" value="INTEGER"/>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:6:4:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="3868805821">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:6:5:1" value="PID"/>
+</Type>
+<Type id="2043437594">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab8/bdp/Passengers.bxml:1:6:6:1" value="BOOL"/>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

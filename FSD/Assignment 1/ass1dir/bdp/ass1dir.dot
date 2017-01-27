@@ -1,0 +1,6 @@
+digraph {
+Bag [ label=" Bag " shape= box ]
+sequences [ label=" sequences " shape= box ]
+stockcontrolsys [ label=" stockcontrolsys " shape= box ]
+
+}

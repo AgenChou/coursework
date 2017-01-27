@@ -1,0 +1,251 @@
+<Machine name='TotBuffer_r' type='refinement'>
+<Abstraction>TotBuffer</Abstraction>
+<Parameters>
+<Id value='qlen' typref='2701647786'/>
+<Id value='ELEM' typref='3116522372'/>
+</Parameters>
+<Constraints>
+<Nary_Pred op='&amp;'>
+<Set>
+<Id value='ELEM' typref='3116522372'/>
+</Set>
+</Nary_Pred>
+</Constraints>
+<Includes>
+<Referenced_Machine>
+<Name>Buffer</Name>
+<Parameters>
+<Id value='qlen' typref='2701647786'/>
+<Id value='ELEM' typref='3116522372'/>
+</Parameters>
+</Referenced_Machine>
+</Includes>
+<Sees>
+<Referenced_Machine>
+<Name>Resp</Name>
+</Referenced_Machine>
+</Sees>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<Operations>
+<Operation name='enc_add'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='xx' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&gt;='>
+<Unary_Exp op='size' typref='2701647786'>
+<Id value='buff' typref='4078518729'/>
+</Unary_Exp>
+<Id value='qlen' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='full' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Nary_Sub op='||'>
+<Operation_Call>
+<Name>
+<Id value='add'/>
+</Name>
+<Input_Parameters>
+<Id value='xx' typref='1091773589'/>
+</Input_Parameters>
+</Operation_Call>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='ok' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='enc_remove'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='ee' typref='1091773589'/>
+</Output_Parameters>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Id value='buff' typref='4078518729'/>
+<EmptySeq typref='1847249677'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='empty' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Nary_Sub op='||'>
+<Operation_Call>
+<Name>
+<Id value='remove'/>
+</Name>
+<Output_Parameters>
+<Id value='ee' typref='1091773589'/>
+</Output_Parameters>
+</Operation_Call>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='ok' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='enc_emptyquery'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='ok' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+<Operation_Call>
+<Name>
+<Id value='emptyquery'/>
+</Name>
+<Output_Parameters>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+</Operation_Call>
+</Nary_Sub>
+</Body>
+</Operation>
+<Operation name='enc_fullquery'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='ok' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+<Operation_Call>
+<Name>
+<Id value='fullquery'/>
+</Name>
+<Output_Parameters>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+</Operation_Call>
+</Nary_Sub>
+</Body>
+</Operation>
+<Operation name='enc_contentsquery'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Values>
+<Id value='ok' typref='2996185817'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Unary_Exp op='size' typref='2701647786'>
+<Id value='buff' typref='4078518729'/>
+</Unary_Exp>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3116522372'>
+<Unary_Exp op='POW'>
+<Id value='ELEM'/>
+</Unary_Exp>
+</Type>
+<Type id='2996185817'>
+<Id value='ERRORS'/>
+</Type>
+<Type id='1091773589'>
+<Id value='ELEM'/>
+</Type>
+<Type id='4078518729'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ELEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1847249677'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Generic_Type/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3364633780'>
+<Id value='RESP'/>
+</Type>
+</TypeInfos>
+
+</Machine>

@@ -1,0 +1,603 @@
+<Machine name='ordersys' type='abstraction'>
+<Sets>
+<Set>
+<Id value='OID' typref='500207749'/>
+</Set>
+<Set>
+<Id value='PARTS' typref='2679626011'/>
+</Set>
+<Set>
+<Id value='NAMES' typref='4176652771'/>
+</Set>
+</Sets>
+<Concrete_Constants>
+<Id value='maxorders' typref='2701647786'/>
+</Concrete_Constants>
+<Abstract_Variables>
+<Id value='orders' typref='1630244792'/>
+</Abstract_Variables>
+<Properties>
+<Exp_Comparison op=':'>
+<Id value='maxorders' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+</Properties>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='orders' typref='1630244792'/>
+<Binary_Exp op='+-&gt;' typref='1386287137'>
+<Id value='OID' typref='500207749'/>
+<Struct typref='2165006239'>
+<Record_Item label='o_cust'>
+<Id value='NAMES' typref='4176652771'/>
+</Record_Item>
+<Record_Item label='o_part'>
+<Id value='PARTS' typref='2679626011'/>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Id value='NAT1' typref='3603043417'/>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Id value='BOOL' typref='4282494527'/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+<Id value='maxorders' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='orders' typref='1630244792'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='addorder'>
+<Input_Parameters>
+<Id value='cc' typref='1027503136'/>
+<Id value='pp' typref='3977858792'/>
+<Id value='nn' typref='2701647786'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='cc' typref='1027503136'/>
+<Id value='NAMES' typref='4176652771'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3977858792'/>
+<Id value='PARTS' typref='2679626011'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='nn' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+<Id value='maxorders' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<ANY_Sub>
+<Variables>
+<Id value='oid' typref='3496798590'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='oid' typref='3496798590'/>
+<Binary_Exp op='-' typref='500207749'>
+<Id value='OID' typref='500207749'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='orders' typref='1630244792'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1630244792'>
+<Id value='orders' typref='1630244792'/>
+<Nary_Exp op='{' typref='1630244792'>
+<Binary_Exp op='|-&gt;' typref='2078382696'>
+<Id value='oid' typref='3496798590'/>
+<Record typref='3009514187'>
+<Record_Item label=''>
+<Id value='cc' typref='1027503136'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='pp' typref='3977858792'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='nn' typref='2701647786'/>
+</Record_Item>
+<Record_Item label=''>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Record_Item>
+</Record>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</ANY_Sub>
+</Body>
+</Operation>
+<Operation name='findorder'>
+<Output_Parameters>
+<Id value='rr' typref='2204640058'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='oo' typref='3496798590'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='oo' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='rr' typref='2204640058'/>
+</Variables>
+<Values>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='isvalidorder'>
+<Output_Parameters>
+<Id value='bb' typref='2043437594'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='oo' typref='3496798590'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='oo' typref='3496798590'/>
+<Id value='OID' typref='500207749'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='/:'>
+<Id value='oo' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bb' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='TRUE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='bb' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='cancelorder'>
+<Input_Parameters>
+<Id value='oo' typref='3496798590'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='oo' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Binary_Exp op='&apos;' typref='2043437594'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_disp'/>
+</Binary_Exp>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='orders' typref='1630244792'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='1630244792'>
+<Id value='orders' typref='1630244792'/>
+<Nary_Exp op='{' typref='1630244792'>
+<Binary_Exp op='|-&gt;' typref='1574372065'>
+<Id value='oo' typref='3496798590'/>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='dispatchorder'>
+<Input_Parameters>
+<Id value='oo' typref='3496798590'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='oo' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+</Variables>
+<Values>
+<Record typref='2204640058'>
+<Record_Item label='o_cust'>
+<Binary_Exp op='&apos;' typref='1027503136'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_cust'/>
+</Binary_Exp>
+</Record_Item>
+<Record_Item label='o_part'>
+<Binary_Exp op='&apos;' typref='3977858792'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_part'/>
+</Binary_Exp>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Binary_Exp op='&apos;' typref='2701647786'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_quant'/>
+</Binary_Exp>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Boolean_Literal value='TRUE' typref='2043437594'/>
+</Record_Item>
+</Record>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='todispatch'>
+<Output_Parameters>
+<Id value='oos' typref='500207749'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oos' typref='500207749'/>
+</Variables>
+<Values>
+<Quantified_Set typref='500207749'>
+<Variables>
+<Id value='oo' typref='3496798590'/>
+</Variables>
+<Body>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='oo' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Binary_Exp op='&apos;' typref='2043437594'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='oo' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_disp'/>
+</Binary_Exp>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='numberordered'>
+<Output_Parameters>
+<Id value='nn' typref='2701647786'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='pp' typref='3977858792'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3977858792'/>
+<Id value='PARTS' typref='2679626011'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='nn' typref='2701647786'/>
+</Variables>
+<Values>
+<Quantified_Exp type='SIGMA' typref='2701647786'>
+<Variables>
+<Id value='zz' typref='3496798590'/>
+</Variables>
+<Pred>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='zz' typref='3496798590'/>
+<Unary_Exp op='dom' typref='500207749'>
+<Id value='orders' typref='1630244792'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Binary_Exp op='&apos;' typref='3977858792'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='zz' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_part'/>
+</Binary_Exp>
+<Id value='pp' typref='3977858792'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Pred>
+<Body>
+<Binary_Exp op='&apos;' typref='2701647786'>
+<Binary_Exp op='(' typref='2204640058'>
+<Id value='orders' typref='1630244792'/>
+<Id value='zz' typref='3496798590'/>
+</Binary_Exp>
+<Id value='o_quant'/>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='500207749'>
+<Unary_Exp op='POW'>
+<Id value='OID'/>
+</Unary_Exp>
+</Type>
+<Type id='2679626011'>
+<Unary_Exp op='POW'>
+<Id value='PARTS'/>
+</Unary_Exp>
+</Type>
+<Type id='4176652771'>
+<Unary_Exp op='POW'>
+<Id value='NAMES'/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='1630244792'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Struct>
+<Record_Item label='o_cust'>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label='o_part'>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='1386287137'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Struct>
+<Record_Item label='o_cust'>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label='o_part'>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='2165006239'>
+<Unary_Exp op='POW'>
+<Struct>
+<Record_Item label='o_cust'>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label='o_part'>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Unary_Exp>
+</Type>
+<Type id='4282494527'>
+<Unary_Exp op='POW'>
+<Id value='BOOL'/>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='1027503136'>
+<Id value='NAMES'/>
+</Type>
+<Type id='3977858792'>
+<Id value='PARTS'/>
+</Type>
+<Type id='3496798590'>
+<Id value='OID'/>
+</Type>
+<Type id='2078382696'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Struct>
+<Record_Item label=''>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Type>
+<Type id='3009514187'>
+<Struct>
+<Record_Item label=''>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label=''>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
+</Type>
+<Type id='2204640058'>
+<Struct>
+<Record_Item label='o_cust'>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label='o_part'>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Type>
+<Type id='1574372065'>
+<Binary_Exp op='*'>
+<Id value='OID'/>
+<Struct>
+<Record_Item label='o_cust'>
+<Id value='NAMES'/>
+</Record_Item>
+<Record_Item label='o_part'>
+<Id value='PARTS'/>
+</Record_Item>
+<Record_Item label='o_quant'>
+<Id value='INTEGER'/>
+</Record_Item>
+<Record_Item label='o_disp'>
+<Id value='BOOL'/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

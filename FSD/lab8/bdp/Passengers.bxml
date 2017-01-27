@@ -1,0 +1,186 @@
+<Machine name='Passengers' type='abstraction'>
+<Sets>
+<Set>
+<Id value='PID' typref='1367874566'/>
+</Set>
+</Sets>
+<Abstract_Variables>
+<Id value='pass' typref='1367874566'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pass' typref='1367874566'/>
+<Unary_Exp op='FIN' typref='1323222397'>
+<Id value='PID' typref='1367874566'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='pass' typref='1367874566'/>
+</Unary_Exp>
+<Integer_Literal value='50' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='pass' typref='1367874566'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='book'>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Id value='pp' typref='3868805821'/>
+<Id value='pass' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='pass' typref='1367874566'/>
+</Unary_Exp>
+<Integer_Literal value='50' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='pass' typref='1367874566'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1367874566'>
+<Id value='pass' typref='1367874566'/>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pp' typref='3868805821'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='cancel'>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='pass' typref='1367874566'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='pass' typref='1367874566'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='1367874566'>
+<Id value='pass' typref='1367874566'/>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pp' typref='3868805821'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='query'>
+<Output_Parameters>
+<Id value='oo' typref='2043437594'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Exp typref='2043437594'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='pass' typref='1367874566'/>
+</Exp_Comparison>
+</Boolean_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='spaces'>
+<Output_Parameters>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2701647786'>
+<Integer_Literal value='50' typref='2701647786'/>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='pass' typref='1367874566'/>
+</Unary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='1367874566'>
+<Unary_Exp op='POW'>
+<Id value='PID'/>
+</Unary_Exp>
+</Type>
+<Type id='1323222397'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='PID'/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='3868805821'>
+<Id value='PID'/>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
+</Type>
+</TypeInfos>
+
+</Machine>

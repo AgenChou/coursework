@@ -1,0 +1,15 @@
+/* AbSet_r1
+ * Author: u1690550
+ * Creation date: 01/12/2016
+ */
+
+REFINEMENT AbSet_r1
+REFINES AbSet
+
+VARIABLES num
+INVARIANT num : NAT & (myset /= {} => (num : myset))
+INITIALISATION num := 0
+OPERATIONS
+set_add(nn) = num := nn;
+oo <-- set_out = oo := num
+END

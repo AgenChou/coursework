@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<db_xml>
+    <atelierb version="3_7_ubuntu-cvs" />
+    <project decomp_dir="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\expand_src" old_decomp_dir="D:\Non-game stuff\CS notes\Formal Systems Development\Assignment 1\ass1dir\bdp\src">
+        <!-- Definition directory list -->
+        <!-- Component file list -->
+        <component_file path="D:/Non-game stuff/CS notes/Formal Systems Development/Assignment 1/ass1dir" name="Bag" suffix="mch" user="Agata">
+            <component name="Bag" type="specification" />
+        </component_file>
+        <component_file path="D:/Non-game stuff/CS notes/Formal Systems Development/Assignment 1/ass1dir" name="stockcontrolsys" suffix="mch" user="Agata">
+            <component name="stockcontrolsys" type="specification" />
+        </component_file>
+    </project>
+</db_xml>
