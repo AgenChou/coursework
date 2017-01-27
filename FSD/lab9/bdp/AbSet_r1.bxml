@@ -1,0 +1,77 @@
+<Machine name='AbSet_r1' type='refinement'>
+<Abstraction>AbSet</Abstraction>
+<Abstract_Variables>
+<Id value='num' typref='2701647786'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='num' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Binary_Pred op='=&gt;'>
+<Exp_Comparison op='/='>
+<Id value='myset' typref='3603043417'/>
+<EmptySet typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='num' typref='2701647786'/>
+<Id value='myset' typref='3603043417'/>
+</Exp_Comparison>
+</Binary_Pred>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='num' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='0' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='set_add'>
+<Input_Parameters>
+<Id value='nn' typref='2701647786'/>
+</Input_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='num' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='nn' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='set_out'>
+<Output_Parameters>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='num' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

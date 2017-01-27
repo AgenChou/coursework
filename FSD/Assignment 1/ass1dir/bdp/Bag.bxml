@@ -1,0 +1,881 @@
+<Machine name='Bag' type='abstraction'>
+<Parameters>
+<Id value='ELEM' typref='3116522372'/>
+<Id value='cap' typref='2701647786'/>
+<Id value='cost' typref='1702910985'/>
+</Parameters>
+<Constraints>
+<Nary_Pred op='&amp;'>
+<Set>
+<Id value='ELEM' typref='3116522372'/>
+</Set>
+<Exp_Comparison op=':'>
+<Id value='cap' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='cost' typref='1702910985'/>
+<Binary_Exp op='--&gt;' typref='707442064'>
+<Id value='ELEM' typref='3116522372'/>
+<Id value='NAT' typref='3603043417'/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Constraints>
+<Abstract_Variables>
+<Id value='bag' typref='1702910985'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='bag' typref='1702910985'/>
+<Binary_Exp op='+-&gt;' typref='707442064'>
+<Id value='ELEM' typref='3116522372'/>
+<Id value='NAT1' typref='3603043417'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type='!'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Body>
+<Binary_Pred op='=&gt;'>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Id value='cap' typref='2701647786'/>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='addbag'>
+<Input_Parameters>
+<Id value='ee' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&lt;'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Id value='cap' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<Binary_Exp op='&lt;+' typref='1702910985'>
+<Id value='bag' typref='1702910985'/>
+<Nary_Exp op='{' typref='1702910985'>
+<Binary_Exp op='|-&gt;' typref='348924368'>
+<Id value='ee' typref='1091773589'/>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</If_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1702910985'>
+<Id value='bag' typref='1702910985'/>
+<Nary_Exp op='{' typref='1702910985'>
+<Binary_Exp op='|-&gt;' typref='348924368'>
+<Id value='ee' typref='1091773589'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='rembag'>
+<Input_Parameters>
+<Id value='ee' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&gt;'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<Binary_Exp op='&lt;+' typref='1702910985'>
+<Id value='bag' typref='1702910985'/>
+<Nary_Exp op='{' typref='1702910985'>
+<Binary_Exp op='|-&gt;' typref='348924368'>
+<Id value='ee' typref='1091773589'/>
+<Binary_Exp op='-' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='1702910985'>
+<Id value='bag' typref='1702910985'/>
+<Nary_Exp op='{' typref='1702910985'>
+<Binary_Exp op='|-&gt;' typref='348924368'>
+<Id value='ee' typref='1091773589'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='contelm'>
+<Output_Parameters>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='ee' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='0' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='totelms'>
+<Output_Parameters>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Unary_Exp op='card' typref='2701647786'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='0' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Quantified_Exp type='SIGMA' typref='2701647786'>
+<Variables>
+<Id value='xx' typref='2701647786'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='2701647786'/>
+<Unary_Exp op='ran' typref='3603043417'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id value='xx' typref='2701647786'/>
+</Body>
+</Quantified_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='isin'>
+<Output_Parameters>
+<Id value='bb' typref='2043437594'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='ee' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bb' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='TRUE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='bb' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='bagunion'>
+<Input_Parameters>
+<Id value='bb' typref='1702910985'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='bb' typref='1702910985'/>
+<Binary_Exp op='+-&gt;' typref='707442064'>
+<Id value='ELEM' typref='3116522372'/>
+<Id value='NAT1' typref='3603043417'/>
+</Binary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<LET_Sub>
+<Variables>
+<Id value='capelems' typref='3116522372'/>
+</Variables>
+<Values>
+<Valuation ident='capelems' typref='3116522372'>
+<Quantified_Set typref='3116522372'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Body>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Binary_Exp op='/\' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bb' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&gt;='>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bb' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+</Binary_Exp>
+<Id value='cap' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Valuation>
+</Values>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1702910985'>
+<Binary_Exp op='\/' typref='1702910985'>
+<Binary_Exp op='\/' typref='1702910985'>
+<Binary_Exp op='&lt;|' typref='1702910985'>
+<Binary_Exp op='-' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bb' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='bag' typref='1702910985'/>
+</Binary_Exp>
+<Binary_Exp op='&lt;|' typref='1702910985'>
+<Binary_Exp op='-' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bb' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='bb' typref='1702910985'/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp type='%' typref='1702910985'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Binary_Exp op='-' typref='3116522372'>
+<Binary_Exp op='/\' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bb' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='capelems' typref='3116522372'/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bb' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp type='%' typref='1702910985'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Id value='capelems' typref='3116522372'/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id value='cap' typref='2701647786'/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</LET_Sub>
+</Body>
+</Operation>
+<Operation name='outputseq'>
+<Output_Parameters>
+<Id value='ss' typref='978501326'/>
+</Output_Parameters>
+<Body>
+<ANY_Sub>
+<Variables>
+<Id value='ff' typref='978501326'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='ff' typref='978501326'/>
+<Quantified_Set typref='2117703947'>
+<Variables>
+<Id value='seqs' typref='978501326'/>
+</Variables>
+<Body>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='seqs' typref='978501326'/>
+<Unary_Exp op='seq' typref='2117703947'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Unary_Exp op='ran' typref='1702910985'>
+<Id value='seqs' typref='978501326'/>
+</Unary_Exp>
+<Id value='bag' typref='1702910985'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='ss' typref='978501326'/>
+</Variables>
+<Values>
+<Id value='ff' typref='978501326'/>
+</Values>
+</Assignement_Sub>
+</Then>
+</ANY_Sub>
+</Body>
+</Operation>
+<Operation name='addinseq'>
+<Input_Parameters>
+<Id value='ss' typref='4078518729'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='ss' typref='4078518729'/>
+<Unary_Exp op='seq' typref='1244954576'>
+<Id value='ELEM' typref='3116522372'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<LET_Sub>
+<Variables>
+<Id value='add' typref='1702910985'/>
+</Variables>
+<Values>
+<Valuation ident='add' typref='1702910985'>
+<Quantified_Exp type='%' typref='1702910985'>
+<Variables>
+<Id value='xx' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='1091773589'/>
+<Unary_Exp op='ran' typref='3116522372'>
+<Id value='ss' typref='4078518729'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Unary_Exp op='card' typref='2701647786'>
+<Quantified_Set typref='3603043417'>
+<Variables>
+<Id value='yy' typref='2701647786'/>
+</Variables>
+<Body>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='yy' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='ss' typref='4078518729'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Binary_Exp op='(' typref='1091773589'>
+<Id value='ss' typref='4078518729'/>
+<Id value='yy' typref='2701647786'/>
+</Binary_Exp>
+<Id value='xx' typref='1091773589'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Unary_Exp>
+</Body>
+</Quantified_Exp>
+</Valuation>
+</Values>
+<Then>
+<LET_Sub>
+<Variables>
+<Id value='capelems' typref='3116522372'/>
+</Variables>
+<Values>
+<Valuation ident='capelems' typref='3116522372'>
+<Quantified_Set typref='3116522372'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Body>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Binary_Exp op='/\' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='add' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&gt;='>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='add' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+</Binary_Exp>
+<Id value='cap' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Valuation>
+</Values>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bag' typref='1702910985'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1702910985'>
+<Binary_Exp op='\/' typref='1702910985'>
+<Binary_Exp op='\/' typref='1702910985'>
+<Binary_Exp op='&lt;|' typref='1702910985'>
+<Binary_Exp op='-' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='add' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='bag' typref='1702910985'/>
+</Binary_Exp>
+<Binary_Exp op='&lt;|' typref='1702910985'>
+<Binary_Exp op='-' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='add' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='add' typref='1702910985'/>
+</Binary_Exp>
+</Binary_Exp>
+<Quantified_Exp type='%' typref='1702910985'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Binary_Exp op='-' typref='3116522372'>
+<Binary_Exp op='/\' typref='3116522372'>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='add' typref='1702910985'/>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='capelems' typref='3116522372'/>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='add' typref='1702910985'/>
+<Id value='ee' typref='1091773589'/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+<Quantified_Exp type='%' typref='1702910985'>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='ee' typref='1091773589'/>
+<Id value='capelems' typref='3116522372'/>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Id value='cap' typref='2701647786'/>
+</Body>
+</Quantified_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</LET_Sub>
+</Then>
+</LET_Sub>
+</Body>
+</Operation>
+<Operation name='totalcost'>
+<Output_Parameters>
+<Id value='cc' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='cc' typref='2701647786'/>
+</Variables>
+<Values>
+<Quantified_Exp type='SIGMA' typref='2701647786'>
+<Variables>
+<Id value='xx' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='1091773589'/>
+<Unary_Exp op='dom' typref='3116522372'>
+<Id value='bag' typref='1702910985'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Pred>
+<Body>
+<Binary_Exp op='*' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='cost' typref='1702910985'/>
+<Id value='xx' typref='1091773589'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='bag' typref='1702910985'/>
+<Id value='xx' typref='1091773589'/>
+</Binary_Exp>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='3116522372'>
+<Unary_Exp op='POW'>
+<Id value='ELEM'/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='1702910985'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='ELEM'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='707442064'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='ELEM'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1091773589'>
+<Id value='ELEM'/>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='348924368'>
+<Binary_Exp op='*'>
+<Id value='ELEM'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
+</Type>
+<Type id='978501326'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Binary_Exp op='*'>
+<Id value='ELEM'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='2117703947'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Binary_Exp op='*'>
+<Id value='ELEM'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='4078518729'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ELEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1244954576'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ELEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

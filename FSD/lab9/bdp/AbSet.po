@@ -1,0 +1,18 @@
+THEORY ProofList IS
+_f(1) & _f(4) & _f(5) & set_add.1,(_f(2) => _f(6));
+_f(1) & Initialisation.1,(_f(2) => _f(3))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+"Invariant is preserved";
+(({}) : (POW(NAT)));
+((myset) : (POW(NAT)));
+((nn) : (NAT));
+((((myset) \/ ({nn}))) : (POW(NAT)));
+not(myset = {});
+((oo$1) : (myset))
+END
+&
+THEORY EnumerateX
+END

@@ -1,0 +1,453 @@
+<Machine name='Buffer_r' type='refinement'>
+<Abstraction>Buffer</Abstraction>
+<Parameters>
+<Id value='qlen' typref='2701647786'/>
+<Id value='ELEM' typref='3116522372'/>
+</Parameters>
+<Constraints>
+<Nary_Pred op='&amp;'>
+<Set>
+<Id value='ELEM' typref='3116522372'/>
+</Set>
+</Nary_Pred>
+</Constraints>
+<Sees>
+<Referenced_Machine>
+<Name>Resp</Name>
+</Referenced_Machine>
+</Sees>
+<Abstract_Variables>
+<Id value='aa' typref='4078518729'/>
+<Id value='start' typref='2701647786'/>
+<Id value='used' typref='2701647786'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='aa' typref='4078518729'/>
+<Binary_Exp op='--&gt;' typref='1244954576'>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+<Id value='ELEM' typref='3116522372'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='start' typref='2701647786'/>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='used' typref='2701647786'/>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='0' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Id value='used' typref='2701647786'/>
+<Unary_Exp op='size' typref='2701647786'>
+<Id value='buff' typref='4078518729'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type='!'>
+<Variables>
+<Id value='xx' typref='2701647786'/>
+</Variables>
+<Body>
+<Binary_Pred op='=&gt;'>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='buff' typref='4078518729'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Binary_Exp op='(' typref='1091773589'>
+<Id value='buff' typref='4078518729'/>
+<Id value='xx' typref='2701647786'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='1091773589'>
+<Id value='aa' typref='4078518729'/>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='mod' typref='2701647786'>
+<Binary_Exp op='-' typref='2701647786'>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='start' typref='2701647786'/>
+<Id value='xx' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='2' typref='2701647786'/>
+</Binary_Exp>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Nary_Sub op='||'>
+<ANY_Sub>
+<Variables>
+<Id value='elem' typref='1091773589'/>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Id value='elem' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='aa' typref='4078518729'/>
+</Variables>
+<Values>
+<Binary_Exp op='*' typref='4078518729'>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+<Nary_Exp op='{' typref='3116522372'>
+<Id value='elem' typref='1091773589'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</ANY_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='start' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='1' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='used' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='0' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Initialisation>
+<Operations>
+<Operation name='add'>
+<Input_Parameters>
+<Id value='xx' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Id value='used' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<LET_Sub>
+<Variables>
+<Id value='index' typref='2701647786'/>
+</Variables>
+<Values>
+<Valuation ident='index' typref='2701647786'>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='mod' typref='2701647786'>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='start' typref='2701647786'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+<Id value='used' typref='2701647786'/>
+</Binary_Exp>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Valuation>
+</Values>
+<Then>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='aa' typref='4078518729'/>
+</Variables>
+<Values>
+<Binary_Exp op='&lt;+' typref='4078518729'>
+<Id value='aa' typref='4078518729'/>
+<Nary_Exp op='{' typref='4078518729'>
+<Binary_Exp op='|-&gt;' typref='265589776'>
+<Id value='index' typref='2701647786'/>
+<Id value='xx' typref='1091773589'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='start' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='mod' typref='2701647786'>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='start' typref='2701647786'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='used' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='used' typref='2701647786'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Then>
+</LET_Sub>
+</Body>
+</Operation>
+<Operation name='remove'>
+<Output_Parameters>
+<Id value='ee' typref='1091773589'/>
+</Output_Parameters>
+<Precondition>
+<Exp_Comparison op='&gt;'>
+<Id value='used' typref='2701647786'/>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<LET_Sub>
+<Variables>
+<Id value='index' typref='2701647786'/>
+</Variables>
+<Values>
+<Valuation ident='index' typref='2701647786'>
+<Id value='start' typref='2701647786'/>
+</Valuation>
+</Values>
+<Then>
+<Nary_Sub op='||'>
+<Becomes_In>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Value>
+<Unary_Exp op='ran' typref='3116522372'>
+<Binary_Exp op='&lt;|' typref='4078518729'>
+<Nary_Exp op='{' typref='3603043417'>
+<Id value='index' typref='2701647786'/>
+</Nary_Exp>
+<Id value='aa' typref='4078518729'/>
+</Binary_Exp>
+</Unary_Exp>
+</Value>
+</Becomes_In>
+<Assignement_Sub>
+<Variables>
+<Id value='used' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='used' typref='2701647786'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Id value='start' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='start' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='1' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='start' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='start' typref='2701647786'/>
+<Integer_Literal value='1' typref='2701647786'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Nary_Sub>
+</Then>
+</LET_Sub>
+</Body>
+</Operation>
+<Operation name='emptyquery'>
+<Output_Parameters>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Id value='used' typref='2701647786'/>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='rr' typref='3364633780'/>
+</Variables>
+<Values>
+<Id value='yes' typref='3364633780'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='rr' typref='3364633780'/>
+</Variables>
+<Values>
+<Id value='no' typref='3364633780'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='fullquery'>
+<Output_Parameters>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Id value='used' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='rr' typref='3364633780'/>
+</Variables>
+<Values>
+<Id value='yes' typref='3364633780'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='rr' typref='3364633780'/>
+</Variables>
+<Values>
+<Id value='no' typref='3364633780'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='contentsquery'>
+<Output_Parameters>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='used' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3116522372'>
+<Unary_Exp op='POW'>
+<Id value='ELEM'/>
+</Unary_Exp>
+</Type>
+<Type id='4078518729'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ELEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1244954576'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ELEM'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='1091773589'>
+<Id value='ELEM'/>
+</Type>
+<Type id='265589776'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='ELEM'/>
+</Binary_Exp>
+</Type>
+<Type id='3364633780'>
+<Id value='RESP'/>
+</Type>
+</TypeInfos>
+
+</Machine>

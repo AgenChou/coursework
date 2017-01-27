@@ -1,0 +1,53 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(3) & WellDefinedness_query_infeasible.5,(_f(26) & _f(19) => _f(24));
+_f(1) & _f(2) & _f(3) & WellDefinedness_query_infeasible.4,(_f(26) & _f(19) => _f(28));
+_f(1) & _f(2) & _f(3) & WellDefinedness_query_infeasible.3,(_f(26) & _f(19) => _f(22));
+_f(1) & _f(2) & _f(3) & WellDefinedness_query_infeasible.2,(_f(26) & _f(19) => _f(21));
+_f(1) & _f(2) & _f(3) & WellDefinedness_query_infeasible.1,(_f(26) & _f(19) => _f(27));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.10,(_f(11) & _f(19) => _f(24));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.9,(_f(11) & _f(19) => _f(25));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.8,(_f(11) & _f(19) => _f(21));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.7,(_f(11) & _f(19) => _f(20));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.6,(_f(11) & _f(19) => _f(22));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.5,(_f(19) => _f(24));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.4,(_f(19) => _f(23));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.3,(_f(19) => _f(22));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.2,(_f(19) => _f(21));
+_f(1) & _f(2) & _f(3) & _f(10) & WellDefinedness_dispatch.1,(_f(19) => _f(20));
+_f(1) & _f(2) & _f(3) & _f(10) & dispatch.2,(_f(11) & _f(13) => _f(15));
+_f(1) & _f(2) & _f(3) & _f(10) & dispatch.1,(_f(11) & _f(13) => _f(14))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+OID: FIN(INTEGER) & not(OID = {});
+stock : ITEM +-> NAT & dom(stock) = ITEM & ((stock) : (((ITEM) --> (NAT)))) & ((orderitem) : (((OID) +-> (ITEM)))) & ((orderamt) : (((OID) +-> ((NAT-{0}))))) & ((dom(orderitem)) = (dom(orderamt)));
+(ITEM * {0}) : ITEM +-> NAT;
+dom((ITEM * {0})) = ITEM;
+(((ITEM * {0})) : (((ITEM) --> (NAT))));
+(({}) : (((OID) +-> (ITEM))));
+(({}) : (((OID) +-> ((NAT-{0})))));
+((dom({})) = (dom({})));
+((oid) : (dom(orderitem)));
+((orderamt )(oid) <= (stock )((orderitem )(oid)));
+not(((orderamt )(oid) <= (stock )((orderitem )(oid))));
+"Precondition predicate";
+(((orderitem )(oid)) : (ITEM));
+(((orderamt )(oid)) : (NAT));
+((ii) : (ITEM));
+(nn <= (stock )(ii));
+not((nn <= (stock )(ii)));
+"Well definedness";
+((oid) : (dom(orderamt)));
+((orderamt) : (((dom(orderamt)) +-> (ran(orderamt)))));
+((orderitem) : (((dom(orderitem)) +-> (ran(orderitem)))));
+(((orderitem )(oid)) : (dom(stock)));
+((stock) : (((dom(stock)) +-> (ran(stock)))));
+((ii) : (dom(stock)));
+((oo) : (dom(orderitem)));
+((oo) : (dom(orderamt)));
+(((orderitem )(oo)) : (dom(stock)))
+END
+&
+THEORY EnumerateX
+END

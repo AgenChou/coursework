@@ -1,0 +1,1967 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="lprp">
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:1:1:1" typref="500207749" value="OID"/>
+</Set>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:1:2:1" typref="2679626011" value="PARTS"/>
+</Set>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:1:3:1" typref="4176652771" value="NAMES"/>
+</Set>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:4:1:1" typref="2701647786" value="maxorders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:4:1:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+</Define>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="cst"/>
+<Proof_Obligation>
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Sub_Calculus>
+<Nary_Sub op=";">
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:6:1:1:1" typref="1630244792" value="orders"/>
+</Variables>
+<Values>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:6:1:2:1" typref="3817003670"/>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>addorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:1:1" typref="1027503136" value="cc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:1:2" typref="4176652771" value="NAMES"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:2:1" typref="3977858792" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:2:2" typref="2679626011" value="PARTS"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:3:1" typref="2701647786" value="nn"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:3:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:4:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:4:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<ANY_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:1:1" typref="3496798590" value="oid"/>
+</Variables>
+<Pred>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:2:1:1" typref="3496798590" value="oid"/>
+<Binary_Exp op="-" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:2:1:2:1" typref="500207749" value="OID"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:2:1:2:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Variables>
+<Values>
+<Binary_Exp op="\/" typref="1630244792">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:2:1:1" typref="1630244792" value="orders"/>
+<Nary_Exp op="{" typref="1630244792">
+<Binary_Exp op="|-&gt;" typref="2078382696">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:2:1:2:1:1" typref="3496798590" value="oid"/>
+<Record typref="3009514187">
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:2:1:2:1:2:1:1" typref="1027503136" value="cc"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:2:1:2:1:2:2:1" typref="3977858792" value="pp"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:2:1:2:1:2:3:1" typref="2701647786" value="nn"/>
+</Record_Item>
+<Record_Item label="">
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:3:1:2:1:2:1:2:4:1" typref="2043437594" value="FALSE"/>
+</Record_Item>
+</Record>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+</Then>
+</ANY_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>findorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:3:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:3:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:1:1" typref="2204640058" value="rr"/>
+</Variables>
+<Values>
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>isvalidorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:3:1:1" typref="3496798590" value="oo"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:3:1:2" typref="500207749" value="OID"/>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<If_Sub elseif="no">
+<Condition>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:1:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:2:1:1:1" typref="2043437594" value="bb"/>
+</Variables>
+<Values>
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:2:1:2:1" typref="2043437594" value="TRUE"/>
+</Values>
+</Simple_Assignement_Sub>
+</Then>
+<Else>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:3:1:1:1" typref="2043437594" value="bb"/>
+</Variables>
+<Values>
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:3:1:2:1" typref="2043437594" value="FALSE"/>
+</Values>
+</Simple_Assignement_Sub>
+</Else>
+</If_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>cancelorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:2:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<If_Sub elseif="no">
+<Condition>
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="2043437594">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:2" value="o_disp"/>
+</Binary_Exp>
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:2" typref="2043437594" value="FALSE"/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Variables>
+<Values>
+<Binary_Exp op="-" typref="1630244792">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:1" typref="1630244792" value="orders"/>
+<Nary_Exp op="{" typref="1630244792">
+<Binary_Exp op="|-&gt;" typref="1574372065">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:1" typref="3496798590" value="oo"/>
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+</Then>
+</If_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>dispatchorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:2:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:1:1:1" typref="1630244792" value="orders"/>
+</Variables>
+<Values>
+<Binary_Exp op="&lt;+">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:1:1:1" typref="1630244792" value="orders"/>
+<Nary_Exp op="{">
+<Binary_Exp op="|-&gt;">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:1:1:2" typref="3496798590" value="oo"/>
+<Record typref="2204640058">
+<Record_Item label="o_cust">
+<Binary_Exp op="'" typref="1027503136">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:2" value="o_cust"/>
+</Binary_Exp>
+</Record_Item>
+<Record_Item label="o_part">
+<Binary_Exp op="'" typref="3977858792">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:2" value="o_part"/>
+</Binary_Exp>
+</Record_Item>
+<Record_Item label="o_quant">
+<Binary_Exp op="'" typref="2701647786">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:2" value="o_quant"/>
+</Binary_Exp>
+</Record_Item>
+<Record_Item label="o_disp">
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:4:1" typref="2043437594" value="TRUE"/>
+</Record_Item>
+</Record>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>todispatch</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Goal>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:1:1" typref="500207749" value="oos"/>
+</Variables>
+<Values>
+<Quantified_Set typref="500207749">
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:1:1" typref="3496798590" value="oo"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="2043437594">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:2" value="o_disp"/>
+</Binary_Exp>
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:2" typref="2043437594" value="FALSE"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Values>
+</Simple_Assignement_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>numberordered</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:3:1:1" typref="3977858792" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:3:1:2" typref="2679626011" value="PARTS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:1:1" typref="2701647786" value="nn"/>
+</Variables>
+<Values>
+<Quantified_Exp typref="2701647786" type="SIGMA">
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:1:1" typref="3496798590" value="zz"/>
+</Variables>
+<Pred>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:1" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="3977858792">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:2" typref="3496798590" value="zz"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:2" value="o_part"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:2" typref="3977858792" value="pp"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Pred>
+<Body>
+<Binary_Exp op="'" typref="2701647786">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:2" typref="3496798590" value="zz"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:2" value="o_quant"/>
+</Binary_Exp>
+</Body>
+</Quantified_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;=" initialTag="(card(orders) &lt;= maxorders)">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessConstraints</Tag>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:1:1:1" typref="500207749" value="OID"/>
+</Set>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:1:2:1" typref="2679626011" value="PARTS"/>
+</Set>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:1:3:1" typref="4176652771" value="NAMES"/>
+</Set>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((orders) : (((OID) +-&gt; (struct(o_cust$8888 &gt;&gt; NAMES,o_part$8888 &gt;&gt; PARTS,o_quant$8888 &gt;&gt; (NAT-{0}),o_disp$8888 &gt;&gt; BOOL)))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;" typref="1386287137">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:1" typref="500207749" value="OID"/>
+<Struct typref="2165006239">
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:1:1" typref="4176652771" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:2:1" typref="2679626011" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:3:1" typref="3603043417" value="NAT1"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:1:2:2:4:1" typref="4282494527" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+<Unary_Exp op="FIN">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:5:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_addorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:1:1" typref="1027503136" value="cc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:1:2" typref="4176652771" value="NAMES"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:2:1" typref="3977858792" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:2:2" typref="2679626011" value="PARTS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:3:1" typref="2701647786" value="nn"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:3:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:4:1:1" typref="1630244792" value="orders"/>
+<Unary_Exp op="FIN">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:4:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_addorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:1:1" typref="1027503136" value="cc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:1:2" typref="4176652771" value="NAMES"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:2:1" typref="3977858792" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:2:2" typref="2679626011" value="PARTS"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:3:1" typref="2701647786" value="nn"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:3:2" typref="3603043417" value="NAT1"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;">
+<Unary_Exp op="card" typref="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:4:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:2:1:4:2" typref="2701647786" value="maxorders"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:1:1" typref="3496798590" value="oid"/>
+</Variables>
+<Body>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:2:1:1" typref="3496798590" value="oid"/>
+<Binary_Exp op="-" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:2:1:2:1" typref="500207749" value="OID"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:1:3:1:2:1:2:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_findorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_findorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:3:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:3:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:2:4:1:2:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_isvalidorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_isvalidorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:3:1:1" typref="3496798590" value="oo"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:3:1:2" typref="500207749" value="OID"/>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:1:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Unary_Pred op="not">
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:1:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:3:4:1:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Unary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_cancelorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_cancelorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:2:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="2043437594">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:2" value="o_disp"/>
+</Binary_Exp>
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:2" typref="2043437594" value="FALSE"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:2:1:2:1:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Binary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="2043437594">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:1:2" typref="3496798590" value="oo"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:1:2" value="o_disp"/>
+</Binary_Exp>
+<Boolean_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:4:3:1:1:1:2" typref="2043437594" value="FALSE"/>
+</Exp_Comparison>
+</Unary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_dispatchorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_dispatchorder</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:2:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:2:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:1:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_todispatch</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_todispatch</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:1:1" typref="3496798590" value="oo"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:1:1" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:2" typref="3496798590" value="oo"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:6:2:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_numberordered</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_numberordered</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:3:1:1" typref="3977858792" value="pp"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:3:1:2" typref="2679626011" value="PARTS"/>
+</Exp_Comparison>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Quantified_Set>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:1:1" typref="3496798590" value="zz"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:1" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="3977858792">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:2" typref="3496798590" value="zz"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:2" value="o_part"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:2" typref="3977858792" value="pp"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+<Unary_Exp op="FIN">
+<Quantified_Set>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:1:1" typref="3496798590" value="zz"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:1" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="3977858792">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:2" typref="3496798590" value="zz"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:2" value="o_part"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:2" typref="3977858792" value="pp"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Body>
+</Quantified_Set>
+</Unary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:1:1" typref="3496798590" value="zz"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:1" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:2" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:1:1" typref="3496798590" value="zz"/>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:1" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom" typref="500207749">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:1:2:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Binary_Exp op="'" typref="3977858792">
+<Binary_Exp op="(" typref="2204640058">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:1" typref="1630244792" value="orders"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:1:2" typref="3496798590" value="zz"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:1:2" value="o_part"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:2:1:2:2" typref="3977858792" value="pp"/>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:2" typref="3496798590" value="zz"/>
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+<Binary_Exp op="+-&gt;">
+<Unary_Exp op="dom">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:7:7:4:1:2:1:3:1:1:1" typref="1630244792" value="orders"/>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="500207749">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:1:1:1" value="OID"/>
+</Unary_Exp>
+</Type>
+<Type id="2679626011">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:2:1:1" value="PARTS"/>
+</Unary_Exp>
+</Type>
+<Type id="4176652771">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:3:1:1" value="NAMES"/>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:4:1" value="INTEGER"/>
+</Type>
+<Type id="1630244792">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:5:1:1:1" value="OID"/>
+<Struct>
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:5:1:1:2:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:5:1:1:2:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:5:1:1:2:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:5:1:1:2:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:6:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="1386287137">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:7:1:1:1:1" value="OID"/>
+<Struct>
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:7:1:1:1:2:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:7:1:1:1:2:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:7:1:1:1:2:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:7:1:1:1:2:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="2165006239">
+<Unary_Exp op="POW">
+<Struct>
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:8:1:1:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:8:1:1:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:8:1:1:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:8:1:1:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Unary_Exp>
+</Type>
+<Type id="4282494527">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:9:1:1" value="BOOL"/>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:10:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="1027503136">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:11:1" value="NAMES"/>
+</Type>
+<Type id="3977858792">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:12:1" value="PARTS"/>
+</Type>
+<Type id="3496798590">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:13:1" value="OID"/>
+</Type>
+<Type id="2078382696">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:14:1:1" value="OID"/>
+<Struct>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:14:1:2:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:14:1:2:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:14:1:2:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:14:1:2:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Type>
+<Type id="3009514187">
+<Struct>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:15:1:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:15:1:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:15:1:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:15:1:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Type>
+<Type id="2043437594">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:16:1" value="BOOL"/>
+</Type>
+<Type id="2204640058">
+<Struct>
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:17:1:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:17:1:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:17:1:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:17:1:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Type>
+<Type id="1574372065">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:18:1:1" value="OID"/>
+<Struct>
+<Record_Item label="o_cust">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:18:1:2:1:1" value="NAMES"/>
+</Record_Item>
+<Record_Item label="o_part">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:18:1:2:2:1" value="PARTS"/>
+</Record_Item>
+<Record_Item label="o_quant">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:18:1:2:3:1" value="INTEGER"/>
+</Record_Item>
+<Record_Item label="o_disp">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab5/bdp/ordersys.bxml:1:8:18:1:2:4:1" value="BOOL"/>
+</Record_Item>
+</Struct>
+</Binary_Exp>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

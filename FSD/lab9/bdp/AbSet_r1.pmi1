@@ -1,0 +1,27 @@
+﻿THEORY BalanceX IS
+  AbSet_r1,2,0,0,1,0,0,0;
+  Initialisation,1,0,0,0,0,0,0;
+  set_add,1,0,0,1,0,0,0
+END
+&
+THEORY ProofState IS
+  Proved(0);
+  Unproved
+END
+&
+THEORY MethodList IS
+  pr;
+  ?
+END
+&
+THEORY PassList IS
+  Force(0),?;
+  Force(0),(?;0;1;2;3)
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

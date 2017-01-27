@@ -1,0 +1,59 @@
+﻿THEORY BalanceX IS
+  TotBuffer_r,11,0,0,4,0,0,0;
+  WellDefinedness_enc_add,3,0,0,0,0,0,0;
+  WellDefinedness_enc_contentsquery,1,0,0,0,0,0,0;
+  WellDefinedness_enc_fullquery,1,0,0,0,0,0,0;
+  WellDefinedness_enc_remove,1,0,0,0,0,0,0;
+  enc_add,1,0,0,1,0,0,0;
+  enc_contentsquery,1,0,0,1,0,0,0;
+  enc_remove,3,0,0,2,0,0,0
+END
+&
+THEORY ProofState IS
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0)
+END
+&
+THEORY MethodList IS
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  ?;
+  pr;
+  pr;
+  pr;
+  ?;
+  pr
+END
+&
+THEORY PassList IS
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

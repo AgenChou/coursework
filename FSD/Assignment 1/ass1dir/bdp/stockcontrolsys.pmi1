@@ -1,0 +1,134 @@
+﻿THEORY BalanceX IS
+  stockcontrolsys,33,1,0,20,1,0,0;
+  Initialisation,3,0,0,3,0,0,0;
+  WellDefinednessInvariant,1,0,0,0,0,0,0;
+  WellDefinedness_Precondition_complicatedserviceorder,1,0,0,0,0,0,0;
+  WellDefinedness_Precondition_serviceorder,1,0,0,0,0,0,0;
+  WellDefinedness_complicatedserviceorder,3,0,0,2,0,0,0;
+  WellDefinedness_howmany,2,0,0,2,0,0,0;
+  WellDefinedness_lowstock,2,0,0,2,0,0,0;
+  WellDefinedness_oneoflowest,3,0,0,1,1,0,0;
+  WellDefinedness_receiveorder,1,0,0,0,0,0,0;
+  WellDefinedness_receivestock,3,0,0,3,0,0,0;
+  WellDefinedness_serviceorder,2,1,0,1,0,0,0;
+  WellDefinedness_totordered,2,0,0,0,0,0,0;
+  complicatedserviceorder,3,0,0,2,0,0,0;
+  receiveorder,2,0,0,2,0,0,0;
+  receivestock,1,0,0,0,0,0,0;
+  serviceorder,3,0,0,2,0,0,0
+END
+&
+THEORY ProofState IS
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(Util);
+  Unproved;
+  Unproved;
+  Proved(1);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0)
+END
+&
+THEORY MethodList IS
+  pr;
+  pr;
+  ?;
+  ?;
+  pr;
+  pr & pp(rp.1);
+  ?;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr
+END
+&
+THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1);
+  Force(0),(?;0;1);
+  Force(0),?;
+  Force(0),(?;0;1);
+  Force(0),(?;0;1);
+  Force(0),(?;0;1);
+  Force(1),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1);
+  Force(0),(?;0;1);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1);
+  Force(0),(?;0;1);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1);
+  Force(0),(?;0;1);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

@@ -1,0 +1,27 @@
+THEORY ProofList IS
+_f(1) & _f(7) & _f(8) & _f(13) & set_out.1,(_f(14));
+_f(1) & _f(7) & _f(8) & _f(9) & set_add.1,(_f(10) & _f(3) => _f(11));
+_f(1) & Initialisation.2,(_f(2) & _f(3) => _f(6));
+_f(1) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+not({} = {});
+"Refinement is correct";
+"Check invariant ((num$1) : (NAT))";
+((0) : (NAT));
+((0) : ({}));
+((myset) : (POW(NAT)));
+((num$1) : (NAT)) & ((not(myset = {})) => (((num$1) : (myset))));
+((nn) : (NAT));
+not(((myset) \/ ({nn})) = {});
+((nn) : (((myset) \/ ({nn}))));
+not(myset = {});
+not(myset = {}) & ((oo) = (oo$1));
+((num$1) : (myset));
+((num$1) : (NAT))
+END
+&
+THEORY EnumerateX
+END

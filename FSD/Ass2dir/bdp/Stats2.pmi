@@ -1,0 +1,84 @@
+﻿THEORY BalanceX IS
+  Stats2,19,0,0,18,0,0,0;
+  Initialisation,1,0,0,1,0,0,0;
+  WellDefinedness_querymean,3,0,0,3,0,0,0;
+  WellDefinedness_querymedian,4,0,0,4,0,0,0;
+  WellDefinedness_querypc,3,0,0,3,0,0,0;
+  WellDefinedness_queryreg,2,0,0,2,0,0,0;
+  WellDefinedness_querytot,3,0,0,3,0,0,0;
+  WellDefinedness_tested,2,0,0,2,0,0,0;
+  tested,1,0,0,0,0,0,0
+END
+&
+THEORY ProofState IS
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0)
+END
+&
+THEORY MethodList IS
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  pr
+END
+&
+THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

@@ -1,0 +1,1921 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
+<Exp_Comparison op="=" translate="((NAT) = (((0) .. (2147483647))))">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=" translate="((INT) = (((-2147483647) .. (2147483647))))">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv">
+<Nary_Pred op="&amp;" translate="registered : POW( PID) &amp; restricted : POW( DOC) &amp; ((allowed) : (((registered) &lt;-> (DOC)))) &amp; ((viewing) : (((registered) &lt;-> (DOC))))">
+<Exp_Comparison op="&lt;:" initialTag="registered : POW( PID)" translate="registered : POW( PID)">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="&lt;:" initialTag="restricted : POW( DOC)" translate="restricted : POW( DOC)">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:1" typref="1974022003" value="restricted"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" translate="((allowed) : (((registered) &lt;-> (DOC))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1" typref="2576414359" value="allowed"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((viewing) : (((registered) &lt;-> (DOC))))" translate="((viewing) : (((registered) &lt;-> (DOC))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:1" typref="2576414359" value="viewing"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="lprp">
+<Set translate="PID: FIN(INTEGER) &amp; not(PID = {})">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:1:1" typref="1367874566" value="PID"/>
+</Set>
+<Set translate="DOC: FIN(INTEGER) &amp; not(DOC = {})">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:2:1" typref="1974022003" value="DOC"/>
+</Set>
+<Set translate="((1..2)*{CHECK}): FIN(NATURAL*{CHECK}) &amp; not(((1..2)*{CHECK}) = {})">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:3:1" typref="2485734787" value="CHECK"/>
+<Enumerated_Values>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:3:2:1" typref="1765148800" value="yes"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:3:2:2" typref="1765148800" value="no"/>
+</Enumerated_Values>
+</Set>
+</Define>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="cst"/>
+<Proof_Obligation>
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="registered : POW( PID)" goalTag="Invariant is preserved">
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:1:1:1" typref="1367874566"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="restricted : POW( DOC)" goalTag="Invariant is preserved">
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:4:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:4:1:1" typref="1974022003"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:2:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:2:1:1" typref="2576414359"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:4:1:1:1:1" typref="1367874566"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>adduser</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:2:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="registered : POW( PID)" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:2:1:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:2:1:2:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1" typref="2576414359" value="allowed"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:2:1:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:2:1:2:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((viewing) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:1" typref="2576414359" value="viewing"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:2:1:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:3:1:2:1:2:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>removeuser</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:2:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:2:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="registered : POW( PID)" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:2:1:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:2:1:2:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1" typref="2576414359" value="allowed"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:2:1:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:2:1:2:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((viewing) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:1" typref="2576414359" value="viewing"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:1:1" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:2:1:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:3:1:2:1:2:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>isregistered</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:3:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>isallowed</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Binary_Pred op="or">
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:2" typref="2576414359" value="viewing"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Binary_Pred op="or">
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:2" typref="2576414359" value="viewing"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>listalloweddocs</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:3:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>listallowedusers</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:6:3:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:6:3:1:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>accessdoc</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((viewing) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:3:1:1:1" typref="2576414359">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:3:1:2:1:1" typref="2576414359" value="viewing"/>
+<Nary_Exp op="{" typref="2576414359">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:3:1:2:1:2:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:3:1:2:1:2:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>stopaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:3:2" typref="2576414359" value="viewing"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((viewing) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:3:1:1:1" typref="2576414359">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:3:1:2:1:1" typref="2576414359" value="viewing"/>
+<Nary_Exp op="{" typref="2576414359">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:3:1:2:1:2:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:3:1:2:1:2:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:4:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>allowaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:3:1:1:1" typref="2576414359">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:3:1:2:1:1" typref="2576414359" value="allowed"/>
+<Nary_Exp op="{" typref="2576414359">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:3:1:2:1:2:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:3:1:2:1:2:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>disallowaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:3:1:1:1" typref="2576414359">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:3:1:2:1:1" typref="2576414359" value="allowed"/>
+<Nary_Exp op="{" typref="2576414359">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:3:1:2:1:2:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:3:1:2:1:2:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>allowall</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:2:1:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:3:1:1:1" typref="2576414359">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:3:1:2:1:1" typref="2576414359" value="allowed"/>
+<Binary_Exp op="*" typref="2576414359">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:3:1:2:1:2:1" typref="1367874566" value="registered"/>
+<Nary_Exp op="{" typref="1974022003">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:3:1:2:1:2:2:1" typref="1166550288" value="doc"/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>addrestricted</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:2:1:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="restricted : POW( DOC)" goalTag="Invariant is preserved">
+<Binary_Exp op="\/" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:3:1:1:1" typref="1974022003">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:3:1:2:1:1" typref="1974022003" value="restricted"/>
+<Nary_Exp op="{" typref="1974022003">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:3:1:2:1:2:1" typref="1166550288" value="doc"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>removerestricted</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison op="&lt;:" initialTag="restricted : POW( DOC)" goalTag="Invariant is preserved">
+<Binary_Exp op="-" tag=",/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:3:1:1:1" typref="1974022003">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:3:1:2:1:1" typref="1974022003" value="restricted"/>
+<Nary_Exp op="{" typref="1974022003">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:3:1:2:1:2:1" typref="1166550288" value="doc"/>
+</Nary_Exp>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessConstraints</Tag>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:1:1" typref="1367874566" value="PID"/>
+</Set>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:2:1" typref="1974022003" value="DOC"/>
+</Set>
+<Set>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:3:1" typref="2485734787" value="CHECK"/>
+<Enumerated_Values>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:3:2:1" typref="1765148800" value="yes"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:1:3:2:2" typref="1765148800" value="no"/>
+</Enumerated_Values>
+</Set>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":" initialTag="((allowed) : (((registered) &lt;-> (DOC))))">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:1" typref="2576414359" value="allowed"/>
+<Binary_Exp op="&lt;->" typref="3138310444">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:3:2:2" typref="1974022003" value="DOC"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op="&lt;:" initialTag="restricted : POW( DOC)">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:1" typref="1974022003" value="restricted"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op="&lt;:" initialTag="registered : POW( PID)">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:1" typref="1367874566" value="registered"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:3:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_adduser</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_adduser</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:2:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:1:2:1:2:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_removeuser</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_removeuser</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:2:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:2:2:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_isregistered</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_isregistered</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:3:1:2" typref="1367874566" value="PID"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:3:4:1:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_isallowed</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_isallowed</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:3:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op="/=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Unary_Pred op="not">
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Binary_Pred op="or">
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:2" typref="2576414359" value="viewing"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Local_Hyp>
+<Local_Hyp num="5">
+<Unary_Pred op="not">
+<Binary_Pred op="or">
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:3:2" typref="2576414359" value="viewing"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+<Unary_Exp op="FIN">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:4:4:1:1:1:2:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_listalloweddocs</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_listalloweddocs</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:3:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Hypothesis>
+<Local_Hyp num="1">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Unary_Pred>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+<Unary_Exp op="FIN">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:1:1:2" typref="2576414359" value="viewing"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:5:4:1:1:1:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_listallowedusers</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_listallowedusers</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:6:3:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:6:3:1:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_accessdoc</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="4">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+<Unary_Exp op="FIN">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_accessdoc</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Unary_Exp op="card" typref="2701647786">
+<Binary_Exp op="/\" typref="1974022003">
+<Unary_Exp op="ran" typref="1974022003">
+<Binary_Exp op="&lt;|" typref="2576414359">
+<Nary_Exp op="{" typref="1367874566">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:1:1" typref="3868805821" value="pid"/>
+</Nary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:1:1:2" typref="2576414359" value="allowed"/>
+</Binary_Exp>
+</Unary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:1:1:2" typref="1974022003" value="restricted"/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:7:2:1:4:2:2" typref="2701647786" value="0"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_stopaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_stopaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:8:2:1:3:2" typref="2576414359" value="viewing"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_allowaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_allowaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Binary_Exp op="|->" typref="238098412">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:9:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_disallowaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_disallowaccess</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:1:2" typref="1367874566" value="registered"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:2:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:2:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Binary_Exp op="|->">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:3:1:1" typref="3868805821" value="pid"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:3:1:2" typref="1166550288" value="doc"/>
+</Binary_Exp>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:10:2:1:3:2" typref="2576414359" value="allowed"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_allowall</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_allowall</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:11:2:1:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_addrestricted</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_addrestricted</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:12:2:1:2" typref="1974022003" value="DOC"/>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_removerestricted</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_removerestricted</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:2:1:1" typref="1166550288" value="doc"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:5:13:2:1:2" typref="1974022003" value="restricted"/>
+</Exp_Comparison>
+</Hypothesis>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="1367874566">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:1:1:1" value="PID"/>
+</Unary_Exp>
+</Type>
+<Type id="1974022003">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:2:1:1" value="DOC"/>
+</Unary_Exp>
+</Type>
+<Type id="2485734787">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:3:1:1" value="CHECK"/>
+</Unary_Exp>
+</Type>
+<Type id="1765148800">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:4:1" value="CHECK"/>
+</Type>
+<Type id="2576414359">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:5:1:1:1" value="PID"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:5:1:1:2" value="DOC"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3138310444">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:6:1:1:1:1" value="PID"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:6:1:1:1:2" value="DOC"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:7:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="3868805821">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:8:1" value="PID"/>
+</Type>
+<Type id="1166550288">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:9:1" value="DOC"/>
+</Type>
+<Type id="238098412">
+<Binary_Exp op="*">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:10:1:1" value="PID"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:10:1:2" value="DOC"/>
+</Binary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab2/bdp/docsys.bxml:1:6:11:1" value="INTEGER"/>
+</Type>
+</TypeInfos>
+</Proof_Obligations>
