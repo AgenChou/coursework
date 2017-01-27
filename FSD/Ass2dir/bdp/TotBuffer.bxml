@@ -1,0 +1,203 @@
+<Machine name='TotBuffer' type='abstraction'>
+<Parameters>
+<Id value='qlen' typref='2701647786'/>
+<Id value='ELEM' typref='3116522372'/>
+</Parameters>
+<Constraints>
+<Nary_Pred op='&amp;'>
+<Set>
+<Id value='ELEM' typref='3116522372'/>
+</Set>
+<Exp_Comparison op=':'>
+<Id value='qlen' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Constraints>
+<Sees>
+<Referenced_Machine>
+<Name>Resp</Name>
+</Referenced_Machine>
+</Sees>
+<Sets>
+<Set>
+<Id value='ERRORS' typref='16039104'/>
+<Enumerated_Values>
+<Id value='ok' typref='2996185817'/>
+<Id value='full' typref='2996185817'/>
+<Id value='empty' typref='2996185817'/>
+</Enumerated_Values>
+</Set>
+</Sets>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<Operations>
+<Operation name='enc_add'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='xx' typref='1091773589'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='xx' typref='1091773589'/>
+<Id value='ELEM' typref='3116522372'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Becomes_In>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Value>
+<Id value='ERRORS' typref='16039104'/>
+</Value>
+</Becomes_In>
+</Body>
+</Operation>
+<Operation name='enc_remove'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='ee' typref='1091773589'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Becomes_In>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Value>
+<Id value='ERRORS' typref='16039104'/>
+</Value>
+</Becomes_In>
+<Becomes_In>
+<Variables>
+<Id value='ee' typref='1091773589'/>
+</Variables>
+<Value>
+<Id value='ELEM' typref='3116522372'/>
+</Value>
+</Becomes_In>
+</Nary_Sub>
+</Body>
+</Operation>
+<Operation name='enc_emptyquery'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Becomes_In>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Value>
+<Id value='ERRORS' typref='16039104'/>
+</Value>
+</Becomes_In>
+<Becomes_In>
+<Variables>
+<Id value='rr' typref='3364633780'/>
+</Variables>
+<Value>
+<Id value='RESP' typref='2086373413'/>
+</Value>
+</Becomes_In>
+</Nary_Sub>
+</Body>
+</Operation>
+<Operation name='enc_fullquery'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='rr' typref='3364633780'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Becomes_In>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Value>
+<Id value='ERRORS' typref='16039104'/>
+</Value>
+</Becomes_In>
+<Becomes_In>
+<Variables>
+<Id value='rr' typref='3364633780'/>
+</Variables>
+<Value>
+<Id value='RESP' typref='2086373413'/>
+</Value>
+</Becomes_In>
+</Nary_Sub>
+</Body>
+</Operation>
+<Operation name='enc_contentsquery'>
+<Output_Parameters>
+<Id value='err' typref='2996185817'/>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Nary_Sub op='||'>
+<Becomes_In>
+<Variables>
+<Id value='err' typref='2996185817'/>
+</Variables>
+<Value>
+<Id value='ERRORS' typref='16039104'/>
+</Value>
+</Becomes_In>
+<Becomes_In>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Value>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='0' typref='2701647786'/>
+<Id value='qlen' typref='2701647786'/>
+</Binary_Exp>
+</Value>
+</Becomes_In>
+</Nary_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3116522372'>
+<Unary_Exp op='POW'>
+<Id value='ELEM'/>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='16039104'>
+<Unary_Exp op='POW'>
+<Id value='ERRORS'/>
+</Unary_Exp>
+</Type>
+<Type id='2996185817'>
+<Id value='ERRORS'/>
+</Type>
+<Type id='1091773589'>
+<Id value='ELEM'/>
+</Type>
+<Type id='3364633780'>
+<Id value='RESP'/>
+</Type>
+<Type id='2086373413'>
+<Unary_Exp op='POW'>
+<Id value='RESP'/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

@@ -1,0 +1,136 @@
+﻿IMPLEMENTATION Stats_i
+REFINES Stats
+
+CONCRETE_VARIABLES
+    tally
+
+INITIALISATION
+    tally := ( 0 .. 10 ) * { 0 }
+
+OPERATIONS
+    // add a score to the tally
+    tested ( nn ) =
+    IF
+       0 <= nn & nn <= 10
+    THEN
+        tally ( nn ) := tally ( nn ) + 1
+    END ;
+
+    // query total number of students tested
+    oo <-- querytot =
+    VAR sum , ii
+    IN
+        sum := 0 ; ii := 0 ;
+        WHILE
+            ii <= 10
+        DO
+            sum := sum + tally ( ii ) ;
+            ii := ii + 1
+        INVARIANT
+            sum = SIGMA ( jj ) . ( jj : 0 .. ii | tally ( jj ) )
+        VARIANT
+            10 - ii
+        END
+    END ;
+
+    // query no. of students who got nn
+    oo <-- queryreg ( nn ) =
+    IF
+        0 <= nn & nn <= 10
+    THEN
+        oo := tally ( nn )
+    END ;
+
+    oo <-- querypc ( nn ) =
+    IF
+        0 <= nn & nn <= 10
+    THEN
+        VAR
+            sum , ii
+        IN
+            sum := 0 ; ii := 0 ;
+            WHILE
+                ii <= 10
+            DO
+                sum := sum + tally ( ii ) ;
+                ii := ii + 1
+            INVARIANT
+                sum = SIGMA ( jj ) . ( jj : 0 .. ii | tally ( jj ) )
+            VARIANT
+                10 - ii
+            END ;
+
+            IF
+                sum = 0
+            THEN
+                oo := 0
+            ELSE
+                oo := 100 * tally ( nn ) / sum
+            END
+        END
+    END ;
+
+    // calculate the mean score
+    oo <-- querymean =
+    VAR
+        sum , ii , score
+    IN
+        sum := 0 ; ii := 0 ; score := 0 ;
+        WHILE
+            ii <= 10
+        DO
+            sum := sum + tally ( ii ) ;
+            score := score + ii * tally ( ii ) ;
+            ii := ii + 1
+        INVARIANT
+            sum = SIGMA ( jj ) . ( jj : 0 .. ii | tally ( jj ) ) &
+            score = SIGMA ( kk ) . ( kk : 0 .. ii | kk * tally ( kk ) )
+        VARIANT
+            10 - ii
+        END ;
+        IF
+            sum = 0
+        THEN
+            oo := 0
+        ELSE
+            oo := score / sum
+        END
+    END ;
+
+    // calculate the median of all marks
+    oo <-- querymedian =
+    VAR
+        ii , sum , mid
+    IN
+        ii := 0 ; sum := 0 ;
+        WHILE
+            ii <= 10
+        DO
+            sum := sum + tally ( ii ) ;
+            ii := ii + 1
+        INVARIANT
+            sum = SIGMA ( jj ) . ( jj : 0 .. ii | tally ( jj ) )
+        VARIANT
+            10 - ii
+        END ;
+        mid := ( sum + 1 ) / 2 ;
+        IF
+            mid = 0
+        THEN
+            oo := 0
+        ELSE
+            ii := 0 ; sum := 0 ;
+            WHILE
+                sum < mid
+            DO
+                sum := sum + tally ( ii ) ; ii := ii + 1
+            INVARIANT
+                sum = SIGMA ( jj ) . ( jj : 0 .. ii | tally ( jj ) )
+            VARIANT
+                10 - ii
+            END ;
+            oo := ii
+        END
+    END
+
+ END

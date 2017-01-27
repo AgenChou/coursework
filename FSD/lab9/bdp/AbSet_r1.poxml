@@ -1,0 +1,573 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((num$1) : (NAT))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Binary_Pred op="=&gt;" initialTag="((not(myset = {})) =&gt; (((num$1) : (myset))))">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:2" typref="3603043417" value="myset"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="lprp"/>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="mchcst"/>
+<Define name="aprp"/>
+<Define name="abs">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:2:1:1" initialTag="myset" typref="3603043417" value="myset"/>
+<Unary_Exp op="POW" initialTag="POW(NAT)" typref="949986794">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:2:1:2:1" typref="3603043417" value="NAT"/>
+</Unary_Exp>
+</Exp_Comparison>
+</Define>
+<Proof_Obligation>
+<Comment>Initialisation dans un raffinement</Comment>
+<Tag>Initialisation</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Sub_Calculus>
+<Nary_Sub op=";">
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:4:1:1:1," typref="2701647786" value="num"/>
+</Variables>
+<Values>
+<Integer_Literal tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:4:1:2:1" typref="2701647786" value="0"/>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Not>
+<Sub_Calculus>
+<Nary_Sub op=";">
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:3:1:1:1" typref="3603043417" value="myset"/>
+</Variables>
+<Values>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:3:1:2:1" typref="3817003670"/>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+<Not>
+<Tag goalTag="Refinement is correct">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((num$1) : (NAT))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Binary_Pred op="=&gt;" initialTag="((not(myset = {})) =&gt; (((num$1) : (myset))))">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:2" typref="3603043417" value="myset"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Not>
+</Sub_Calculus>
+</Not>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement / Precondition</Comment>
+<Tag>set_add</Tag>
+<Tag>PRECONDITION</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:2:1:1" typref="2701647786" value="nn"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:2:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Precondition can be deduced">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement</Comment>
+<Tag>set_add</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:2:1:1" typref="2701647786" value="nn"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:2:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:5:1:2:1:1:1," typref="2701647786" value="num"/>
+</Variables>
+<Values>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:5:1:2:1:2:1" typref="2701647786" value="nn"/>
+</Values>
+</Simple_Assignement_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Not>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:3:1:1:1" typref="3603043417" value="myset"/>
+</Variables>
+<Values>
+<Binary_Exp op="\/" typref="3603043417">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:3:1:2:1:1" typref="3603043417" value="myset"/>
+<Nary_Exp op="{" typref="3603043417">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:3:1:2:1:2:1" typref="2701647786" value="nn"/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Not>
+<Tag goalTag="Refinement is correct">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((num$1) : (NAT))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Binary_Pred op="=&gt;" initialTag="((not(myset = {})) =&gt; (((num$1) : (myset))))">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:2" typref="3603043417" value="myset"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Not>
+</Sub_Calculus>
+</Not>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement / Precondition</Comment>
+<Tag>set_out</Tag>
+<Tag>PRECONDITION</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Precondition can be deduced">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement</Comment>
+<Tag>set_out</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:1:1" typref="2701647786" value="oo"/>
+<Id value="oo" typref="2701647786" suffix="1"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:5:2:1:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:5:2:2:1:1:1," typref="2701647786" value="oo"/>
+</Variables>
+<Values>
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:5:2:2:1:2:1," typref="2701647786" value="num"/>
+</Values>
+</Simple_Assignement_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Not>
+<Sub_Calculus>
+<Becomes_In>
+<Variables>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:3:1:1:1" typref="2701647786" value="oo"/>
+</Variables>
+<Value>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:3:1:2:1" typref="3603043417" value="myset"/>
+</Value>
+</Becomes_In>
+<Not>
+<Tag goalTag="Refinement is correct">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((num$1) : (NAT))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Binary_Pred op="=&gt;" initialTag="((not(myset = {})) =&gt; (((num$1) : (myset))))">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:2:2" typref="3603043417" value="myset"/>
+</Exp_Comparison>
+</Binary_Pred>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:1:1" typref="2701647786" value="oo"/>
+<Id value="oo" typref="2701647786" suffix="1"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Tag>
+</Not>
+</Sub_Calculus>
+</Not>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Hypothesis/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((num$1) : (NAT))">
+<Id suffix="1" tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:2:1,/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:1," typref="2701647786" value="num"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:3:1:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessAssertions</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_Precondition_set_add</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_set_add</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:2:1:1" typref="2701647786" value="nn"/>
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:1:2:1:2" typref="3603043417" value="NAT"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_Precondition_set_out</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans un raffinement</Comment>
+<Tag>WellDefinedness_set_out</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="mchcst"/>
+<Definition name="aprp"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="abs"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="/=">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:2:1:1" typref="3603043417" value="myset"/>
+<EmptySet tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:4:2:2:1:2" typref="3603043417"/>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:6:1:1" value="INTEGER"/>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet_r1.bxml:1:6:2:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:5:1:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Type>
+<Type id="949986794">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:5:2:1:1:1" value="INTEGER"/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:5:3:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="2701647786">
+<Id tag="/dcs/pg16/u1690550/Documents/FSD/lab9/bdp/AbSet.bxml:1:5:4:1" value="INTEGER"/>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

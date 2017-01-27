@@ -1,0 +1,240 @@
+<Machine name='Passengers_r' type='refinement'>
+<Abstraction>Passengers</Abstraction>
+<Abstract_Variables>
+<Id value='bookings' typref='2502465533'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='bookings' typref='2502465533'/>
+<Binary_Exp op='&gt;+&gt;' typref='1890248262'>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Integer_Literal value='50' typref='2701647786'/>
+</Binary_Exp>
+<Id value='pass' typref='1367874566'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Unary_Exp op='ran' typref='1367874566'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+<Id value='pass' typref='1367874566'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='bookings' typref='2502465533'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='book'>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Id value='pp' typref='3868805821'/>
+<Unary_Exp op='ran' typref='1367874566'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Unary_Exp op='card' typref='2701647786'>
+<Unary_Exp op='ran' typref='1367874566'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+</Unary_Exp>
+<Integer_Literal value='50' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<LET_Sub>
+<Variables>
+<Id value='xx' typref='2701647786'/>
+</Variables>
+<Values>
+<Valuation ident='xx' typref='2701647786'>
+<Unary_Exp op='min' typref='2701647786'>
+<Binary_Exp op='-' typref='3603043417'>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Integer_Literal value='50' typref='2701647786'/>
+</Binary_Exp>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Valuation>
+</Values>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='bookings' typref='2502465533'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='2502465533'>
+<Id value='bookings' typref='2502465533'/>
+<Nary_Exp op='{' typref='2502465533'>
+<Binary_Exp op='|-&gt;' typref='3483792902'>
+<Id value='xx' typref='2701647786'/>
+<Id value='pp' typref='3868805821'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+</LET_Sub>
+</Body>
+</Operation>
+<Operation name='cancel'>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Unary_Exp op='ran' typref='1367874566'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='bookings' typref='2502465533'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2502465533'>
+<Id value='bookings' typref='2502465533'/>
+<Binary_Exp op='|&gt;' typref='2502465533'>
+<Id value='bookings' typref='2502465533'/>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pp' typref='3868805821'/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='query'>
+<Output_Parameters>
+<Id value='oo' typref='2043437594'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Exp typref='2043437594'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Unary_Exp op='ran' typref='1367874566'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Boolean_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='spaces'>
+<Output_Parameters>
+<Id value='oo' typref='2701647786'/>
+</Output_Parameters>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='oo' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2701647786'>
+<Integer_Literal value='50' typref='2701647786'/>
+<Unary_Exp op='card' typref='2701647786'>
+<Unary_Exp op='ran' typref='1367874566'>
+<Id value='bookings' typref='2502465533'/>
+</Unary_Exp>
+</Unary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2502465533'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='PID'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1890248262'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='PID'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='1367874566'>
+<Unary_Exp op='POW'>
+<Id value='PID'/>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='3868805821'>
+<Id value='PID'/>
+</Type>
+<Type id='3483792902'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='PID'/>
+</Binary_Exp>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
+</Type>
+</TypeInfos>
+
+</Machine>

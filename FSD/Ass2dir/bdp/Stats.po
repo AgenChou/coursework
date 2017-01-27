@@ -1,0 +1,51 @@
+THEORY ProofList IS
+_f(1) & _f(4) & WellDefinedness_querymedian.4,(_f(16) => _f(24));
+_f(1) & _f(4) & WellDefinedness_querymedian.3,(_f(11) & _f(16) => _f(18));
+_f(1) & _f(4) & WellDefinedness_querymedian.2,(_f(11) & _f(16) => _f(23));
+_f(1) & _f(4) & WellDefinedness_querymedian.1,(_f(16) => _f(22));
+_f(1) & _f(4) & WellDefinedness_querymean.3,(_f(11) & _f(16) => _f(18));
+_f(1) & _f(4) & WellDefinedness_querymean.2,(_f(11) & _f(16) => _f(23));
+_f(1) & _f(4) & WellDefinedness_querymean.1,(_f(16) => _f(22));
+_f(1) & _f(4) & _f(5) & WellDefinedness_querypc.3,(_f(11) & _f(16) => _f(18));
+_f(1) & _f(4) & _f(5) & WellDefinedness_querypc.2,(_f(11) & _f(16) => _f(23));
+_f(1) & _f(4) & _f(5) & WellDefinedness_querypc.1,(_f(16) => _f(22));
+_f(1) & _f(4) & _f(5) & WellDefinedness_queryreg.2,(_f(16) => _f(18));
+_f(1) & _f(4) & _f(5) & WellDefinedness_queryreg.1,(_f(16) => _f(17));
+_f(1) & _f(4) & WellDefinedness_querytot.3,(_f(19) & _f(16) => _f(18));
+_f(1) & _f(4) & WellDefinedness_querytot.2,(_f(19) & _f(16) => _f(21));
+_f(1) & _f(4) & WellDefinedness_querytot.1,(_f(16) => _f(20));
+_f(1) & _f(4) & _f(5) & WellDefinedness_tested.2,(_f(16) => _f(18));
+_f(1) & _f(4) & _f(5) & WellDefinedness_tested.1,(_f(16) => _f(17));
+_f(1) & _f(4) & _f(5) & tested.1,(_f(2) => _f(6));
+_f(1) & Initialisation.1,(_f(2) => _f(3))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+"Invariant is preserved";
+(((((0) .. (10)) * {0})) : (((((0) .. (10))) --> (NAT))));
+tally : ((0) .. (10)) +-> NAT & dom(tally) = ((0) .. (10)) & ((tally) : (((((0) .. (10))) --> (NAT))));
+((nn) : (((0) .. (10))));
+((((tally) <+ ({((nn) |-> (((tally )(nn) + 1)))}))) : (((((0) .. (10))) --> (NAT))));
+((total) = (0));
+not(((total) = (0)));
+((total) = (SIGMA(xx).(((xx) : (((0) .. (10)))) | (tally )(xx))));
+((mid) = (0));
+((xx) : (((0) .. (10))));
+(SIGMA(ii).(((ii) : (((0) .. ((xx - 1))))) | (tally )(ii)) +1 <= mid);
+(mid +1 <= SIGMA(jj).(((jj) : ((((xx + 1)) .. (10)))) | (tally )(jj)));
+not(((mid) = (0)));
+((mid) = (((SIGMA(xx).(((xx) : (((0) .. (10)))) | (tally )(xx)) + 1) / 2)));
+"Well definedness";
+((nn) : (dom(tally)));
+((tally) : (((dom(tally)) +-> (ran(tally)))));
+((zz) : (((0) .. (10))));
+((SET(zz).(((zz) : (((0) .. (10)))))) : (FIN(SET(zz).(((zz) : (((0) .. (10))))))));
+((zz) : (dom(tally)));
+((SET(xx).(((xx) : (((0) .. (10)))))) : (FIN(SET(xx).(((xx) : (((0) .. (10))))))));
+((xx) : (dom(tally)));
+not(((2) = (0)))
+END
+&
+THEORY EnumerateX
+END

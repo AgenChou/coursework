@@ -1,0 +1,50 @@
+﻿THEORY BalanceX IS
+  AbSet_r2,9,0,0,5,0,0,0;
+  Initialisation,2,0,0,2,0,0,0;
+  WellDefinedness_set_out,1,0,0,0,0,0,0;
+  set_add,4,0,0,2,0,0,0;
+  set_out,2,0,0,1,0,0,0
+END
+&
+THEORY ProofState IS
+  Unproved;
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0)
+END
+&
+THEORY MethodList IS
+  ?;
+  pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  ?;
+  pr;
+  pr
+END
+&
+THEORY PassList IS
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "V4.0-53996")
+END

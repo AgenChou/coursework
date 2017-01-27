@@ -1,0 +1,77 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(10) & WellDefinedness_Precondition_accessdoc.1,(_f(16) & _f(27) & _f(48) & _f(38) & _f(46) => _f(49));
+_f(1) & _f(2) & _f(10) & _f(16) & WellDefinedness_listalloweddocs.1,(_f(46) => _f(47));
+_f(1) & _f(2) & _f(10) & _f(22) & WellDefinedness_isallowed.1,(_f(45) & _f(38) & _f(46) => _f(47));
+_f(1) & _f(2) & _f(10) & _f(38) & removerestricted.1,(_f(3) & _f(6) => _f(39));
+_f(1) & _f(2) & _f(10) & _f(27) & addrestricted.1,(_f(3) & _f(6) => _f(37));
+_f(1) & _f(2) & _f(10) & _f(27) & allowall.1,(_f(3) & _f(8) => _f(36));
+_f(1) & _f(2) & _f(10) & _f(34) & disallowaccess.1,(_f(3) & _f(8) => _f(35));
+_f(1) & _f(2) & _f(10) & _f(32) & allowaccess.1,(_f(3) & _f(8) => _f(33));
+_f(1) & _f(2) & _f(10) & _f(30) & stopaccess.1,(_f(3) & _f(14) => _f(31));
+_f(1) & _f(2) & _f(10) & _f(28) & accessdoc.1,(_f(3) & _f(14) => _f(29));
+_f(1) & _f(2) & _f(10) & _f(16) & removeuser.3,(_f(3) & _f(14) => _f(19));
+_f(1) & _f(2) & _f(10) & _f(16) & removeuser.2,(_f(3) & _f(8) => _f(18));
+_f(1) & _f(2) & _f(10) & _f(16) & removeuser.1,(_f(3) & _f(4) => _f(17));
+_f(1) & _f(2) & _f(10) & _f(11) & adduser.3,(_f(3) & _f(14) => _f(15));
+_f(1) & _f(2) & _f(10) & _f(11) & adduser.2,(_f(3) & _f(8) => _f(13));
+_f(1) & _f(2) & _f(10) & _f(11) & adduser.1,(_f(3) & _f(4) => _f(12));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+PID: FIN(INTEGER) & not(PID = {}) & DOC: FIN(INTEGER) & not(DOC = {}) & ((1..2)*{CHECK}): FIN(NATURAL*{CHECK}) & not(((1..2)*{CHECK}) = {});
+"Invariant is preserved";
+"Check invariant registered : POW( PID)";
+{} : POW( PID);
+"Check invariant restricted : POW( DOC)";
+{} : POW( DOC);
+"Check invariant ((allowed) : (((registered) <-> (DOC))))";
+(({}) : ((({}) <-> (DOC))));
+registered : POW( PID) & restricted : POW( DOC) & ((allowed) : (((registered) <-> (DOC)))) & ((viewing) : (((registered) <-> (DOC))));
+((pid) : (PID)) & not(pid : registered);
+((registered) \/ ({pid})) : POW( PID);
+((allowed) : (((((registered) \/ ({pid}))) <-> (DOC))));
+"Check invariant ((viewing) : (((registered) <-> (DOC))))";
+((viewing) : (((((registered) \/ ({pid}))) <-> (DOC))));
+((pid) : (registered));
+(registered - {pid}) : POW( PID);
+((allowed) : ((((registered - {pid})) <-> (DOC))));
+((viewing) : ((((registered - {pid})) <-> (DOC))));
+((pid) : (PID));
+not(((pid) : (registered)));
+((pid) : (registered)) & ((doc) : (DOC));
+((not(((pid) |-> (doc)) : allowed)) or (((doc) : (restricted)) & not(card(((ran((({pid}) <| (viewing)))) /\ (restricted))) = 0) & not(((pid) |-> (doc)) : viewing)));
+not(((not(((pid) |-> (doc)) : allowed)) or (((doc) : (restricted)) & not(card(((ran((({pid}) <| (viewing)))) /\ (restricted))) = 0) & not(((pid) |-> (doc)) : viewing))));
+((card(((ran((({pid}) <| (viewing)))) /\ (restricted)))) = (0));
+not(((card(((ran((({pid}) <| (viewing)))) /\ (restricted)))) = (0)));
+((doc) : (DOC));
+((pid) : (registered)) & ((doc) : (DOC)) & ((((pid) |-> (doc))) : (allowed)) & ((doc) : (restricted)) & ((card(((ran((({pid}) <| (allowed)))) /\ (restricted)))) = (0));
+((((viewing) \/ ({((pid) |-> (doc))}))) : (((registered) <-> (DOC))));
+((pid) : (registered)) & ((doc) : (DOC)) & ((((pid) |-> (doc))) : (viewing));
+(((viewing - {((pid) |-> (doc))})) : (((registered) <-> (DOC))));
+((pid) : (registered)) & ((doc) : (DOC)) & not(((pid) |-> (doc)) : allowed);
+((((allowed) \/ ({((pid) |-> (doc))}))) : (((registered) <-> (DOC))));
+((pid) : (registered)) & ((doc) : (DOC)) & ((((pid) |-> (doc))) : (allowed));
+(((allowed - {((pid) |-> (doc))})) : (((registered) <-> (DOC))));
+((((allowed) \/ ((registered * {doc})))) : (((registered) <-> (DOC))));
+((restricted) \/ ({doc})) : POW( DOC);
+((doc) : (restricted));
+(restricted - {doc}) : POW( DOC);
+PID: FIN(INTEGER) & not(PID = {});
+((allowed) : (((registered) <-> (DOC))));
+restricted : POW( DOC);
+registered : POW( PID);
+not(card(((ran((({pid}) <| (viewing)))) /\ (restricted))) = 0);
+not(not(((pid) |-> (doc)) : allowed));
+"Well definedness";
+((((ran((({pid}) <| (viewing)))) /\ (restricted))) : (FIN(((ran((({pid}) <| (viewing)))) /\ (restricted)))));
+((((pid) |-> (doc))) : (allowed));
+((((ran((({pid}) <| (allowed)))) /\ (restricted))) : (FIN(((ran((({pid}) <| (allowed)))) /\ (restricted)))))
+END
+&
+THEORY EnumerateX IS
+CHECK == {yes,no}
+END

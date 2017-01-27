@@ -1,0 +1,20 @@
+THEORY ProofList
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((1..2)*{RESP}): FIN(NATURAL*{RESP}) & not(((1..2)*{RESP}) = {});
+ELEM: FIN(INTEGER) & not(ELEM = {}) & ((qlen) : ((NAT-{0})));
+((1..3)*{ERRORS}): FIN(NATURAL*{ERRORS}) & not(((1..3)*{ERRORS}) = {});
+((xx) : (ELEM));
+((err$1) : (((1..3)*{ERRORS})));
+((ee$1) : (ELEM));
+((rr$1) : (((1..2)*{RESP})));
+((oo$1) : (((0) .. (qlen))));
+ELEM: FIN(INTEGER) & not(ELEM = {})
+END
+&
+THEORY EnumerateX IS
+ERRORS == {ok,full,empty};
+RESP == {yes,no}
+END

@@ -1,0 +1,16 @@
+﻿/* AbSet_r2
+ * Author: u1690550
+ * Creation date: 01/12/2016
+ */
+
+REFINEMENT AbSet_r2
+REFINES AbSet
+
+ABSTRACT_VARIABLES myseq
+INVARIANT myseq : iseq ( NAT ) & myset = ran ( myseq )
+INITIALISATION myseq := {}
+OPERATIONS
+set_add ( nn ) = IF nn /: ran ( myseq ) THEN myseq := myseq <- nn END ;
+
+oo <-- set_out = IF myseq = <> THEN oo := 0 ELSE oo := first ( myseq ) END
+END

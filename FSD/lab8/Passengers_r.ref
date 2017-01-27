@@ -1,0 +1,50 @@
+/* Passengers_r
+ * Author: u1690550
+ * Creation date: 24/11/2016
+ */
+
+REFINEMENT Passengers_r
+REFINES Passengers
+
+VARIABLES
+    bookings
+INVARIANT
+    bookings : 1..50 >+> pass &
+    ran(bookings) = pass
+
+INITIALISATION
+    bookings := {}
+
+OPERATIONS
+    book(pp) =
+    PRE
+        pp : PID & pp /: ran(bookings) & card(ran(bookings)) < 50
+    THEN
+        LET
+            xx
+        BE 
+            xx = min((1..50) - dom(bookings))
+        IN
+            bookings := bookings \/ {xx |-> pp}
+        END
+    END;
+
+    
+    cancel(pp) = 
+    PRE
+        pp : ran(bookings)
+    THEN
+        bookings := bookings - (bookings |> {pp})
+    END;
+
+    
+    oo <-- query(pp) =
+    PRE
+        pp : PID
+    THEN
+        oo := bool(pp : ran(bookings))
+    END;
+
+    oo <-- spaces = oo := 50 - card(ran(bookings))
+
+ END

@@ -1,0 +1,36 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & WellDefinedness_spaces.1,(_f(17) => _f(18));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_book.1,(_f(15) & _f(19) & _f(17) => _f(18));
+_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(16) & _f(17) => _f(18));
+_f(1) & _f(2) & _f(8) & _f(12) & cancel.2,(_f(3) & _f(6) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(12) & cancel.1,(_f(3) & _f(4) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & book.2,(_f(3) & _f(6) => _f(11));
+_f(1) & _f(2) & _f(8) & _f(9) & book.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+PID: FIN(INTEGER) & not(PID = {});
+"Invariant is preserved";
+"Check invariant ((pass) : (FIN(PID)))";
+(({}) : (FIN(PID)));
+"Check invariant (card(pass) <= 50)";
+(card({}) <= 50);
+((pass) : (FIN(PID))) & (card(pass) <= 50);
+((pp) : (PID)) & not(pp : pass) & (card(pass) +1 <= 50);
+((((pass) \/ ({pp}))) : (FIN(PID)));
+(card(((pass) \/ ({pp}))) <= 50);
+((pp) : (PID)) & ((pp) : (pass));
+(((pass - {pp})) : (FIN(PID)));
+(card((pass - {pp})) <= 50);
+((pp) : (PID));
+((pass) : (FIN(PID)));
+"Well definedness";
+((pass) : (FIN(pass)));
+not(pp : pass)
+END
+&
+THEORY EnumerateX
+END

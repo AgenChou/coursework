@@ -1,0 +1,725 @@
+<Machine name='docsys' type='abstraction'>
+<Sets>
+<Set>
+<Id value='PID' typref='1367874566'/>
+</Set>
+<Set>
+<Id value='DOC' typref='1974022003'/>
+</Set>
+<Set>
+<Id value='CHECK' typref='2485734787'/>
+<Enumerated_Values>
+<Id value='yes' typref='1765148800'/>
+<Id value='no' typref='1765148800'/>
+</Enumerated_Values>
+</Set>
+</Sets>
+<Abstract_Variables>
+<Id value='registered' typref='1367874566'/>
+<Id value='allowed' typref='2576414359'/>
+<Id value='viewing' typref='2576414359'/>
+<Id value='restricted' typref='1974022003'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op='&lt;:'>
+<Id value='registered' typref='1367874566'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;:'>
+<Id value='restricted' typref='1974022003'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='allowed' typref='2576414359'/>
+<Binary_Exp op='&lt;-&gt;' typref='3138310444'>
+<Id value='registered' typref='1367874566'/>
+<Id value='DOC' typref='1974022003'/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='viewing' typref='2576414359'/>
+<Binary_Exp op='&lt;-&gt;' typref='3138310444'>
+<Id value='registered' typref='1367874566'/>
+<Id value='DOC' typref='1974022003'/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='registered' typref='1367874566'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='allowed' typref='2576414359'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='viewing' typref='2576414359'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='restricted' typref='1974022003'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Initialisation>
+<Operations>
+<Operation name='adduser'>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='registered' typref='1367874566'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1367874566'>
+<Id value='registered' typref='1367874566'/>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='removeuser'>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='registered' typref='1367874566'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='1367874566'>
+<Id value='registered' typref='1367874566'/>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='isregistered'>
+<Output_Parameters>
+<Id value='check' typref='1765148800'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='check' typref='1765148800'/>
+</Variables>
+<Values>
+<Id value='yes' typref='1765148800'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='check' typref='1765148800'/>
+</Variables>
+<Values>
+<Id value='no' typref='1765148800'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='isallowed'>
+<Output_Parameters>
+<Id value='check' typref='1765148800'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Binary_Pred op='or'>
+<Exp_Comparison op='/:'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Exp_Comparison>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='restricted' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op='/='>
+<Unary_Exp op='card' typref='2701647786'>
+<Binary_Exp op='/\' typref='1974022003'>
+<Unary_Exp op='ran' typref='1974022003'>
+<Binary_Exp op='&lt;|' typref='2576414359'>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+<Id value='viewing' typref='2576414359'/>
+</Binary_Exp>
+</Unary_Exp>
+<Id value='restricted' typref='1974022003'/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+<Id value='viewing' typref='2576414359'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Binary_Pred>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='check' typref='1765148800'/>
+</Variables>
+<Values>
+<Id value='no' typref='1765148800'/>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='check' typref='1765148800'/>
+</Variables>
+<Values>
+<Id value='yes' typref='1765148800'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='listalloweddocs'>
+<Output_Parameters>
+<Id value='docs' typref='1974022003'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Unary_Exp op='card' typref='2701647786'>
+<Binary_Exp op='/\' typref='1974022003'>
+<Unary_Exp op='ran' typref='1974022003'>
+<Binary_Exp op='&lt;|' typref='2576414359'>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+<Id value='viewing' typref='2576414359'/>
+</Binary_Exp>
+</Unary_Exp>
+<Id value='restricted' typref='1974022003'/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='docs' typref='1974022003'/>
+</Variables>
+<Values>
+<Unary_Exp op='ran' typref='1974022003'>
+<Binary_Exp op='&lt;|' typref='2576414359'>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Binary_Exp>
+</Unary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='docs' typref='1974022003'/>
+</Variables>
+<Values>
+<Binary_Exp op='/\' typref='1974022003'>
+<Binary_Exp op='\/' typref='1974022003'>
+<Binary_Exp op='-' typref='1974022003'>
+<Unary_Exp op='ran' typref='1974022003'>
+<Binary_Exp op='&lt;|' typref='2576414359'>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Binary_Exp>
+</Unary_Exp>
+<Id value='restricted' typref='1974022003'/>
+</Binary_Exp>
+<Unary_Exp op='ran' typref='1974022003'>
+<Binary_Exp op='&lt;|' typref='2576414359'>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+<Id value='viewing' typref='2576414359'/>
+</Binary_Exp>
+</Unary_Exp>
+</Binary_Exp>
+<Id value='restricted' typref='1974022003'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='listallowedusers'>
+<Output_Parameters>
+<Id value='pids' typref='1367874566'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='pids' typref='1367874566'/>
+</Variables>
+<Values>
+<Unary_Exp op='dom' typref='1367874566'>
+<Binary_Exp op='|&gt;' typref='2576414359'>
+<Id value='allowed' typref='2576414359'/>
+<Nary_Exp op='{' typref='1974022003'>
+<Id value='doc' typref='1166550288'/>
+</Nary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='accessdoc'>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Binary_Exp op='|-&gt;'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Exp_Comparison>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='restricted' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Unary_Exp op='card' typref='2701647786'>
+<Binary_Exp op='/\' typref='1974022003'>
+<Unary_Exp op='ran' typref='1974022003'>
+<Binary_Exp op='&lt;|' typref='2576414359'>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pid' typref='3868805821'/>
+</Nary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Binary_Exp>
+</Unary_Exp>
+<Id value='restricted' typref='1974022003'/>
+</Binary_Exp>
+</Unary_Exp>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='viewing' typref='2576414359'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='2576414359'>
+<Id value='viewing' typref='2576414359'/>
+<Nary_Exp op='{' typref='2576414359'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='stopaccess'>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Binary_Exp op='|-&gt;'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+<Id value='viewing' typref='2576414359'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='viewing' typref='2576414359'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2576414359'>
+<Id value='viewing' typref='2576414359'/>
+<Nary_Exp op='{' typref='2576414359'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='allowaccess'>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='allowed' typref='2576414359'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='2576414359'>
+<Id value='allowed' typref='2576414359'/>
+<Nary_Exp op='{' typref='2576414359'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='disallowaccess'>
+<Input_Parameters>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pid' typref='3868805821'/>
+<Id value='registered' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Binary_Exp op='|-&gt;'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+<Id value='allowed' typref='2576414359'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='allowed' typref='2576414359'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2576414359'>
+<Id value='allowed' typref='2576414359'/>
+<Nary_Exp op='{' typref='2576414359'>
+<Binary_Exp op='|-&gt;' typref='238098412'>
+<Id value='pid' typref='3868805821'/>
+<Id value='doc' typref='1166550288'/>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='allowall'>
+<Input_Parameters>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='allowed' typref='2576414359'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='2576414359'>
+<Id value='allowed' typref='2576414359'/>
+<Binary_Exp op='*' typref='2576414359'>
+<Id value='registered' typref='1367874566'/>
+<Nary_Exp op='{' typref='1974022003'>
+<Id value='doc' typref='1166550288'/>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='addrestricted'>
+<Input_Parameters>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='DOC' typref='1974022003'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='restricted' typref='1974022003'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1974022003'>
+<Id value='restricted' typref='1974022003'/>
+<Nary_Exp op='{' typref='1974022003'>
+<Id value='doc' typref='1166550288'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='removerestricted'>
+<Input_Parameters>
+<Id value='doc' typref='1166550288'/>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Id value='doc' typref='1166550288'/>
+<Id value='restricted' typref='1974022003'/>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='restricted' typref='1974022003'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='1974022003'>
+<Id value='restricted' typref='1974022003'/>
+<Nary_Exp op='{' typref='1974022003'>
+<Id value='doc' typref='1166550288'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='1367874566'>
+<Unary_Exp op='POW'>
+<Id value='PID'/>
+</Unary_Exp>
+</Type>
+<Type id='1974022003'>
+<Unary_Exp op='POW'>
+<Id value='DOC'/>
+</Unary_Exp>
+</Type>
+<Type id='2485734787'>
+<Unary_Exp op='POW'>
+<Id value='CHECK'/>
+</Unary_Exp>
+</Type>
+<Type id='1765148800'>
+<Id value='CHECK'/>
+</Type>
+<Type id='2576414359'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='PID'/>
+<Id value='DOC'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3138310444'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='PID'/>
+<Id value='DOC'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='3868805821'>
+<Id value='PID'/>
+</Type>
+<Type id='1166550288'>
+<Id value='DOC'/>
+</Type>
+<Type id='238098412'>
+<Binary_Exp op='*'>
+<Id value='PID'/>
+<Id value='DOC'/>
+</Binary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+</TypeInfos>
+
+</Machine>

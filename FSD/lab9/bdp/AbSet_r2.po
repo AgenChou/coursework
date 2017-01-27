@@ -1,0 +1,44 @@
+THEORY ProofList IS
+_f(1) & _f(7) & _f(8) & _f(16) & WellDefinedness_set_out.1,(_f(19) & _f(26) => _f(27));
+_f(1) & _f(7) & _f(8) & _f(17) & set_out.2,(_f(19) => _f(21));
+_f(1) & _f(7) & _f(8) & _f(17) & set_out.1,(_f(18) => _f(20));
+_f(1) & _f(7) & _f(8) & _f(9) & set_add.4,(_f(12) & _f(2) & _f(5) => _f(15));
+_f(1) & _f(7) & _f(8) & _f(9) & set_add.3,(_f(11) & _f(2) & _f(5) => _f(14));
+_f(1) & _f(7) & _f(8) & _f(9) & set_add.2,(_f(11) & _f(2) & _f(3) => _f(13));
+_f(1) & _f(7) & _f(8) & _f(9) & set_add.1,(_f(10) => _f(11));
+_f(1) & Initialisation.2,(_f(2) & _f(5) => _f(6));
+_f(1) & Initialisation.1,(_f(2) & _f(3) => _f(4))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+"Refinement is correct";
+"Check invariant ((myseq$1) : (iseq(NAT)))";
+(({}) : (iseq(NAT)));
+"Check invariant ((myset) = (ran(myseq$1)))";
+(({}) = (ran({})));
+((myset) : (POW(NAT)));
+myseq$1 : seq(NAT) & myseq$1 : NATURAL-{0} +-> NAT & myseq$1 ~ : NAT +-> NATURAL-{0} & ((myseq$1) : (iseq(NAT))) & ((myset) = (ran(myseq$1)));
+((nn) : (NAT));
+"Precondition can be deduced";
+not(nn : ran(myseq$1));
+not(not(nn : ran(myseq$1)));
+((((myseq$1) <- (nn))) : (iseq(NAT)));
+((((myset) \/ ({nn}))) = (ran(((myseq$1) <- (nn)))));
+((((myset) \/ ({nn}))) = (ran(myseq$1)));
+not(myset = {});
+not(myset = {}) & ((oo) = (oo$1));
+((myseq$1) = ({}));
+not(((myseq$1) = ({})));
+((0) : (myset));
+((first(myseq$1)) : (myset));
+myseq$1 : seq(NAT);
+myseq$1 : NATURAL-{0} +-> NAT;
+myseq$1 ~ : NAT +-> NATURAL-{0};
+((myseq$1) : (iseq(NAT)));
+"Well definedness";
+((myseq$1) : (seq(ran(myseq$1))))
+END
+&
+THEORY EnumerateX
+END

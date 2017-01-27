@@ -1,0 +1,49 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & WellDefinedness_enc_contentsquery.1,(_f(27) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & WellDefinedness_enc_fullquery.1,(_f(27) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & WellDefinedness_enc_remove.1,(_f(17) & _f(27) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(26) & WellDefinedness_enc_add.3,(_f(12) & _f(27) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(26) & WellDefinedness_enc_add.2,(_f(12) & _f(9) & _f(27) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(26) & WellDefinedness_enc_add.1,(_f(27) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & enc_contentsquery.1,(_f(25));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(15) & enc_remove.3,(_f(17) => _f(20));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(15) & enc_remove.2,(_f(17) & _f(13) => _f(19));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(15) & enc_remove.1,(_f(16) => _f(18));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(10) & enc_add.1,(_f(12) & _f(13) => _f(14))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((1..2)*{RESP}): FIN(NATURAL*{RESP}) & not(((1..2)*{RESP}) = {});
+ELEM: FIN(INTEGER) & not(ELEM = {}) & ((qlen) : ((NAT-{0})));
+((1..3)*{ERRORS}): FIN(NATURAL*{ERRORS}) & not(((1..3)*{ERRORS}) = {});
+buff$1 : NATURAL-{0} +-> ELEM & ((buff$1) : (seq(ELEM))) & (size(buff$1) <= qlen);
+{} : NATURAL-{0} +-> ELEM;
+(({}) : (seq(ELEM)));
+(size({}) <= qlen);
+((xx) : (ELEM));
+((xx) : (ELEM)) & ((err) = (err$1));
+(qlen <= size(buff$1));
+not((qlen <= size(buff$1)));
+"Precondition predicate";
+(size(buff$1) +1 <= qlen);
+((err) = (err$1)) & ((ee) = (ee$1));
+((buff$1) = ({}));
+not(((buff$1) = ({})));
+((ee$1) : (ELEM));
+not(buff$1 = {});
+((first(buff$1)) : (ELEM));
+((err) = (err$1)) & ((rr) = (rr$1));
+((size(buff$1)) = (qlen));
+not(((size(buff$1)) = (qlen)));
+((err) = (err$1)) & ((oo) = (oo$1));
+((size(buff$1)) : (((0) .. (qlen))));
+((xx) : (ELEM)) & ((xx) : (ELEM));
+"Well definedness";
+((buff$1) : (seq(ran(buff$1))))
+END
+&
+THEORY EnumerateX IS
+ERRORS == {ok,full,empty};
+RESP == {yes,no}
+END

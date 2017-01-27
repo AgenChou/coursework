@@ -1,0 +1,58 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(9) & WellDefinedness_spaces.1,(_f(29) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(31) & WellDefinedness_book.2,(_f(29) => _f(33));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(31) & WellDefinedness_book.1,(_f(29) => _f(32));
+_f(1) & _f(2) & _f(8) & _f(9) & WellDefinedness_Precondition_book.1,(_f(21) & _f(12) & _f(29) => _f(30));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(24) & spaces.1,(_f(3) => _f(25));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(22) & query.1,(_f(3) => _f(23));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(17) & cancel.3,(_f(3) & _f(6) => _f(20));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(17) & cancel.2,(_f(3) & _f(4) => _f(19));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(17) & cancel.1,(_f(11) => _f(18));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(10) & book.4,(_f(14) & _f(3) & _f(6) => _f(16));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(10) & book.3,(_f(14) & _f(3) & _f(4) => _f(15));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(10) & book.2,(_f(11) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & _f(10) & book.1,(_f(11) => _f(12));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+PID: FIN(INTEGER) & not(PID = {});
+"Refinement is correct";
+"Check invariant ((bookings$1) : (((((1) .. (50))) >+> (pass))))";
+(({}) : (((((1) .. (50))) >+> ({}))));
+"Check invariant ((ran(bookings$1)) = (pass))";
+((ran({})) = ({}));
+((pass) : (FIN(PID))) & (card(pass) <= 50);
+bookings$1 : ((1) .. (50)) +-> pass & bookings$1~ : pass +-> ((1) .. (50)) & ((bookings$1) : (((((1) .. (50))) >+> (pass)))) & ((ran(bookings$1)) = (pass));
+((pp) : (PID)) & not(pp : pass) & (card(pass) +1 <= 50);
+"Precondition can be deduced";
+not(pp : ran(bookings$1));
+(card(ran(bookings$1)) +1 <= 50);
+((xx) = (min((((1) .. (50)) - dom(bookings$1)))));
+((((bookings$1) \/ ({((xx) |-> (pp))}))) : (((((1) .. (50))) >+> (((pass) \/ ({pp}))))));
+((ran(((bookings$1) \/ ({((xx) |-> (pp))})))) = (((pass) \/ ({pp}))));
+((pp) : (PID)) & ((pp) : (pass));
+((pp) : (ran(bookings$1)));
+(((bookings$1 - ((bookings$1) |> ({pp})))) : (((((1) .. (50))) >+> ((pass - {pp})))));
+((ran((bookings$1 - ((bookings$1) |> ({pp}))))) = ((pass - {pp})));
+((pp) : (PID));
+((pp) : (PID)) & ((oo) = (oo$1));
+((bool(((pp) : (pass)))) = (bool(((pp) : (ran(bookings$1))))));
+((oo) = (oo$1));
+(((50 - card(pass))) = ((50 - card(ran(bookings$1)))));
+bookings$1 : ((1) .. (50)) +-> pass;
+bookings$1~ : pass +-> ((1) .. (50));
+((bookings$1) : (((((1) .. (50))) >+> (pass))));
+"Well definedness";
+((ran(bookings$1)) : (FIN(ran(bookings$1))));
+((pp) : (PID)) & not(pp : pass) & (card(pass) +1 <= 50) & ((pp) : (PID)) & not(pp : ran(bookings$1)) & (card(ran(bookings$1)) +1 <= 50);
+not((((((1) .. (50)) - dom(bookings$1))) = ({})));
+(((((((1) .. (50)) - dom(bookings$1))) /\ ((INTEGER - NATURAL)))) : (FIN(INTEGER)));
+((pp) : (PID)) & ((pp) : (pass)) & ((pp) : (ran(bookings$1)));
+((pp) : (PID)) & ((pp) : (PID))
+END
+&
+THEORY EnumerateX
+END

@@ -1,0 +1,113 @@
+<Machine name='entrysys' type='abstraction'>
+<Sets>
+<Set>
+<Id value='PID' typref='1367874566'/>
+</Set>
+</Sets>
+<Abstract_Variables>
+<Id value='inside' typref='1367874566'/>
+<Id value='maxin' typref='2701647786'/>
+</Abstract_Variables>
+<Invariant>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='maxin' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;:'>
+<Id value='inside' typref='1367874566'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;='>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='inside' typref='1367874566'/>
+</Unary_Exp>
+<Id value='maxin' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Invariant>
+<Initialisation>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='inside' typref='1367874566'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='maxin' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='500' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Initialisation>
+<Operations>
+<Operation name='enter'>
+<Input_Parameters>
+<Id value='pp' typref='3868805821'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='3868805821'/>
+<Id value='PID' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Id value='pp' typref='3868805821'/>
+<Id value='inside' typref='1367874566'/>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Unary_Exp op='card' typref='2701647786'>
+<Id value='inside' typref='1367874566'/>
+</Unary_Exp>
+<Id value='maxin' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='inside' typref='1367874566'/>
+</Variables>
+<Values>
+<Binary_Exp op='\/' typref='1367874566'>
+<Id value='inside' typref='1367874566'/>
+<Nary_Exp op='{' typref='1367874566'>
+<Id value='pp' typref='3868805821'/>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='1367874566'>
+<Unary_Exp op='POW'>
+<Id value='PID'/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='3868805821'>
+<Id value='PID'/>
+</Type>
+</TypeInfos>
+
+</Machine>

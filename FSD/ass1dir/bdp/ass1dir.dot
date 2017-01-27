@@ -1,0 +1,5 @@
+digraph {
+Bag [ label=" Bag " shape= box ]
+stockcontrolsys [ label=" stockcontrolsys " shape= box ]
+
+}

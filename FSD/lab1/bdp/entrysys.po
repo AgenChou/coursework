@@ -1,0 +1,34 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(10) & WellDefinedness_Precondition_enter.1,(_f(19) & _f(18) & _f(16) => _f(17));
+_f(1) & _f(2) & WellDefinednessInvariant.1,(_f(15) & _f(14) & _f(16) => _f(17));
+_f(1) & _f(2) & _f(10) & _f(11) & enter.2,(_f(3) & _f(8) => _f(13));
+_f(1) & _f(2) & _f(10) & _f(11) & enter.1,(_f(3) & _f(6) => _f(12));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+PID: FIN(INTEGER) & not(PID = {});
+"Invariant is preserved";
+"Check invariant ((maxin) : ((NAT-{0})))";
+((500) : ((NAT-{0})));
+"Check invariant inside : POW( PID)";
+{} : POW( PID);
+"Check invariant (card(inside) <= maxin)";
+(card({}) <= 500);
+((maxin) : ((NAT-{0}))) & inside : POW( PID) & (card(inside) <= maxin);
+((pp) : (PID)) & not(pp : inside) & (card(inside) +1 <= maxin);
+((inside) \/ ({pp})) : POW( PID);
+(card(((inside) \/ ({pp}))) <= maxin);
+inside : POW( PID);
+((maxin) : ((NAT-{0})));
+"Well definedness";
+((inside) : (FIN(inside)));
+not(pp : inside);
+((pp) : (PID))
+END
+&
+THEORY EnumerateX
+END
