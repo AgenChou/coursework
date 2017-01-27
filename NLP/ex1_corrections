@@ -1,0 +1,2 @@
+1c. - first letter is case insensitive, the rest matches case - e.g. Mirror mirror, but NOT miRRor mirror
+1f. - match ALL first words of sentences. All names of speaking characters assumed to be sentences, 
