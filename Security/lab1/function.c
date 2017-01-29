@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-// function to evaluate x^2/3-5x+18
+// Ex. 1a: function to evaluate x^2/3-5x+18
 double fn(int x) {
-	double result = (double) ( x * x) / 3 - 5 * x + 18;
+	double result = (double) (x * x) / 3 - 5 * x + 18;
 	return result;
 }
 
-int main(int argc, int *argv[]) {
+int main(int argc, char *argv[]) {
 	printf("Input  Output\n");
 
 	int i;
