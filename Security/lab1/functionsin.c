@@ -7,13 +7,15 @@
 #include <float.h>
 #include <math.h>
 
-// function to print sin(x)/x (for x in radians)
+// Ex 1b: function to print sin(x)/x (for x in radians)
 double fn(int x) {
 	double result;
 
 	if (x == 0) {
-		// when x = 0, sin(x)/x is -infinity
-		// we need to deal with this case separately
+		// When x = 0, sin(x)/x has limit of 1.
+		// We need to deal with this case separately, because we're
+		// converting from an integer value of x=0 to a double.
+		// We have to use DBL_MIN, the smallest double value instead.
 		result = sin(DBL_MIN)/ DBL_MIN;
 	} else {
 		result = sin((double) x) / x;
@@ -22,9 +24,9 @@ double fn(int x) {
 }
 
 int main(int argc, char *argv[]) {
-	printf("Input    Output\n");
+	printf("Input\tOutput\n");
 	int i;
 	for (i = -10; i <= 10; i++) {
-		printf("%d        %.4f\n", i, fn(i));
+		printf("%d\t%.4f\n", i, fn(i));
 	}
 }
