@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Ex 3: swap the values of two ints
 void swap(int *a, int *b) {
 	int c = *a; // record the value stored at a in a temp var
 	*a = *b; // the value that a points to is now the value b points to
