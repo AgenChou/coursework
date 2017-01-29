@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// Ex 4c: check if a string contains numbers
 void findNumbers(const char* str) {
 	char *c;
 	// Standard library function strpbrk(char* str1, char* str2) looks in 

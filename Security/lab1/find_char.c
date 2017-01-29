@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Ex 4b: find the position of a given char in a string
 int find_char(const char* str, const char *c) {
 	char test; // the current char of the str, which we compare to c
 	int i = 0;
@@ -7,9 +8,9 @@ int find_char(const char* str, const char *c) {
 	// Otherwise we'd assign test = str[0] twice to satisfy the while
 	// condition at the initialisation of the loop.
 	do {
-		test = str[i]; 
+		test = str[i];
 		if (test == c[0]) {
-			return (i + 1);
+			return (i + 1); // we need +1 to make it more readable
 		}
 		i++;
 	} while (test);
