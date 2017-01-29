@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Ex 2a: output binary representation of the result of XOR of two ints
 void print_xor_binary(int a, int b) {
 	// Note that performing XOR on integers is possible without converting 
 	// them to binary, and just convert the result, however the question 
@@ -12,9 +13,10 @@ void print_xor_binary(int a, int b) {
 	for (bit = sizeof(int) * 8 - 1; bit >= 0; bit--) {
 		// By right shifting and using a mask, we extract the most
 		// significant bit out of each of a and b. The variable bit is
-		// decreasing, so the result is in a correc order, and we can 
+		// decreasing, so the result is in a correct order, and we can 
 		// print it straight away.
 		// note: we're shifting the original int by bit places
+		// '& 1' has the effect of checking if the int is even or odd.
 		fprintf(stdout, "%d", ((a >> bit) & 1)  ^ ((b >> bit) & 1));
 	}
 	fprintf(stdout, "\n");
