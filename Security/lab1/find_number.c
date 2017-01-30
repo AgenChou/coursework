@@ -18,8 +18,8 @@ void findNumbers(const char* str) {
 	// }
 	// But let's do it properly...
 	//
-	// The following code is inspired by isdigit implementation in C standard lib.
-	int c = str[0];
+	// NOTE: it assumes the character order is ASCII
+	int c = str[0]; // this converts char to its ASCII code
 	int i = 0;
 	while (str[i]) { // sufficient condition because a string will end with null
 		if (c >= '0' && c <= '9') {
