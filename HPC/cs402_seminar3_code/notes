@@ -1,0 +1,11 @@
+Not parallel execution:
+n = 1024000000, estimate: 1.733946, time: 5.523942
+
+without critical section:
+n = 1024000000, estimate: 0.625441, time: 16.507780
+
+with critical guard:
+n = 1024000000, estimate: 1.733984, time: 121.062611
+
+with reduction, no crit guard:
+n = 1024000000, estimate: 1.998483, time: 10.090558

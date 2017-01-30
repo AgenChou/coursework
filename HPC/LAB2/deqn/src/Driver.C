@@ -1,10 +1,16 @@
 #include "Driver.h"
 
+#include <omp.h>
 #include <iostream>
+#include <fstream>
 
     Driver::Driver(const InputFile* input, const std::string& pname)
 : problem_name(pname)
 {
+    // Redirecting logging to a file
+    std::ofstream out("out.txt", std::ofstream::ate);
+    std::streambuf *coutbuf = std::cout.rdbuf();
+    std::cout.rdbuf(out.rdbuf());
 
     std::cout << "+++++++++++++++++++++" << std::endl;
     std::cout << "  Running deqn v0.1  " << std::endl;
@@ -49,7 +55,7 @@ Driver::~Driver() {
 }
 
 void Driver::run() {
-
+    double start_time = omp_get_wtime();
     int step = 0;
     double t_current;
 
@@ -71,9 +77,10 @@ void Driver::run() {
 
     if(step % vis_frequency != 0 && vis_frequency != -1)
         writer->write(step, t_current);
-
+    start_time = omp_get_wtime() - start_time;
     std::cout << std::endl;
     std::cout << "+++++++++++++++++++++" << std::endl;
     std::cout << "   Run completete.   " << std::endl;
+    std::cout << "   Time: " << (double)start_time << std::endl;
     std::cout << "+++++++++++++++++++++" << std::endl;
 }

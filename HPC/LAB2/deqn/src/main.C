@@ -36,6 +36,5 @@ int main(int argc, char *argv[])
     Driver driver(&input, problem_name);
 
     driver.run();
-
     return 0;
 }
