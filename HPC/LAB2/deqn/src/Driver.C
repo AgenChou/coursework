@@ -8,9 +8,9 @@
 : problem_name(pname)
 {
     // Redirecting logging to a file
-    std::ofstream out("out.txt", std::ofstream::ate);
-    std::streambuf *coutbuf = std::cout.rdbuf();
-    std::cout.rdbuf(out.rdbuf());
+//    std::ofstream out("out.txt", std::ofstream::ate);
+  //  std::streambuf *coutbuf = std::cout.rdbuf();
+    //std::cout.rdbuf(out.rdbuf());
 
     std::cout << "+++++++++++++++++++++" << std::endl;
     std::cout << "  Running deqn v0.1  " << std::endl;
@@ -62,7 +62,7 @@ void Driver::run() {
     for(t_current = t_start; t_current < t_end; t_current += dt) {
         step = t_current/dt + 1;
 
-        std::cout << "+ step: " << step << ", dt:   " << dt << std::endl;
+        std::cout << "+ step: " << (int)step << ", dt:   " << (double)dt << std::endl;
 
         diffusion->doCycle(dt);
 
