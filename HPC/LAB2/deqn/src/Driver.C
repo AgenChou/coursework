@@ -7,7 +7,9 @@
     Driver::Driver(const InputFile* input, const std::string& pname)
 : problem_name(pname)
 {
-    // Redirecting logging to a file
+    
+   // Move to main:     
+   // Redirecting logging to a file
 //    std::ofstream out("out.txt", std::ofstream::ate);
   //  std::streambuf *coutbuf = std::cout.rdbuf();
     //std::cout.rdbuf(out.rdbuf());
@@ -34,6 +36,7 @@
     std::cout << "- end_time: " << t_end << std::endl;
     std::cout << "- vis_frequency: " << vis_frequency << std::endl;
     std::cout << "- summary_frequency: " << summary_frequency << std::endl;
+    std::cout << "- number of threads: " << omp_get_num_threads() << std::endl;
 #endif
     std::cout << "+++++++++++++++++++++" << std::endl;
     std::cout << std::endl;
@@ -58,7 +61,6 @@ void Driver::run() {
     double start_time = omp_get_wtime();
     int step = 0;
     double t_current;
-
     for(t_current = t_start; t_current < t_end; t_current += dt) {
         step = t_current/dt + 1;
 
@@ -72,7 +74,6 @@ void Driver::run() {
             double temperature = mesh->getTotalTemperature();
             std::cout << "+\tcurrent total temperature: " << temperature << std::endl;
         }
-
     }
 
     if(step % vis_frequency != 0 && vis_frequency != -1)
@@ -82,5 +83,6 @@ void Driver::run() {
     std::cout << "+++++++++++++++++++++" << std::endl;
     std::cout << "   Run completete.   " << std::endl;
     std::cout << "   Time: " << (double)start_time << std::endl;
+    std::cout << "number of threads: " << omp_get_num_threads() << std::endl;
     std::cout << "+++++++++++++++++++++" << std::endl;
 }
