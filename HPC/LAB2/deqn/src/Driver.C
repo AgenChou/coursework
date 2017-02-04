@@ -40,8 +40,11 @@
 #endif
     std::cout << "+++++++++++++++++++++" << std::endl;
     std::cout << std::endl;
-
+    std::cout << "Creating mesh..." << std::endl;
+    double start_time = omp_get_wtime();
     mesh = new Mesh(input);
+    std::cout << "Time taken: " << omp_get_wtime() - start_time << std::endl;
+    std::cout << std::endl;
 
     diffusion = new Diffusion(input, mesh);
     writer = new VtkWriter(pname, mesh);
