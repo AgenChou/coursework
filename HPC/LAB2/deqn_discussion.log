@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  4 FEB 2017 00:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  4 FEB 2017 01:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -159,40 +159,37 @@ LaTeX Font Info:    ... okay on input line 19.
 -- Lines per column: 52 (exact).
 ** ATTENTION: \IEEEdisplaynotcompsoctitleabstractindextext is deprecated (line 
 52). Use \IEEEdisplaynontitleabstractindextext instead.
-** WARNING: IEEEPARstart drop letter has zero height! (line 104)
- Forcing the drop letter font size to 10pt.
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 	\end{thebibliography}
-                            
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <11> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.69997> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.5> on input line 91.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ] (./deqn_discussion.aux) ) 
 Here is how much of TeX's memory you used:
- 1440 strings out of 493013
- 24644 string characters out of 6139316
- 84623 words of memory out of 5000000
- 5026 multiletter control sequences out of 15000+600000
- 33575 words of font info for 62 fonts, out of 8000000 for 9000
+ 1463 strings out of 493013
+ 24975 string characters out of 6139316
+ 85623 words of memory out of 5000000
+ 5046 multiletter control sequences out of 15000+600000
+ 34884 words of font info for 67 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,5n,19p,406b,202s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,5n,19p,588b,202s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}<
-/usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/f
-onts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on deqn_discussion.pdf (1 page, 34054 bytes).
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-d
+ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on deqn_discussion.pdf (1 page, 74031 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 14 compressed objects within 1 object stream
+ 41 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
