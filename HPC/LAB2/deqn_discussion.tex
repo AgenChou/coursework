@@ -73,7 +73,7 @@
 	
 	More specifically, the Driver's constructor directly calls \emph{Mesh}, \emph{Diffusion}, and \emph{Writer} constructors, in that order, as the created mesh is an input to the latter two constructors. Therefore, the mesh will be the focus of our first attempt at achieving better performance. 
 	
-	The \emph{Mesh} class is responsible for creating the grid described in the input file. It runs two for loops, one for the x, one for the y coordinates. In the original code they are ran one after another, but as there is no overlap between them, running them in parallel is an obvious first step.
+	The \emph{Mesh} class is responsible for creating the grid described in the input file. It runs two for loops, one for the x, one for the y coordinates. In the original code they are ran one after another, but as there is no overlap between them, running them in parallel is an obvious first step. However, the loops are very simple and we do not expect to achieve as much with this as with the other classes.
 	
 	The \emph{Diffusion} class sets up the scheme, and the \emph{Diffusion.doCycle()} method acts as a wrapper for the scheme's \emph{doAdvance()} method. The constructor has a nested for loop, however we'll leave that one for later, and focus on speeding up the calculations.
 	
@@ -88,9 +88,13 @@
 	\section{Overhead}
 	Before we can objectively measure the improvement in performance, it is essential that we assess the overhead of using OpenMP. 
 	
-	To begin with, we measure the time taken to create the mesh and perform the calculations of the provided \emph{square.in} problem. To get a reading of the time taken, we use the \emph{omp\_get\_wtime()} just before and after creating the mesh, and likewise at the start and end of the \emph{Driver.run()} method. The readings can be found in the files \emph{test\_square20\_xx.txt}. The average time to create the mesh is X, and to run the Driver is Y.
+	To begin with, we measure the time taken to create the mesh and perform the calculations of the provided \emph{square.in} problem. To get a reading of the time taken, we use the \emph{omp\_get\_wtime()} just before and after creating the mesh, and likewise at the start and end of the \emph{Driver.run()} method. The readings can be found in the files \emph{test\_square20\_xx.txt}. The average time to create the mesh is $4.8640 \times 10^{-5}$, and to run the Driver is $0.165044$.
 	
-	It is clear that the problem size is not sufficient to give much room for improvement. Furthermore, increasing it will aid us with the statistical analysis of the results. For this reason we have also used a variety of machines. The files mentioned earlier are recorded.
+	It is clear that the problem size is not sufficient to give much room for improvement. Furthermore, increasing it will aid us with the statistical analysis of the results. For this reason we have also used a variety of machines. The files mentioned earlier are recorded on a personal laptop. Similar tests were ran for comparison on the DCS machines, and the results were found to be similar ($3.1258 \times 10^{-5}$ average mesh time, $0.257189$ average calculation time). There is also very little variance, which is why we deem a sample of 10 tests to be enough.
+	
+	After some trial and error, we found that increasing the grid size to $1000 \times 1000$ and the number of steps to $100$ gives us execution time of around a minute. It is a reasonable balance between obtaining meaningful results and repeating the tests. However the time taken to create the mesh was still of the same order of magnitude, averaging at X.
+	
+	
 	
 	\section{Speed up}
 	
@@ -103,12 +107,12 @@
 	\section{Conclusion}
 	
 	
-	\IEEEPARstart{}{} 
+	%\IEEEPARstart{}{} 
 	
-	\begin{thebibliography}{1}
+	%\begin{thebibliography}
 		
 		
-	\end{thebibliography}
+	%\end{thebibliography}
 	
 	% that's all folks
 \end{document}
