@@ -1,0 +1,115 @@
+\documentclass[11pt,journal]{IEEEtran}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+\else
+% normal IEEE
+\usepackage{cite}
+\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+	\title{High-Performance Computing Assignment 1: Diffusion Equations}
+	
+	\author{Agata~Borkowska,~UID: 1690550,~\IEEEmembership{MSc in Computer Science,~University of Warwick}% <-this % stops a space
+		\protect\\
+		\thanks{}}
+	
+	% The paper headers
+	
+	\markboth{}%
+	{ \MakeLowercase{\textit{}}: }
+	
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	\IEEEpeerreviewmaketitle
+	
+	
+	
+	\section{Introduction}
+	\IEEEPARstart{W}{e are} presented with a sequential code that calculates the result of the diffusion equations, at a specified interval, at given points of a grid. We begin by providing a brief overview of the code.
+	
+	The \emph{Main} method only parses the input file to instantiate and run the \emph{Driver}. The \emph{Driver} class is responsible for setting up the mesh, then advancing the calculation step by step by calls to the \emph{Diffusion} class, and writing the result to the file each time via the file writer. 
+	
+	More specifically, the Driver's constructor directly calls \emph{Mesh}, \emph{Diffusion}, and \emph{Writer} constructors, in that order, as the created mesh is an input to the latter two constructors. Therefore, the mesh will be the focus of our first attempt at achieving better performance. 
+	
+	The \emph{Mesh} class is responsible for creating the grid described in the input file. It runs two for loops, one for the x, one for the y coordinates. In the original code they are ran one after another, but as there is no overlap between them, running them in parallel is an obvious first step.
+	
+	The \emph{Diffusion} class sets up the scheme, and the \emph{Diffusion.doCycle()} method acts as a wrapper for the scheme's \emph{doAdvance()} method. The constructor has a nested for loop, however we'll leave that one for later, and focus on speeding up the calculations.
+	
+	The scheme makes a call to three methods in each step. The first one is \emph{diffuse(dt)}, which is key to the calculations. It contains two nested for loops, that iterate over each cell of the grid. The calculations are independent of each other, and that will be our next focus in an attempt to speed up the code.
+	
+	The remaining two methods, \emph{reset()} and \emph{updateBoundaries()}, update the Mesh with the result of the calculations. The former simply iterates over each cell in the grid. The latter performs calculations on the boundaries of the region in the problem. Thus, it has a for loop, iterating over each of the four boundaries, which should also be easily sped up.
+	
+	The \emph{VtWriter} class is responsible for writing the values in each cell to a file, one per a time step. Thus it also iterates over the cells of the mesh at each step.
+	
+	Thus we recognized three areas for improvement in performance: creating the mesh, the three methods iterating over each cell of the mesh (which will all be treated in a similar manner), and updating the region. 
+	
+	\section{Overhead}
+	Before we can objectively measure the improvement in performance, it is essential that we assess the overhead of using OpenMP. 
+	
+	To begin with, we measure the time taken to create the mesh and perform the calculations of the provided \emph{square.in} problem. To get a reading of the time taken, we use the \emph{omp\_get\_wtime()} just before and after creating the mesh, and likewise at the start and end of the \emph{Driver.run()} method. The readings can be found in the files \emph{test\_square20\_xx.txt}. The average time to create the mesh is X, and to run the Driver is Y.
+	
+	It is clear that the problem size is not sufficient to give much room for improvement. Furthermore, increasing it will aid us with the statistical analysis of the results. For this reason we have also used a variety of machines. The files mentioned earlier are recorded.
+	
+	\section{Speed up}
+	
+	\subsection{Mesh}
+	
+	\subsection{Diffusion}
+	
+	\section{Evaluation}
+	
+	\section{Conclusion}
+	
+	
+	\IEEEPARstart{}{} 
+	
+	\begin{thebibliography}{1}
+		
+		
+	\end{thebibliography}
+	
+	% that's all folks
+\end{document}
+
