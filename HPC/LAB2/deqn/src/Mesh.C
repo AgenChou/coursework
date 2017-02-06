@@ -136,7 +136,7 @@ double Mesh::getTotalTemperature()
 
         int nx = n[0]+2;
 	int k;
-#pragma omp parallel for schedule(dynamic) reduction(+:temperature) num_threads(1)
+#pragma omp parallel for schedule(dynamic) reduction(+:temperature) num_threads(4)
         for( k=y_min; k <= y_max; k++) {
             for(int j=x_min; j <= x_max; j++) {
 
