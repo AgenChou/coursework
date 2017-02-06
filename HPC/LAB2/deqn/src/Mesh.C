@@ -2,7 +2,6 @@
 
 #include <cstdlib>
 #include <iostream>
-#include <omp.h>
 
 #define POLY2(i, j, imin, jmin, ni) (((i) - (imin)) + ((j)-(jmin)) * (ni))
 
@@ -64,22 +63,12 @@ void Mesh::allocate()
     double xmin = min_coords[0];
     double ymin = min_coords[1];
 	
-    // FIRST CHANGE
-#pragma omp parallel sections
-    {
-#pragma omp sectionn
-	{
-    		for (int i=0; i < nx+2; i++) {
-        		cellx[i]=xmin+dx[0]*(i-1);
-    		}
+	for (int i=0; i < nx+2; i++) {
+       		cellx[i]=xmin+dx[0]*(i-1);
 	}
-#pragma omp section
-	{
-    		for (int i = 0; i < ny+2; i++) {
-        		celly[i]=ymin+dx[1]*(i-1);
-    		}
+	for (int i = 0; i < ny+2; i++) {
+       		celly[i]=ymin+dx[1]*(i-1);
 	}
-    }
 }
 
 double* Mesh::getU0()

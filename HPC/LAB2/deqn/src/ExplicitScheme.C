@@ -1,7 +1,7 @@
 #include "ExplicitScheme.h"
 
 #include <iostream>
-
+#include <omp.h>
 #define POLY2(i, j, imin, jmin, ni) (((i) - (imin)) + (((j)-(jmin)) * (ni)))
 
 ExplicitScheme::ExplicitScheme(const InputFile* input, Mesh* m) :
@@ -66,21 +66,22 @@ void ExplicitScheme::diffuse(double dt)
 
     double rx = dt/(dx*dx);
     double ry = dt/(dy*dy);
+    int k;
+    #pragma omp parallel for private(k) schedule(dynamic) num_threads(4)
+    	for(k=y_min; k <= y_max; k++) {
+        	for(int j=x_min; j <= x_max; j++) {
 
-    for(int k=y_min; k <= y_max; k++) {
-        for(int j=x_min; j <= x_max; j++) {
+            		int n1 = POLY2(j,k,x_min-1,y_min-1,nx);
+            		int n2 = POLY2(j-1,k,x_min-1,y_min-1,nx);
+            		int n3 = POLY2(j+1,k,x_min-1,y_min-1,nx);
+            		int n4 = POLY2(j,k-1,x_min-1,y_min-1,nx);
+            		int n5 = POLY2(j,k+1,x_min-1,y_min-1,nx);
 
-            int n1 = POLY2(j,k,x_min-1,y_min-1,nx);
-            int n2 = POLY2(j-1,k,x_min-1,y_min-1,nx);
-            int n3 = POLY2(j+1,k,x_min-1,y_min-1,nx);
-            int n4 = POLY2(j,k-1,x_min-1,y_min-1,nx);
-            int n5 = POLY2(j,k+1,x_min-1,y_min-1,nx);
-
-            u1[n1] = (1.0-2.0*rx-2.0*ry)*u0[n1] + rx*u0[n2] + rx*u0[n3]
-                + ry*u0[n4] + ry*u0[n5];
-        }
-    }
+            		u1[n1] = (1.0-2.0*rx-2.0*ry)*u0[n1] + rx*u0[n2] + rx*u0[n3]
+                	+ ry*u0[n4] + ry*u0[n5];
+        	}
 }
+    	}
 
 void ExplicitScheme::reflectBoundaries(int boundary_id)
 {

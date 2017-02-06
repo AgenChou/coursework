@@ -64,7 +64,11 @@ void Driver::run() {
     double start_time = omp_get_wtime();
     int step = 0;
     double t_current;
-    for(t_current = t_start; t_current < t_end; t_current += dt) {
+    int i; // iterating variable; omp can't iterate over double
+    int i_end = (t_end - t_start) / dt;
+#pragma omp parallel for private(i) schedule(static) num_threads(7)
+    for(i = 0; i < i_end; i++) {
+	    t_current = t_start + i*dt;
         step = t_current/dt + 1;
 
         std::cout << "+ step: " << (int)step << ", dt:   " << (double)dt << std::endl;
