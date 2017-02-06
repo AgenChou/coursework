@@ -42,8 +42,9 @@ void ExplicitScheme::reset()
     int y_max = mesh->getMax()[1]; 
 
     int nx = mesh->getNx()[0]+2;
-
-    for(int k = y_min-1; k <= y_max+1; k++) {
+    int k;
+#pragma omp parallel for private(k) schedule(dynamic)
+    for(k = y_min-1; k <= y_max+1; k++) {
         for(int j = x_min-1; j <=  x_max+1; j++) {
             int i = POLY2(j,k,x_min-1,y_min-1,nx);
             u0[i] = u1[i];
@@ -67,7 +68,7 @@ void ExplicitScheme::diffuse(double dt)
     double rx = dt/(dx*dx);
     double ry = dt/(dy*dy);
     int k;
-    #pragma omp parallel for private(k) schedule(dynamic) num_threads(4)
+    #pragma omp parallel for private(k) schedule(static) num_threads(4)
     	for(k=y_min; k <= y_max; k++) {
         	for(int j=x_min; j <= x_max; j++) {
 
