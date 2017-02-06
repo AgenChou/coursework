@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  6 FEB 2017 19:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  6 FEB 2017 21:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -240,38 +240,38 @@ Underfull \hbox (badness 1354) in paragraph at lines 183--184
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
 []\OT1/ptm/b/n/11 test[]xxsteps[]static.txt \OT1/ptm/m/n/11 - code ran on the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
 []\OT1/ptm/b/n/11 test[]xxsteps.txt\OT1/ptm/m/n/11 - code ran on the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 []\OT1/ptm/b/n/11 dump[]mesh[]1loop[]x.txt \OT1/ptm/m/n/11 - run-ning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 \OT1/ptm/m/n/11 the pro-gram with a sin-gle pragma in
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 250--251
+Underfull \hbox (badness 3942) in paragraph at lines 268--269
 \OT1/ptm/m/it/11 Mesh::getTotalTemperature()\OT1/ptm/m/n/11 , on a $\OT1/cmr/m/
 n/10.95 1000[]$ \OT1/ptm/m/n/11 grid
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--257
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 []\OT1/ptm/b/n/11 dump[]square1[]scheme[]testx.txt \OT1/ptm/m/n/11 - dump
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--257
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 \OT1/ptm/m/n/11 of the pro-gram with par-al-lelism in the
  []
 
@@ -294,7 +294,7 @@ fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
 ts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
 mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on deqn_discussion.pdf (3 pages, 119354 bytes).
+Output written on deqn_discussion.pdf (3 pages, 119795 bytes).
 PDF statistics:
  59 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream

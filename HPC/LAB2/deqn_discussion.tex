@@ -195,6 +195,7 @@
 	Similarly to \emph{Mesh::getTotalTemperature()} above, we add the same pragma with dynamic scheduling to \emph{ExplicitScheme::reset()}, which we identified earlier as one of the longer methods. Again, we run it a few times on \emph{square1.in} to obtain the following average time:
 	
 	\subsection{Diffusion}
+	Similarly to the constructor of the mesh, Diffusion takes up a significant portion of the time in large programs.
 
 	
 	\section{Discussion of Methods}
@@ -202,9 +203,24 @@
 	
 	It was expected that background processes running on the machine while the code was executing, could affect the results. Hence to mitigate that, multiple readings were taken.
 	
+	Finally, most of the work has been done on a personal laptop, which has a 2-core i5 processor. It was unfortunately unavoidable, as I had to travel, and couldn't even connect remotely to joshua.dcs.warwick.ac.uk.
+	
 	
 	\section{Conclusion}
+	Thus we ended up with the pragmas before the loops in the following methods:
+	\begin{itemize}
+		\item Mesh::getTotalTemperature()
+		\item Diffusion::init()
+		\item ExplicitScheme::reset()
+		\item ExplicitScheme::diffuse()
+	\end{itemize}
 
+	We decided against running the two loops in the constructor of Mesh concurrently, because due to their simplicity, we lost more performance to the overhead of using OpenMP parallel sections, than we gained from the concurrency.
+	
+	Finally, while the overall runtime wasn't improved significantly, the four aforementioned methods now have negligible contribution to the runtime, and the majority of it is caused by the VtkWriter, standard library, and an overwhelming number of calls to the getters.
+	
+	
+	
 	
 	
 	
@@ -233,6 +249,8 @@
 		\item \textbf{test1.txt} - output of gmon using \emph{square1.in}, which is a $1000 \times 1000$ grid
 		\item \textbf{testx1.txt} - output of gnom, using a very long and narrow grid (\emph{x1.in})
 		\item \textbf{test\_xxsteps\_original.txt} - output of gnome, when the original code is ran on the \emph{square1\_xxsteps.in}
+		\item \textbf{final\_test.txt} - running the final version of the program on \emph{square1.in}
+		
 	
 	\end{itemize}
 
@@ -254,15 +272,9 @@
 		\item \textbf{dump\_square20\_mesh\_xx.txt} - times taken to create a mesh with and without parallel sections, showing the overhead of OpenMP
 		\item \textbf{test\_square10k\_mesh\_xx.txt} -- as above, with a large problem
 		\item \textbf{dump\_square1\_scheme\_testx.txt} - dump of the program with parallelism in the \emph{ExplicitScheme::reset()} method
+		\item \textbf{final\_dump.txt} - running the final version of the program on \emph{square1.in}
 		
 	\end{itemize}
-
-	The following files are discarded attempts at parallelism:
-	\begin{itemize}
-		\item \textbf{Mesh\_parallel.txt} - running the two for loops in parallel, using \emph{\# pragma omp parallel sections}. It was used to measure the overhead of using OpenMP.
-		\item \textbf{Driver.txt} - original version of the Driver Class
-	\end{itemize}
-
 
 
 	
