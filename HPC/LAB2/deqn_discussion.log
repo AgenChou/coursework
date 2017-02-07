@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  6 FEB 2017 22:27
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  6 FEB 2017 01:00
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -159,6 +163,7 @@ LaTeX Font Info:    ... okay on input line 19.
 -- Lines per column: 52 (exact).
 ** ATTENTION: \IEEEdisplaynotcompsoctitleabstractindextext is deprecated (line 
 52). Use \IEEEdisplaynontitleabstractindextext instead.
+<<<<<<< HEAD
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 79.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <11> on input line 79.
@@ -185,10 +190,20 @@ Overfull \hbox (1.01747pt too wide) in paragraph at lines 119--130
  [][] 
  []
 
+=======
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 93.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <11> on input line 93.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.69997> on input line 93.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.5> on input line 93.
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
+<<<<<<< HEAD
 Underfull \hbox (badness 3769) in paragraph at lines 146--147
 []\OT1/ptm/m/n/11 We first add \OT1/ptm/m/it/11 #prag-man omp par-al-lel for pr
 i-
@@ -214,10 +229,14 @@ Underfull \hbox (badness 1888) in paragraph at lines 179--180
 
 
 Underfull \hbox (badness 2229) in paragraph at lines 181--182
+=======
+Underfull \hbox (badness 2229) in paragraph at lines 101--102
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 []\OT1/ptm/m/n/11 The av-er-age time taken to cre-ate the mesh is
  []
 
 
+<<<<<<< HEAD
 Underfull \hbox (badness 4467) in paragraph at lines 183--184
 []\OT1/ptm/m/n/11 For com-par-i-son, we run the same code with
  []
@@ -278,6 +297,75 @@ Underfull \hbox (badness 10000) in paragraph at lines 313--314
 [4
 
 ] (./deqn_discussion.aux) ) 
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+[]\OT1/ptm/m/n/11 The times have been recorded in the file
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+\OT1/ptm/m/it/11 test[]square10k[]mesh[]00.txt\OT1/ptm/m/n/11 . The av-er-age i
+s
+ []
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 111--112
+\OT1/ptm/m/n/11 0.005053462 with par-al-lelism. For com-par-i-son, the
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 132.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 132.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 132.
+
+Overfull \hbox (16.43184pt too wide) in paragraph at lines 132--146
+ [][] 
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
+[]\OT1/ptm/b/n/11 test[]square20[]xx.txt \OT1/ptm/m/n/11 - read-ings taken with
+
+ []
+
+
+Underfull \hbox (badness 7963) in paragraph at lines 187--188
+[]\OT1/ptm/b/n/11 test[]square20[]xxa.txt \OT1/ptm/m/n/11 - read-ings taken wit
+h
+ []
+
+
+Underfull \hbox (badness 7963) in paragraph at lines 188--189
+[]\OT1/ptm/b/n/11 test[]square100[]xx.txt \OT1/ptm/m/n/11 - read-ings taken wit
+h
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+[]\OT1/ptm/b/n/11 test[]square10k[]mesh[]00.txt \OT1/ptm/m/n/11 - run-ning
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 197--198
+\OT1/ptm/m/it/11 square[]mesh.in \OT1/ptm/m/n/11 with the for loops in \OT1/ptm
+/m/it/11 Mesh.C
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
+[]\OT1/ptm/b/n/11 test[]square10k[]mesh[]00.txt \OT1/ptm/m/n/11 - run-ning
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 198--199
+\OT1/ptm/m/it/11 square[]mesh.in \OT1/ptm/m/n/11 with the for loops in \OT1/ptm
+/m/it/11 Mesh.C
+ []
+
+[3] (./deqn_discussion.aux) ) 
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 Here is how much of TeX's memory you used:
  1481 strings out of 493013
  25146 string characters out of 6139316
@@ -285,6 +373,7 @@ Here is how much of TeX's memory you used:
  5055 multiletter control sequences out of 15000+600000
  40028 words of font info for 76 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
+<<<<<<< HEAD
  27i,8n,19p,708b,224s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}<
 /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
@@ -300,6 +389,21 @@ Output written on deqn_discussion.pdf (4 pages, 123116 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
+=======
+ 27i,8n,19p,645b,202s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc
+}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on deqn_discussion.pdf (3 pages, 96886 bytes).
+PDF statistics:
+ 47 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

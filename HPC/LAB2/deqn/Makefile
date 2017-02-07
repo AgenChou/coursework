@@ -15,7 +15,11 @@ BINARY := $(BUILDDIR)/$(PRODUCT)
 
 # gcc flags:
 CXX := g++
+<<<<<<< HEAD
 CXXFLAGS_DEBUG := -g -DDEBUG -pg
+=======
+CXXFLAGS_DEBUG := -g -DDEBUG
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 CXXFLAGS_OPT := -O3
 CXXFLAGS_OPENMP := -fopenmp
 

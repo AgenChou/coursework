@@ -4,7 +4,11 @@ xmin 0.0
 ymin 0.0
 xmax 1000.0
 ymax 1000.0
+<<<<<<< HEAD
 initial_dt 0.05
+=======
+initial_dt 0.01
+>>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 end_time 1.0
 scheme explicit
 vis_frequency 1
