@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  6 FEB 2017 21:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.12.13)  6 FEB 2017 22:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -240,42 +240,44 @@ Underfull \hbox (badness 1354) in paragraph at lines 183--184
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
 []\OT1/ptm/b/n/11 test[]xxsteps[]static.txt \OT1/ptm/m/n/11 - code ran on the
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 260--261
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 []\OT1/ptm/b/n/11 test[]xxsteps.txt\OT1/ptm/m/n/11 - code ran on the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 []\OT1/ptm/b/n/11 dump[]mesh[]1loop[]x.txt \OT1/ptm/m/n/11 - run-ning
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 \OT1/ptm/m/n/11 the pro-gram with a sin-gle pragma in
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 268--269
+Underfull \hbox (badness 3942) in paragraph at lines 307--308
 \OT1/ptm/m/it/11 Mesh::getTotalTemperature()\OT1/ptm/m/n/11 , on a $\OT1/cmr/m/
 n/10.95 1000[]$ \OT1/ptm/m/n/11 grid
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 []\OT1/ptm/b/n/11 dump[]square1[]scheme[]testx.txt \OT1/ptm/m/n/11 - dump
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 \OT1/ptm/m/n/11 of the pro-gram with par-al-lelism in the
  []
 
-[3] (./deqn_discussion.aux) ) 
+[4
+
+] (./deqn_discussion.aux) ) 
 Here is how much of TeX's memory you used:
  1481 strings out of 493013
  25146 string characters out of 6139316
@@ -283,21 +285,21 @@ Here is how much of TeX's memory you used:
  5055 multiletter control sequences out of 15000+600000
  40028 words of font info for 76 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,8n,19p,708b,202s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc
-}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
-fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fonts/type1/urw/ti
-mes/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
-are/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on deqn_discussion.pdf (3 pages, 119795 bytes).
+ 27i,8n,19p,708b,224s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}<
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fonts/type1/urw/time
+s/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/shar
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on deqn_discussion.pdf (4 pages, 123116 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

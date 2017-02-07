@@ -68,7 +68,7 @@ void ExplicitScheme::diffuse(double dt)
     double rx = dt/(dx*dx);
     double ry = dt/(dy*dy);
     int k;
-    #pragma omp parallel for private(k) schedule(static) num_threads(4)
+    #pragma omp parallel for private(k) schedule(dynamic)
     	for(k=y_min; k <= y_max; k++) {
         	for(int j=x_min; j <= x_max; j++) {
 
