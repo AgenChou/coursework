@@ -183,20 +183,56 @@
 	For comparison, we run the same code with a much larger program - such as the one in \emph{square\_mesh,in}. The times have been recorded in the file \emph{test\_square10k\_mesh\_00.txt}. The average is 0.005053462 with parallelism. For comparison, the same test was performed with the original code. The average was 0.0002356191, with results that can be found in \emph{test\_square10k\_mesh\_01.txt}. The difference is smaller but still non-negligible, being of one order of magnitude, and there's more variance.
 	
 	Gmon suggests that creating the mesh takes now about 1.03\% of the runtime (1.29\%-1.91\% previously), which is a slight improvement. The pragma is commented out in the code, as it gives no benefits for smaller problems.
-	
-	
-	
-	
 
 	It has to be stressed that this is the best case scenario for creating the Mesh, where the problem is calculated on a square region, and each one of the two for loops has the same amount of work to do. There would be no point in parallelising this part of the program, in problems with a big difference between the loops, for example with a matrix of size $1 \times 1000$.
 	
 	\subsection{ExplicitScheme}
 	
-	Similarly to \emph{Mesh::getTotalTemperature()} above, we add the same pragma with dynamic scheduling to \emph{ExplicitScheme::reset()}, which we identified earlier as one of the longer methods. Again, we run it a few times on \emph{square1.in} to obtain the following average time:
+	Similarly to \emph{Mesh::getTotalTemperature()} above, we add the same pragma with dynamic scheduling to \emph{ExplicitScheme::reset()}, which we identified earlier as one of the longer methods. 
 	
 	\subsection{Diffusion}
-	Similarly to the constructor of the mesh, Diffusion takes up a significant portion of the time in large programs.
+	Similarly to the constructor of the mesh, Diffusion takes up a significant portion of the time in large programs. We can again add the same pragma to the loop in the init.
+	
+	\subsection{Number of threads}
+	So far we have been relying on OpenMP automatically choosing the number of threads. We will use \emph{ExplicitScheme::reset()} to test the effects of changing the number of threads. To this end we set the number of threads in the pragma in \emph{ExplicitScheme}. The average time for the program to run on \emph{square1.in} without a pragma there is $11.6004$ s. 
+	
+	Very surprisingly we found no significant difference between the runtimes with different numbers of threads. The same test was repeated with the same pragma in \emph{Mesh::getTotalTemperature()} and a different test, and again the results didn't differ. They are presented in Table 4.
 
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Test & 1 thread & 2 threads& 3 threads & 4 threads \\
+			\hline
+			ExplicitScheme & 11.3941 & 11.8007 & 11.5279 & 11.3947 \\
+			\hline
+			Mesh & 6.2594 & 6.3017 & 6.3169 &6.2404\\
+
+			\hline
+		\end{tabular}
+		
+		\emph{Table 4: Comparison of runtimes with different number of threads}
+	\end{table}
+
+	We are certain that the specified number of threads has been running, as it was confirmed by adding additional logging with \emph{omp\_get\_num\_threads()} in both cases. The changes in code of Explicit Scheme have been copied to the file \emph{ExplicitScheme.txt}.
+	
+	To experiment with it further, we ran the problem \emph{square2.in} with the number of threads specified in the Explicit Scheme pragma. This problem has a small mesh, but 10000 of steps. The reason behind trying this was to see if the overhead of scheduling threads multiple times for a small problem, will become noticeable. It did, as demonstrated in Table 5.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Test & 1 thread & 2 threads& 3 threads & 4 threads \\
+			\hline
+			square2.in& 69.2724 & 76.5163 & 79.1382 & 91.0424 \\
+			
+			\hline
+		\end{tabular}
+		
+		\emph{Table 5: The runtime increases with the number of threads in a simple problem}
+	\end{table}
+	
+	The runtime increases with the number of threads. The best runtime is with just one thread, as the problem size is small ($100^2$ grid).
 	
 	\section{Discussion of Methods}
 	Something that has not been addressed in this writeup, and is beyond the scope of the project, is optimisation at compile time. The only change made to the MAKEFILE was adding debugging gmon flags, namely \emph{-g} and \emph{-pg}, and everything else was left as it was.
@@ -218,6 +254,8 @@
 	We decided against running the two loops in the constructor of Mesh concurrently, because due to their simplicity, we lost more performance to the overhead of using OpenMP parallel sections, than we gained from the concurrency.
 	
 	Finally, while the overall runtime wasn't improved significantly, the four aforementioned methods now have negligible contribution to the runtime, and the majority of it is caused by the VtkWriter, standard library, and an overwhelming number of calls to the getters.
+	
+	It was rather disappointing that changing the number of threads didn't demonstrate the expected behaviour of better performance as the number of threads increases, up to a certain point after which the performance worsens.
 	
 	
 	
@@ -259,6 +297,7 @@
 		\item \textbf{test\_xxsteps\_static.txt} - code ran on the \emph{square1\_xxsteps.in} with static scheduling
 		\item \textbf{test\_xxsteps.txt}- code ran on the \emph{square1\_xxsteps.in} with dynamic scheduling
 		\item \textbf{test\_square1\_scheme\_testx.txt} - parallelising ExplicitScheme with dynamic schedule
+		\item \textbf{test\_ythreadsx.txt} - statically scheduling x threads for Explicit Scheme
 		
 	\end{itemize}
 
@@ -273,6 +312,7 @@
 		\item \textbf{test\_square10k\_mesh\_xx.txt} -- as above, with a large problem
 		\item \textbf{dump\_square1\_scheme\_testx.txt} - dump of the program with parallelism in the \emph{ExplicitScheme::reset()} method
 		\item \textbf{final\_dump.txt} - running the final version of the program on \emph{square1.in}
+		\item \textbf{test\_square100\_ythread\_xx.txt} - results of specifying number of threads in ExplicitScheme, and running it on a large problem.
 		
 	\end{itemize}
 
