@@ -354,7 +354,7 @@
 	A note on writing the result files: to avoid any performances difference in the program, the results weren't recorded by changing the location of the output of the program in \emph{Driver.C}. Instead, we redirected it from the terminal to a specified file through bash.
 	
 	\section{Conclusion}
->>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
+
 	
 	
 	
@@ -368,23 +368,18 @@
 	\section{Index of test inputs and results}
 	The following tests were added:
 	\begin{itemize}
-<<<<<<< HEAD
+
 		\item \textbf{square1.in} - $1000 \times 1000$ matrix, 20 steps.
 		\item \textbf{square\_mesh.in} - $10000 \times 10000$ grid, 1 step
 		\item \textbf{x1.in} - $10 \times 10^7$ grid, 2 steps
 		\item \textbf{square1\_xxsteps.in} - as in \emph{square1.in}, with a different number of steps each time
 
-=======
-		\item \textbf{square1.in} - $100 \times 100$ matrix, 100 steps.
-		\item \textbf{square\_mesh.in} - $10000 \times 10000$ grid, 1 step
-		\item \textbf{square2.in} - $100 \times 100$ matrix, 1000 steps
->>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
+
 	\end{itemize}
 	
 	The following files were the first readings, without amending any code, other than to print out time taken:
 	
 	\begin{itemize}
-<<<<<<< HEAD
 		\item \textbf{test.txt} - gmon.out output of the runtimes, using \emph{square.in}
 		\item \textbf{testx.txt, testy.txt} - gmon output of the runtimes, using \emph{x.in} and \emph{y.in} respectively
 		\item \textbf{test1.txt} - output of gmon using \emph{square1.in}, which is a $1000 \times 1000$ grid
@@ -420,31 +415,6 @@
 	\end{itemize}
 
 
-=======
-		\item \textbf{test\_square20\_xx.txt} - readings taken with \emph{square.in} input on personal laptop
-		\item \textbf{test\_square20\_xxa.txt} - readings taken with \emph{square.in} input on lab machines through SSH	
-		\item \textbf{test\_square100\_xx.txt} - readings taken with \emph{square1.in} ($1000 \times 1000$ grid, 100 steps) input on personal laptop
-		\item \textbf{test\_square100\_xxa.txt} - as above, from the lab machines
-		\item \textbf{test\_square100\_1ksteps\_0x.txt} - measuring time taken by the Driver, 10000 steps.
-		\item \textbf{test\_square100\_1ksteps\_1x.txt} - measuring time taken by the Driver, 10000 steps, including the pragma in \emph{ExplicitScheme.C}
-		\item \textbf{test\_square100\_ythread\_xx.txt} - measuring time taken by the Driver, using y threads over a single loop in \emph{ExplicitScheme.C}
-	\end{itemize}
-
-	The following files are various attempts at parallelism:
-	\begin{itemize}
-		\item \textbf{test\_square10k\_mesh\_00.txt} - running \emph{square\_mesh.in} with the for loops in \emph{Mesh.C} in parallel
-		\item \textbf{test\_square10k\_mesh\_00.txt} - running \emph{square\_mesh.in} with the for loops in \emph{Mesh.C} using sequential code
-	\end{itemize}
-
-	The following files are discarded attempts at parallelism:
-	\begin{itemize}
-		\item \textbf{Mesh\_parallel.txt} - running the two for loops in parallel, using \emph{\# pragma omp parallel sections}. It was used to measure the overhead of using OpenMP.
-		\item \textbf{Driver.txt} - original version of the Driver Class
-	\end{itemize}
-
-
-
->>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 	
 	% that's all folks
 \end{document}

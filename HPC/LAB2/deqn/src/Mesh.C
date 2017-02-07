@@ -62,7 +62,6 @@ void Mesh::allocate()
 
     double xmin = min_coords[0];
     double ymin = min_coords[1];
-<<<<<<< HEAD
 //#pragma omp parallel sections
     { 
 //#pragma omp section   
@@ -74,15 +73,6 @@ void Mesh::allocate()
        		celly[i]=ymin+dx[1]*(i-1);
 	}
     }
-=======
-	
-	for (int i=0; i < nx+2; i++) {
-       		cellx[i]=xmin+dx[0]*(i-1);
-	}
-	for (int i = 0; i < ny+2; i++) {
-       		celly[i]=ymin+dx[1]*(i-1);
-	}
->>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
 }
 
 double* Mesh::getU0()
@@ -145,7 +135,6 @@ double Mesh::getTotalTemperature()
         int y_max = max[1]; 
 
         int nx = n[0]+2;
-<<<<<<< HEAD
 	int k;
 #pragma omp parallel for schedule(dynamic) reduction(+:temperature) num_threads(4)
         for( k=y_min; k <= y_max; k++) {
@@ -153,14 +142,6 @@ double Mesh::getTotalTemperature()
 
                 int n1 = POLY2(j,k,x_min-1,y_min-1,nx);
 //	#pragma omp critical
-=======
-
-        for(int k=y_min; k <= y_max; k++) {
-            for(int j=x_min; j <= x_max; j++) {
-
-                int n1 = POLY2(j,k,x_min-1,y_min-1,nx);
-
->>>>>>> f76d99e74d85230456b447a04a73aa1e15a37d4e
                 temperature += u0[n1];
             }
         }
