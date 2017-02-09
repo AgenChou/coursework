@@ -57,13 +57,14 @@ void append_int(struct linked_list * list, int val) {
 
 
 void main(int argc, char *argv[]) {
-	struct linked_list *list;
+	struct linked_list list = {NULL};
 	for(int k = 0; k < 11; k++) {
-		append_int(list, k);
-		struct element* elem = list->head;
-		do {
-			printf("%d ->", elem->data);
-		} while (elem->next != NULL);
+		append_int(&list, k);
+		struct element* elem = list.head;
+		while (elem != NULL) {
+			printf("%d -> ", elem->data);
+			elem = elem->next;
+		}
 		printf("\n");
 	}
 }
