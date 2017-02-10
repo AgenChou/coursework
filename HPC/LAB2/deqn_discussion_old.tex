@@ -1,0 +1,206 @@
+\documentclass[11pt,journal]{IEEEtran}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+\else
+% normal IEEE
+\usepackage{cite}
+\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+	\title{High-Performance Computing Assignment 1: Diffusion Equations}
+	
+	\author{Agata~Borkowska,~UID: 1690550,~\IEEEmembership{MSc in Computer Science,~University of Warwick}% <-this % stops a space
+		\protect\\
+		\thanks{}}
+	
+	% The paper headers
+	
+	\markboth{}%
+	{ \MakeLowercase{\textit{}}: }
+	
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	\IEEEpeerreviewmaketitle
+	
+	
+	
+	\section{Introduction}
+	\IEEEPARstart{W}{e are} presented with a sequential code that calculates the result of the diffusion equations, at a specified interval, at given points of a grid. We begin by providing a brief overview of the code.
+	
+	The \emph{Main} method only parses the input file to instantiate and run the \emph{Driver}. The \emph{Driver} class is responsible for setting up the mesh, then advancing the calculation step by step by calls to the \emph{Diffusion} class, and writing the result to the file each time via the file writer. It contains the loop that makes call at each step - at dt intervals, rather than at each cell of the mesh. This is the longest loop in the program, and we identify it as the key to improving the performance.
+	
+	More specifically, the Driver's constructor directly calls \emph{Mesh}, \emph{Diffusion}, and \emph{Writer} constructors, in that order, as the created mesh is an input to the latter two constructors. Therefore, the mesh will be the focus of our first attempt at parallelism. 
+	
+	The \emph{Mesh} class is responsible for creating the grid described in the input file. It runs two for loops, one for the x, one for the y coordinates. In the original code they are ran one after another, but as there is no overlap between them, running them in parallel is an obvious first step. The loops in it are very simple, and can be run concurrently, so it will help us measure the overhead, and we do not expect to achieve as much with this as with the other classes.
+	
+	The \emph{Diffusion} class sets up the scheme, and the \emph{Diffusion.doCycle()} method acts as a wrapper for the scheme's \emph{doAdvance()} method. The constructor has a nested for loop, however we'll leave that one for later, and focus on speeding up the calculations.
+	
+	The scheme makes a call to three methods in each step. The first one is \emph{diffuse(dt)}, which is key to the calculations. It contains two nested for loops, that iterate over each cell of the grid. The calculations are independent of each other, and that will be our next focus in an attempt to speed up the code.
+	
+	The remaining two methods, \emph{reset()} and \emph{updateBoundaries()}, update the Mesh with the result of the calculations. The former simply iterates over each cell in the grid. The latter performs calculations on the boundaries of the region in the problem. Thus, it has a for loop, iterating over each of the four boundaries, which should also be easily sped up.
+	
+	The \emph{VtWriter} class is responsible for writing the values in each cell to a file, one per a time step. Thus it also iterates over the cells of the mesh at each step.
+	
+	Thus we recognized three areas for improvement in performance: creating the mesh, the three methods iterating over each cell of the mesh (which will all be treated in a similar manner), and most importantly the loop that advances the calculations step by step. 
+	
+	The results of all the tests are in subdirectory \emph{results}, and a short index can be found in Appendix A.
+	
+	\section{Setting up the tests and measuring overhead}
+	Before we can objectively measure the improvement in performance, it is essential that we assess the overhead of using OpenMP. 
+	
+	To begin with, we measure the time taken to create the mesh and perform the calculations of the provided \emph{square.in} problem. To get a reading of the time taken, we use the \emph{omp\_get\_wtime()} just before and after creating the mesh, and likewise at the start and end of the \emph{Driver.run()} method. The readings can be found in the files \emph{test\_square20\_xx.txt}. The average time to create the mesh is $4.8640 \times 10^{-5}$, and to run the Driver is $0.165044$.
+	
+	It is clear that the problem size is not sufficient to give much room for improvement. Furthermore, increasing it will aid us with the statistical analysis of the results. For this reason we have also used a variety of machines. The files mentioned earlier are recorded on a personal laptop. Similar tests were ran for comparison on the DCS machines, and the results were found to be similar ($3.1258 \times 10^{-5}$ average mesh time, $0.257189$ average calculation time). There is also very little variance, which is why we deem a sample of 10 tests to be enough.
+	
+	After some trial and error, we found that increasing the grid size to $1000 \times 1000$ and the number of steps to $100$ gives us execution time of around a minute. It is a reasonable balance between obtaining meaningful results and repeating the tests. However the time taken to create the mesh was still of the same order of magnitude.
+	
+	We will use the simple loop to create mesh to measure the overhead of OpenMP. To do this, we will put each loop as a section in \emph{\#pragma omp parallel sections}, and record the time through \emph{Driver} right before and after creating the mesh. The results are recorded in files \emph{test\_square20\_mesh\_xx.txt}.
+	
+	The average time taken to create the mesh is $0.00570391$, which is 117 times more than without parallelism - 2 orders of magnitude. The difference - $0.00566$ s. - is the overhead of using OpenMP.
+	
+	
+	\section{Speed up}
+	
+	\subsection{Mesh}
+	As shown before, OpenMP creates a very significant overhead, so perhaps rather than asking "how much can we speed up creating the mesh?", we should work out how big the problem needs to be, to overcome the overhead.
+	
+	We found that using a $10000 \times 10000$ is the maximum problem size our machines can deal with. Anything larger, even by one order of magnitude will cause integer overflow. To deal with that, we could use arrays of long long int, however it is worth considering the memory required to hold such array. Take an array of integers, each one being 32 bits. An array of size $(1 \times 10^4) \times (1 \times 10^5)$ - just 10 times larger than the problem in \emph{square\_mesh.in} - will require $32 \times 10^{9}$ bits, which is 4 GB. Therefore not much can be achieved here with the aid of just OpenMP. 
+	
+	The times have been recorded in the file \emph{test\_square10k\_mesh\_00.txt}. The average is 0.005053462 with parallelism. For comparison, the same test was performed with the original code. The average was 0.0002356191, with results that can be found in \emph{test\_square10k\_mesh\_01.txt}. The difference is smaller but still non-negligible, being of one order of magnitude, and there's more variance.
+	
+	It has to be stressed that this is the best case scenario for creating the Mesh, where the problem is calculated on a square region, and each one of the two for loops has the same amount of work to do. There would be no point in parallelising this part of the program, in problems with a big difference between the loops, for example with a matrix of size $1 \times 1000$.
+	
+	Thus, we won't be able to achieve any speed up in the mesh. 
+	
+	\subsection{Diffusion}
+	
+	
+	
+	Another attempt we can make is to parallelise the scheme.
+	
+	After a brief inspection of the \emph{ExplicitScheme.C} and the loops in it, we conclude that there are no dependencies between the iterations. Each iteration of the nested loops calculates the value at a given cell of the Mesh, independently of the other cells. Therefore we can not worry with a critical section, which would just create an additional overhead. 
+	
+	To take an initial reading for the time taken to calculate the diffusion, we use \emph{square2.in}. It is a $100 \times 100$ grid with 100000 steps. The average time taken by the Driver is 68.0825 s, and the results are recorded in the files named \emph{test\_square100\_1ksteps\_0x.txt}.
+	
+	We use \emph{\#pragma omp parallel for private(k) schedule(static)}, which schedules the iterations of the loop between available threads - chosen automatically based on the architecture. In the case of my laptop, it picks 4 threads. The average is 89.1293 s, with the results recorded in the files \emph{test\_square100\_1ksteps\_1x.txt}. This is significantly worse than a sequential performance. 
+	
+	For comparison, we specify the number of threads, from 1 to 4, by adding \emph{num\_threads(x)} at the end of the pragma. The results are presented in the Table 1 below. 
+	\begin{table}[h]
+		\centering
+	\begin{tabular}{|c||c|c|c|c|c||c|}
+		\hline 
+		 & Run 1  & Run 2  & Run 3  & Run 4  & Run 5  & Average  \\ 
+		\hline 
+		1 & 73.6722  & 68.6994  & 68.2287  & 67.4667  & 68.2951  & 69.2724  \\ 
+		\hline 
+		2 & 80.5171  & 74.4021  & 75,1654  & 74.5040  & 77.9940  & 76.5163  \\ 
+		\hline 
+		3& 81.0917  & 79.0574  & 78.0048  & 79.5261  & 78.0110  & 79.1382  \\ 
+		\hline 
+		4& 97.8915 & 89.3469 & 88.6477 & 89.2015 & 90.1243 & 91.0424 \\ 
+		\hline 
+	\end{tabular} 
+\emph{Table 1: Comparison of Runtimes with Pragma in ExplicitScheme.C}
+\end{table}
+	
+	It is clear that with this problem size, there is no point in attempting to parallelise the remaining loops in the \emph{ExplicitScheme.C}. The runtime increases with each additional thread. 
+	
+	\subsection{Driver}
+	The most important part of the code and the most timely one is the loop in \emph{Driver.C}, iterating over each step, in dt intervals, from start time to end time. However after inspecting the code, we notice that each iteration depends on the results from the previous one, and thus we cannot parallelise it at all. Thus we can keep the number of steps small, and concentrate on 
+	
+	\section{Discussion of Methods}
+	Something that has not been addressed in this writeup, and is beyond the scope of the project, is optimisation at compile time. The only change made to the MAKEFILE was adding debugging flags, and everything else was left as it was.
+	
+	It was expected that background processes running on the machine while the code was executing, could affect the results. Hence to mitigate that, multiple readings were taken.
+	
+	A note on writing the result files: to avoid any performances difference in the program, the results weren't recorded by changing the location of the output of the program in \emph{Driver.C}. Instead, we redirected it from the terminal to a specified file through bash.
+	
+	\section{Conclusion}
+	
+	
+	
+	%\IEEEPARstart{}{} 
+	
+	%\begin{thebibliography}
+		
+		
+	%\end{thebibliography}
+	\appendices
+	\section{Index of test inputs and results}
+	The following tests were added:
+	\begin{itemize}
+		\item \textbf{square1.in} - $100 \times 100$ matrix, 100 steps.
+		\item \textbf{square\_mesh.in} - $10000 \times 10000$ grid, 1 step
+		\item \textbf{square2.in} - $100 \times 100$ matrix, 1000 steps
+	\end{itemize}
+	
+	The following files were the first readings, without amending any code, other than to print out time taken:
+	
+	\begin{itemize}
+		\item \textbf{test\_square20\_xx.txt} - readings taken with \emph{square.in} input on personal laptop
+		\item \textbf{test\_square20\_xxa.txt} - readings taken with \emph{square.in} input on lab machines through SSH	
+		\item \textbf{test\_square100\_xx.txt} - readings taken with \emph{square1.in} ($1000 \times 1000$ grid, 100 steps) input on personal laptop
+		\item \textbf{test\_square100\_xxa.txt} - as above, from the lab machines
+
+	\end{itemize}
+
+	The following files are various attempts at parallelism:
+	\begin{itemize}
+		\item \textbf{test\_square10k\_mesh\_00.txt} - running \emph{square\_mesh.in} with the for loops in \emph{Mesh.C} in parallel
+		\item \textbf{test\_square10k\_mesh\_00.txt} - running \emph{square\_mesh.in} with the for loops in \emph{Mesh.C} using sequential code
+	\end{itemize}
+
+	The following files are discarded attempts at parallelism:
+	\begin{itemize}
+		\item \textbf{Mesh\_parallel.txt} - running the two for loops in parallel, using \emph{\# pragma omp parallel sections}. It was used to measure the overhead of using OpenMP.
+		\item \textbf{Driver.txt} - original version of the Driver Class
+	\end{itemize}
+
+
+
+	
+	% that's all folks
+\end{document}
+

@@ -69,6 +69,198 @@
 	\section{Introduction}
 	\IEEEPARstart{W}{e are} presented with a sequential code that calculates the result of the diffusion equations, at a specified interval, at given points of a grid. We begin by providing a brief overview of the code.
 	
+<<<<<<< HEAD
+	The \emph{Main} method only parses the input file to instantiate and run the \emph{Driver}. The \emph{Driver} class is responsible for setting up the mesh, then advancing the calculation step by step by calls to the \emph{Diffusion} class, and writing the result to the file each time via the file writer. It contains the loop that makes call at each step - at dt intervals, rather than at each cell of the mesh. This is the longest loop in the program, and the most timely one, however each calculation directly depends on the results of the previous iteration, and thus it cannot be parallelised. Hence we can keep the number of steps small, and focus on other loops.
+	
+	We will therefore focus on all methods which iterate over the mesh, and attempt to parallelise those. The results of all the tests are in subdirectory \emph{results}, and a short index can be found in Appendix A.
+	
+	\section{Initial readings}
+	We use gmon to get the proportion of the time each function is running, and \emph{omp\_get\_wtime()} to measure total time. The first three tests done, \emph{test.txt}, \emph{testx.txt}, and \emph{testy.txt} are readings taken after running deqn on the three original tests provided. In the latter two, the runtimes of the functions are negligible. We will return later to problems which have a very long and narrow, rather than an almost square grid. 
+	
+	For now, let us focus on problems with a square region. The most costly operations are summarised in the table below, excluding standard library, which takes over 40\% of the time on a square grid, and methods which have negligible runtimes. It demonstrates a comparison between running the program on a $100^2$, $1000^2$, and $10000^2$ (with 2 steps) grid, and the difference in the percentage of time take by each method. For comparison, we added a test on a long and narrow grid.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Function & $100^2$ & $1000^2$ & $10000^2$ & $10\times 10^7$\\
+			\hline
+			VtkWriter::writeVtk(...) & 23.34  & 28.21 & 24.16 & 35.22\\
+			\hline
+			Mesh::getTotal... & 16.67 & 15.39 & 6.73 & 5.35\\
+			\hline
+			Mesh::getNx() & 8.34 & 11.54 & 12.58 & 7.51\\
+			\hline
+			ExplicitScheme::reset() & 3.33 & 5.13 & 7.53 & 6.69\\
+			\hline
+			ExplicitScheme::reflect... & 3.33 & 2.56 & 0.00 &1.63\\
+			\hline
+			Mesh::getU0() & 1.67 & 3.85 & 3.47 & 2,23\\
+			\hline
+			Mesh::getDim() & 1.67 & 1.28 & 2.87 & 2.30\\
+			\hline 
+			Mesh::Mesh(...) & 1.67 & 1.28 & 1.29 & 1.34\\
+			\hline
+			Diffusion::init() & 0.00 & 0.00 & 9.01 & 10.48\\
+			\hline
+		\end{tabular}
+	
+	\emph{Table 1: Summary of most costly methods in the program.}
+	\end{table}
+
+	\emph{Mesh} and \emph{ExplicitScheme} are the two classes responsible for calculations, which are also most costly. Especially in the case of \emph{Mesh::getTotalTemperature(...)} it isn't surprising to see that it contributes to a significant proportion of the runtime, as it sums over each cell of the mesh.
+	
+	As the problem size increases, the time needed to set it up is extended. Therefore on the $1000^2$ grid we begin to notice the impact of methods such as \emph{Mesh::Mesh()} and \emph{Diffusion::init()}
+	
+	It also isn't unexpected that \emph{ExplicitScheme::reset()} takes up more time as the problem size increases. This will be our second focus in improving performance.
+	
+	What is much more surprising in this table, are the three getters in \emph{Mesh}. Closer inspection of them is in Table 2, using $1000^2$ grid.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Method & total time (s) & number of calls & time per call (ms) \\
+			\hline
+			getNx() & 0.05 & 42084401 & 0.00 \\
+			\hline
+			getU0() & 0.02 &21000125 & 0.00 \\
+			\hline
+			getDim() &0.01 &21& 0.24\\
+			\hline
+		\end{tabular}
+	
+	\emph{Table 2: More information about the unexpectedly costly getters}
+	\end{table}
+
+	As we can see, those methods take a significant proportion of the time not because of their complexity, but because of numerous calls, and so we can't do anything about it with OpenMP.
+	
+	The most important part of the code is the loop in \emph{Driver.C}, iterating over each step, in dt intervals, from start time to end time. However after inspecting the code, we notice that each iteration depends on the results from the previous one, and thus we cannot parallelise it at all. Since all other loops operate on the mesh, rather than on the steps, we can reduce the number of steps, to speed up the testing. We will use 2 steps.
+
+	
+	\section{Speed up}
+	
+	\subsection{Mesh}
+	From Table 1 we can see that the file writer takes most time, but also it cannot be parallelised, as we want the results in a file to appear in order. Therefore we move to \emph{Mesh::getTotalTemperature()}. It simply sums the value of each cell, and there's no dependency between cells. The only thing we will have to be careful of, is to take care of the critical section.
+	
+	We found that using a $10000 \times 10000$ is the maximum problem size our machines can deal with. Anything larger, even by one order of magnitude will cause integer overflow. To deal with that, we could use arrays of long long int, however it is worth considering the memory required to hold such array. Take an array of integers, each one being 32 bits. An array of size $(1 \times 10^4) \times (1 \times 10^5)$ - just 10 times larger than the problem in \emph{square\_mesh.in} - will require $32 \times 10^{9}$ bits, which is 4 GB. Therefore not much can be achieved here with the aid of just OpenMP. 
+
+	We first add \emph{\#pragman omp parallel for private(k) schedule(static)} just before the for loop in \emph{Mesh::getTotalTemperature()}, and also \emph{\#pragma omp critical} before summation of the temperature inside the loop. The results of this ran on the $1000^2$ grid (\emph{square1.in}). As the program runs, the results are redirected to the file. We can easily get the total run time from it, which is 153.015 s. For comparison, the sequential code runs in 116.075 s.
+	
+	Instead of using a critical section, we can use reduction. Our next test is adding \emph{\#reduction(+:temperature)} to the pragma options. With that, the total time to run the program is again around 116 s.
+	
+	Finally we try to change schedule to dynamic. It gives us a slightly better overall time, with 110.024 s average over 3 runs, and the results are very close together.
+	
+	Nevertheless, in the gmon's output we can see that the methods now takes a much smaller proportion of the time.
+	
+	Since this method is called multiple times, it would be interesting to see how big a difference it makes when the problem has more steps. We use files labelled \emph{square1\_xxsteps.in} as inputs, and compare the runtimes between the original and the parallelised program. Here's a comparison:
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			No. of steps & original runtime & static runtime& dynamic runtime \\
+			\hline
+			10 & 7.0223 & 7.12566 & 6.32213 \\
+			\hline
+			20 & 13.0044 & 11.9042 & 11.2931 \\
+			\hline
+			40 & 23.1150 & 23.1293 & 22.6300 \\
+			\hline
+			50 & 29.0084 & 29.0960 & 28.9210 \\
+			\hline
+		\end{tabular}
+	
+	\emph{Table 3: Parallelising Mesh::getTotalTemperature() statically and dynamically}
+	\end{table}
+
+	Although the difference isn't overwhelming, a dynamic schedule of the thread consistently performs better than the others, so we're going to keep it.
+	
+	Last thing which we can do with Mesh - and which is only relevant with big problems - is parallelising the constructor. In a small problem, such as \emph{square.in} we expect to see a lot of overhead. 
+	
+	To do this, we will put each loop as a section in \emph{\#pragma omp parallel sections}, and record the time through \emph{Driver} right before and after creating the mesh. The results are recorded in files \emph{test\_square20\_mesh\_xx.txt}.
+	
+	The average time taken to create the mesh is $0.00570391$, which is 117 times more than without parallelism - 2 orders of magnitude. The difference - $0.00566$ s. - is the overhead of using OpenMP.
+	
+	For comparison, we run the same code with a much larger program - such as the one in \emph{square\_mesh,in}. The times have been recorded in the file \emph{test\_square10k\_mesh\_00.txt}. The average is 0.005053462 with parallelism. For comparison, the same test was performed with the original code. The average was 0.0002356191, with results that can be found in \emph{test\_square10k\_mesh\_01.txt}. The difference is smaller but still non-negligible, being of one order of magnitude, and there's more variance.
+	
+	Gmon suggests that creating the mesh takes now about 1.03\% of the runtime (1.29\%-1.91\% previously), which is a slight improvement. The pragma is commented out in the code, as it gives no benefits for smaller problems.
+
+	It has to be stressed that this is the best case scenario for creating the Mesh, where the problem is calculated on a square region, and each one of the two for loops has the same amount of work to do. There would be no point in parallelising this part of the program, in problems with a big difference between the loops, for example with a matrix of size $1 \times 1000$.
+	
+	\subsection{ExplicitScheme}
+	
+	Similarly to \emph{Mesh::getTotalTemperature()} above, we add the same pragma with dynamic scheduling to \emph{ExplicitScheme::reset()}, which we identified earlier as one of the longer methods. 
+	
+	\subsection{Diffusion}
+	Similarly to the constructor of the mesh, Diffusion takes up a significant portion of the time in large programs. We can again add the same pragma to the loop in the init.
+	
+	\subsection{Number of threads}
+	So far we have been relying on OpenMP automatically choosing the number of threads. We will use \emph{ExplicitScheme::reset()} to test the effects of changing the number of threads. To this end we set the number of threads in the pragma in \emph{ExplicitScheme}. The average time for the program to run on \emph{square1.in} without a pragma there is $11.6004$ s. 
+	
+	Very surprisingly we found no significant difference between the runtimes with different numbers of threads. The same test was repeated with the same pragma in \emph{Mesh::getTotalTemperature()} and a different test, and again the results didn't differ. They are presented in Table 4.
+
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Test & 1 thread & 2 threads& 3 threads & 4 threads \\
+			\hline
+			ExplicitScheme & 11.3941 & 11.8007 & 11.5279 & 11.3947 \\
+			\hline
+			Mesh & 6.2594 & 6.3017 & 6.3169 &6.2404\\
+
+			\hline
+		\end{tabular}
+		
+		\emph{Table 4: Comparison of runtimes with different number of threads}
+	\end{table}
+
+	We are certain that the specified number of threads has been running, as it was confirmed by adding additional logging with \emph{omp\_get\_num\_threads()} in both cases. The changes in code of Explicit Scheme have been copied to the file \emph{ExplicitScheme.txt}.
+	
+	To experiment with it further, we ran the problem \emph{square2.in} with the number of threads specified in the Explicit Scheme pragma. This problem has a small mesh, but 10000 of steps. The reason behind trying this was to see if the overhead of scheduling threads multiple times for a small problem, will become noticeable. It did, as demonstrated in Table 5.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Test & 1 thread & 2 threads& 3 threads & 4 threads \\
+			\hline
+			square2.in& 69.2724 & 76.5163 & 79.1382 & 91.0424 \\
+			
+			\hline
+		\end{tabular}
+		
+		\emph{Table 5: The runtime increases with the number of threads in a simple problem}
+	\end{table}
+	
+	The runtime increases with the number of threads. The best runtime is with just one thread, as the problem size is small ($100^2$ grid).
+	
+	\section{Discussion of Methods}
+	Something that has not been addressed in this writeup, and is beyond the scope of the project, is optimisation at compile time. The only change made to the MAKEFILE was adding debugging gmon flags, namely \emph{-g} and \emph{-pg}, and everything else was left as it was.
+	
+	It was expected that background processes running on the machine while the code was executing, could affect the results. Hence to mitigate that, multiple readings were taken.
+	
+	Finally, most of the work has been done on a personal laptop, which has a 2-core i5 processor. It was unfortunately unavoidable, as I had to travel, and couldn't even connect remotely to joshua.dcs.warwick.ac.uk.
+	
+	
+	\section{Conclusion}
+	Thus we ended up with the pragmas before the loops in the following methods:
+	\begin{itemize}
+		\item Mesh::getTotalTemperature()
+		\item Diffusion::init()
+		\item ExplicitScheme::reset()
+		\item ExplicitScheme::diffuse()
+	\end{itemize}
+
+	We decided against running the two loops in the constructor of Mesh concurrently, because due to their simplicity, we lost more performance to the overhead of using OpenMP parallel sections, than we gained from the concurrency.
+	
+	Finally, while the overall runtime wasn't improved significantly, the four aforementioned methods now have negligible contribution to the runtime, and the majority of it is caused by the VtkWriter, standard library, and an overwhelming number of calls to the getters.
+	
+	It was rather disappointing that changing the number of threads didn't demonstrate the expected behaviour of better performance as the number of threads increases, up to a certain point after which the performance worsens.
+	
+	
+	
+=======
 	The \emph{Main} method only parses the input file to instantiate and run the \emph{Driver}. The \emph{Driver} class is responsible for setting up the mesh, then advancing the calculation step by step by calls to the \emph{Diffusion} class, and writing the result to the file each time via the file writer. It contains the loop that makes call at each step - at dt intervals, rather than at each cell of the mesh. This is the longest loop in the program, and we identify it as the key to improving the performance.
 	
 	More specifically, the Driver's constructor directly calls \emph{Mesh}, \emph{Diffusion}, and \emph{Writer} constructors, in that order, as the created mesh is an input to the latter two constructors. Therefore, the mesh will be the focus of our first attempt at parallelism. 
@@ -162,6 +354,7 @@
 	A note on writing the result files: to avoid any performances difference in the program, the results weren't recorded by changing the location of the output of the program in \emph{Driver.C}. Instead, we redirected it from the terminal to a specified file through bash.
 	
 	\section{Conclusion}
+
 	
 	
 	
@@ -175,35 +368,51 @@
 	\section{Index of test inputs and results}
 	The following tests were added:
 	\begin{itemize}
-		\item \textbf{square1.in} - $100 \times 100$ matrix, 100 steps.
+
+		\item \textbf{square1.in} - $1000 \times 1000$ matrix, 20 steps.
 		\item \textbf{square\_mesh.in} - $10000 \times 10000$ grid, 1 step
-		\item \textbf{square2.in} - $100 \times 100$ matrix, 1000 steps
+		\item \textbf{x1.in} - $10 \times 10^7$ grid, 2 steps
+		\item \textbf{square1\_xxsteps.in} - as in \emph{square1.in}, with a different number of steps each time
+
+
 	\end{itemize}
 	
 	The following files were the first readings, without amending any code, other than to print out time taken:
 	
 	\begin{itemize}
-		\item \textbf{test\_square20\_xx.txt} - readings taken with \emph{square.in} input on personal laptop
-		\item \textbf{test\_square20\_xxa.txt} - readings taken with \emph{square.in} input on lab machines through SSH	
-		\item \textbf{test\_square100\_xx.txt} - readings taken with \emph{square1.in} ($1000 \times 1000$ grid, 100 steps) input on personal laptop
-		\item \textbf{test\_square100\_xxa.txt} - as above, from the lab machines
-		\item \textbf{test\_square100\_1ksteps\_0x.txt} - measuring time taken by the Driver, 10000 steps.
-		\item \textbf{test\_square100\_1ksteps\_1x.txt} - measuring time taken by the Driver, 10000 steps, including the pragma in \emph{ExplicitScheme.C}
-		\item \textbf{test\_square100\_ythread\_xx.txt} - measuring time taken by the Driver, using y threads over a single loop in \emph{ExplicitScheme.C}
+		\item \textbf{test.txt} - gmon.out output of the runtimes, using \emph{square.in}
+		\item \textbf{testx.txt, testy.txt} - gmon output of the runtimes, using \emph{x.in} and \emph{y.in} respectively
+		\item \textbf{test1.txt} - output of gmon using \emph{square1.in}, which is a $1000 \times 1000$ grid
+		\item \textbf{testx1.txt} - output of gnom, using a very long and narrow grid (\emph{x1.in})
+		\item \textbf{test\_xxsteps\_original.txt} - output of gnome, when the original code is ran on the \emph{square1\_xxsteps.in}
+		\item \textbf{final\_test.txt} - running the final version of the program on \emph{square1.in}
+		
+	
 	\end{itemize}
 
-	The following files are various attempts at parallelism:
+	The following files are results of various attempts at parallelism:
 	\begin{itemize}
-		\item \textbf{test\_square10k\_mesh\_00.txt} - running \emph{square\_mesh.in} with the for loops in \emph{Mesh.C} in parallel
-		\item \textbf{test\_square10k\_mesh\_00.txt} - running \emph{square\_mesh.in} with the for loops in \emph{Mesh.C} using sequential code
+		\item \textbf{test\_xxsteps\_static.txt} - code ran on the \emph{square1\_xxsteps.in} with static scheduling
+		\item \textbf{test\_xxsteps.txt}- code ran on the \emph{square1\_xxsteps.in} with dynamic scheduling
+		\item \textbf{test\_square1\_scheme\_testx.txt} - parallelising ExplicitScheme with dynamic schedule
+		\item \textbf{test\_ythreadsx.txt} - statically scheduling x threads for Explicit Scheme
+		
 	\end{itemize}
 
-	The following files are discarded attempts at parallelism:
+	For the above files, we dumped the stack to a file. It includes readings of time taken to create the Mesh and for overall calculations, more as a reference. In our considerations, we used times from gmon.
 	\begin{itemize}
-		\item \textbf{Mesh\_parallel.txt} - running the two for loops in parallel, using \emph{\# pragma omp parallel sections}. It was used to measure the overhead of using OpenMP.
-		\item \textbf{Driver.txt} - original version of the Driver Class
+		\item \textbf{dump\_mesh\_plain\_1.txt} - running the original programwith \emph{square\_mesh.in}
+		\item \textbf{dump\_mesh\_1loop\_x.txt} - running the program with a single pragma in \emph{Mesh::getTotalTemperature()}, on a $1000^2$ grid \emph{square\_mesh.in}
+		\item \textbf{dump\_xxsteps\_original.txt} 
+		\item \textbf{dump\_xxsteps\_static.txt}
+		\item \textbf{dump\_xxsteps.txt}
+		\item \textbf{dump\_square20\_mesh\_xx.txt} - times taken to create a mesh with and without parallel sections, showing the overhead of OpenMP
+		\item \textbf{test\_square10k\_mesh\_xx.txt} -- as above, with a large problem
+		\item \textbf{dump\_square1\_scheme\_testx.txt} - dump of the program with parallelism in the \emph{ExplicitScheme::reset()} method
+		\item \textbf{final\_dump.txt} - running the final version of the program on \emph{square1.in}
+		\item \textbf{test\_square100\_ythread\_xx.txt} - results of specifying number of threads in ExplicitScheme, and running it on a large problem.
+		
 	\end{itemize}
-
 
 
 	
