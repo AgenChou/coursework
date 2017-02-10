@@ -1,0 +1,15 @@
++++++++++++++++++++++
+  Running deqn v0.1  
+- input file: square_mesh
+- dt_max: 0.2
+- initial_dt: 0.05
+- start_time: 0
+- end_time: 0.1
+- vis_frequency: 1
+- summary_frequency: 1
+- number of threads: 1
++++++++++++++++++++++
+
+Creating mesh...
+Time taken: 0.000227062
+

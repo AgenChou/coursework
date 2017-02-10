@@ -1,0 +1,419 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 35.22      2.37     2.37        3     0.79     1.07  VtkWriter::writeVtk(int, double)
+ 26.01      4.12     1.75       11     0.16     0.16  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+ 10.48      4.83     0.71        1     0.71     0.71  Diffusion::init()
+  7.51      5.33     0.51 630000149     0.00     0.00  Mesh::getNx()
+  6.69      5.78     0.45        2     0.23     0.23  ExplicitScheme::reset()
+  5.35      6.14     0.36        2     0.18     0.18  Mesh::getTotalTemperature()
+  2.30      6.30     0.16        3     0.05     0.05  Mesh::getDim()
+  2.23      6.45     0.15 300000017     0.00     0.00  Mesh::getU0()
+  1.63      6.56     0.11       12     0.01     0.01  ExplicitScheme::reflectBoundaries(int)
+  1.34      6.65     0.09        1     0.09     0.12  Mesh::Mesh(InputFile const*)
+  0.52      6.68     0.04 30000004     0.00     0.00  Mesh::getCellX()
+  0.45      6.71     0.03        1     0.03     0.03  Mesh::allocate()
+  0.15      6.72     0.01        3     0.00     1.08  VtkWriter::write(int, double)
+  0.07      6.73     0.01                             Mesh::getNeighbours()
+  0.00      6.73     0.00       34     0.00     0.00  Mesh::getCellY()
+  0.00      6.73     0.00       32     0.00     0.00  Mesh::getMax()
+  0.00      6.73     0.00       32     0.00     0.00  Mesh::getMin()
+  0.00      6.73     0.00        8     0.00     0.00  double InputFile::get<double>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double const&) const
+  0.00      6.73     0.00        8     0.00     0.00  InputFile::getDouble(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double) const
+  0.00      6.73     0.00        4     0.00     0.00  Mesh::getDx()
+  0.00      6.73     0.00        4     0.00     0.00  Mesh::getU1()
+  0.00      6.73     0.00        4     0.00     0.00  int InputFile::get<int>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int const&) const
+  0.00      6.73     0.00        4     0.00     0.00  InputFile::getInt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) const
+  0.00      6.73     0.00        4     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >*)
+  0.00      6.73     0.00        3     0.00     0.00  void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&)
+  0.00      6.73     0.00        2     0.00     0.00  ExplicitScheme::diffuse(double)
+  0.00      6.73     0.00        2     0.00     0.26  ExplicitScheme::doAdvance(double)
+  0.00      6.73     0.00        2     0.00     0.00  Diffusion::doCycle(double)
+  0.00      6.73     0.00        2     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN14ExplicitSchemeC2EPK9InputFileP4Mesh
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4MeshC2EPK9InputFile
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6DriverC2EPK9InputFileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9DiffusionC2EPK9InputFileP4Mesh
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9InputFileC2EPKc
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9VtkWriterC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP4Mesh
+  0.00      6.73     0.00        1     0.00     0.00  _GLOBAL__sub_I_main
+  0.00      6.73     0.00        1     0.00     0.04  ExplicitScheme::updateBoundaries()
+  0.00      6.73     0.00        1     0.00     0.00  ExplicitScheme::ExplicitScheme(InputFile const*, Mesh*)
+  0.00      6.73     0.00        1     0.00     0.74  Diffusion::Diffusion(InputFile const*, Mesh*)
+  0.00      6.73     0.00        1     0.00     0.00  Diffusion::~Diffusion()
+  0.00      6.73     0.00        1     0.00     0.00  VtkWriter::VtkWriter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Mesh*)
+  0.00      6.73     0.00        1     0.00     0.00  InputFile::getDoubleList(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<double, std::allocator<double> > const&) const
+  0.00      6.73     0.00        1     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > InputFile::get<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  0.00      6.73     0.00        1     0.00     0.00  InputFile::getString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  0.00      6.73     0.00        1     0.00     0.00  std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.15% of 6.73 seconds
+
+index % time    self  children    called     name
+                0.00    1.07       1/3           Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+                0.01    2.14       2/3           Driver::run() [3]
+[1]     48.0    0.01    3.22       3         VtkWriter::write(int, double) [1]
+                2.37    0.85       3/3           VtkWriter::writeVtk(int, double) [2]
+-----------------------------------------------
+                2.37    0.85       3/3           VtkWriter::write(int, double) [1]
+[2]     47.8    2.37    0.85       3         VtkWriter::writeVtk(int, double) [2]
+                0.51    0.00 630000129/630000149     Mesh::getNx() [10]
+                0.16    0.00       3/3           Mesh::getDim() [13]
+                0.15    0.00 300000000/300000017     Mesh::getU0() [14]
+                0.04    0.00 30000003/30000004     Mesh::getCellX() [18]
+                0.00    0.00      33/34          Mesh::getCellY() [30]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     45.1    0.00    3.03                 Driver::run() [3]
+                0.01    2.14       2/3           VtkWriter::write(int, double) [1]
+                0.00    0.52       2/2           ExplicitScheme::doAdvance(double) [9]
+                0.36    0.00       2/2           Mesh::getTotalTemperature() [12]
+                0.00    0.00       2/2           Diffusion::doCycle(double) [41]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]     28.8    0.00    1.94                 Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+                0.00    1.07       1/3           VtkWriter::write(int, double) [1]
+                0.00    0.74       1/1           Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+                0.09    0.03       1/1           Mesh::Mesh(InputFile const*) [15]
+                0.00    0.00       4/8           InputFile::getDouble(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double) const [34]
+                0.00    0.00       2/4           InputFile::getInt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) const [38]
+                0.00    0.00       1/1           VtkWriter::VtkWriter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Mesh*) [51]
+-----------------------------------------------
+                1.75    0.00      11/11          InputFile::InputFile(char const*) [6]
+[5]     26.0    1.75    0.00      11         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [5]
+                0.00    0.00       1/1           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]     26.0    0.00    1.75                 InputFile::InputFile(char const*) [6]
+                1.75    0.00      11/11          std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [5]
+-----------------------------------------------
+                0.00    0.74       1/1           Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+[7]     11.0    0.00    0.74       1         Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+                0.71    0.00       1/1           Diffusion::init() [8]
+                0.00    0.04       1/1           ExplicitScheme::updateBoundaries() [17]
+                0.00    0.00       1/630000149     Mesh::getNx() [10]
+                0.00    0.00       1/1           ExplicitScheme::ExplicitScheme(InputFile const*, Mesh*) [22]
+                0.00    0.00       1/1           InputFile::getString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [54]
+                0.00    0.00       1/1           InputFile::getDoubleList(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<double, std::allocator<double> > const&) const [52]
+-----------------------------------------------
+                0.71    0.00       1/1           Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+[8]     10.5    0.71    0.00       1         Diffusion::init() [8]
+                0.00    0.00       2/630000149     Mesh::getNx() [10]
+                0.00    0.00       1/30000004     Mesh::getCellX() [18]
+                0.00    0.00       1/300000017     Mesh::getU0() [14]
+                0.00    0.00       1/34          Mesh::getCellY() [30]
+-----------------------------------------------
+                0.00    0.52       2/2           Driver::run() [3]
+[9]      7.8    0.00    0.52       2         ExplicitScheme::doAdvance(double) [9]
+                0.45    0.00       2/2           ExplicitScheme::reset() [11]
+                0.07    0.00       8/12          ExplicitScheme::reflectBoundaries(int) [16]
+                0.00    0.00       2/2           ExplicitScheme::diffuse(double) [21]
+-----------------------------------------------
+                0.00    0.00       1/630000149     ExplicitScheme::ExplicitScheme(InputFile const*, Mesh*) [22]
+                0.00    0.00       1/630000149     Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+                0.00    0.00       2/630000149     ExplicitScheme::reset() [11]
+                0.00    0.00       2/630000149     ExplicitScheme::diffuse(double) [21]
+                0.00    0.00       2/630000149     Diffusion::init() [8]
+                0.00    0.00      12/630000149     ExplicitScheme::reflectBoundaries(int) [16]
+                0.51    0.00 630000129/630000149     VtkWriter::writeVtk(int, double) [2]
+[10]     7.5    0.51    0.00 630000149         Mesh::getNx() [10]
+-----------------------------------------------
+                0.45    0.00       2/2           ExplicitScheme::doAdvance(double) [9]
+[11]     6.7    0.45    0.00       2         ExplicitScheme::reset() [11]
+                0.00    0.00       2/630000149     Mesh::getNx() [10]
+                0.00    0.00       2/300000017     Mesh::getU0() [14]
+                0.00    0.00       4/32          Mesh::getMin() [32]
+                0.00    0.00       4/32          Mesh::getMax() [31]
+                0.00    0.00       2/4           Mesh::getU1() [36]
+-----------------------------------------------
+                0.36    0.00       2/2           Driver::run() [3]
+[12]     5.4    0.36    0.00       2         Mesh::getTotalTemperature() [12]
+-----------------------------------------------
+                0.16    0.00       3/3           VtkWriter::writeVtk(int, double) [2]
+[13]     2.3    0.16    0.00       3         Mesh::getDim() [13]
+-----------------------------------------------
+                0.00    0.00       1/300000017     Diffusion::init() [8]
+                0.00    0.00       2/300000017     ExplicitScheme::reset() [11]
+                0.00    0.00       2/300000017     ExplicitScheme::diffuse(double) [21]
+                0.00    0.00      12/300000017     ExplicitScheme::reflectBoundaries(int) [16]
+                0.15    0.00 300000000/300000017     VtkWriter::writeVtk(int, double) [2]
+[14]     2.2    0.15    0.00 300000017         Mesh::getU0() [14]
+-----------------------------------------------
+                0.09    0.03       1/1           Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+[15]     1.8    0.09    0.03       1         Mesh::Mesh(InputFile const*) [15]
+                0.03    0.00       1/1           Mesh::allocate() [19]
+                0.00    0.00       4/8           InputFile::getDouble(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double) const [34]
+                0.00    0.00       2/4           InputFile::getInt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) const [38]
+-----------------------------------------------
+                0.04    0.00       4/12          ExplicitScheme::updateBoundaries() [17]
+                0.07    0.00       8/12          ExplicitScheme::doAdvance(double) [9]
+[16]     1.6    0.11    0.00      12         ExplicitScheme::reflectBoundaries(int) [16]
+                0.00    0.00      12/630000149     Mesh::getNx() [10]
+                0.00    0.00      12/300000017     Mesh::getU0() [14]
+                0.00    0.00      24/32          Mesh::getMax() [31]
+                0.00    0.00      24/32          Mesh::getMin() [32]
+-----------------------------------------------
+                0.00    0.04       1/1           Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+[17]     0.5    0.00    0.04       1         ExplicitScheme::updateBoundaries() [17]
+                0.04    0.00       4/12          ExplicitScheme::reflectBoundaries(int) [16]
+-----------------------------------------------
+                0.00    0.00       1/30000004     Diffusion::init() [8]
+                0.04    0.00 30000003/30000004     VtkWriter::writeVtk(int, double) [2]
+[18]     0.5    0.04    0.00 30000004         Mesh::getCellX() [18]
+-----------------------------------------------
+                0.03    0.00       1/1           Mesh::Mesh(InputFile const*) [15]
+[19]     0.4    0.03    0.00       1         Mesh::allocate() [19]
+-----------------------------------------------
+                                                 <spontaneous>
+[20]     0.1    0.01    0.00                 Mesh::getNeighbours() [20]
+-----------------------------------------------
+                0.00    0.00       2/2           ExplicitScheme::doAdvance(double) [9]
+[21]     0.0    0.00    0.00       2         ExplicitScheme::diffuse(double) [21]
+                0.00    0.00       2/630000149     Mesh::getNx() [10]
+                0.00    0.00       2/300000017     Mesh::getU0() [14]
+                0.00    0.00       4/32          Mesh::getMax() [31]
+                0.00    0.00       4/32          Mesh::getMin() [32]
+                0.00    0.00       4/4           Mesh::getDx() [35]
+                0.00    0.00       2/4           Mesh::getU1() [36]
+-----------------------------------------------
+                0.00    0.00       1/1           Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+[22]     0.0    0.00    0.00       1         ExplicitScheme::ExplicitScheme(InputFile const*, Mesh*) [22]
+                0.00    0.00       1/630000149     Mesh::getNx() [10]
+-----------------------------------------------
+                0.00    0.00       1/34          Diffusion::init() [8]
+                0.00    0.00      33/34          VtkWriter::writeVtk(int, double) [2]
+[30]     0.0    0.00    0.00      34         Mesh::getCellY() [30]
+-----------------------------------------------
+                0.00    0.00       4/32          ExplicitScheme::reset() [11]
+                0.00    0.00       4/32          ExplicitScheme::diffuse(double) [21]
+                0.00    0.00      24/32          ExplicitScheme::reflectBoundaries(int) [16]
+[31]     0.0    0.00    0.00      32         Mesh::getMax() [31]
+-----------------------------------------------
+                0.00    0.00       4/32          ExplicitScheme::reset() [11]
+                0.00    0.00       4/32          ExplicitScheme::diffuse(double) [21]
+                0.00    0.00      24/32          ExplicitScheme::reflectBoundaries(int) [16]
+[32]     0.0    0.00    0.00      32         Mesh::getMin() [32]
+-----------------------------------------------
+                0.00    0.00       8/8           InputFile::getDouble(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double) const [34]
+[33]     0.0    0.00    0.00       8         double InputFile::get<double>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double const&) const [33]
+-----------------------------------------------
+                0.00    0.00       4/8           Mesh::Mesh(InputFile const*) [15]
+                0.00    0.00       4/8           Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+[34]     0.0    0.00    0.00       8         InputFile::getDouble(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double) const [34]
+                0.00    0.00       8/8           double InputFile::get<double>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double const&) const [33]
+-----------------------------------------------
+                0.00    0.00       4/4           ExplicitScheme::diffuse(double) [21]
+[35]     0.0    0.00    0.00       4         Mesh::getDx() [35]
+-----------------------------------------------
+                0.00    0.00       2/4           ExplicitScheme::reset() [11]
+                0.00    0.00       2/4           ExplicitScheme::diffuse(double) [21]
+[36]     0.0    0.00    0.00       4         Mesh::getU1() [36]
+-----------------------------------------------
+                0.00    0.00       4/4           InputFile::getInt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) const [38]
+[37]     0.0    0.00    0.00       4         int InputFile::get<int>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int const&) const [37]
+-----------------------------------------------
+                0.00    0.00       2/4           Mesh::Mesh(InputFile const*) [15]
+                0.00    0.00       2/4           Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+[38]     0.0    0.00    0.00       4         InputFile::getInt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) const [38]
+                0.00    0.00       4/4           int InputFile::get<int>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int const&) const [37]
+-----------------------------------------------
+                0.00    0.00       4/4           InputFile::~InputFile() [57]
+[39]     0.0    0.00    0.00       4         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >*) [39]
+-----------------------------------------------
+                0.00    0.00       3/3           InputFile::getDoubleList(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<double, std::allocator<double> > const&) const [52]
+[40]     0.0    0.00    0.00       3         void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [40]
+-----------------------------------------------
+                0.00    0.00       2/2           Driver::run() [3]
+[41]     0.0    0.00    0.00       2         Diffusion::doCycle(double) [41]
+-----------------------------------------------
+                0.00    0.00       1/2           InputFile::getDoubleList(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<double, std::allocator<double> > const&) const [52]
+                0.00    0.00       1/2           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > InputFile::get<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [53]
+[42]     0.0    0.00    0.00       2         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [42]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[43]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN14ExplicitSchemeC2EPK9InputFileP4Mesh [43]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[44]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4MeshC2EPK9InputFile [44]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[45]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6DriverC2EPK9InputFileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE [45]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[46]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9DiffusionC2EPK9InputFileP4Mesh [46]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[47]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9InputFileC2EPKc [47]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[48]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9VtkWriterC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP4Mesh [48]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[49]     0.0    0.00    0.00       1         _GLOBAL__sub_I_main [49]
+-----------------------------------------------
+                0.00    0.00       1/1           Driver::~Driver() [56]
+[50]     0.0    0.00    0.00       1         Diffusion::~Diffusion() [50]
+-----------------------------------------------
+                0.00    0.00       1/1           Driver::Driver(InputFile const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [4]
+[51]     0.0    0.00    0.00       1         VtkWriter::VtkWriter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Mesh*) [51]
+-----------------------------------------------
+                0.00    0.00       1/1           Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+[52]     0.0    0.00    0.00       1         InputFile::getDoubleList(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<double, std::allocator<double> > const&) const [52]
+                0.00    0.00       3/3           void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&) [40]
+                0.00    0.00       1/2           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [42]
+-----------------------------------------------
+                0.00    0.00       1/1           InputFile::getString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [54]
+[53]     0.0    0.00    0.00       1         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > InputFile::get<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [53]
+                0.00    0.00       1/2           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [42]
+-----------------------------------------------
+                0.00    0.00       1/1           Diffusion::Diffusion(InputFile const*, Mesh*) [7]
+[54]     0.0    0.00    0.00       1         InputFile::getString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [54]
+                0.00    0.00       1/1           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > InputFile::get<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [53]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [5]
+[55]     0.0    0.00    0.00       1         std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [55]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2016 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [43] _GLOBAL__sub_I__ZN14ExplicitSchemeC2EPK9InputFileP4Mesh (ExplicitScheme.C) [35] Mesh::getDx() [1] VtkWriter::write(int, double)
+  [44] _GLOBAL__sub_I__ZN4MeshC2EPK9InputFile (Mesh.C) [10] Mesh::getNx() [2] VtkWriter::writeVtk(int, double)
+  [45] _GLOBAL__sub_I__ZN6DriverC2EPK9InputFileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE (Driver.C) [14] Mesh::getU0() [51] VtkWriter::VtkWriter(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Mesh*)
+  [46] _GLOBAL__sub_I__ZN9DiffusionC2EPK9InputFileP4Mesh (Diffusion.C) [36] Mesh::getU1() [52] InputFile::getDoubleList(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::vector<double, std::allocator<double> > const&) const
+  [47] _GLOBAL__sub_I__ZN9InputFileC2EPKc (InputFile.C) [13] Mesh::getDim() [53] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > InputFile::get<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  [48] _GLOBAL__sub_I__ZN9VtkWriterC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP4Mesh (VtkWriter.C) [31] Mesh::getMax() [33] double InputFile::get<double>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double const&) const
+  [49] _GLOBAL__sub_I_main (main.C) [32] Mesh::getMin()   [37] int InputFile::get<int>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int const&) const
+  [17] ExplicitScheme::updateBoundaries() [19] Mesh::allocate() [38] InputFile::getInt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) const
+  [16] ExplicitScheme::reflectBoundaries(int) [18] Mesh::getCellX() [34] InputFile::getDouble(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double) const
+  [11] ExplicitScheme::reset() [30] Mesh::getCellY()      [54] InputFile::getString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  [21] ExplicitScheme::diffuse(double) [15] Mesh::Mesh(InputFile const*) [42] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+   [9] ExplicitScheme::doAdvance(double) [8] Diffusion::init() [40] void std::vector<double, std::allocator<double> >::_M_emplace_back_aux<double const&>(double const&)
+  [22] ExplicitScheme::ExplicitScheme(InputFile const*, Mesh*) [41] Diffusion::doCycle(double) [55] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_unique_pos(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [20] Mesh::getNeighbours()   [7] Diffusion::Diffusion(InputFile const*, Mesh*) [5] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [12] Mesh::getTotalTemperature() [50] Diffusion::~Diffusion() [39] std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::_M_erase(std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >*)

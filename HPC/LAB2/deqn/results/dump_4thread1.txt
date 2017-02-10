@@ -1,0 +1,43 @@
++++++++++++++++++++++
+  Running deqn v0.1  
+- input file: square1_10steps
+- dt_max: 0.2
+- initial_dt: 0.1
+- start_time: 0
+- end_time: 1
+- vis_frequency: 1
+- summary_frequency: 1
+- number of threads: 1
++++++++++++++++++++++
+
+Creating mesh...
+Time taken: 7.5868e-05
+
++ step: 1, dt:   0.1
++	current total temperature: 9000
++ step: 2, dt:   0.1
++	current total temperature: 9000
++ step: 3, dt:   0.1
++	current total temperature: 9000
++ step: 4, dt:   0.1
++	current total temperature: 9000
++ step: 5, dt:   0.1
++	current total temperature: 9000
++ step: 6, dt:   0.1
++	current total temperature: 9000
++ step: 6, dt:   0.1
++	current total temperature: 9000
++ step: 7, dt:   0.1
++	current total temperature: 9000
++ step: 9, dt:   0.1
++	current total temperature: 9000
++ step: 9, dt:   0.1
++	current total temperature: 9000
++ step: 10, dt:   0.1
++	current total temperature: 9000
+
++++++++++++++++++++++
+   Run completete.   
+   Time: 6.33717
+number of threads: 1
++++++++++++++++++++++
