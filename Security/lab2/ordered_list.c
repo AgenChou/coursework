@@ -1,5 +1,5 @@
 /*
- * Ex. 1a: linked list implementation
+ * Ex. 1b: ordered linked list implementation
  */
 
 #include <stdio.h>
@@ -51,11 +51,21 @@ void append_int(struct linked_list * list, int val) {
 		if(length(list) == 6) {
 			remove_head(list);
 		}
+		// work out where to put the new element
 		struct element * tail = list->head;
-		while (tail->next != NULL) {
-			tail = tail->next; // move to the end of the list
+		struct element * temp = NULL; // temp is the element just before temp
+		while (tail != NULL && tail->data < val) {
+			temp = tail;
+			tail = tail->next; // move through the list
 		}
-		tail->next = elem;
+		if (temp != NULL) {
+			temp->next = elem;
+		} else {
+			list->head = elem; // if temp is null, we're inserting at the start of list
+		}
+		if (tail != NULL) {
+			elem->next = tail; // tail is null when we're at the end of the list
+		}
 	}
 };
 
@@ -63,7 +73,7 @@ void append_int(struct linked_list * list, int val) {
 void main(int argc, char *argv[]) {
 	struct linked_list list = {NULL};
 	for(int k = 0; k < 11; k++) {
-		append_int(&list, k);
+		append_int(&list, rand() % 100); // the only reason for % is readibility 
 		struct element* elem = list.head;
 		while (elem != NULL) {
 			printf("%d -> ", elem->data);
@@ -72,7 +82,3 @@ void main(int argc, char *argv[]) {
 		printf("\n");
 	}
 }
-
-
-
-
