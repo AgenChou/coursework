@@ -36,7 +36,8 @@ void append_address(struct addr_list * list, void * val) {
         }
 };
 
-        struct addr_list our_list = {NULL};
+// thisneeds to be global
+struct addr_list our_list = {NULL};
 
 void free (void* ptr) {
         static void* (*wrapped_free) (void *) = NULL;
@@ -65,5 +66,4 @@ void free (void* ptr) {
                 }
         }
 }
-
 
