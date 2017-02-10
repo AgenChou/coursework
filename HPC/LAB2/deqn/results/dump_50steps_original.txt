@@ -1,0 +1,121 @@
++++++++++++++++++++++
+  Running deqn v0.1  
+- input file: square1_50steps
+- dt_max: 0.2
+- initial_dt: 0.02
+- start_time: 0
+- end_time: 1
+- vis_frequency: 1
+- summary_frequency: 1
+- number of threads: 1
++++++++++++++++++++++
+
+Creating mesh...
+Time taken: 7.6179e-05
+
++ step: 1, dt:   0.02
++	current total temperature: 9000
++ step: 2, dt:   0.02
++	current total temperature: 9000
++ step: 3, dt:   0.02
++	current total temperature: 9000
++ step: 4, dt:   0.02
++	current total temperature: 9000
++ step: 5, dt:   0.02
++	current total temperature: 9000
++ step: 6, dt:   0.02
++	current total temperature: 9000
++ step: 7, dt:   0.02
++	current total temperature: 9000
++ step: 8, dt:   0.02
++	current total temperature: 9000
++ step: 9, dt:   0.02
++	current total temperature: 9000
++ step: 10, dt:   0.02
++	current total temperature: 9000
++ step: 10, dt:   0.02
++	current total temperature: 9000
++ step: 11, dt:   0.02
++	current total temperature: 9000
++ step: 12, dt:   0.02
++	current total temperature: 9000
++ step: 13, dt:   0.02
++	current total temperature: 9000
++ step: 14, dt:   0.02
++	current total temperature: 9000
++ step: 16, dt:   0.02
++	current total temperature: 9000
++ step: 17, dt:   0.02
++	current total temperature: 9000
++ step: 18, dt:   0.02
++	current total temperature: 9000
++ step: 19, dt:   0.02
++	current total temperature: 9000
++ step: 20, dt:   0.02
++	current total temperature: 9000
++ step: 21, dt:   0.02
++	current total temperature: 9000
++ step: 22, dt:   0.02
++	current total temperature: 9000
++ step: 23, dt:   0.02
++	current total temperature: 9000
++ step: 24, dt:   0.02
++	current total temperature: 9000
++ step: 25, dt:   0.02
++	current total temperature: 9000
++ step: 26, dt:   0.02
++	current total temperature: 9000
++ step: 27, dt:   0.02
++	current total temperature: 9000
++ step: 28, dt:   0.02
++	current total temperature: 9000
++ step: 29, dt:   0.02
++	current total temperature: 9000
++ step: 30, dt:   0.02
++	current total temperature: 9000
++ step: 31, dt:   0.02
++	current total temperature: 9000
++ step: 32, dt:   0.02
++	current total temperature: 9000
++ step: 33, dt:   0.02
++	current total temperature: 9000
++ step: 34, dt:   0.02
++	current total temperature: 9000
++ step: 35, dt:   0.02
++	current total temperature: 9000
++ step: 36, dt:   0.02
++	current total temperature: 9000
++ step: 37, dt:   0.02
++	current total temperature: 9000
++ step: 38, dt:   0.02
++	current total temperature: 9000
++ step: 39, dt:   0.02
++	current total temperature: 9000
++ step: 40, dt:   0.02
++	current total temperature: 9000
++ step: 41, dt:   0.02
++	current total temperature: 9000
++ step: 42, dt:   0.02
++	current total temperature: 9000
++ step: 43, dt:   0.02
++	current total temperature: 9000
++ step: 44, dt:   0.02
++	current total temperature: 9000
++ step: 45, dt:   0.02
++	current total temperature: 9000
++ step: 46, dt:   0.02
++	current total temperature: 9000
++ step: 47, dt:   0.02
++	current total temperature: 9000
++ step: 48, dt:   0.02
++	current total temperature: 9000
++ step: 49, dt:   0.02
++	current total temperature: 9000
++ step: 50, dt:   0.02
++	current total temperature: 9000
+
++++++++++++++++++++++
+   Run completete.   
+   Time: 29.0084
+number of threads: 1
++++++++++++++++++++++
