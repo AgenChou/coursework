@@ -74,7 +74,30 @@
 	
 	
 	\section{}
+	Note: here we use notation (x,y) to mean that the payoff for player I for the given strategy is x, and the payoff for player II is y. (LateX didn't want to cooperate)
 	\subsection{}
+	Let $b = 1$, $a = 1$, $c=-1$, $d=1$. i.e.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c|c}
+			& A & B \\
+			\hline
+			1 &(1,0) & (0,1) \\
+			\hline
+			2 & (0, 0) & (1, -1) \\
+		\end{tabular}
+	\end{table}
+	
+	Then:
+	
+	\begin{itemize}
+		\item If player I chooses 1, then player II would want to play B, but...
+		\item if player II chooses B, player I will want to play 2, but...
+		\item if player I chooses 2, player II will want to play A, but...
+		\item if player II chooses A, player I will want to choose 1.
+	\end{itemize}
+
+	There is a mixed Nash equilibrium, in which each player plays each strategy with a probability $\dfrac{1}{2}$. The expected payoff for I is $\dfrac{1}{2}$, and for II is 0.
 	
 	\subsection{}
 	Assuming Player I has a strategy $(\dfrac{1}{2}, \dfrac{1}{2})$, the payoff for Player II if they chose B would be $\dfrac{1}{2} \cdot a + \dfrac{1}{2} \cdot c$, and the payoff if they chose A is 0.
@@ -84,7 +107,78 @@
 	
 	\subsection{}
 	Let $a,b,c,d = 0$. Then for either player, a strategy $(\lambda, 1-\lambda)$ for any $\lambda \in [0,1]$, the payoff is 0, and there are infinitely many such $\lambda$'s.
+	
+	\subsection{}
+	Let $b = 1$, $a = -1$, $c=1$, $d=1$. I.e.
+	
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c|c}
+			& A & B \\
+			\hline
+			1 &(1,0) & (0,-1) \\
+			\hline
+			2 & (0, 0) & (1, 1) \\
+		\end{tabular}
+	\end{table}
+	Then the game has 2 pure Nash equilibria: (1, A) and (2, B). If I chooses 1, then II choosing A always gives them a better payoff, because $a<0$. If II chooses A, I will choose 1, because $b>0$. Similarly for (2, B).
 
+	
+	\section{}
+	The possible choices for player I are 2, 3, and 4, and for player II are \{2,3\}, \{2,4\}, and \{3,4\}. Putting it in a payoff matrix (note that this is a 0-sum game, and we only need to write the payoff for player I, as player II will get 0 - that amount).
+	
+			\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c|c|c}
+			& \{2,3\} & \{2,4\} & \{3,4\} \\
+			\hline
+			2 & -2 & -2 & 0 \\
+			\hline
+			3 & -3 & 0 & -3 \\
+			\hline
+			4 & 0 & -4 &  -4 \\
+		\end{tabular}
+	\end{table}
+
+	Let player I play 2 with probability $p$, 3 with probability $q$, and 4 with probability $(1-p-q)$. Then II's expected winnings are:
+	
+	\begin{itemize}
+		\item \textbf{II plays \{2,3\}}:  $2 \cdot p +3 \cdot q + 0 \cdot (1-p-q) = 2\cdot p + 3 \cdot q$
+		\item \textbf{II plays \{2,4\}}:  $2 \cdot p +0 \cdot q + 4 \cdot (1-p-q) = (-2)\cdot p + (-4) \cdot q + 4$
+		\item \textbf{II plays \{3,4\}}:  $0 \cdot p +3 \cdot q + 4 \cdot (1-p-q) = (-4) \cdot p -q + 4$
+	\end{itemize}
+
+	For player II to be willing to randomise, the expected payoffs for each of those strategies should be the same, call it $V$.
+	
+	Thus we arrive at a system of linear equations with 3 unknowns:
+	\begin{align}
+	2\cdot p + 3\cdot q - V&= 0 \\
+	(-2)\cdot p+ (-4) \cdot q - V &= -4 \\
+	(-4)\cdot p - q -V&= -4 
+	\end{align}
+	After solving it, we get:
+	\[p=\dfrac{6}{13}\approx 0.462 \]
+	\[q =\dfrac{4}{13}\approx 0.307 \]
+	\[(1-p-q) = \dfrac{3}{13} \approx0.231 \]
+	So player I's strategy is $(\dfrac{6}{13}, \dfrac{4}{13}, \dfrac{3}{13})$.
+	
+	Now let's assume player II picks \{2,3\} with probability $s$, \{2,4\} with probability $t$, and \{3,4\} with probability $1-s-t$. Let the winnings for player I be $W$. The system of linear equations is now:
+	
+	\begin{align}
+	-2\cdot s -2 \cdot t -W & =0 \\
+	3 \cdot t - W& = 3\\
+	4\cdot s- W& = 4
+	\end{align}
+	after solving it, we get:
+	\[s=\dfrac{7}{13}\approx 0.538 \]
+	\[t =\dfrac{5}{13}\approx 0.385 \]
+	\[(1-s-t) = \dfrac{1}{13} \approx0.077 \]
+	
+	So player II's strategy is $(\dfrac{7}{13}, \dfrac{5}{13}, \dfrac{1}{13})$.
+	
+	As a useful check, from the above systems of linear equations, we get $V = -W = \dfrac{24}{13} \approx 1.846$. This is a zero sum game, and the expected payoff for both players adds up to 0.
+	
+	Another way of finding Nash equilibrium would be to use linear programming, however in a simple game like this one, this method suffices.
 	
 	%\IEEEPARstart{}{} 
 	
