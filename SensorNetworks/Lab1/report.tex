@@ -78,7 +78,17 @@
 	
 	This is not unexpected, as the node which was initially 1 m away from the sender, is now $100000000 \sqrt{3}$. With the log distance propagation model, at this distance the package is too weak to be picked up. In fact, after some trial and error, we found that putting the second node at $(0.0,1000000.0, 0.0)$ is enough for it not to receive the packages.
 	
+	\section{Methods 5 - \texttt{lab1mod2.cc}}
+	We add a third node at $(1.0, 1.0, 1.0)$, and make it the only sink, wile we make the second node (at $(0.0, 1.0, 0.0)$) the source.
 	
+	This does not change the output from \texttt{lab1.cc}, since we still send 10 packets, and the logging doesn't say which node it was sent from or received at.
+	
+	\section{Methods 6 - \texttt{lab1mod3.cc} and \texttt{lab1mod4.cc}}
+	Changing the duration of the simulation to 60 seconds doesn't change the output, because we still send only 10 packages, one every 0.5 s, which is done in 5 seconds.
+	
+	However, stopping the simulation after 2 seconds gives only 4 lines of output, as only 4 packets got sent in that time. 
+	
+	Note: to change how long the simulation is running, we change the parameter in \texttt{Simulator::Stop()}, which is the delay after which the \texttt{Simulator::Run()} is terminated. In the case of a 60 seconds simulation (and in fact the 10 s one as well), the Simulator stopped running after 5 seconds, as 10 packets were sent and no more events were scheduled. If that didn't happen, i.e. it didn't terminate when it executed all scheduled events, it would just idly hang there for the remainder of the time.
 	
 	%\IEEEPARstart{}{} 
 	
