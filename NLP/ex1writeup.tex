@@ -208,7 +208,7 @@
 		
 		\item $q_4$: we treat double e separately, because in the case of past tense we lose the e in the suffix, but otherwise we don't alter the stem. There is a  very subtle difference between states $q_8$ and $q_9$ which we will analyse later. Words such as "agree" or "need" will go through this state.
 	
-		\item $q_5$: this state is part of the cycle detecting 'consonant - vowel - consonant' pattern. It will also detect the technically regular but difficult words such as "queue".
+		\item $q_5$: this state is part of the cycle detecting 'consonant - vowel - consonant' pattern. It will also detect the technically regular but difficult words such as "queue".\footnote{It is very likely that some simplifications can be made around this state}
 		
 		\item $q_6$: We can only get to this state after seeing the desired "consonant - vowel - consonant" pattern, and indeed all the incoming edges are from vowels. The two most important outgoing edges describe the consonant doubling rule and lead to $q_7$. The others are useful for when we have not reached the end of the word after spotting the pattern.
 		
