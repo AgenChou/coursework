@@ -1,0 +1,89 @@
+\documentclass[11pt,journal]{article}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{amsmath}
+%\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+%\else
+% normal IEEE
+\usepackage{cite}
+%\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in} 
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+	\title{Sensor Networks and Mobile Data Comminucation, Assignment 2}
+	
+	\author{UID: 1690550}% <-this % stops a space
+		%\protect\\
+		%\thanks{}}
+	
+	% The paper headers
+
+
+
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	%\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	%\IEEEpeerreviewmaketitle
+	\section{Preparation and initial readings}
+	Before we could attempt to compare the different models ran with different parameters, some initial readings had to be taken. Originally, the readings were taken over a very narrow range of distances between nodes and the transmission power. Namely, the power ranged from 0.1 to 0.12 dB, and the distance ranged from 180 to 180.9 m. No packets were received during the original simulation.
+	
+	We decided to look at a much wider range for both of these parameters. First note that 802.11b standard lists 20 dBm as the standard transmission power for WiFi, with -100 dBm being the minimal received signal power.
+	
+	\section{Log-distance propagation loss model}
+	The equation to calculate loss in the log-distance propagation model\footnote{\url{https://www.nsnam.org/docs/release/3.19/doxygen/classns3_1_1_log_distance_propagation_loss_model.html}} is:
+	\[L = L_0 + 10nlog_{10}(\dfrac{d}{d_0})\] 
+	with
+	
+	%\IEEEPARstart{}{} 
+	
+
+	
+	% that's all folks
+\end{document}
+
