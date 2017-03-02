@@ -247,10 +247,10 @@
 		\texttt{<s> I do not like green eggs and Sam </s>}
 	\end{center}
 
-	We see the word 'Sam' 4 times, twice following 'am', and the word 'am' 3 times. With $\lambda_1 = \dfrac{1}{2}$ and $\lambda_2 = \dfrac{1}{2}$, the linear interpolation smoothing for unigrams and bigrams is given by:
+	We see the word 'Sam' 4 times, twice following 'am', and the word 'am' 3 times. The total number of tokens is 25. With $\lambda_1 = \dfrac{1}{2}$ and $\lambda_2 = \dfrac{1}{2}$, the linear interpolation smoothing for unigrams and bigrams is given by:
 	
 	\[\hat{\mathbb{P}}(Sam|am) = \lambda_1\mathbb{P}(Sam|am) + \lambda_2\mathbb{P}(Sam) \]
-	\[ = \dfrac{1}{2} \cdot \dfrac{2}{3} + \dfrac{1}{2} \cdot 4 = \dfrac{1}{3} + 2 = 2\dfrac{1}{3} \approx 2.33 \]
+	\[ = \dfrac{1}{2} \cdot \dfrac{2}{3} + \dfrac{1}{2} \cdot \dfrac{4}{25} = \dfrac{1}{3} + \dfrac{2}{25} = \dfrac{31}{75} \approx 0.413 \]
 	
 	%\IEEEPARstart{}{} 
 	
