@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PAPER
+  SYSTEM "paper-structure-annotation.dtd">
+<PAPER><mode2 name="b309237b" hasDoc="yes" version="1085"/><TITLE><s sid="1"><CoreSc1 atype="GSC" type="Goa" conceptID="Goa1" novelty="None" advantage="None"/><text>Quantification of bacterial lipopolysaccharides (endotoxin) by GC–MS determination of 3-hydroxy fatty acids</text></s></TITLE><ABSTRACT><s sid="2"><CoreSc1 atype="GSC" type="Obj" conceptID="Obj1" novelty="New" advantage="None"/><text>A GC–MS method for the quantification of bacterial lipopolysaccharides (LPS, endotoxin) is presented.</text></s> <s sid="3"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="None"/><text>After hydrolytic cleavage of 3-hydroxy fatty acids (3-OH FAs) from the lipid A region of LPS, derivatisation of both the hydroxyl and the carboxyl group was performed in one step with a mixture of methyl-bis(trifluoracetamide) (MBTFA) and N-methyl-N-(tert-butyldimethylsilyl)trifluoracetamide (MTBSTFA).</text></s> <s sid="4"><CoreSc1 atype="GSC" type="Res" conceptID="Res1" novelty="None" advantage="None"/><text>Using GC–MS in the EI mode with selected ion monitoring (SIM) for analysis, baseline separation of 3-OH FAs (and of possibly interfering 2-OH FAs) was achieved.</text></s> <s sid="5"><CoreSc1 atype="GSC" type="Con" conceptID="Con1" novelty="None" advantage="None"/><text>The sensitivity of the method (LOD 7–50 pg/injection for the different 3-OH FAs investigated) allows for the efficient quantification of LPS in occupational and environmental samples.</text></s> <s sid="6"><CoreSc1 atype="GSC" type="Res" conceptID="Res2" novelty="None" advantage="None"/><text>Degradation of 3-OH FAs as well as of their derivatives during sample preparation and GC–MS separation as a possible source of errors in analytical methods based on 3-OH FA determination is reported for the first time.</text></s> <s sid="7"><CoreSc1 atype="GSC" type="Con" conceptID="Con2" novelty="None" advantage="None"/><text>Thermal elimination of water from the underivatised 3-OH FAs and of trifluoroacetic acid from the derivatives was identified as the cause of degradation.</text></s> <s sid="8"><CoreSc1 atype="GSC" type="Res" conceptID="Res3" novelty="None" advantage="None"/><text>The resulting α,β-unsaturated compounds showing the same mass spectra as the 3-OH FA derivatives were detected as more or less prominent satellite peaks.</text></s> <s sid="9"><CoreSc1 atype="GSC" type="Con" conceptID="Con3" novelty="None" advantage="None"/><text>By using alkaline instead of acidic hydrolysis and cool on-column instead of split/splitless injection, elimination was reduced to an acceptable level.</text></s></ABSTRACT><BODY><DIV DEPTH="1"><HEADER>Introduction</HEADER><P><s sid="10"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac1" novelty="None" advantage="None"/><text>Besides toxic chemicals mainly originating from anthropogenic sources, substances from biological sources which may represent a considerable health hazard are of growing interest.</text></s> <s sid="11"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac2" novelty="None" advantage="None"/><text>Among these biohazards, endotoxins from the cell wall of gram-negative bacteria play a prominent role, since they are ubiquitously found in the environment and may cause severe health effects described e.g. in a review by Rylander:<REF ID="R-0" REFID="cit1"/> acute inflammation, inhalation fever, toxic pneumonitis, chronically decreased pulmonary function or chronic bronchitis have been associated with endotoxin exposure.</text></s> <s sid="12"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac3" novelty="None" advantage="None"/><text>With respect to occupational and environmental health, the development of reliable analytical methods to monitor these biohazards is an urgent need and a basic requirement for the investigation of causal relationships between biohazards and health effects and for the assessment of exposures.</text></s></P><P><s sid="13"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac4" novelty="None" advantage="None"/><text>Endotoxins represent a widespread occupational and environmental hazard, since their biological activity is independent of the living bacteria, it persists even after cell death.</text></s> <s sid="14"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac5" novelty="None" advantage="None"/><text>Thus they are found in dusts of any origin, from generally only moderately contaminated dust in private homes,<REF ID="R-1" REFID="cit2"/><REF ID="R-2" REFID="cit3"/> schools,<REF ID="R-3" REFID="cit4"/> and aircrafts<REF ID="R-4" REFID="cit5"/> to dusts from areas with a high microbial and consequently a high endotoxin load, e.g. pig farms,<REF ID="R-5" REFID="cit6"/> poultry farms,<REF ID="R-6" REFID="cit7"/> or waste treatment facilities.<REF ID="R-7" REFID="cit8"/></text></s> <s sid="15"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac5" novelty="None" advantage="None"/><text>Furthermore, endotoxin exposure has been reported from industrial plants due to contaminated humidification systems or washwater.<REF ID="R-8" REFID="cit9"/><REF ID="R-9" REFID="cit10"/></text></s></P><P><s sid="16"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac6" novelty="None" advantage="None"/><text>Endotoxins are surface molecules which–together with proteins and phospholipids–form the outer cell membrane of gram-negative bacteria.</text></s> <s sid="17"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac7" novelty="None" advantage="None"/><text>In chemical terms, endotoxins are lipopolysaccharides (LPS) with a terminal lipid region (lipid A) and a polysaccharide chain consisting of the O-specific chain (O-antigen) and the core oligosaccharide.<REF ID="R-10" REFID="cit11"/></text></s> <s sid="18"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac7" novelty="None" advantage="None"/><text>While the structure of the core region is fundamentally identical for different bacteria, the O-specific chain, characterized by repeating oligosaccharide units of up to five saccharides, differs considerably between species.</text></s> <s sid="19"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac8" novelty="None" advantage="None"/><text>The O-antigen is the essential structure for the immune response and the formation of antibodies after infection.</text></s> <s sid="20"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac9" novelty="None" advantage="None"/><text>On the other hand, LPS remains biologically active after bacteriolysis and is responsible for the severe symptoms occurring in bacteraemia or sepsis, for example.</text></s> <s sid="21"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac10" novelty="None" advantage="None"/><text>The component responsible for the toxic effect of LPS is lipid A: polysaccharide-free lipid A obtained by hydrolysis of LPS shows the same activity in test systems as the complete LPS.</text></s> <s sid="22"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac11" novelty="None" advantage="None"/><text>A characteristic feature of lipid A is that it contains ester- or amide-bonded 3-hydroxy fatty acids (3-OH FAs).</text></s> <s sid="23"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac11" novelty="None" advantage="None"/><text>Depending on the bacterial species, lipid A is characterized by different 3-OH FAs with chain lengths of 10, 12, 14, 16, 18, or more carbon atoms.</text></s> <s sid="24"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac11" novelty="None" advantage="None"/><text>As an example, 1 mol of lipid A from E. coli contains 4 mol of 3-hydroxytetradecanoic acid (14∶0 3-OH FA).</text></s></P><P><s sid="25"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac12" novelty="None" advantage="None"/><text>Endotoxins are proinflammatory substances leading to a release of mediators of inflammation such as TNF-α and interleukins (IL-1α, IL-1β, IL-6, IL8).<REF ID="R-11" REFID="cit12"/></text></s> <s sid="26"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac12" novelty="None" advantage="None"/><text>Inhaled endotoxin may lead to bronchial hyperresponsiveness,<REF ID="R-12" REFID="cit13"/> fever or nausea.<REF ID="R-13" REFID="cit14"/></text></s> <s sid="27"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac12" novelty="None" advantage="None"/><text>Deleterious effects on the clinical severity of chronic asthmatic disease have been found after domestic exposure to endotoxin-contaminated house dust.<REF ID="R-14" REFID="cit15"/></text></s> <s sid="28"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac13" novelty="None" advantage="None"/><text>With respect to occupational exposure, significant associations between endotoxin concentrations and restrictions of lung function have been found in various cross-sectional studies,<REF ID="R-15" REFID="cit16"/><REF ID="R-16" REFID="cit17"/> while other studies failed to confirm these findings.<REF ID="R-17" REFID="cit18"/><REF ID="R-18" REFID="cit19"/></text></s> <s sid="29"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac13" novelty="None" advantage="None"/><text>These contradictory results might be due to the heterogeneity of inhaled dusts, since a variety of components (e.g. fungi) might contribute to the observed health effects.</text></s> <s sid="30"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac13" novelty="None" advantage="None"/><text>On the other hand, endotoxin quantification in these studies might be erroneous.</text></s> <s sid="31"><CoreSc1 atype="GSC" type="Met" conceptID="Met2" novelty="Old" advantage="None"/><text>The Limulus amebocyte lysate assay (LAL) currently used for endotoxin determination was first described by Levin and Bang.<REF ID="R-19" REFID="cit20"/><REF ID="R-20" REFID="cit21"/></text></s> <s sid="32"><CoreSc1 atype="GSC" type="Met" conceptID="Met2" novelty="Old" advantage="None"/><text>The LAL test monitors the biological activity of endotoxins and is based on a gelation reaction of the lysate in the presence of endotoxin.</text></s> <s sid="33"><CoreSc1 atype="GSC" type="Met" conceptID="Met2" novelty="Old" advantage="None"/><text>But, though it is very sensitive, the assay is subject to various interferences.</text></s> <s sid="34"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac14" novelty="None" advantage="None"/><text>Hollander and coworkers<REF ID="R-21" REFID="cit22"/> attributed the inhibition of the LAL assay in samples from the animal-feed industry to vitamins, antibiotics, and minerals which are added to raw materials in the pre-mix department.</text></s> <s sid="35"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac15" novelty="None" advantage="None"/><text>An enhancement of the assay was found in samples from the unloading department of the same plant, which was explained by specific activation of the LAL proclotting enzyme, e.g. by β-glucans.</text></s> <s sid="36"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac15" novelty="None" advantage="None"/><text>β-Glucans originating from plants or mould are known to enhance LAL activation.<REF ID="R-22" REFID="cit23"/></text></s> <s sid="37"><CoreSc1 atype="GSC" type="Met" conceptID="Met2" novelty="Old" advantage="No"/><text>Furthermore, the LAL test exhibits differing sensitivity to LPS from different bacteria<REF ID="R-23" REFID="cit24"/> and seems to underestimate the endotoxin content of a sample compared to the results of endotoxin determination by radioimmunoassay.<REF ID="R-24" REFID="cit25"/></text></s></P><P><s sid="38"><CoreSc1 atype="GSC" type="Mot" conceptID="Mot1" novelty="None" advantage="None"/><text>Because of these drawbacks of the LAL test, various attempts have been made to establish alternative methods for endotoxin determination based on chemical analysis.</text></s> <s sid="39"><CoreSc1 atype="GSC" type="Obj" conceptID="Obj1" novelty="New" advantage="None"/><text>In the present paper, a method suited for the determination of endotoxins in aqueous samples as well as in samples of settled or airborne dust is presented.</text></s> <s sid="40"><CoreSc1 atype="GSC" type="Met" conceptID="Met3" novelty="Old" advantage="None"/><text>It is based on the derivatisation technique used by Costa et al<REF ID="R-25" REFID="cit26"/>. for the analysis of fatty acids in plasma.</text></s> <s sid="41"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="None"/><text>After hydrolytic cleavage of the LPS 3-OH FAs they are derivatised in a one-step reaction using a mixture of N-methyl-N-(tert-butyldimethylsilyl)trifluoroacetamide (MTBSTFA) and methyl-bis(trifluoroacetamide) (MBTFA).</text></s> <s sid="42"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="None"/><text>MBTFA selectively reacts with the hydroxyl functionality, and MTBSTFA with the carboxyl group.</text></s> <s sid="43"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="None"/><text>GC–MS is used for separation and quantification.</text></s></P></DIV><DIV DEPTH="1"><HEADER>Experimental</HEADER><DIV DEPTH="2"><HEADER>Apparatus</HEADER><P><s sid="44"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp1" novelty="None" advantage="None"/><text>Gas chromatograph 5890 Series II with mass selective detector MSD 5971 and injector 6890 (Agilent Technologies); capillary column Ultra-2 (Agilent Technologies, 50 m × 0.2 mm, film thickness 0.33 µm) for split/splitless injection; capillary column HP-1701 (Agilent Technologies, 30 m × 0.25 mm, film thickness 0.25 µm) for cool on-column injection with an additional deactivated capillary (2 m × 0,53 mm) coupled to the inlet side of the column as retention gap; carrier gas: helium; rotating mixer for derivatisation (own construction) to guarantee close contact of derivatising agents with 3-hydroxy fatty acids precipitated at the vial walls during sample preparation (see below); pyrogen-free Multi fit Guard Filter Tips (IVA Analysentechnik); glass vials 1.5 ml with aluminium caps (IVA Analysentechnik); glass test tubes with screw caps; vials and test tubes were made pyrogen-free by heating them to 300 °C for 4 h before use.</text></s></P></DIV><DIV DEPTH="2"><HEADER>Chemicals</HEADER><P><s sid="45"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp2" novelty="None" advantage="None"/><text>2-Hydroxyoctanoic acid (8∶0 2-OH), 2-hydroxydecanoic acid (10∶0 2-OH), 2-hydroxydodecanoic acid (12∶0 2-OH), 2-hydroxytetradecanoic acid (14∶0 2-OH), 3-hydroxydecanoic acid (10∶0 3-OH), 3-hydroxydodecanoic acid (12∶0 3-OH), 3-hydroxytetradecanoic acid (14∶0 3-OH), 3-hydroxyhexadecanoic acid (16∶0 3-OH) (all from Sigma), trans-2-decenoic acid (10∶1) (Acros), lipopolysaccharide E. Coli (Sigma, lot 069H4046, activity: 3 000 000 endotoxin units mg−1), methyl-bis(trifluoracetamide) (MBTFA) (Sigma), N-methyl-N-(tert-butyldimethylsilyl)trifluoracetamide (MTBSTFA), pyridine, ethyl acetate, chloroform, hydrochloric acid, sodium hydroxide, sodium sulfate (all from Merck), pyrogen-free water (Delta Pharma).</text></s></P></DIV><DIV DEPTH="2"><HEADER>Solutions</HEADER><P><s sid="46"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp3" novelty="None" advantage="None"/><text>Stock solutions of 2- and 3-hydroxy fatty acids in chloroform (250 µmol ml−1), LPS stock solution in pyrogen-free water (1 mg ml−1), 4 M hydrochloric acid, 8 M hydrochloric acid, 8 M sodium hydroxide, 16 M sodium hydroxide, saturated sodium chloride solution</text></s></P></DIV><DIV DEPTH="2"><HEADER>Sample preparation and derivatisation</HEADER><P><s sid="47"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>Derivatisation of free 2- and 3-hydroxy fatty acids: 20–100 µl from the stock solution of each fatty acid to be derivatised were pipetted into a glass vial.</text></s> <s sid="48"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>The solvent was removed with a gentle stream of nitrogen at room temperature.</text></s> <s sid="49"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>50 µl MBTFA, 40 µl MTBSTFA, and 10 µl pyridine were added, resulting in a reaction solution containing 50–250 pmol µl−1 of each fatty acid.</text></s> <s sid="50"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>The vials were capped and placed in the rotating mixer.</text></s> <s sid="51"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>The walls and base of the vial were continuously moistened with the agents by slow rotation of the mixer.</text></s> <s sid="52"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>Derivatisation was complete after 1 h at 60 °C.</text></s> <s sid="53"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp4" novelty="None" advantage="None"/><text>1 µl of the solution was used for GC–MS analysis.</text></s></P></DIV><DIV DEPTH="2"><HEADER>Hydrolysis of LPS</HEADER><P><s sid="54"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp5" novelty="None" advantage="None"/><text>Acidic hydrolysis: In a test tube, 500 µl of 8 M HCl were added to 500 µl of LPS stock solution, thus resulting in a reaction solution of 4 M HCl.</text></s> <s sid="55"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp5" novelty="None" advantage="None"/><text>The tube was capped and then heated to 90 °C for 2, 4, 6, 8 or 24 h, respectively.</text></s> <s sid="56"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp5" novelty="None" advantage="None"/><text>After cooling down to room temperature, 1 ml saturated NaCl solution was added.</text></s> <s sid="57"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp5" novelty="None" advantage="None"/><text>The hydrolysate was extracted twice with 3 ml ethyl acetate.</text></s> <s sid="58"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp5" novelty="None" advantage="None"/><text>The combined organic phases were dried with 500 mg Na2SO4, transferred to a vial in portions from which the solvent was continuously removed with a gentle nitrogen stream at room temperature.</text></s> <s sid="59"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp5" novelty="None" advantage="None"/><text>Derivatisation of the dried extract was performed as described above.</text></s></P></DIV><DIV DEPTH="2"><HEADER>Alkaline hydrolysis</HEADER><P><s sid="60"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>Alkaline hydrolysis was tested for 4 M and for 8 M NaOH.</text></s> <s sid="61"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>In a test tube, 500 µl of 8 M NaOH (or 16 M NaOH) were added to 500 µl of LPS stock solution (reaction solutions of 4 M or 8 M NaOH, respectively).</text></s> <s sid="62"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>The tube was capped and then heated to 90 °C for 2, 4, 6, 8 or 24 h, respectively.</text></s> <s sid="63"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>After cooling down to room temperature, the solution was acidified with 1.1 ml of 4 M (or 8 M) HCl.</text></s> <s sid="64"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>1 ml saturated NaCl solution was added, the hydrolysate then was extracted twice with 3 ml ethyl acetate.</text></s> <s sid="65"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>The combined organic phases were dried with 500 mg Na2SO4, transferred to a vial in portions from which the solvent was continuously removed with a gentle nitrogen stream at room temperature.</text></s> <s sid="66"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp6" novelty="None" advantage="None"/><text>Derivatisation of the dried extract was performed as described above.</text></s></P><P><s sid="67"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp7" novelty="None" advantage="None"/><text>GC–MS separation of derivatives with split/splitless injection: injector temperature: 280 °C; oven: initial temperature 90 °C, initial time 2 min, temperature gradient 5 °C min−1, final temperature 280 °C, final time 15 min; column head pressure: 100 kPa; MSD detector: transfer line temperature: 180 °C, mass range m/z 50–400.</text></s></P><P><s sid="68"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp8" novelty="None" advantage="None"/><text>Total ion chromatograms (TIC) were recorded to obtain mass spectra of the derivatives.</text></s></P><P><s sid="69"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp9" novelty="None" advantage="None"/><text>For quantitative analysis, detection was performed in the selected ion monitoring mode with the following parameters: m/z 199: 18–22 min, m/z 227: 22–30 min, m/z 255: 30–35 min, m/z 283: 35–39 min, m/z 311: 39–43 min</text></s></P><P><s sid="70"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp10" novelty="None" advantage="None"/><text>GC–MS separation of derivatives with cool on-column injection: injector temperature: always 3 °C ahead the oven temperature (oven track mode), initial temperature: 93 °C; oven: initial temperature 90 °C, initial time 2 min, temperature gradient 5 °C min−1 to 230 °C, hold time 2 min, temperature gradient 5 °C min−1, final temperature 280 °C, final time 15 min; column head pressure: 100 kPa; MSD detector: transfer line temperature: 180 °C, mass range m/z 50–400</text></s></P><P><s sid="71"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp11" novelty="None" advantage="None"/><text>Total ion chromatograms (TIC) were recorded to obtain mass spectra of the derivatives.</text></s></P><P><s sid="72"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp12" novelty="None" advantage="None"/><text>For quantitative analysis, detection was performed in the single ion monitoring mode with the following parameters: m/z 199: 12–16 min, m/z 227: 16–21 min, m/z 255: 21–25 min, m/z 283: 25–28 min, m/z 311: 28–31 min</text></s></P></DIV></DIV><DIV DEPTH="1"><HEADER>Results</HEADER><P><s sid="73"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac16" novelty="None" advantage="None"/><text>Hydroxy fatty acids are readily derivatised using the procedure developed by Costa et al<REF ID="R-26" REFID="cit26"/>. for the analysis of fatty acids in plasma.</text></s> <s sid="74"><CoreSc1 atype="GSC" type="Mod" conceptID="Mod1" novelty="None" advantage="None"/><text>In this procedure derivatisation is performed in a single step with a reagent mixture of MBTFA selectively reacting with the hydroxyl functionality and MTBSTFA reacting with the carboxyl group (Fig. 1).</text></s> <s sid="75"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs1" novelty="None" advantage="None"/><text>Mass spectra of the derivatives of 3-OH FAs (and of 2-OH-FAs) exhibit a common characteristic: Loss of the tert-butyl group after elimination of trifluoro acetic acid results in a fragment of M − 171 forming the base peak.</text></s> <s sid="76"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs2" novelty="None" advantage="None"/><text>Molecule peaks are not detected.</text></s> <s sid="77"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs3" novelty="None" advantage="None"/><text>This is exemplified for 14∶0 3-OH FA in Fig. 2.</text></s></P><P><s sid="78"><CoreSc1 atype="GSC" type="Met" conceptID="Met4" novelty="None" advantage="None"/><text>GC separation of derivatives with split/splitless injection was performed using the M − 171 fragment for mass selective detection with selected ion monitoring.</text></s> <s sid="79"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs4" novelty="None" advantage="None"/><text>Fig. 3 shows a chromatogram of the four 3-OH FAs investigated.</text></s> <s sid="80"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs4" novelty="None" advantage="None"/><text>This chromatogram shows that, under the selected GC conditions, all four derivatives showed satellite peaks detected with the same m/z for SIM as the main peaks.</text></s> <s sid="81"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs5" novelty="None" advantage="None"/><text>Furthermore, mass spectra of main and satellite peaks were identical.</text></s> <s sid="82"><CoreSc1 atype="GSC" type="Hyp" conceptID="Hyp1" novelty="None" advantage="None"/><text>These satellites may have resulted either from side products or from degradation reactions.</text></s> <s sid="83"><CoreSc1 atype="GSC" type="Hyp" conceptID="Hyp1" novelty="None" advantage="None"/><text>The hypothesis of degradation is supported by peak tailing or an elevated baseline between the main peak and its satellite, thus pointing to an on-column conversion of products.</text></s> <s sid="84"><CoreSc1 atype="GSC" type="Met" conceptID="Met5" novelty="None" advantage="None"/><text>Further proof for this is provided by investigations into the dependence of peak ratios on injector temperature.</text></s> <s sid="85"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs6" novelty="None" advantage="None"/><text>The main peak continuously decreases with increasing injector temperature, while the satellite peak grows simultaneously.</text></s></P><P><s sid="86"><CoreSc1 atype="GSC" type="Res" conceptID="Res4" novelty="None" advantage="None"/><text>Thermal decomposition of the derivatives is thus the cause of degradation occurring at high injector temperatures, leading to the sharp satellite peak.</text></s> <s sid="87"><CoreSc1 atype="GSC" type="Hyp" conceptID="Hyp2" novelty="None" advantage="None"/><text>Additional on-column conversion then results in molecules with intermediate retention times leading to peak tailing.</text></s> <s sid="88"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac17" novelty="None" advantage="None"/><text>It was assumed that trifluoroacetic acid might be eliminated in this case as observed for 18∶0 3-OH.<REF ID="R-27" REFID="cit23"/></text></s> <s sid="89"><CoreSc1 atype="GSC" type="Hyp" conceptID="Hyp3" novelty="None" advantage="None"/><text>The resulting MTBSTFA derivatives of the corresponding α,β-unsaturated fatty acids should show at least similar mass spectra, since elimination of trifluoroacetic acid is part of the fragmentation reaction of the 3-OH-FA derivatives in the ion source.</text></s> <s sid="90"><CoreSc1 atype="GSC" type="Res" conceptID="Res5" novelty="None" advantage="None"/><text>As a final proof for these assumptions, trans-decenoic acid (10∶1 FA) was derivatised, leading to a peak with an identical retention time and mass spectrum to the 10∶0 3-OH FA satellite.</text></s> <s sid="91"><CoreSc1 atype="GSC" type="Con" conceptID="Con4" novelty="None" advantage="None"/><text>These results suggest a reduction of the thermal load to avoid degradation of derivatives.</text></s> <s sid="92"><CoreSc1 atype="GSC" type="Met" conceptID="Met6" novelty="None" advantage="None"/><text>Therefore cool on-column injection at comparably low temperatures was a promising alteration of the separation procedure.</text></s> <s sid="93"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs7" novelty="None" advantage="None"/><text>Fig. 4 shows a chromatogram of 3-OH FA derivatives after changing to cool on-column injection at 93 °C.</text></s> <s sid="94"><CoreSc1 atype="GSC" type="Res" conceptID="Res6" novelty="None" advantage="None"/><text>Obviously, thermal degradation is reduced by magnitudes (note: retention times of main and satellite peak are reversed compared to split/splitless injection because of the different capillary column used).</text></s></P><P><s sid="95"><CoreSc1 atype="GSC" type="Met" conceptID="Met7" novelty="None" advantage="None"/><text>With this improved separation, calibration of 10∶0, 12∶0, 14∶0 and 16∶0 3-OH FA was performed using 8∶0 2-OH FA as internal standard.</text></s> <s sid="96"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs8" novelty="None" advantage="None"/><text>All calibration graphs were non-linear.</text></s> <s sid="97"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs9" novelty="None" advantage="None"/><text>This non-linearity could not be overcome by varying the method and may be due to the persisting thermal on-column degradation of derivatives.</text></s> <s sid="98"><CoreSc1 atype="GSC" type="Met" conceptID="Met8" novelty="None" advantage="None"/><text>This minor disadvantage was judged to be acceptable, since the graphs provide a perfect fit with second-order equations which may be used for quantification:</text></s></P><P><s sid="99"><CoreSc1 atype="GSC" type="Mod" conceptID="Mod2" novelty="None" advantage="None"/><text>10∶0 3-OH: y = 0.160 + 0.00397x + 4.06E − 5x2, R2 = 0.9989;</text></s></P><P><s sid="100"><CoreSc1 atype="GSC" type="Mod" conceptID="Mod3" novelty="None" advantage="None"/><text>12∶0 3-OH: y = 0.167 + 0.00470x + 5.14E − 5x2, R2 = 0.9993;</text></s></P><P><s sid="101"><CoreSc1 atype="GSC" type="Mod" conceptID="Mod4" novelty="None" advantage="None"/><text>14∶0 3-OH: y = 0.126 + 0.00765x + 5.80E − 5x2, R2 = 0.9996;</text></s></P><P><s sid="102"><CoreSc1 atype="GSC" type="Mod" conceptID="Mod5" novelty="None" advantage="None"/><text>16∶0 3-OH: y = −0.026 + 0.00907x + 5.74E − 5x2, R2 = 0.9979.</text></s></P><P><s sid="103"><CoreSc1 atype="GSC" type="Met" conceptID="Met9" novelty="None" advantage="None"/><text>The within-series relative standard deviations (replicate analysis, n = 10) for three different concentrations (10; 50; 250 pmol µl−1) and the limit of detection (LOD, signal-to-noise ratio &gt;5) were determined.</text></s> <s sid="104"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs10" novelty="None" advantage="None"/><text>The resulting reliability criteria of the method are listed in Table 1.</text></s></P><P><s sid="105"><CoreSc1 atype="GSC" type="Mot" conceptID="Mot2" novelty="None" advantage="None"/><text>Since 2-hydroxy fatty acids may be present in real dust samples containing organic matter from different sources and since these acids might show similar chromatographic and mass spectrometric behaviour to the 3-OH FAs and thus interfere with 3-OH FA determination, the separation of 2-OH FA is a prerequisite for the reliable quantification of 3-OH FAs from LPS in real samples.</text></s> <s sid="106"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs11" novelty="None" advantage="None"/><text>Fig. 4 demonstrates that the 2-OH FAs elute with retention times close to those of the corresponding 3-OH FAs and show comparable mass spectrometric fragmentation (SIM detection of the fragment M − 171).</text></s> <s sid="107"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac18" novelty="None" advantage="None"/><text>Nevertheless, since baseline separation is ensured, interferences with 3-OH FA determination can be ruled out.</text></s></P><P><s sid="108"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac19" novelty="None" advantage="None"/><text>After these preparatory methodological steps, the analytical procedure was applied to 3-hydroxy fatty acids from LPS in the next step.</text></s> <s sid="109"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp13" novelty="None" advantage="None"/><text>LPS from E. coli was used for these investigations.</text></s> <s sid="110"><CoreSc1 atype="GSC" type="Met" conceptID="Met10" novelty="None" advantage="None"/><text>Preliminary hydrolytic cleavage of the 3-OH FAs linked to the lipid A moiety via ester or amide bonds is required before derivatisation.</text></s> <s sid="111"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp14" novelty="None" advantage="None"/><text>In a first attempt, 8 M hydrochloric acid was used at 90 °C with an increasing hydrolysis time.</text></s> <s sid="112"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp15" novelty="None" advantage="None"/><text>After extraction of the free acids with ethyl acetate, the dried extracts were treated with the reagent mixture as described above.</text></s> <s sid="113"><CoreSc1 atype="GSC" type="Exp" conceptID="Exp16" novelty="None" advantage="None"/><text>After 2 h of hydrolysis, 14∶0 3-OH FA, the only 3-OH FA in the LPS of E. coli, was detected in GC–MS analysis.</text></s> <s sid="114"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs12" novelty="None" advantage="None"/><text>Unfortunately the main peak again was accompanied by a quite intense satellite resulting from the unsaturated 14∶1 FA.</text></s> <s sid="115"><CoreSc1 atype="GSC" type="Res" conceptID="Res7" novelty="None" advantage="None"/><text>Furthermore, the hydrolysis was incomplete, since a prolongation of hydrolysis time to 4 h resulted in an increased main and satellite peak (Fig. 5).</text></s> <s sid="116"><CoreSc1 atype="GSC" type="Res" conceptID="Res7" novelty="None" advantage="None"/><text>Increasing the time to 6 and 8 h resulted in a decreased main peak, while the satellite peak continued to increase.</text></s> <s sid="117"><CoreSc1 atype="GSC" type="Con" conceptID="Con5" novelty="None" advantage="None"/><text>These results give evidence that, under the selected conditions, hydrolysis is slow, and degradation to the unsaturated fatty acid becomes a significant side reaction.</text></s> <s sid="118"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac20" novelty="None" advantage="None"/><text>Obviously the protonation of the hydroxy group favours the elimination of water.</text></s></P><P><s sid="119"><CoreSc1 atype="GSC" type="Hyp" conceptID="Hyp4" novelty="None" advantage="None"/><text>If this is true, alkaline hydrolysis should minimize the elimination reaction.</text></s> <s sid="120"><CoreSc1 atype="GSC" type="Res" conceptID="Res8" novelty="None" advantage="None"/><text>First attempts with 4 M NaOH at room temperature and at 90 °C resulted in incomplete hydrolysis even after more than 20 h.</text></s> <s sid="121"><CoreSc1 atype="GSC" type="Res" conceptID="Res9" novelty="None" advantage="None"/><text>With 8 M NaOH, the reaction was complete after 6 h.</text></s> <s sid="122"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs13" novelty="None" advantage="None"/><text>Prolongation of hydrolysis time up to 24 h did not increase the yield of free 3-OH 14∶0 FA.</text></s> <s sid="123"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs14" novelty="None" advantage="None"/><text>Though the formation of 14∶1 FA still could not be avoided, it was–compared with acidic hydrolysis–independent of reaction time.</text></s> <s sid="124"><CoreSc1 atype="GSC" type="Con" conceptID="Con6" novelty="None" advantage="None"/><text>According to these findings, alkaline hydrolysis is the method of choice for the liberation of 3-OH FAs from lipid A.</text></s></P></DIV><DIV DEPTH="1"><HEADER>Discussion</HEADER><P><s sid="125"><CoreSc1 atype="GSC" type="Met" conceptID="Met2" novelty="Old" advantage="None"/><text>For the determination of bacterial LPS in occupational and environmental samples, the LAL assay still is the gold standard.</text></s> <s sid="126"><CoreSc1 atype="GSC" type="Mot" conceptID="Mot3" novelty="None" advantage="None"/><text>But, though it is very sensitive, the assay is subject to various interferences,<REF ID="R-28" REFID="cit27"/> which is why various attempts have been made to develop alternative methods based on chemical analysis.</text></s> <s sid="127"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac21" novelty="None" advantage="None"/><text>All of these methods focus on the quantification of 3-hydroxy fatty acids from the lipid A of LPS.</text></s> <s sid="128"><CoreSc1 atype="GSC" type="Met" conceptID="Met11" novelty="Old" advantage="None"/><text>The basic steps are the same for all methods: after hydrolytic cleavage of the 3-OH FAs and derivatisation of the hydroxy and the carboxyl functionality, the derivatives are separated chromatographically.</text></s> <s sid="129"><CoreSc1 atype="GSC" type="Met" conceptID="Met11" novelty="Old" advantage="None"/><text>The derivatising agents are chosen with respect to the intended separation and quantification techniques.</text></s> <s sid="130"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac22" novelty="None" advantage="None"/><text>HPLC with fluorescence detection was used after coupling a fluorophore (anthracene-9-carboxyl chloride, 9-fluorene carboxyl chloride or 4-(1-pyrenyl)butyric acid chloride) to the hydroxy group of the 3-OH FA methyl esters.<REF ID="R-29" REFID="cit28"/><REF ID="R-30" REFID="cit29"/></text></s> <s sid="131"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac22" novelty="None" advantage="None"/><text>Separation and quantification of halogen-containing 3-OH FA derivatives was performed using gas chromatography with electron capture detection.</text></s> <s sid="132"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac23" novelty="None" advantage="None"/><text>3-OH FA pentafluorobenzyl esters, 3-O-heptafluorobutyryl-, 3-O-pentafluorobenzoyl- and 3-O-trichloroacetyl derivatives of 3-OH FA methyl esters as well as 3-O-heptafluorobutyryl derivatives of 3-OH FA pentafluorobenzyl or trichloroethyl esters have been investigated.<REF ID="R-31" REFID="cit30"/><REF ID="R-32" REFID="cit31"/></text></s> <s sid="133"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac24" novelty="None" advantage="None"/><text>Gas chromatography–mass spectrometry has been used by various groups for different derivatives: 3-O-trimethylsilyl-derivatives of 3-OH FA pentafluorobenzyl<REF ID="R-33" REFID="cit32"/> or methyl esters,<REF ID="R-34" REFID="cit3"/><REF ID="R-35" REFID="cit33"/><REF ID="R-36" REFID="cit34"/><REF ID="R-37" REFID="cit35"/><REF ID="R-38" REFID="cit36"/><REF ID="R-39" REFID="cit37"/> 3-O-tert-butyldimethylsilyl derivatives of 3-OH-FA methyl esters<REF ID="R-40" REFID="cit38"/> and the above-mentioned halogenated derivatives used for electron capture detection.<REF ID="R-41" REFID="cit30"/><REF ID="R-42" REFID="cit34"/><REF ID="R-43" REFID="cit35"/><REF ID="R-44" REFID="cit39"/></text></s></P><P><s sid="134"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="Yes"/><text>One main advantage of the method presented in this paper is that derivatisation of both functionalities of the 3-OH FAs is conducted in a single step with no further clean-up.</text></s> <s sid="135"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac25" novelty="None" advantage="None"/><text>In most of the methods mentioned above, a two-step derivatisation reaction with more or less elaborate clean-up procedures is needed.</text></s> <s sid="136"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="Yes"/><text>Thus, the simplicity of the MBTFA/MTBSTFA method leads to a reduction in potential analytical errors during sample preparation.</text></s> <s sid="137"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="Yes"/><text>Furthermore, since 2-OH FAs might be present in occupational or environmental dust samples, their separation from 3-OH FAs is a basic prerequisite for quantification.</text></s> <s sid="138"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac26" novelty="None" advantage="None"/><text>While baseline separation of 2- and 3-OH FA derivatives is assured with MBTFA/MTBSTFA derivatisation, it could not be achieved<REF ID="R-45" REFID="cit38"/> or was not investigated in some of the other methods.</text></s></P><P><s sid="139"><CoreSc1 atype="GSC" type="Mot" conceptID="Mot4" novelty="None" advantage="None"/><text>One problem which was addressed neither for any of the above mentioned methods nor in the investigations of Costa et al<REF ID="R-46" REFID="cit26"/>. is the tendency of 3-OH FAs to eliminate water during hydrolysis to result in α,β-unsaturated fatty acids which then are derivatised to the corresponding MTBSTFA derivatives.</text></s> <s sid="140"><CoreSc1 atype="GSC" type="Con" conceptID="Con7" novelty="None" advantage="None"/><text>Additional α,β-unsaturated derivatives are formed during injection and separation of the derivatives by thermal elimination of trifluoroacetic acid.</text></s> <s sid="141"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac27" novelty="None" advantage="None"/><text>This phenomenon has been observed by Costa et al<REF ID="R-47" REFID="cit26"/>. for the MBTFA/MTBSTFA derivative of 18∶0 3-OH FA, but not for the short-chained 3-OH FA.</text></s> <s sid="142"><CoreSc1 atype="GSC" type="Con" conceptID="Con8" novelty="None" advantage="None"/><text>These elimination reactions may have considerable influence on the analytical results.</text></s> <s sid="143"><CoreSc1 atype="GSC" type="Con" conceptID="Con7" novelty="None" advantage="None"/><text>Depending on the split/splitless injector temperature, substantial amounts of the derivatives are converted to the respective α,β-unsaturated compounds.</text></s> <s sid="144"><CoreSc1 atype="GSC" type="Con" conceptID="Con7" novelty="None" advantage="None"/><text>Additional on-column conversion, though less pronounced, increases the amount of elimination products.</text></s> <s sid="145"><CoreSc1 atype="GSC" type="Met" conceptID="Met6" novelty="None" advantage="None"/><text>By changing to cool on-column injection, thermal degradation can be reduced effectively.</text></s></P><P><s sid="146"><CoreSc1 atype="GSC" type="Met" conceptID="Met12" novelty="None" advantage="No"/><text>The formation of α,β-unsaturated fatty acids from 3-OH FAs already during acidic hydrolysis of LPS represents a major problem, all the more the yields of elimination products increase with hydrolysis time.</text></s> <s sid="147"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac28" novelty="None" advantage="None"/><text>There may be many reasons why this problem did not occur or was overlooked in the above mentioned methods: elimination might have been less pronounced in those investigations under the hydrolytic conditions used or when methanolysis was applied for the liberation of 3-OH FAs as their methyl esters; elimination products might not have been separated from the derivatives under the selected chromatographic conditions; elimination products might have been overlooked when mass spectrometric detection with selected ion monitoring was used.</text></s> <s sid="148"><CoreSc1 atype="GSC" type="Con" conceptID="Con9" novelty="None" advantage="None"/><text>But, whatever the reason, the results presented here indicate that elimination should always be considered as a possible side reaction when acidic hydrolysis of LPS is applied.</text></s></P><P><s sid="149"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="Yes"/><text>Though elimination could not be suppressed completely with alkaline hydrolysis, it is nevertheless the method of choice for the liberation of 3-OH FAs from LPS, since the yields of elimination products are low and independent of hydrolysis time.</text></s></P><P><s sid="150"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs8" novelty="None" advantage="None"/><text>Calibration using 8∶0 2-OH FA as internal standard resulted in non-linear calibration graphs for all four 3-OH FAs investigated.</text></s> <s sid="151"><CoreSc1 atype="GSC" type="Met" conceptID="Met8" novelty="None" advantage="None"/><text>Nevertheless, since a perfect fit to second-order equations is given, results may be calculated using these functions.</text></s> <s sid="152"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs10" novelty="None" advantage="None"/><text>Relative standard deviations at a concentration of 10 pmol µl−1 were from 6.81 to 14.46percent, increasing with chain length.</text></s> <s sid="153"><CoreSc1 atype="GSC" type="Hyp" conceptID="Hyp5" novelty="None" advantage="None"/><text>This increase may be due to a different tendency of 3-OH FAs to eliminate water (or trifluoroacetic acid): trifluoroacetic acid elimination was observed only for the long chain 18∶0 3-OH FA.<REF ID="R-48" REFID="cit26"/></text></s> <s sid="154"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="None"/><text>With limits of detection from 50–7 pg/injection or 5–0.7 ng/sample, the MBTFA/MTBSTFA method matches the sensitivity of the other methods based on 3-OH FA derivatisation.</text></s> <s sid="155"><CoreSc1 atype="GSC" type="Obs" conceptID="Obs15" novelty="None" advantage="None"/><text>For the LPS of E. coli with a molecular mass of about 4000<REF ID="R-49" REFID="cit40"/> and four moles of 14∶0 3-OH FA per mole, the LOD of 3-OH FA corresponds to 4.9 ng LPS/sample or about 15 endotoxin units (EU) for the LPS lot (3 000 000 EU mg−1) used in these investigations.</text></s> <s sid="156"><CoreSc1 atype="GSC" type="Met" conceptID="Met1" novelty="New" advantage="Yes"/><text>If necessary, the sensitivity may be improved tenfold by reducing the mixture of derivatising agents to 50 µl and by increasing the injection volume to a maximum of 5 µl.</text></s></P><P><s sid="157"><CoreSc1 atype="GSC" type="Con" conceptID="Con10" novelty="None" advantage="None"/><text>The reliability and sensitivity of the MBTFA/MTBSTFA method thus meet all requirements for the quantification of endotoxin concentrations usually found in occupational<REF ID="R-50" REFID="cit41"/> or environmental<REF ID="R-51" REFID="cit2"/> dust samples.</text></s></P></DIV><DIV DEPTH="1"><HEADER>Conclusions</HEADER><P><s sid="158"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac29" novelty="None" advantage="None"/><text>GC–MS determination of 3-hydroxy fatty acids from lipid A of bacterial lipopolysaccharides provides quantitative information about the endotoxin content in aqueous or dust samples.</text></s> <s sid="159"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac30" novelty="None" advantage="None"/><text>However, it must be borne in mind that the results obtained are completely different from those of the LAL assay.</text></s> <s sid="160"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac31" novelty="None" advantage="None"/><text>Endotoxin measurement with the LAL assay reflects the overall biological activity of a sample in this specific test system, which must not necessarily be correlated with the activity or toxicity in vivo.</text></s> <s sid="161"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac32" novelty="None" advantage="None"/><text>On the other hand, with LPS of different species and thus with different 3-OH FAs, the absolute amounts of LPS cannot be deduced from the results of the MBTFA/MTBSTFA method (or of any other method based on 3-OH FA quantification).</text></s> <s sid="162"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac33" novelty="None" advantage="None"/><text>With these differences it is hardly surprising that correlations between LAL and 3-OH FA based results are usually poor.</text></s> <s sid="163"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac33" novelty="None" advantage="None"/><text>The best correlation coefficients (0.57–0.61) are obtained when only 10∶0, 12∶0 and 14∶0 3-OH FAs are considered individually or in combination.<REF ID="R-52" REFID="cit3"/></text></s></P><P><s sid="164"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac34" novelty="None" advantage="None"/><text>The quantitative information about the endotoxin content delivered from 3-OH FA based methods thus represents-compared to the LAL results-an analytical result sui generis.</text></s> <s sid="165"><CoreSc1 atype="GSC" type="Bac" conceptID="Bac35" novelty="None" advantage="None"/><text>Further investigations on the association of health effects with endotoxin exposure assessed either by the LAL or by the MBTFA/MTBSTFA method are needed to decide which is the method of choice for the comprehensive characterization of endotoxin.</text></s></P></DIV></BODY><cmlPile><cml xmlns="http://www.xml-cml.org/schema" id="cml1"><molecule id="m1"><name>lipid A</name><identifier convention="iupac:inchi">InChI=1/C94H178N2O25P2/c1-7-13-19-25-31-37-38-44-50-56-62-68-84(103)115-78(66-60-54-48-42-35-29-23-17-11-5)72-86(105)119-92-88(96-82(101)71-77(65-59-53-47-41-34-28-22-16-10-4)114-83(102)67-61-55-49-43-36-30-24-18-12-6)93(116-79(73-97)90(92)120-122(107,108)109)113-74-80-89(106)91(118-85(104)70-76(99)64-58-52-46-40-33-27-21-15-9-3)87(94(117-80)121-123(110,111)112)95-81(100)69-75(98)63-57-51-45-39-32-26-20-14-8-2/h75-80,87-94,97-99,106H,7-74H2,1-6H3,(H,95,100)(H,96,101)(H2,107,108,109)(H2,110,111,112)/t75-,76-,77-,78-,79-,80-,87-,88-,89-,90-,91-,92-,93-,94-/m1/s1/f/h95-96,107-108,110-111H</identifier>
+  <atomArray>
+    <atom id="1" elementType="C" x2="15.588457268120152" y2="28.499999999999865" formalCharge="0" hydrogenCount="3"/>
+    <atom id="7" elementType="C" x2="15.588457268120125" y2="26.999999999999865" formalCharge="0" hydrogenCount="2"/>
+    <atom id="13" elementType="C" x2="14.289419162443455" y2="26.249999999999886" formalCharge="0" hydrogenCount="2"/>
+    <atom id="19" elementType="C" x2="14.28941916244343" y2="24.749999999999886" formalCharge="0" hydrogenCount="2"/>
+    <atom id="25" elementType="C" x2="12.990381056766761" y2="23.999999999999908" formalCharge="0" hydrogenCount="2"/>
+    <atom id="31" elementType="C" x2="12.99038105676674" y2="22.499999999999908" formalCharge="0" hydrogenCount="2"/>
+    <atom id="37" elementType="C" x2="11.691342951090071" y2="21.749999999999925" formalCharge="0" hydrogenCount="2"/>
+    <atom id="38" elementType="C" x2="11.69134295109005" y2="20.249999999999925" formalCharge="0" hydrogenCount="2"/>
+    <atom id="44" elementType="C" x2="10.392304845413381" y2="19.499999999999943" formalCharge="0" hydrogenCount="2"/>
+    <atom id="50" elementType="C" x2="10.392304845413362" y2="17.999999999999943" formalCharge="0" hydrogenCount="2"/>
+    <atom id="56" elementType="C" x2="9.093266739736695" y2="17.249999999999957" formalCharge="0" hydrogenCount="2"/>
+    <atom id="62" elementType="C" x2="9.093266739736679" y2="15.749999999999956" formalCharge="0" hydrogenCount="2"/>
+    <atom id="68" elementType="C" x2="7.794228634060014" y2="14.999999999999968" formalCharge="0" hydrogenCount="2"/>
+    <atom id="84" elementType="C" x2="7.7942286340599995" y2="13.499999999999968" formalCharge="0" hydrogenCount="0"/>
+    <atom id="103" elementType="O" x2="9.093266739736652" y2="12.749999999999957" formalCharge="0" hydrogenCount="0"/>
+    <atom id="115" elementType="O" x2="6.495190528383336" y2="12.749999999999979" formalCharge="0" hydrogenCount="0"/>
+    <atom id="78" elementType="C" x2="6.495190528383325" y2="11.249999999999979" formalCharge="0" hydrogenCount="1"/>
+    <atom id="66" elementType="C" x2="7.7942286340599765" y2="10.499999999999968" formalCharge="0" hydrogenCount="2"/>
+    <atom id="72" elementType="C" x2="5.196152422706662" y2="10.499999999999988" formalCharge="0" hydrogenCount="2"/>
+    <atom id="60" elementType="C" x2="9.093266739736642" y2="11.249999999999956" formalCharge="0" hydrogenCount="2"/>
+    <atom id="86" elementType="C" x2="5.196152422706653" y2="8.999999999999988" formalCharge="0" hydrogenCount="0"/>
+    <atom id="54" elementType="C" x2="10.392304845413292" y2="10.499999999999943" formalCharge="0" hydrogenCount="2"/>
+    <atom id="105" elementType="O" x2="6.495190528383308" y2="8.24999999999998" formalCharge="0" hydrogenCount="0"/>
+    <atom id="119" elementType="O" x2="3.897114317029992" y2="8.249999999999993" formalCharge="0" hydrogenCount="0"/>
+    <atom id="48" elementType="C" x2="11.691342951089958" y2="11.24999999999993" formalCharge="0" hydrogenCount="2"/>
+    <atom id="92" elementType="C" x2="3.8971143170299856" y2="6.749999999999993" formalCharge="0" hydrogenCount="1"/>
+    <atom id="42" elementType="C" x2="12.990381056766608" y2="10.499999999999918" formalCharge="0" hydrogenCount="2"/>
+    <atom id="88" elementType="C" x2="2.5980762113533267" y2="5.999999999999996" formalCharge="0" hydrogenCount="1"/>
+    <atom id="90" elementType="C" x2="5.196152422706641" y2="5.99999999999999" formalCharge="0" hydrogenCount="1"/>
+    <atom id="35" elementType="C" x2="14.289419162443274" y2="11.249999999999906" formalCharge="0" hydrogenCount="2"/>
+    <atom id="93" elementType="C" x2="2.5980762113533213" y2="4.4999999999999964" formalCharge="0" hydrogenCount="1"/>
+    <atom id="96" elementType="N" x2="1.29903810567667" y2="6.75" formalCharge="0" hydrogenCount="1"/>
+    <atom id="79" elementType="C" x2="5.196152422706638" y2="4.49999999999999" formalCharge="0" hydrogenCount="1"/>
+    <atom id="120" elementType="O" x2="6.495190528383301" y2="6.749999999999987" formalCharge="0" hydrogenCount="0"/>
+    <atom id="29" elementType="C" x2="15.588457268119924" y2="10.499999999999893" formalCharge="0" hydrogenCount="2"/>
+    <atom id="113" elementType="O" x2="1.2990381056766616" y2="3.749999999999999" formalCharge="0" hydrogenCount="0"/>
+    <atom id="116" elementType="O" x2="3.897114317029978" y2="3.749999999999992" formalCharge="0" hydrogenCount="0"/>
+    <atom id="82" elementType="C" x2="8.659739592076221E-15" y2="6.000000000000006" formalCharge="0" hydrogenCount="0"/>
+    <atom id="124" elementType="H" x2="1.2990381056766753" y2="8.25" formalCharge="0" hydrogenCount="1"/>
+    <atom id="73" elementType="C" x2="6.4951905283832945" y2="3.7499999999999893" formalCharge="0" hydrogenCount="2"/>
+    <atom id="122" elementType="P" x2="7.794228634059956" y2="5.999999999999982" formalCharge="0" hydrogenCount="0"/>
+    <atom id="23" elementType="C" x2="16.88749537379659" y2="11.249999999999881" formalCharge="0" hydrogenCount="2"/>
+    <atom id="74" elementType="C" x2="1.2990381056766584" y2="2.249999999999999" formalCharge="0" hydrogenCount="2"/>
+    <atom id="71" elementType="C" x2="3.9058828496693984E-16" y2="4.500000000000006" formalCharge="0" hydrogenCount="2"/>
+    <atom id="101" elementType="O" x2="-1.2990381056766453" y2="6.750000000000013" formalCharge="0" hydrogenCount="0"/>
+    <atom id="97" elementType="O" x2="6.495190528383292" y2="2.2499999999999893" formalCharge="0" hydrogenCount="1"/>
+    <atom id="107" elementType="O" x2="9.093266739736617" y2="6.749999999999977" formalCharge="0" hydrogenCount="1"/>
+    <atom id="108" elementType="O" x2="6.830047219530142" y2="4.850933335321519" formalCharge="0" hydrogenCount="1"/>
+    <atom id="109" elementType="O" x2="8.758410048589761" y2="4.850933335321512" formalCharge="0" hydrogenCount="0"/>
+    <atom id="17" elementType="C" x2="18.18653347947324" y2="10.499999999999869" formalCharge="0" hydrogenCount="2"/>
+    <atom id="80" elementType="C" x2="0.0" y2="1.5" formalCharge="0" hydrogenCount="1"/>
+    <atom id="77" elementType="C" x2="-1.299038105676662" y2="3.750000000000014" formalCharge="0" hydrogenCount="1"/>
+    <atom id="125" elementType="H" x2="7.794228634059948" y2="1.4999999999999862" formalCharge="0" hydrogenCount="1"/>
+    <atom id="126" elementType="H" x2="10.392304845413271" y2="5.999999999999971" formalCharge="0" hydrogenCount="1"/>
+    <atom id="127" elementType="H" x2="7.343077434518639" y2="3.4413944041426543" formalCharge="0" hydrogenCount="1"/>
+    <atom id="11" elementType="C" x2="19.485571585149906" y2="11.249999999999856" formalCharge="0" hydrogenCount="2"/>
+    <atom id="89" elementType="C" x2="0.0" y2="0.0" formalCharge="0" hydrogenCount="1"/>
+    <atom id="117" elementType="O" x2="-1.19472489154925" y2="2.142209678735012" formalCharge="0" hydrogenCount="0"/>
+    <atom id="65" elementType="C" x2="-2.598076211353315" y2="4.500000000000022" formalCharge="0" hydrogenCount="2"/>
+    <atom id="114" elementType="O" x2="-1.2990381056766716" y2="2.250000000000014" formalCharge="0" hydrogenCount="0"/>
+    <atom id="5" elementType="C" x2="20.784609690826557" y2="10.499999999999844" formalCharge="0" hydrogenCount="3"/>
+    <atom id="91" elementType="C" x2="-1.2990381056766584" y2="-0.7500000000000001" formalCharge="0" hydrogenCount="1"/>
+    <atom id="106" elementType="O" x2="1.2990381056766576" y2="-0.7500000000000007" formalCharge="0" hydrogenCount="1"/>
+    <atom id="94" elementType="C" x2="-2.551084442966467" y2="1.4415468246895287" formalCharge="0" hydrogenCount="1"/>
+    <atom id="59" elementType="C" x2="-3.8971143170299793" y2="3.750000000000033" formalCharge="0" hydrogenCount="2"/>
+    <atom id="83" elementType="C" x2="-2.645067979740184" y2="1.558453175310494" formalCharge="0" hydrogenCount="0"/>
+    <atom id="87" elementType="C" x2="-2.538612919536502" y2="-0.04570685863531255" formalCharge="0" hydrogenCount="1"/>
+    <atom id="118" elementType="O" x2="-1.2990381056766587" y2="-2.25" formalCharge="0" hydrogenCount="0"/>
+    <atom id="128" elementType="H" x2="1.2990381056766573" y2="-2.250000000000001" formalCharge="0" hydrogenCount="1"/>
+    <atom id="121" elementType="O" x2="-3.870882754617609" y2="2.1797368863954474" formalCharge="0" hydrogenCount="0"/>
+    <atom id="53" elementType="C" x2="-5.196152422706631" y2="4.5000000000000435" formalCharge="0" hydrogenCount="2"/>
+    <atom id="67" elementType="C" x2="-2.6575395031701596" y2="0.045706858635334906" formalCharge="0" hydrogenCount="2"/>
+    <atom id="102" elementType="O" x2="-3.9233458794423535" y2="2.320263113604584" formalCharge="0" hydrogenCount="0"/>
+    <atom id="95" elementType="N" x2="-3.8423990267194674" y2="-0.8012955846661001" formalCharge="0" hydrogenCount="1"/>
+    <atom id="85" elementType="C" x2="-2.598076211353317" y2="-2.849999999999999" formalCharge="0" hydrogenCount="0"/>
+    <atom id="123" elementType="P" x2="-5.196152422706634" y2="1.5000000000000004" formalCharge="0" hydrogenCount="0"/>
+    <atom id="47" elementType="C" x2="-6.495190528383296" y2="3.7500000000000564" formalCharge="0" hydrogenCount="2"/>
+    <atom id="61" elementType="C" x2="-3.951829607340516" y2="-0.6987044153338674" formalCharge="0" hydrogenCount="2"/>
+    <atom id="81" elementType="C" x2="-3.849680152127449" y2="-2.3923024947075775" formalCharge="0" hydrogenCount="0"/>
+    <atom id="129" elementType="H" x2="-5.196152422706632" y2="-5.551115123125783E-16" formalCharge="0" hydrogenCount="1"/>
+    <atom id="70" elementType="C" x2="-2.5980762113533173" y2="-4.5" formalCharge="0" hydrogenCount="2"/>
+    <atom id="104" elementType="O" x2="-3.897114317029975" y2="-2.249999999999999" formalCharge="0" hydrogenCount="0"/>
+    <atom id="110" elementType="O" x2="-6.495190528383291" y2="2.250000000000002" formalCharge="0" hydrogenCount="1"/>
+    <atom id="111" elementType="O" x2="-6.160333837236444" y2="0.3509333353215345" formalCharge="0" hydrogenCount="1"/>
+    <atom id="112" elementType="O" x2="-4.231971008176826" y2="0.3509333353215325" formalCharge="0" hydrogenCount="0"/>
+    <atom id="41" elementType="C" x2="-7.794228634059946" y2="4.500000000000069" formalCharge="0" hydrogenCount="2"/>
+    <atom id="55" elementType="C" x2="-3.944548481932646" y2="-2.1076975052924225" formalCharge="0" hydrogenCount="2"/>
+    <atom id="69" elementType="C" x2="-5.196152422706633" y2="-2.9999999999999996" formalCharge="0" hydrogenCount="2"/>
+    <atom id="100" elementType="O" x2="-2.598076211353317" y2="-3.000000000000001" formalCharge="0" hydrogenCount="0"/>
+    <atom id="76" elementType="C" x2="-3.813909287596191" y2="-5.125192455849322" formalCharge="0" hydrogenCount="1"/>
+    <atom id="130" elementType="H" x2="-7.794228634059951" y2="1.5000000000000058" formalCharge="0" hydrogenCount="1"/>
+    <atom id="131" elementType="H" x2="-7.637545466754756" y2="0.6114056018219318" formalCharge="0" hydrogenCount="1"/>
+    <atom id="34" elementType="C" x2="-9.093266739736613" y2="3.7500000000000844" formalCharge="0" hydrogenCount="2"/>
+    <atom id="49" elementType="C" x2="-5.312627906752189" y2="-2.905483008848279" formalCharge="0" hydrogenCount="2"/>
+    <atom id="75" elementType="C" x2="-5.134008250054778" y2="-4.541989305845849" formalCharge="0" hydrogenCount="1"/>
+    <atom id="64" elementType="C" x2="-3.8401700718525804" y2="-6.701190646990802" formalCharge="0" hydrogenCount="2"/>
+    <atom id="99" elementType="O" x2="-5.004711577360958" y2="-4.618172265026618" formalCharge="0" hydrogenCount="1"/>
+    <atom id="28" elementType="C" x2="-10.392304845413262" y2="4.5000000000000995" formalCharge="0" hydrogenCount="2"/>
+    <atom id="43" elementType="C" x2="-5.258296595358557" y2="-4.4580106941541064" formalCharge="0" hydrogenCount="2"/>
+    <atom id="63" elementType="C" x2="-6.435279402316022" y2="-5.295118255433375" formalCharge="0" hydrogenCount="2"/>
+    <atom id="98" elementType="O" x2="-3.8971143170299776" y2="-5.250000000000002" formalCharge="0" hydrogenCount="1"/>
+    <atom id="58" elementType="C" x2="-5.196152422706637" y2="-7.499999999999997" formalCharge="0" hydrogenCount="2"/>
+    <atom id="132" elementType="H" x2="-6.3088601510443265" y2="-5.37605462964621" formalCharge="0" hydrogenCount="1"/>
+    <atom id="22" elementType="C" x2="-11.691342951089931" y2="3.750000000000117" formalCharge="0" hydrogenCount="2"/>
+    <atom id="36" elementType="C" x2="-6.555101654450637" y2="-5.204881744566567" formalCharge="0" hydrogenCount="2"/>
+    <atom id="57" elementType="C" x2="-6.4324772705492075" y2="-6.791134502450315" formalCharge="0" hydrogenCount="2"/>
+    <atom id="133" elementType="H" x2="-3.954058562207378" y2="-6.798809353009199" formalCharge="0" hydrogenCount="1"/>
+    <atom id="52" elementType="C" x2="-5.19615242270664" y2="-8.999999999999996" formalCharge="0" hydrogenCount="2"/>
+    <atom id="16" elementType="C" x2="-12.990381056766578" y2="4.500000000000135" formalCharge="0" hydrogenCount="2"/>
+    <atom id="30" elementType="C" x2="-6.557903786217468" y2="-6.708865497549628" formalCharge="0" hydrogenCount="2"/>
+    <atom id="51" elementType="C" x2="-7.794228634059956" y2="-7.499999999999996" formalCharge="0" hydrogenCount="2"/>
+    <atom id="46" elementType="C" x2="-6.4951905283833" y2="-9.749999999999993" formalCharge="0" hydrogenCount="2"/>
+    <atom id="10" elementType="C" x2="-14.289419162443247" y2="3.7500000000001545" formalCharge="0" hydrogenCount="2"/>
+    <atom id="24" elementType="C" x2="-7.916122047795518" y2="-7.41258149115934" formalCharge="0" hydrogenCount="2"/>
+    <atom id="45" elementType="C" x2="-7.794228634059959" y2="-8.999999999999996" formalCharge="0" hydrogenCount="2"/>
+    <atom id="40" elementType="C" x2="-6.495190528383305" y2="-11.249999999999993" formalCharge="0" hydrogenCount="2"/>
+    <atom id="4" elementType="C" x2="-15.588457268119894" y2="4.500000000000174" formalCharge="0" hydrogenCount="3"/>
+    <atom id="18" elementType="C" x2="-7.920072827114207" y2="-8.91837133423508" formalCharge="0" hydrogenCount="2"/>
+    <atom id="39" elementType="C" x2="-9.032023427365322" y2="-9.793292686331426" formalCharge="0" hydrogenCount="2"/>
+    <atom id="33" elementType="C" x2="-7.794228634059966" y2="-11.999999999999988" formalCharge="0" hydrogenCount="2"/>
+    <atom id="12" elementType="C" x2="-9.154510052108018" y2="-9.706707313668486" formalCharge="0" hydrogenCount="2"/>
+    <atom id="32" elementType="C" x2="-9.030406274791657" y2="-11.290909191472114" formalCharge="0" hydrogenCount="2"/>
+    <atom id="27" elementType="C" x2="-7.794228634059971" y2="-13.499999999999988" formalCharge="0" hydrogenCount="2"/>
+    <atom id="6" elementType="C" x2="-9.156127204681702" y2="-11.2090908085278" formalCharge="0" hydrogenCount="3"/>
+    <atom id="26" elementType="C" x2="-10.392304845413285" y2="-11.999999999999988" formalCharge="0" hydrogenCount="2"/>
+    <atom id="21" elementType="C" x2="-9.093266739736633" y2="-14.249999999999982" formalCharge="0" hydrogenCount="2"/>
+    <atom id="20" elementType="C" x2="-10.392304845413292" y2="-13.499999999999988" formalCharge="0" hydrogenCount="2"/>
+    <atom id="15" elementType="C" x2="-9.09326673973664" y2="-15.749999999999982" formalCharge="0" hydrogenCount="2"/>
+    <atom id="14" elementType="C" x2="-11.691342951089954" y2="-14.24999999999998" formalCharge="0" hydrogenCount="2"/>
+    <atom id="9" elementType="C" x2="-10.392304845413301" y2="-16.499999999999975" formalCharge="0" hydrogenCount="2"/>
+    <atom id="8" elementType="C" x2="-11.691342951089963" y2="-15.74999999999998" formalCharge="0" hydrogenCount="2"/>
+    <atom id="3" elementType="C" x2="-10.39230484541331" y2="-17.999999999999975" formalCharge="0" hydrogenCount="3"/>
+    <atom id="2" elementType="C" x2="-12.990381056766626" y2="-16.49999999999997" formalCharge="0" hydrogenCount="3"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="7 1" order="S"/>
+    <bond id="b2" atomRefs2="13 7" order="S"/>
+    <bond id="b3" atomRefs2="19 13" order="S"/>
+    <bond id="b4" atomRefs2="25 19" order="S"/>
+    <bond id="b5" atomRefs2="31 25" order="S"/>
+    <bond id="b6" atomRefs2="37 31" order="S"/>
+    <bond id="b7" atomRefs2="38 37" order="S"/>
+    <bond id="b8" atomRefs2="44 38" order="S"/>
+    <bond id="b9" atomRefs2="50 44" order="S"/>
+    <bond id="b10" atomRefs2="56 50" order="S"/>
+    <bond id="b11" atomRefs2="62 56" order="S"/>
+    <bond id="b12" atomRefs2="68 62" order="S"/>
+    <bond id="b13" atomRefs2="84 68" order="S"/>
+    <bond id="b14" atomRefs2="103 84" order="D"/>
+    <bond id="b15" atomRefs2="115 84" order="S"/>
+    <bond id="b16" atomRefs2="115 78" order="S"/>
+    <bond id="b17" atomRefs2="78 66" order="S">
+      <bondStereo dictRef="cml:H"/>
+    </bond>
+    <bond id="b18" atomRefs2="78 72" order="S"/>
+    <bond id="b19" atomRefs2="66 60" order="S"/>
+    <bond id="b20" atomRefs2="86 72" order="S"/>
+    <bond id="b21" atomRefs2="60 54" order="S"/>
+    <bond id="b22" atomRefs2="105 86" order="D"/>
+    <bond id="b23" atomRefs2="119 86" order="S"/>
+    <bond id="b24" atomRefs2="54 48" order="S"/>
+    <bond id="b25" atomRefs2="119 92" order="S"/>
+    <bond id="b26" atomRefs2="48 42" order="S"/>
+    <bond id="b27" atomRefs2="92 88" order="S"/>
+    <bond id="b28" atomRefs2="92 90" order="S"/>
+    <bond id="b29" atomRefs2="42 35" order="S"/>
+    <bond id="b30" atomRefs2="93 88" order="S"/>
+    <bond id="b31" atomRefs2="96 88" order="S"/>
+    <bond id="b32" atomRefs2="90 79" order="S"/>
+    <bond id="b33" atomRefs2="120 90" order="S"/>
+    <bond id="b34" atomRefs2="35 29" order="S"/>
+    <bond id="b35" atomRefs2="113 93" order="S"/>
+    <bond id="b36" atomRefs2="116 93" order="S"/>
+    <bond id="b37" atomRefs2="96 82" order="S"/>
+    <bond id="b38" atomRefs2="96 124" order="S"/>
+    <bond id="b39" atomRefs2="79 73" order="S">
+      <bondStereo dictRef="cml:W"/>
+    </bond>
+    <bond id="b40" atomRefs2="116 79" order="S"/>
+    <bond id="b41" atomRefs2="122 120" order="S"/>
+    <bond id="b42" atomRefs2="29 23" order="S"/>
+    <bond id="b43" atomRefs2="113 74" order="S"/>
+    <bond id="b44" atomRefs2="82 71" order="S"/>
+    <bond id="b45" atomRefs2="101 82" order="D"/>
+    <bond id="b46" atomRefs2="97 73" order="S"/>
+    <bond id="b47" atomRefs2="122 107" order="S"/>
+    <bond id="b48" atomRefs2="122 108" order="S"/>
+    <bond id="b49" atomRefs2="122 109" order="D"/>
+    <bond id="b50" atomRefs2="23 17" order="S"/>
+    <bond id="b51" atomRefs2="80 74" order="S"/>
+    <bond id="b52" atomRefs2="77 71" order="S"/>
+    <bond id="b53" atomRefs2="97 125" order="S"/>
+    <bond id="b54" atomRefs2="107 126" order="S"/>
+    <bond id="b55" atomRefs2="108 127" order="S"/>
+    <bond id="b56" atomRefs2="17 11" order="S"/>
+    <bond id="b57" atomRefs2="89 80" order="S"/>
+    <bond id="b58" atomRefs2="117 80" order="S"/>
+    <bond id="b59" atomRefs2="77 65" order="S">
+      <bondStereo dictRef="cml:H"/>
+    </bond>
+    <bond id="b60" atomRefs2="114 77" order="S"/>
+    <bond id="b61" atomRefs2="11 5" order="S"/>
+    <bond id="b62" atomRefs2="91 89" order="S"/>
+    <bond id="b63" atomRefs2="106 89" order="S"/>
+    <bond id="b64" atomRefs2="117 94" order="S"/>
+    <bond id="b65" atomRefs2="65 59" order="S"/>
+    <bond id="b66" atomRefs2="114 83" order="S"/>
+    <bond id="b67" atomRefs2="91 87" order="S"/>
+    <bond id="b68" atomRefs2="118 91" order="S"/>
+    <bond id="b69" atomRefs2="106 128" order="S"/>
+    <bond id="b70" atomRefs2="94 87" order="S"/>
+    <bond id="b71" atomRefs2="121 94" order="S"/>
+    <bond id="b72" atomRefs2="59 53" order="S"/>
+    <bond id="b73" atomRefs2="83 67" order="S"/>
+    <bond id="b74" atomRefs2="102 83" order="D"/>
+    <bond id="b75" atomRefs2="95 87" order="S"/>
+    <bond id="b76" atomRefs2="118 85" order="S"/>
+    <bond id="b77" atomRefs2="123 121" order="S"/>
+    <bond id="b78" atomRefs2="53 47" order="S"/>
+    <bond id="b79" atomRefs2="67 61" order="S"/>
+    <bond id="b80" atomRefs2="95 81" order="S"/>
+    <bond id="b81" atomRefs2="95 129" order="S"/>
+    <bond id="b82" atomRefs2="85 70" order="S"/>
+    <bond id="b83" atomRefs2="104 85" order="D"/>
+    <bond id="b84" atomRefs2="123 110" order="S"/>
+    <bond id="b85" atomRefs2="123 111" order="S"/>
+    <bond id="b86" atomRefs2="123 112" order="D"/>
+    <bond id="b87" atomRefs2="47 41" order="S"/>
+    <bond id="b88" atomRefs2="61 55" order="S"/>
+    <bond id="b89" atomRefs2="81 69" order="S"/>
+    <bond id="b90" atomRefs2="100 81" order="D"/>
+    <bond id="b91" atomRefs2="76 70" order="S"/>
+    <bond id="b92" atomRefs2="110 130" order="S"/>
+    <bond id="b93" atomRefs2="111 131" order="S"/>
+    <bond id="b94" atomRefs2="41 34" order="S"/>
+    <bond id="b95" atomRefs2="55 49" order="S"/>
+    <bond id="b96" atomRefs2="75 69" order="S"/>
+    <bond id="b97" atomRefs2="76 64" order="S"/>
+    <bond id="b98" atomRefs2="99 76" order="S"/>
+    <bond id="b99" atomRefs2="34 28" order="S"/>
+    <bond id="b100" atomRefs2="49 43" order="S"/>
+    <bond id="b101" atomRefs2="75 63" order="S"/>
+    <bond id="b102" atomRefs2="98 75" order="S"/>
+    <bond id="b103" atomRefs2="64 58" order="S"/>
+    <bond id="b104" atomRefs2="99 132" order="S"/>
+    <bond id="b105" atomRefs2="28 22" order="S"/>
+    <bond id="b106" atomRefs2="43 36" order="S"/>
+    <bond id="b107" atomRefs2="63 57" order="S"/>
+    <bond id="b108" atomRefs2="98 133" order="S"/>
+    <bond id="b109" atomRefs2="58 52" order="S"/>
+    <bond id="b110" atomRefs2="22 16" order="S"/>
+    <bond id="b111" atomRefs2="36 30" order="S"/>
+    <bond id="b112" atomRefs2="57 51" order="S"/>
+    <bond id="b113" atomRefs2="52 46" order="S"/>
+    <bond id="b114" atomRefs2="16 10" order="S"/>
+    <bond id="b115" atomRefs2="30 24" order="S"/>
+    <bond id="b116" atomRefs2="51 45" order="S"/>
+    <bond id="b117" atomRefs2="46 40" order="S"/>
+    <bond id="b118" atomRefs2="10 4" order="S"/>
+    <bond id="b119" atomRefs2="24 18" order="S"/>
+    <bond id="b120" atomRefs2="45 39" order="S"/>
+    <bond id="b121" atomRefs2="40 33" order="S"/>
+    <bond id="b122" atomRefs2="18 12" order="S"/>
+    <bond id="b123" atomRefs2="39 32" order="S"/>
+    <bond id="b124" atomRefs2="33 27" order="S"/>
+    <bond id="b125" atomRefs2="12 6" order="S"/>
+    <bond id="b126" atomRefs2="32 26" order="S"/>
+    <bond id="b127" atomRefs2="27 21" order="S"/>
+    <bond id="b128" atomRefs2="26 20" order="S"/>
+    <bond id="b129" atomRefs2="21 15" order="S"/>
+    <bond id="b130" atomRefs2="20 14" order="S"/>
+    <bond id="b131" atomRefs2="15 9" order="S"/>
+    <bond id="b132" atomRefs2="14 8" order="S"/>
+    <bond id="b133" atomRefs2="9 3" order="S"/>
+    <bond id="b134" atomRefs2="8 2" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml2"><molecule id="m1"><name>hydroxyl</name><identifier convention="iupac:inchi">InChI=1/H2O/h1H2</identifier>
+  <atomArray>
+    <atom id="a0" elementType="O" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a1" elementType="H" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a2" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a0 a1" order="S"/>
+    <bond id="b2" atomRefs2="a0 a2" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml3"><molecule id="m1"><name>water</name><identifier convention="iupac:inchi">InChI=1/H2O/h1H2</identifier>
+  <atomArray>
+    <atom id="a0" elementType="O" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a1" elementType="H" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a2" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a0 a1" order="S"/>
+    <bond id="b2" atomRefs2="a0 a2" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml4"><molecule id="m1"><name>trifluoroacetic acid</name><identifier convention="iupac:inchi">InChI=1/C2HF3O2/c3-2(4,5)1(6)7/h(H,6,7)/f/h6H</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="O"/><atom id="a4" elementType="O"/><atom id="a5" elementType="F"/><atom id="a6" elementType="F"/><atom id="a7" elementType="F"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="1"/><bond atomRefs2="a3 a1" order="2"/><bond atomRefs2="a4 a1" order="1"/><bond atomRefs2="a5 a2" order="1"/><bond atomRefs2="a6 a2" order="1"/><bond atomRefs2="a7 a2" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml5"><molecule id="m1"><name>amide</name><identifier convention="iupac:inchi">InChI=1/H2N/h1H2/q-1</identifier>
+  <atomArray>
+    <atom id="a0" elementType="N" formalCharge="-1" hydrogenCount="2"/>
+    <atom id="a1" elementType="H" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a2" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a0 a1" order="S"/>
+    <bond id="b2" atomRefs2="a0 a2" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml6"><molecule id="m1"><name>3-hydroxytetradecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C14H28O3/c1-2-3-4-5-6-7-8-9-10-11-13(15)12-14(16)17/h13,15H,2-12H2,1H3,(H,16,17)/f/h16H</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="C"/><atom id="a4" elementType="C"/><atom id="a5" elementType="C"/><atom id="a6" elementType="C"/><atom id="a7" elementType="C"/><atom id="a8" elementType="C"/><atom id="a9" elementType="C"/><atom id="a10" elementType="C"/><atom id="a11" elementType="C"/><atom id="a12" elementType="C"/><atom id="a13" elementType="C"/><atom id="a14" elementType="C"/><atom id="a15" elementType="O"/><atom id="a16" elementType="O"/><atom id="a17" elementType="O"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="1"/><bond atomRefs2="a2 a3" order="1"/><bond atomRefs2="a3 a4" order="1"/><bond atomRefs2="a4 a5" order="1"/><bond atomRefs2="a5 a6" order="1"/><bond atomRefs2="a6 a7" order="1"/><bond atomRefs2="a7 a8" order="1"/><bond atomRefs2="a8 a9" order="1"/><bond atomRefs2="a9 a10" order="1"/><bond atomRefs2="a10 a11" order="1"/><bond atomRefs2="a11 a12" order="1"/><bond atomRefs2="a12 a13" order="1"/><bond atomRefs2="a13 a14" order="1"/><bond atomRefs2="a15 a1" order="2"/><bond atomRefs2="a16 a1" order="1"/><bond atomRefs2="a17 a3" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml7"><molecule id="m1"><name>2-Hydroxyoctanoic acid</name><identifier convention="iupac:inchi">InChI=1/C8H16O3/c1-2-3-4-5-6-7(9)8(10)11/h7,9H,2-6H2,1H3,(H,10,11)/f/h10H</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="C"/><atom id="a4" elementType="C"/><atom id="a5" elementType="C"/><atom id="a6" elementType="C"/><atom id="a7" elementType="C"/><atom id="a8" elementType="C"/><atom id="a9" elementType="O"/><atom id="a10" elementType="O"/><atom id="a11" elementType="O"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="1"/><bond atomRefs2="a2 a3" order="1"/><bond atomRefs2="a3 a4" order="1"/><bond atomRefs2="a4 a5" order="1"/><bond atomRefs2="a5 a6" order="1"/><bond atomRefs2="a6 a7" order="1"/><bond atomRefs2="a7 a8" order="1"/><bond atomRefs2="a9 a1" order="2"/><bond atomRefs2="a10 a1" order="1"/><bond atomRefs2="a11 a2" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml8"><molecule id="m1"><name>2-hydroxydecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C10H20O3/c1-2-3-4-5-6-7-8-9(11)10(12)13/h9,11H,2-8H2,1H3,(H,12,13)/f/h12H</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="C"/><atom id="a4" elementType="C"/><atom id="a5" elementType="C"/><atom id="a6" elementType="C"/><atom id="a7" elementType="C"/><atom id="a8" elementType="C"/><atom id="a9" elementType="C"/><atom id="a10" elementType="C"/><atom id="a11" elementType="O"/><atom id="a12" elementType="O"/><atom id="a13" elementType="O"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="1"/><bond atomRefs2="a2 a3" order="1"/><bond atomRefs2="a3 a4" order="1"/><bond atomRefs2="a4 a5" order="1"/><bond atomRefs2="a5 a6" order="1"/><bond atomRefs2="a6 a7" order="1"/><bond atomRefs2="a7 a8" order="1"/><bond atomRefs2="a8 a9" order="1"/><bond atomRefs2="a9 a10" order="1"/><bond atomRefs2="a11 a1" order="2"/><bond atomRefs2="a12 a1" order="1"/><bond atomRefs2="a13 a2" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml9"><molecule id="m1"><name>2-hydroxydodecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C12H24O3/c1-2-3-4-5-6-7-8-9-10-11(13)12(14)15/h11,13H,2-10H2,1H3,(H,14,15)/f/h14H</identifier>
+  <atomArray>
+    <atom id="a0" elementType="C" formalCharge="0" hydrogenCount="3"/>
+    <atom id="a1" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a2" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a3" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a4" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a5" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a6" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a7" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a8" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a9" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a10" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a11" elementType="C" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a12" elementType="O" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a13" elementType="O" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a14" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a15" elementType="H" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a16" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a0" order="S"/>
+    <bond id="b2" atomRefs2="a2 a1" order="S"/>
+    <bond id="b3" atomRefs2="a3 a2" order="S"/>
+    <bond id="b4" atomRefs2="a4 a3" order="S"/>
+    <bond id="b5" atomRefs2="a5 a4" order="S"/>
+    <bond id="b6" atomRefs2="a6 a5" order="S"/>
+    <bond id="b7" atomRefs2="a7 a6" order="S"/>
+    <bond id="b8" atomRefs2="a8 a7" order="S"/>
+    <bond id="b9" atomRefs2="a9 a8" order="S"/>
+    <bond id="b10" atomRefs2="a10 a9" order="S"/>
+    <bond id="b11" atomRefs2="a11 a10" order="S"/>
+    <bond id="b12" atomRefs2="a12 a10" order="S"/>
+    <bond id="b13" atomRefs2="a13 a11" order="S"/>
+    <bond id="b14" atomRefs2="a14 a11" order="D"/>
+    <bond id="b15" atomRefs2="a12 a15" order="S"/>
+    <bond id="b16" atomRefs2="a13 a16" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml10"><molecule id="m1"><name>2-hydroxytetradecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C14H28O3/c1-2-3-4-5-6-7-8-9-10-11-12-13(15)14(16)17/h13,15H,2-12H2,1H3,(H,16,17)/f/h16H</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="C"/><atom id="a4" elementType="C"/><atom id="a5" elementType="C"/><atom id="a6" elementType="C"/><atom id="a7" elementType="C"/><atom id="a8" elementType="C"/><atom id="a9" elementType="C"/><atom id="a10" elementType="C"/><atom id="a11" elementType="C"/><atom id="a12" elementType="C"/><atom id="a13" elementType="C"/><atom id="a14" elementType="C"/><atom id="a15" elementType="O"/><atom id="a16" elementType="O"/><atom id="a17" elementType="O"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="1"/><bond atomRefs2="a2 a3" order="1"/><bond atomRefs2="a3 a4" order="1"/><bond atomRefs2="a4 a5" order="1"/><bond atomRefs2="a5 a6" order="1"/><bond atomRefs2="a6 a7" order="1"/><bond atomRefs2="a7 a8" order="1"/><bond atomRefs2="a8 a9" order="1"/><bond atomRefs2="a9 a10" order="1"/><bond atomRefs2="a10 a11" order="1"/><bond atomRefs2="a11 a12" order="1"/><bond atomRefs2="a12 a13" order="1"/><bond atomRefs2="a13 a14" order="1"/><bond atomRefs2="a15 a1" order="2"/><bond atomRefs2="a16 a1" order="1"/><bond atomRefs2="a17 a2" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml11"><molecule id="m1"><name>3-hydroxydecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C10H20O3/c1-2-3-4-5-6-7-9(11)8-10(12)13/h9,11H,2-8H2,1H3,(H,12,13)/f/h12H</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="C"/><atom id="a4" elementType="C"/><atom id="a5" elementType="C"/><atom id="a6" elementType="C"/><atom id="a7" elementType="C"/><atom id="a8" elementType="C"/><atom id="a9" elementType="C"/><atom id="a10" elementType="C"/><atom id="a11" elementType="O"/><atom id="a12" elementType="O"/><atom id="a13" elementType="O"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="1"/><bond atomRefs2="a2 a3" order="1"/><bond atomRefs2="a3 a4" order="1"/><bond atomRefs2="a4 a5" order="1"/><bond atomRefs2="a5 a6" order="1"/><bond atomRefs2="a6 a7" order="1"/><bond atomRefs2="a7 a8" order="1"/><bond atomRefs2="a8 a9" order="1"/><bond atomRefs2="a9 a10" order="1"/><bond atomRefs2="a11 a1" order="2"/><bond atomRefs2="a12 a1" order="1"/><bond atomRefs2="a13 a3" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml12"><molecule id="m1"><name>3-hydroxydodecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C12H24O3/c1-2-3-4-5-6-7-8-9-11(13)10-12(14)15/h11,13H,2-10H2,1H3,(H,14,15)/f/h14H</identifier>
+  <atomArray>
+    <atom id="a0" elementType="C" formalCharge="0" hydrogenCount="3"/>
+    <atom id="a1" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a2" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a3" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a4" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a5" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a6" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a7" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a8" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a9" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a10" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a11" elementType="C" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a12" elementType="O" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a13" elementType="O" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a14" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a15" elementType="H" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a16" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a0" order="S"/>
+    <bond id="b2" atomRefs2="a2 a1" order="S"/>
+    <bond id="b3" atomRefs2="a3 a2" order="S"/>
+    <bond id="b4" atomRefs2="a4 a3" order="S"/>
+    <bond id="b5" atomRefs2="a5 a4" order="S"/>
+    <bond id="b6" atomRefs2="a6 a5" order="S"/>
+    <bond id="b7" atomRefs2="a7 a6" order="S"/>
+    <bond id="b8" atomRefs2="a8 a7" order="S"/>
+    <bond id="b9" atomRefs2="a10 a8" order="S"/>
+    <bond id="b10" atomRefs2="a10 a9" order="S"/>
+    <bond id="b11" atomRefs2="a11 a9" order="S"/>
+    <bond id="b12" atomRefs2="a12 a10" order="S"/>
+    <bond id="b13" atomRefs2="a13 a11" order="S"/>
+    <bond id="b14" atomRefs2="a14 a11" order="D"/>
+    <bond id="b15" atomRefs2="a12 a15" order="S"/>
+    <bond id="b16" atomRefs2="a13 a16" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml13"><molecule id="m1"><name>3-hydroxyhexadecanoic acid</name><identifier convention="iupac:inchi">InChI=1/C16H32O3/c1-2-3-4-5-6-7-8-9-10-11-12-13-15(17)14-16(18)19/h15,17H,2-14H2,1H3,(H,18,19)/f/h18H</identifier>
+  <atomArray>
+    <atom id="a0" elementType="C" formalCharge="0" hydrogenCount="3"/>
+    <atom id="a1" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a2" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a3" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a4" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a5" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a6" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a7" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a8" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a9" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a10" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a11" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a12" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a13" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a14" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a15" elementType="C" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a16" elementType="O" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a17" elementType="O" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a18" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a19" elementType="H" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a20" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a0" order="S"/>
+    <bond id="b2" atomRefs2="a2 a1" order="S"/>
+    <bond id="b3" atomRefs2="a3 a2" order="S"/>
+    <bond id="b4" atomRefs2="a4 a3" order="S"/>
+    <bond id="b5" atomRefs2="a5 a4" order="S"/>
+    <bond id="b6" atomRefs2="a6 a5" order="S"/>
+    <bond id="b7" atomRefs2="a7 a6" order="S"/>
+    <bond id="b8" atomRefs2="a8 a7" order="S"/>
+    <bond id="b9" atomRefs2="a9 a8" order="S"/>
+    <bond id="b10" atomRefs2="a10 a9" order="S"/>
+    <bond id="b11" atomRefs2="a11 a10" order="S"/>
+    <bond id="b12" atomRefs2="a12 a11" order="S"/>
+    <bond id="b13" atomRefs2="a14 a12" order="S"/>
+    <bond id="b14" atomRefs2="a14 a13" order="S"/>
+    <bond id="b15" atomRefs2="a15 a13" order="S"/>
+    <bond id="b16" atomRefs2="a16 a14" order="S"/>
+    <bond id="b17" atomRefs2="a17 a15" order="S"/>
+    <bond id="b18" atomRefs2="a18 a15" order="D"/>
+    <bond id="b19" atomRefs2="a16 a19" order="S"/>
+    <bond id="b20" atomRefs2="a17 a20" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml14"><molecule id="m1"><name>pyridine</name><identifier convention="iupac:inchi">InChI=1/C5H5N/c1-2-4-6-5-3-1/h1-5H</identifier>
+  <atomArray>
+    <atom id="a0" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a1" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a2" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a3" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a4" elementType="C" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a5" elementType="N" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a0" order="D"/>
+    <bond id="b2" atomRefs2="a2 a0" order="S"/>
+    <bond id="b3" atomRefs2="a3 a1" order="S"/>
+    <bond id="b4" atomRefs2="a4 a2" order="D"/>
+    <bond id="b5" atomRefs2="a5 a3" order="D"/>
+    <bond id="b6" atomRefs2="a5 a4" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml15"><molecule id="m1"><name>ethyl acetate</name><identifier convention="iupac:inchi">InChI=1/C4H8O2/c1-3-6-4(2)5/h3H2,1-2H3</identifier>
+  <atomArray>
+    <atom id="a0" elementType="C" formalCharge="0" hydrogenCount="3"/>
+    <atom id="a1" elementType="C" formalCharge="0" hydrogenCount="3"/>
+    <atom id="a2" elementType="C" formalCharge="0" hydrogenCount="2"/>
+    <atom id="a3" elementType="C" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a4" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a5" elementType="O" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a2 a0" order="S"/>
+    <bond id="b2" atomRefs2="a3 a1" order="S"/>
+    <bond id="b3" atomRefs2="a4 a3" order="D"/>
+    <bond id="b4" atomRefs2="a5 a2" order="S"/>
+    <bond id="b5" atomRefs2="a5 a3" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml16"><molecule id="m1"><name>sodium hydroxide</name><identifier convention="iupac:inchi">InChI=1/Na.H2O/h;1H2/q+1;/p-1/fNa.HO/h;1h/qm;-1</identifier>
+  <atomArray>
+    <atom id="a0" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+    <atom id="a1" elementType="O" formalCharge="-1" hydrogenCount="1"/>
+    <atom id="a2" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a2" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml17"><molecule id="m1"><name>sodium sulfate</name><identifier convention="iupac:inchi">InChI=1/2Na.H2O4S/c;;1-5(2,3)4/h;;(H2,1,2,3,4)/q2*+1;/p-2/f2Na.O4S/q2m;-2</identifier>
+  <atomArray>
+    <atom id="a0" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+    <atom id="a1" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+    <atom id="a2" elementType="O" formalCharge="-1" hydrogenCount="0"/>
+    <atom id="a3" elementType="O" formalCharge="-1" hydrogenCount="0"/>
+    <atom id="a4" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a5" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a6" elementType="S" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a6 a2" order="S"/>
+    <bond id="b2" atomRefs2="a6 a3" order="S"/>
+    <bond id="b3" atomRefs2="a6 a4" order="D"/>
+    <bond id="b4" atomRefs2="a6 a5" order="D"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml18"><molecule id="m1"><name>sodium chloride</name><identifier convention="iupac:inchi">InChI=1/ClH.Na/h1H;/q;+1/p-1/fCl.Na/h1h;/q-1;m</identifier>
+  <atomArray>
+    <atom id="a0" elementType="Cl" formalCharge="-1" hydrogenCount="0"/>
+    <atom id="a1" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+  </atomArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml19"><molecule id="m1"><name>HCl</name><identifier convention="iupac:inchi">InChI=1/ClH/h1H</identifier>
+  <atomArray>
+    <atom id="a0" elementType="Cl" formalCharge="0" hydrogenCount="1"/>
+    <atom id="a1" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a0 a1" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml20"><molecule id="m1"><name>Na2SO4</name><identifier convention="iupac:inchi">InChI=1/2Na.H2O4S/c;;1-5(2,3)4/h;;(H2,1,2,3,4)/q2*+1;/p-2/f2Na.O4S/q2m;-2</identifier>
+  <atomArray>
+    <atom id="a0" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+    <atom id="a1" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+    <atom id="a2" elementType="O" formalCharge="-1" hydrogenCount="0"/>
+    <atom id="a3" elementType="O" formalCharge="-1" hydrogenCount="0"/>
+    <atom id="a4" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a5" elementType="O" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a6" elementType="S" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a6 a2" order="S"/>
+    <bond id="b2" atomRefs2="a6 a3" order="S"/>
+    <bond id="b3" atomRefs2="a6 a4" order="D"/>
+    <bond id="b4" atomRefs2="a6 a5" order="D"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml21"><molecule id="m1"><name>NaOH</name><identifier convention="iupac:inchi">InChI=1/Na.H2O/h;1H2/q+1;/p-1/fNa.HO/h;1h/qm;-1</identifier>
+  <atomArray>
+    <atom id="a0" elementType="Na" formalCharge="1" hydrogenCount="0"/>
+    <atom id="a1" elementType="O" formalCharge="-1" hydrogenCount="1"/>
+    <atom id="a2" elementType="H" formalCharge="0" hydrogenCount="1"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a2" order="S"/>
+  </bondArray>
+</molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml22"><molecule id="m1"><name>9-fluorene</name><identifier convention="iupac:inchi">InChI=1/C13H10/c1-3-7-12-10(5-1)9-11-6-2-4-8-13(11)12/h1-8H,9H2</identifier><atomArray><atom id="a1" elementType="C"/><atom id="a2" elementType="C"/><atom id="a3" elementType="C"/><atom id="a4" elementType="C"/><atom id="a5" elementType="C"/><atom id="a6" elementType="C"/><atom id="a7" elementType="C"/><atom id="a8" elementType="C"/><atom id="a9" elementType="C"/><atom id="a10" elementType="C"/><atom id="a11" elementType="C"/><atom id="a12" elementType="C"/><atom id="a13" elementType="C"/></atomArray><bondArray><bond atomRefs2="a1 a2" order="2"/><bond atomRefs2="a2 a3" order="1"/><bond atomRefs2="a3 a4" order="2"/><bond atomRefs2="a4 a5" order="1"/><bond atomRefs2="a5 a6" order="1"/><bond atomRefs2="a6 a7" order="2"/><bond atomRefs2="a7 a8" order="1"/><bond atomRefs2="a8 a9" order="2"/><bond atomRefs2="a9 a10" order="1"/><bond atomRefs2="a10 a11" order="2"/><bond atomRefs2="a11 a6" order="1"/><bond atomRefs2="a11 a12" order="1"/><bond atomRefs2="a12 a13" order="1"/><bond atomRefs2="a13 a5" order="2"/><bond atomRefs2="a13 a1" order="1"/></bondArray></molecule></cml><cml xmlns="http://www.xml-cml.org/schema" id="cml23"><molecule id="m1"><name>methyl</name><identifier convention="iupac:inchi">InChI=1/CH4/h1H4</identifier>
+  <atomArray>
+    <atom id="a0" elementType="C" formalCharge="0" hydrogenCount="4"/>
+  </atomArray>
+</molecule></cml><cmlUrlEnc idRef="cml1">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+1%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Elipid+A%3C%2Fname%3E%3Cidentifi
+er+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FC94H178N2O25P2
+%2Fc1-7-13-19-25-31-37-38-44-50-56-62-68-84%28103%29115-
+78%2866-60-54-48-42-35-29-23-17-11-5%2972-86%28105%29119-9
+2-88%2896-82%28101%2971-77%2865-59-53-47-41-34-28-22-16-10
+-4%29114-83%28102%2967-61-55-49-43-36-30-24-18-12-6%2993%281
+16-79%2873-97%2990%2892%29120-122%28107%2C108%29109%29113-74-80-89
+%28106%2991%28118-85%28104%2970-76%2899%2964-58-52-46-40-33-27-2
+1-15-9-3%2987%2894%28117-80%29121-123%28110%2C111%29112%2995-81%2810
+0%2969-75%2898%2963-57-51-45-39-32-26-20-14-8-2%2Fh75-80%2C8
+7-94%2C97-99%2C106H%2C7-74H2%2C1-6H3%2C%28H%2C95%2C100%29%28H%2C96%2C101%29%28
+H2%2C107%2C108%2C109%29%28H2%2C110%2C111%2C112%29%2Ft75-%2C76-%2C77-%2C78-%2C7
+9-%2C80-%2C87-%2C88-%2C89-%2C90-%2C91-%2C92-%2C93-%2C94-%2Fm1%2Fs1%2Ff%2Fh95
+-96%2C107-108%2C110-111H%3C%2Fidentifier%3E%0A++%3CatomArray%3E%0A++
+++%3Catom+id%3D%221%22+elementType%3D%22C%22+x2%3D%2215.588457268120
+152%22+y2%3D%2228.499999999999865%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%227%22+elementType%3D%22C%22+
+x2%3D%2215.588457268120125%22+y2%3D%2226.999999999999865%22+fo
+rmalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22
+13%22+elementType%3D%22C%22+x2%3D%2214.289419162443455%22+y2%3D%2226
+.249999999999886%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+2%22+%2F%3E%0A++++%3Catom+id%3D%2219%22+elementType%3D%22C%22+x2%3D%2214.289
+41916244343%22+y2%3D%2224.749999999999886%22+formalCharge%3D
+%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2225%22+element
+Type%3D%22C%22+x2%3D%2212.990381056766761%22+y2%3D%2223.9999999999
+99908%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3C
+atom+id%3D%2231%22+elementType%3D%22C%22+x2%3D%2212.99038105676674
+%22+y2%3D%2222.499999999999908%22+formalCharge%3D%220%22+hydroge
+nCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2237%22+elementType%3D%22C%22+x2
+%3D%2211.691342951090071%22+y2%3D%2221.749999999999925%22+form
+alCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2238
+%22+elementType%3D%22C%22+x2%3D%2211.69134295109005%22+y2%3D%2220.24
+9999999999925%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+
+%2F%3E%0A++++%3Catom+id%3D%2244%22+elementType%3D%22C%22+x2%3D%2210.392304
+845413381%22+y2%3D%2219.499999999999943%22+formalCharge%3D%220
+%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2250%22+elementTy
+pe%3D%22C%22+x2%3D%2210.392304845413362%22+y2%3D%2217.999999999999
+943%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cat
+om+id%3D%2256%22+elementType%3D%22C%22+x2%3D%229.093266739736695%22+
+y2%3D%2217.249999999999957%22+formalCharge%3D%220%22+hydrogenC
+ount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2262%22+elementType%3D%22C%22+x2%3D%22
+9.093266739736679%22+y2%3D%2215.749999999999956%22+formalC
+harge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2268%22+e
+lementType%3D%22C%22+x2%3D%227.794228634060014%22+y2%3D%2214.99999
+9999999968%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A
+++++%3Catom+id%3D%2284%22+elementType%3D%22C%22+x2%3D%227.7942286340
+599995%22+y2%3D%2213.499999999999968%22+formalCharge%3D%220%22+h
+ydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22103%22+elementType
+%3D%22O%22+x2%3D%229.093266739736652%22+y2%3D%2212.749999999999957
+%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+
+id%3D%22115%22+elementType%3D%22O%22+x2%3D%226.495190528383336%22+y2
+%3D%2212.749999999999979%22+formalCharge%3D%220%22+hydrogenCou
+nt%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2278%22+elementType%3D%22C%22+x2%3D%226.
+495190528383325%22+y2%3D%2211.249999999999979%22+formalCha
+rge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2266%22+ele
+mentType%3D%22C%22+x2%3D%227.7942286340599765%22+y2%3D%2210.499999
+999999968%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A+
++++%3Catom+id%3D%2272%22+elementType%3D%22C%22+x2%3D%225.19615242270
+6662%22+y2%3D%2210.499999999999988%22+formalCharge%3D%220%22+hyd
+rogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2260%22+elementType%3D%22C
+%22+x2%3D%229.093266739736642%22+y2%3D%2211.249999999999956%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D
+%2286%22+elementType%3D%22C%22+x2%3D%225.196152422706653%22+y2%3D%228.
+999999999999988%22+formalCharge%3D%220%22+hydrogenCount%3D%220
+%22+%2F%3E%0A++++%3Catom+id%3D%2254%22+elementType%3D%22C%22+x2%3D%2210.3923
+04845413292%22+y2%3D%2210.499999999999943%22+formalCharge%3D
+%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22105%22+elemen
+tType%3D%22O%22+x2%3D%226.495190528383308%22+y2%3D%228.24999999999
+998%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Cat
+om+id%3D%22119%22+elementType%3D%22O%22+x2%3D%223.897114317029992%22
++y2%3D%228.249999999999993%22+formalCharge%3D%220%22+hydrogenC
+ount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2248%22+elementType%3D%22C%22+x2%3D%22
+11.691342951089958%22+y2%3D%2211.24999999999993%22+formalC
+harge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2292%22+e
+lementType%3D%22C%22+x2%3D%223.8971143170299856%22+y2%3D%226.74999
+9999999993%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A
+++++%3Catom+id%3D%2242%22+elementType%3D%22C%22+x2%3D%2212.990381056
+766608%22+y2%3D%2210.499999999999918%22+formalCharge%3D%220%22+h
+ydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2288%22+elementType%3D
+%22C%22+x2%3D%222.5980762113533267%22+y2%3D%225.999999999999996%22
++formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+i
+d%3D%2290%22+elementType%3D%22C%22+x2%3D%225.196152422706641%22+y2%3D%22
+5.99999999999999%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+1%22+%2F%3E%0A++++%3Catom+id%3D%2235%22+elementType%3D%22C%22+x2%3D%2214.289
+419162443274%22+y2%3D%2211.249999999999906%22+formalCharge
+%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2293%22+elemen
+tType%3D%22C%22+x2%3D%222.5980762113533213%22+y2%3D%224.4999999999
+999964%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++
+%3Catom+id%3D%2296%22+elementType%3D%22N%22+x2%3D%221.29903810567667
+%22+y2%3D%226.75%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A
+++++%3Catom+id%3D%2279%22+elementType%3D%22C%22+x2%3D%225.1961524227
+06638%22+y2%3D%224.49999999999999%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22120%22+elementType%3D%22O
+%22+x2%3D%226.495190528383301%22+y2%3D%226.749999999999987%22+fo
+rmalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22
+29%22+elementType%3D%22C%22+x2%3D%2215.588457268119924%22+y2%3D%2210
+.499999999999893%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+2%22+%2F%3E%0A++++%3Catom+id%3D%22113%22+elementType%3D%22O%22+x2%3D%221.299
+0381056766616%22+y2%3D%223.749999999999999%22+formalCharge
+%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22116%22+eleme
+ntType%3D%22O%22+x2%3D%223.897114317029978%22+y2%3D%223.7499999999
+99992%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3C
+atom+id%3D%2282%22+elementType%3D%22C%22+x2%3D%228.659739592076221
+E-15%22+y2%3D%226.000000000000006%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22124%22+elementType%3D%22H
+%22+x2%3D%221.2990381056766753%22+y2%3D%228.25%22+formalCharge%3D%22
+0%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2273%22+elementT
+ype%3D%22C%22+x2%3D%226.4951905283832945%22+y2%3D%223.749999999999
+9893%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Ca
+tom+id%3D%22122%22+elementType%3D%22P%22+x2%3D%227.794228634059956
+%22+y2%3D%225.999999999999982%22+formalCharge%3D%220%22+hydrogen
+Count%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2223%22+elementType%3D%22C%22+x2%3D
+%2216.88749537379659%22+y2%3D%2211.249999999999881%22+formal
+Charge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2274%22+
+elementType%3D%22C%22+x2%3D%221.2990381056766584%22+y2%3D%222.2499
+99999999999%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E
+%0A++++%3Catom+id%3D%2271%22+elementType%3D%22C%22+x2%3D%223.905882849
+6693984E-16%22+y2%3D%224.500000000000006%22+formalCharge%3D%22
+0%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22101%22+element
+Type%3D%22O%22+x2%3D%22-1.2990381056766453%22+y2%3D%226.7500000000
+00013%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3C
+atom+id%3D%2297%22+elementType%3D%22O%22+x2%3D%226.495190528383292
+%22+y2%3D%222.2499999999999893%22+formalCharge%3D%220%22+hydroge
+nCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22107%22+elementType%3D%22O%22+x
+2%3D%229.093266739736617%22+y2%3D%226.749999999999977%22+forma
+lCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22108
+%22+elementType%3D%22O%22+x2%3D%226.830047219530142%22+y2%3D%224.850
+933335321519%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F
+%3E%0A++++%3Catom+id%3D%22109%22+elementType%3D%22O%22+x2%3D%228.7584100
+48589761%22+y2%3D%224.850933335321512%22+formalCharge%3D%220%22+
+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2217%22+elementType
+%3D%22C%22+x2%3D%2218.18653347947324%22+y2%3D%2210.499999999999869
+%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+
+id%3D%2280%22+elementType%3D%22C%22+x2%3D%220.0%22+y2%3D%221.5%22+formalCh
+arge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2277%22+el
+ementType%3D%22C%22+x2%3D%22-1.299038105676662%22+y2%3D%223.750000
+000000014%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A+
++++%3Catom+id%3D%22125%22+elementType%3D%22H%22+x2%3D%227.7942286340
+59948%22+y2%3D%221.4999999999999862%22+formalCharge%3D%220%22+hy
+drogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22126%22+elementType%3D
+%22H%22+x2%3D%2210.392304845413271%22+y2%3D%225.999999999999971%22
++formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+i
+d%3D%22127%22+elementType%3D%22H%22+x2%3D%227.343077434518639%22+y2%3D
+%223.4413944041426543%22+formalCharge%3D%220%22+hydrogenCoun
+t%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2211%22+elementType%3D%22C%22+x2%3D%2219.
+485571585149906%22+y2%3D%2211.249999999999856%22+formalCha
+rge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2289%22+ele
+mentType%3D%22C%22+x2%3D%220.0%22+y2%3D%220.0%22+formalCharge%3D%220%22+hy
+drogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22117%22+elementType%3D
+%22O%22+x2%3D%22-1.19472489154925%22+y2%3D%222.142209678735012%22+
+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id
+%3D%2265%22+elementType%3D%22C%22+x2%3D%22-2.598076211353315%22+y2%3D%22
+4.500000000000022%22+formalCharge%3D%220%22+hydrogenCount%3D
+%222%22+%2F%3E%0A++++%3Catom+id%3D%22114%22+elementType%3D%22O%22+x2%3D%22-1.2
+990381056766716%22+y2%3D%222.250000000000014%22+formalChar
+ge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%225%22+eleme
+ntType%3D%22C%22+x2%3D%2220.784609690826557%22+y2%3D%2210.49999999
+9999844%22+formalCharge%3D%220%22+hydrogenCount%3D%223%22+%2F%3E%0A+++
++%3Catom+id%3D%2291%22+elementType%3D%22C%22+x2%3D%22-1.299038105676
+6584%22+y2%3D%22-0.7500000000000001%22+formalCharge%3D%220%22+hy
+drogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22106%22+elementType%3D
+%22O%22+x2%3D%221.2990381056766576%22+y2%3D%22-0.750000000000000
+7%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom
++id%3D%2294%22+elementType%3D%22C%22+x2%3D%22-2.551084442966467%22+y
+2%3D%221.4415468246895287%22+formalCharge%3D%220%22+hydrogenCo
+unt%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2259%22+elementType%3D%22C%22+x2%3D%22-
+3.8971143170299793%22+y2%3D%223.750000000000033%22+formalC
+harge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2283%22+e
+lementType%3D%22C%22+x2%3D%22-2.645067979740184%22+y2%3D%221.55845
+3175310494%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A
+++++%3Catom+id%3D%2287%22+elementType%3D%22C%22+x2%3D%22-2.538612919
+536502%22+y2%3D%22-0.04570685863531255%22+formalCharge%3D%220%22
++hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22118%22+elementTy
+pe%3D%22O%22+x2%3D%22-1.2990381056766587%22+y2%3D%22-2.25%22+formalC
+harge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22128%22+
+elementType%3D%22H%22+x2%3D%221.2990381056766573%22+y2%3D%22-2.250
+000000000001%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F
+%3E%0A++++%3Catom+id%3D%22121%22+elementType%3D%22O%22+x2%3D%22-3.870882
+754617609%22+y2%3D%222.1797368863954474%22+formalCharge%3D%220
+%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2253%22+elementTy
+pe%3D%22C%22+x2%3D%22-5.196152422706631%22+y2%3D%224.5000000000000
+435%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cat
+om+id%3D%2267%22+elementType%3D%22C%22+x2%3D%22-2.6575395031701596
+%22+y2%3D%220.045706858635334906%22+formalCharge%3D%220%22+hydro
+genCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22102%22+elementType%3D%22O%22
++x2%3D%22-3.9233458794423535%22+y2%3D%222.320263113604584%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D
+%2295%22+elementType%3D%22N%22+x2%3D%22-3.8423990267194674%22+y2%3D%22
+-0.8012955846661001%22+formalCharge%3D%220%22+hydrogenCoun
+t%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2285%22+elementType%3D%22C%22+x2%3D%22-2.
+598076211353317%22+y2%3D%22-2.849999999999999%22+formalCha
+rge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22123%22+el
+ementType%3D%22P%22+x2%3D%22-5.196152422706634%22+y2%3D%221.500000
+0000000004%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A
+++++%3Catom+id%3D%2247%22+elementType%3D%22C%22+x2%3D%22-6.495190528
+383296%22+y2%3D%223.7500000000000564%22+formalCharge%3D%220%22+h
+ydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2261%22+elementType%3D
+%22C%22+x2%3D%22-3.951829607340516%22+y2%3D%22-0.698704415333867
+4%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom
++id%3D%2281%22+elementType%3D%22C%22+x2%3D%22-3.849680152127449%22+y
+2%3D%22-2.3923024947075775%22+formalCharge%3D%220%22+hydrogenC
+ount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22129%22+elementType%3D%22H%22+x2%3D
+%22-5.196152422706632%22+y2%3D%22-5.551115123125783E-16%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D
+%2270%22+elementType%3D%22C%22+x2%3D%22-2.5980762113533173%22+y2%3D%22
+-4.5%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Ca
+tom+id%3D%22104%22+elementType%3D%22O%22+x2%3D%22-3.89711431702997
+5%22+y2%3D%22-2.249999999999999%22+formalCharge%3D%220%22+hydrog
+enCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22110%22+elementType%3D%22O%22+
+x2%3D%22-6.495190528383291%22+y2%3D%222.250000000000002%22+for
+malCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%221
+11%22+elementType%3D%22O%22+x2%3D%22-6.160333837236444%22+y2%3D%220.
+3509333353215345%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+1%22+%2F%3E%0A++++%3Catom+id%3D%22112%22+elementType%3D%22O%22+x2%3D%22-4.23
+1971008176826%22+y2%3D%220.3509333353215325%22+formalCharg
+e%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2241%22+eleme
+ntType%3D%22C%22+x2%3D%22-7.794228634059946%22+y2%3D%224.500000000
+000069%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++
+%3Catom+id%3D%2255%22+elementType%3D%22C%22+x2%3D%22-3.9445484819326
+46%22+y2%3D%22-2.1076975052924225%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2269%22+elementType%3D%22C%22
++x2%3D%22-5.196152422706633%22+y2%3D%22-2.9999999999999996%22+
+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id
+%3D%22100%22+elementType%3D%22O%22+x2%3D%22-2.598076211353317%22+y2%3D
+%22-3.000000000000001%22+formalCharge%3D%220%22+hydrogenCoun
+t%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%2276%22+elementType%3D%22C%22+x2%3D%22-3.
+813909287596191%22+y2%3D%22-5.125192455849322%22+formalCha
+rge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22130%22+el
+ementType%3D%22H%22+x2%3D%22-7.794228634059951%22+y2%3D%221.500000
+0000000058%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A
+++++%3Catom+id%3D%22131%22+elementType%3D%22H%22+x2%3D%22-7.63754546
+6754756%22+y2%3D%220.6114056018219318%22+formalCharge%3D%220%22+
+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2234%22+elementType
+%3D%22C%22+x2%3D%22-9.093266739736613%22+y2%3D%223.750000000000084
+4%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom
++id%3D%2249%22+elementType%3D%22C%22+x2%3D%22-5.312627906752189%22+y
+2%3D%22-2.905483008848279%22+formalCharge%3D%220%22+hydrogenCo
+unt%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2275%22+elementType%3D%22C%22+x2%3D%22-
+5.134008250054778%22+y2%3D%22-4.541989305845849%22+formalC
+harge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2264%22+e
+lementType%3D%22C%22+x2%3D%22-3.8401700718525804%22+y2%3D%22-6.701
+190646990802%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F
+%3E%0A++++%3Catom+id%3D%2299%22+elementType%3D%22O%22+x2%3D%22-5.0047115
+77360958%22+y2%3D%22-4.618172265026618%22+formalCharge%3D%220%22
++hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2228%22+elementTyp
+e%3D%22C%22+x2%3D%22-10.392304845413262%22+y2%3D%224.5000000000000
+995%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cat
+om+id%3D%2243%22+elementType%3D%22C%22+x2%3D%22-5.258296595358557%22
++y2%3D%22-4.4580106941541064%22+formalCharge%3D%220%22+hydroge
+nCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2263%22+elementType%3D%22C%22+x2
+%3D%22-6.435279402316022%22+y2%3D%22-5.295118255433375%22+form
+alCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2298
+%22+elementType%3D%22O%22+x2%3D%22-3.8971143170299776%22+y2%3D%22-5.
+250000000000002%22+formalCharge%3D%220%22+hydrogenCount%3D%221
+%22+%2F%3E%0A++++%3Catom+id%3D%2258%22+elementType%3D%22C%22+x2%3D%22-5.1961
+52422706637%22+y2%3D%22-7.499999999999997%22+formalCharge%3D
+%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22132%22+elemen
+tType%3D%22H%22+x2%3D%22-6.3088601510443265%22+y2%3D%22-5.37605462
+964621%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++
+%3Catom+id%3D%2222%22+elementType%3D%22C%22+x2%3D%22-11.691342951089
+931%22+y2%3D%223.750000000000117%22+formalCharge%3D%220%22+hydro
+genCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2236%22+elementType%3D%22C%22+
+x2%3D%22-6.555101654450637%22+y2%3D%22-5.204881744566567%22+fo
+rmalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22
+57%22+elementType%3D%22C%22+x2%3D%22-6.4324772705492075%22+y2%3D%22-
+6.791134502450315%22+formalCharge%3D%220%22+hydrogenCount%3D
+%222%22+%2F%3E%0A++++%3Catom+id%3D%22133%22+elementType%3D%22H%22+x2%3D%22-3.9
+54058562207378%22+y2%3D%22-6.798809353009199%22+formalChar
+ge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%2252%22+elem
+entType%3D%22C%22+x2%3D%22-5.19615242270664%22+y2%3D%22-8.99999999
+9999996%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A+++
++%3Catom+id%3D%2216%22+elementType%3D%22C%22+x2%3D%22-12.99038105676
+6578%22+y2%3D%224.500000000000135%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2230%22+elementType%3D%22C%22
++x2%3D%22-6.557903786217468%22+y2%3D%22-6.708865497549628%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D
+%2251%22+elementType%3D%22C%22+x2%3D%22-7.794228634059956%22+y2%3D%22-
+7.499999999999996%22+formalCharge%3D%220%22+hydrogenCount%3D
+%222%22+%2F%3E%0A++++%3Catom+id%3D%2246%22+elementType%3D%22C%22+x2%3D%22-6.49
+51905283833%22+y2%3D%22-9.749999999999993%22+formalCharge%3D
+%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2210%22+element
+Type%3D%22C%22+x2%3D%22-14.289419162443247%22+y2%3D%223.7500000000
+001545%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++
+%3Catom+id%3D%2224%22+elementType%3D%22C%22+x2%3D%22-7.9161220477955
+18%22+y2%3D%22-7.41258149115934%22+formalCharge%3D%220%22+hydrog
+enCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2245%22+elementType%3D%22C%22+x
+2%3D%22-7.794228634059959%22+y2%3D%22-8.999999999999996%22+for
+malCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%224
+0%22+elementType%3D%22C%22+x2%3D%22-6.495190528383305%22+y2%3D%22-11
+.249999999999993%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+2%22+%2F%3E%0A++++%3Catom+id%3D%224%22+elementType%3D%22C%22+x2%3D%22-15.588
+457268119894%22+y2%3D%224.500000000000174%22+formalCharge%3D
+%220%22+hydrogenCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%2218%22+element
+Type%3D%22C%22+x2%3D%22-7.920072827114207%22+y2%3D%22-8.9183713342
+3508%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Ca
+tom+id%3D%2239%22+elementType%3D%22C%22+x2%3D%22-9.032023427365322
+%22+y2%3D%22-9.793292686331426%22+formalCharge%3D%220%22+hydroge
+nCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2233%22+elementType%3D%22C%22+x2
+%3D%22-7.794228634059966%22+y2%3D%22-11.999999999999988%22+for
+malCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%221
+2%22+elementType%3D%22C%22+x2%3D%22-9.154510052108018%22+y2%3D%22-9.
+706707313668486%22+formalCharge%3D%220%22+hydrogenCount%3D%222
+%22+%2F%3E%0A++++%3Catom+id%3D%2232%22+elementType%3D%22C%22+x2%3D%22-9.0304
+06274791657%22+y2%3D%22-11.290909191472114%22+formalCharge
+%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2227%22+elemen
+tType%3D%22C%22+x2%3D%22-7.794228634059971%22+y2%3D%22-13.49999999
+9999988%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A+++
++%3Catom+id%3D%226%22+elementType%3D%22C%22+x2%3D%22-9.1561272046817
+02%22+y2%3D%22-11.2090908085278%22+formalCharge%3D%220%22+hydrog
+enCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%2226%22+elementType%3D%22C%22+x
+2%3D%22-10.392304845413285%22+y2%3D%22-11.999999999999988%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D
+%2221%22+elementType%3D%22C%22+x2%3D%22-9.093266739736633%22+y2%3D%22-
+14.249999999999982%22+formalCharge%3D%220%22+hydrogenCount
+%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2220%22+elementType%3D%22C%22+x2%3D%22-10.
+392304845413292%22+y2%3D%22-13.499999999999988%22+formalCh
+arge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%2215%22+el
+ementType%3D%22C%22+x2%3D%22-9.09326673973664%22+y2%3D%22-15.74999
+9999999982%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A
+++++%3Catom+id%3D%2214%22+elementType%3D%22C%22+x2%3D%22-11.69134295
+1089954%22+y2%3D%22-14.24999999999998%22+formalCharge%3D%220%22+
+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%229%22+elementType%3D
+%22C%22+x2%3D%22-10.392304845413301%22+y2%3D%22-16.4999999999999
+75%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cato
+m+id%3D%228%22+elementType%3D%22C%22+x2%3D%22-11.691342951089963%22+
+y2%3D%22-15.74999999999998%22+formalCharge%3D%220%22+hydrogenC
+ount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%223%22+elementType%3D%22C%22+x2%3D%22-
+10.39230484541331%22+y2%3D%22-17.999999999999975%22+formal
+Charge%3D%220%22+hydrogenCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%222%22+e
+lementType%3D%22C%22+x2%3D%22-12.990381056766626%22+y2%3D%22-16.49
+999999999997%22+formalCharge%3D%220%22+hydrogenCount%3D%223%22+%2F
+%3E%0A++%3C%2FatomArray%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+a
+tomRefs2%3D%227+1%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atom
+Refs2%3D%2213+7%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomRe
+fs2%3D%2219+13%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRef
+s2%3D%2225+19%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5%22+atomRefs
+2%3D%2231+25%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b6%22+atomRefs2
+%3D%2237+31%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b7%22+atomRefs2%3D
+%2238+37%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b8%22+atomRefs2%3D%22
+44+38%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b9%22+atomRefs2%3D%225
+0+44%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b10%22+atomRefs2%3D%225
+6+50%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b11%22+atomRefs2%3D%226
+2+56%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b12%22+atomRefs2%3D%226
+8+62%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b13%22+atomRefs2%3D%228
+4+68%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b14%22+atomRefs2%3D%221
+03+84%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b15%22+atomRefs2%3D%22
+115+84%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b16%22+atomRefs2%3D
+%22115+78%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b17%22+atomRefs2
+%3D%2278+66%22+order%3D%22S%22%3E%0A++++++%3CbondStereo+dictRef%3D%22cml
+%3AH%22+%2F%3E%0A++++%3C%2Fbond%3E%0A++++%3Cbond+id%3D%22b18%22+atomRefs2%3D%227
+8+72%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b19%22+atomRefs2%3D%226
+6+60%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b20%22+atomRefs2%3D%228
+6+72%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b21%22+atomRefs2%3D%226
+0+54%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b22%22+atomRefs2%3D%221
+05+86%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b23%22+atomRefs2%3D%22
+119+86%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b24%22+atomRefs2%3D
+%2254+48%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b25%22+atomRefs2%3D
+%22119+92%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b26%22+atomRefs2
+%3D%2248+42%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b27%22+atomRefs2
+%3D%2292+88%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b28%22+atomRefs2
+%3D%2292+90%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b29%22+atomRefs2
+%3D%2242+35%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b30%22+atomRefs2
+%3D%2293+88%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b31%22+atomRefs2
+%3D%2296+88%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b32%22+atomRefs2
+%3D%2290+79%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b33%22+atomRefs2
+%3D%22120+90%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b34%22+atomRefs
+2%3D%2235+29%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b35%22+atomRefs
+2%3D%22113+93%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b36%22+atomRef
+s2%3D%22116+93%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b37%22+atomRe
+fs2%3D%2296+82%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b38%22+atomRe
+fs2%3D%2296+124%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b39%22+atomR
+efs2%3D%2279+73%22+order%3D%22S%22%3E%0A++++++%3CbondStereo+dictRef%3D
+%22cml%3AW%22+%2F%3E%0A++++%3C%2Fbond%3E%0A++++%3Cbond+id%3D%22b40%22+atomRefs
+2%3D%22116+79%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b41%22+atomRef
+s2%3D%22122+120%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b42%22+atomR
+efs2%3D%2229+23%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b43%22+atomR
+efs2%3D%22113+74%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b44%22+atom
+Refs2%3D%2282+71%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b45%22+atom
+Refs2%3D%22101+82%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b46%22+ato
+mRefs2%3D%2297+73%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b47%22+ato
+mRefs2%3D%22122+107%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b48%22+a
+tomRefs2%3D%22122+108%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b49%22
++atomRefs2%3D%22122+109%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b5
+0%22+atomRefs2%3D%2223+17%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5
+1%22+atomRefs2%3D%2280+74%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5
+2%22+atomRefs2%3D%2277+71%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5
+3%22+atomRefs2%3D%2297+125%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b
+54%22+atomRefs2%3D%22107+126%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D
+%22b55%22+atomRefs2%3D%22108+127%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b56%22+atomRefs2%3D%2217+11%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b57%22+atomRefs2%3D%2289+80%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b58%22+atomRefs2%3D%22117+80%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+
+id%3D%22b59%22+atomRefs2%3D%2277+65%22+order%3D%22S%22%3E%0A++++++%3CbondS
+tereo+dictRef%3D%22cml%3AH%22+%2F%3E%0A++++%3C%2Fbond%3E%0A++++%3Cbond+id%3D
+%22b60%22+atomRefs2%3D%22114+77%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id
+%3D%22b61%22+atomRefs2%3D%2211+5%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D
+%22b62%22+atomRefs2%3D%2291+89%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D
+%22b63%22+atomRefs2%3D%22106+89%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id
+%3D%22b64%22+atomRefs2%3D%22117+94%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b65%22+atomRefs2%3D%2265+59%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b66%22+atomRefs2%3D%22114+83%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+
+id%3D%22b67%22+atomRefs2%3D%2291+87%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+
+id%3D%22b68%22+atomRefs2%3D%22118+91%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond
++id%3D%22b69%22+atomRefs2%3D%22106+128%22+order%3D%22S%22+%2F%3E%0A++++%3Cbo
+nd+id%3D%22b70%22+atomRefs2%3D%2294+87%22+order%3D%22S%22+%2F%3E%0A++++%3Cbo
+nd+id%3D%22b71%22+atomRefs2%3D%22121+94%22+order%3D%22S%22+%2F%3E%0A++++%3Cb
+ond+id%3D%22b72%22+atomRefs2%3D%2259+53%22+order%3D%22S%22+%2F%3E%0A++++%3Cb
+ond+id%3D%22b73%22+atomRefs2%3D%2283+67%22+order%3D%22S%22+%2F%3E%0A++++%3Cb
+ond+id%3D%22b74%22+atomRefs2%3D%22102+83%22+order%3D%22D%22+%2F%3E%0A++++%3C
+bond+id%3D%22b75%22+atomRefs2%3D%2295+87%22+order%3D%22S%22+%2F%3E%0A++++%3C
+bond+id%3D%22b76%22+atomRefs2%3D%22118+85%22+order%3D%22S%22+%2F%3E%0A++++
+%3Cbond+id%3D%22b77%22+atomRefs2%3D%22123+121%22+order%3D%22S%22+%2F%3E%0A++
+++%3Cbond+id%3D%22b78%22+atomRefs2%3D%2253+47%22+order%3D%22S%22+%2F%3E%0A++
+++%3Cbond+id%3D%22b79%22+atomRefs2%3D%2267+61%22+order%3D%22S%22+%2F%3E%0A++
+++%3Cbond+id%3D%22b80%22+atomRefs2%3D%2295+81%22+order%3D%22S%22+%2F%3E%0A++
+++%3Cbond+id%3D%22b81%22+atomRefs2%3D%2295+129%22+order%3D%22S%22+%2F%3E%0A+
++++%3Cbond+id%3D%22b82%22+atomRefs2%3D%2285+70%22+order%3D%22S%22+%2F%3E%0A+
++++%3Cbond+id%3D%22b83%22+atomRefs2%3D%22104+85%22+order%3D%22D%22+%2F%3E%0A
+++++%3Cbond+id%3D%22b84%22+atomRefs2%3D%22123+110%22+order%3D%22S%22+%2F
+%3E%0A++++%3Cbond+id%3D%22b85%22+atomRefs2%3D%22123+111%22+order%3D%22S%22
++%2F%3E%0A++++%3Cbond+id%3D%22b86%22+atomRefs2%3D%22123+112%22+order%3D%22
+D%22+%2F%3E%0A++++%3Cbond+id%3D%22b87%22+atomRefs2%3D%2247+41%22+order%3D%22
+S%22+%2F%3E%0A++++%3Cbond+id%3D%22b88%22+atomRefs2%3D%2261+55%22+order%3D%22
+S%22+%2F%3E%0A++++%3Cbond+id%3D%22b89%22+atomRefs2%3D%2281+69%22+order%3D%22
+S%22+%2F%3E%0A++++%3Cbond+id%3D%22b90%22+atomRefs2%3D%22100+81%22+order%3D
+%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b91%22+atomRefs2%3D%2276+70%22+order%3D
+%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b92%22+atomRefs2%3D%22110+130%22+orde
+r%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b93%22+atomRefs2%3D%22111+131%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b94%22+atomRefs2%3D%2241+34%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b95%22+atomRefs2%3D%2255+49%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b96%22+atomRefs2%3D%2275+69%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b97%22+atomRefs2%3D%2276+64%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b98%22+atomRefs2%3D%2299+76%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b99%22+atomRefs2%3D%2234+28%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b100%22+atomRefs2%3D%2249+43%22+o
+rder%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b101%22+atomRefs2%3D%2275+63%22+
+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b102%22+atomRefs2%3D%2298+75%22
++order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b103%22+atomRefs2%3D%2264+58
+%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b104%22+atomRefs2%3D%2299+1
+32%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b105%22+atomRefs2%3D%2228
++22%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b106%22+atomRefs2%3D%224
+3+36%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b107%22+atomRefs2%3D%22
+63+57%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b108%22+atomRefs2%3D
+%2298+133%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b109%22+atomRefs
+2%3D%2258+52%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b110%22+atomRef
+s2%3D%2222+16%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b111%22+atomRe
+fs2%3D%2236+30%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b112%22+atomR
+efs2%3D%2257+51%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b113%22+atom
+Refs2%3D%2252+46%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b114%22+ato
+mRefs2%3D%2216+10%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b115%22+at
+omRefs2%3D%2230+24%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b116%22+a
+tomRefs2%3D%2251+45%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b117%22+
+atomRefs2%3D%2246+40%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b118%22
++atomRefs2%3D%2210+4%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b119%22
++atomRefs2%3D%2224+18%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b120
+%22+atomRefs2%3D%2245+39%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b12
+1%22+atomRefs2%3D%2240+33%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b1
+22%22+atomRefs2%3D%2218+12%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b
+123%22+atomRefs2%3D%2239+32%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22
+b124%22+atomRefs2%3D%2233+27%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D
+%22b125%22+atomRefs2%3D%2212+6%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D
+%22b126%22+atomRefs2%3D%2232+26%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id
+%3D%22b127%22+atomRefs2%3D%2227+21%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b128%22+atomRefs2%3D%2226+20%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+
+id%3D%22b129%22+atomRefs2%3D%2221+15%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond
++id%3D%22b130%22+atomRefs2%3D%2220+14%22+order%3D%22S%22+%2F%3E%0A++++%3Cbon
+d+id%3D%22b131%22+atomRefs2%3D%2215+9%22+order%3D%22S%22+%2F%3E%0A++++%3Cbon
+d+id%3D%22b132%22+atomRefs2%3D%2214+8%22+order%3D%22S%22+%2F%3E%0A++++%3Cbon
+d+id%3D%22b133%22+atomRefs2%3D%229+3%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond
++id%3D%22b134%22+atomRefs2%3D%228+2%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondAr
+ray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml2">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+2%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Ehydroxyl%3C%2Fname%3E%3Cidentif
+ier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FH2O%2Fh1H2%3C%2Fide
+ntifier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementTy
+pe%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3C
+atom+id%3D%22a1%22+elementType%3D%22H%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType%3D%22H%22
++formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++%3C%2FatomArr
+ay%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a0+
+a1%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22a0+a
+2%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml3">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+3%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Ewater%3C%2Fname%3E%3Cidentifier
++convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FH2O%2Fh1H2%3C%2Fidenti
+fier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementType%3D
+%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cato
+m+id%3D%22a1%22+elementType%3D%22H%22+formalCharge%3D%220%22+hydroge
+nCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType%3D%22H%22+fo
+rmalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++%3C%2FatomArray%3E
+%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a0+a1%22
++order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22a0+a2%22+
+order%3D%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml4">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+4%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Etrifluoroacetic+acid%3C%2Fn
+ame%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FC
+2HF3O2%2Fc3-2%284%2C5%291%286%297%2Fh%28H%2C6%2C7%29%2Ff%2Fh6H%3C%2Fidentifier%3E%3C
+atomArray%3E%3Catom+id%3D%22a1%22+elementType%3D%22C%22+%2F%3E%3Catom+id
+%3D%22a2%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a3%22+elementType%3D
+%22O%22+%2F%3E%3Catom+id%3D%22a4%22+elementType%3D%22O%22+%2F%3E%3Catom+id%3D%22a5
+%22+elementType%3D%22F%22+%2F%3E%3Catom+id%3D%22a6%22+elementType%3D%22F%22+
+%2F%3E%3Catom+id%3D%22a7%22+elementType%3D%22F%22+%2F%3E%3C%2FatomArray%3E%3Cbon
+dArray%3E%3Cbond+atomRefs2%3D%22a1+a2%22+order%3D%221%22+%2F%3E%3Cbond+a
+tomRefs2%3D%22a3+a1%22+order%3D%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a4+a
+1%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a5+a2%22+order%3D%221%22+%2F
+%3E%3Cbond+atomRefs2%3D%22a6+a2%22+order%3D%221%22+%2F%3E%3Cbond+atomRef
+s2%3D%22a7+a2%22+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolecule%3E%3C%2Fcm
+l%3E</cmlUrlEnc><cmlUrlEnc idRef="cml5">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+5%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Eamide%3C%2Fname%3E%3Cidentifier
++convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FH2N%2Fh1H2%2Fq-1%3C%2Fid
+entifier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementT
+ype%3D%22N%22+formalCharge%3D%22-1%22+hydrogenCount%3D%222%22+%2F%3E%0A+++
++%3Catom+id%3D%22a1%22+elementType%3D%22H%22+formalCharge%3D%220%22+hy
+drogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType%3D%22
+H%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++%3C%2FatomA
+rray%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a
+0+a1%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22a0
++a2%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E
+</cmlUrlEnc><cmlUrlEnc idRef="cml6">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+6%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E3-hydroxytetradecanoic+
+acid%3C%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EIn
+ChI%3D1%2FC14H28O3%2Fc1-2-3-4-5-6-7-8-9-10-11-13%2815%2912-1
+4%2816%2917%2Fh13%2C15H%2C2-12H2%2C1H3%2C%28H%2C16%2C17%29%2Ff%2Fh16H%3C%2Fident
+ifier%3E%3CatomArray%3E%3Catom+id%3D%22a1%22+elementType%3D%22C%22+%2F%3E%3C
+atom+id%3D%22a2%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a3%22+eleme
+ntType%3D%22C%22+%2F%3E%3Catom+id%3D%22a4%22+elementType%3D%22C%22+%2F%3E%3Catom
++id%3D%22a5%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a6%22+elementTy
+pe%3D%22C%22+%2F%3E%3Catom+id%3D%22a7%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D
+%22a8%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a9%22+elementType%3D%22
+C%22+%2F%3E%3Catom+id%3D%22a10%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a1
+1%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a12%22+elementType%3D%22C
+%22+%2F%3E%3Catom+id%3D%22a13%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a14
+%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a15%22+elementType%3D%22O%22
++%2F%3E%3Catom+id%3D%22a16%22+elementType%3D%22O%22+%2F%3E%3Catom+id%3D%22a17%22
++elementType%3D%22O%22+%2F%3E%3C%2FatomArray%3E%3CbondArray%3E%3Cbond+at
+omRefs2%3D%22a1+a2%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a2+a3
+%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a3+a4%22+order%3D%221%22+%2F%3E
+%3Cbond+atomRefs2%3D%22a4+a5%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs
+2%3D%22a5+a6%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a6+a7%22+orde
+r%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a7+a8%22+order%3D%221%22+%2F%3E%3Cbond+
+atomRefs2%3D%22a8+a9%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a9+
+a10%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a10+a11%22+order%3D%22
+1%22+%2F%3E%3Cbond+atomRefs2%3D%22a11+a12%22+order%3D%221%22+%2F%3E%3Cbond+a
+tomRefs2%3D%22a12+a13%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a1
+3+a14%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a15+a1%22+order%3D
+%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a16+a1%22+order%3D%221%22+%2F%3E%3Cbond+a
+tomRefs2%3D%22a17+a3%22+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolecu
+le%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml7">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+7%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E2-Hydroxyoctanoic+acid%3C
+%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1
+%2FC8H16O3%2Fc1-2-3-4-5-6-7%289%298%2810%2911%2Fh7%2C9H%2C2-6H2%2C1H3%2C
+%28H%2C10%2C11%29%2Ff%2Fh10H%3C%2Fidentifier%3E%3CatomArray%3E%3Catom+id%3D%22
+a1%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a2%22+elementType%3D%22C
+%22+%2F%3E%3Catom+id%3D%22a3%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a4%22+
+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a5%22+elementType%3D%22C%22+%2F%3E
+%3Catom+id%3D%22a6%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a7%22+elem
+entType%3D%22C%22+%2F%3E%3Catom+id%3D%22a8%22+elementType%3D%22C%22+%2F%3E%3Cato
+m+id%3D%22a9%22+elementType%3D%22O%22+%2F%3E%3Catom+id%3D%22a10%22+element
+Type%3D%22O%22+%2F%3E%3Catom+id%3D%22a11%22+elementType%3D%22O%22+%2F%3E%3C%2Fatom
+Array%3E%3CbondArray%3E%3Cbond+atomRefs2%3D%22a1+a2%22+order%3D%221%22
++%2F%3E%3Cbond+atomRefs2%3D%22a2+a3%22+order%3D%221%22+%2F%3E%3Cbond+atomR
+efs2%3D%22a3+a4%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a4+a5%22+o
+rder%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a5+a6%22+order%3D%221%22+%2F%3E%3Cbo
+nd+atomRefs2%3D%22a6+a7%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22
+a7+a8%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a9+a1%22+order%3D%22
+2%22+%2F%3E%3Cbond+atomRefs2%3D%22a10+a1%22+order%3D%221%22+%2F%3E%3Cbond+at
+omRefs2%3D%22a11+a2%22+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolecul
+e%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml8">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+8%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E2-hydroxydecanoic+acid%3C
+%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1
+%2FC10H20O3%2Fc1-2-3-4-5-6-7-8-9%2811%2910%2812%2913%2Fh9%2C11H%2C2-
+8H2%2C1H3%2C%28H%2C12%2C13%29%2Ff%2Fh12H%3C%2Fidentifier%3E%3CatomArray%3E%3Ca
+tom+id%3D%22a1%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a2%22+elemen
+tType%3D%22C%22+%2F%3E%3Catom+id%3D%22a3%22+elementType%3D%22C%22+%2F%3E%3Catom+
+id%3D%22a4%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a5%22+elementTyp
+e%3D%22C%22+%2F%3E%3Catom+id%3D%22a6%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22
+a7%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a8%22+elementType%3D%22C
+%22+%2F%3E%3Catom+id%3D%22a9%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a10%22
++elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a11%22+elementType%3D%22O%22+
+%2F%3E%3Catom+id%3D%22a12%22+elementType%3D%22O%22+%2F%3E%3Catom+id%3D%22a13%22+
+elementType%3D%22O%22+%2F%3E%3C%2FatomArray%3E%3CbondArray%3E%3Cbond+ato
+mRefs2%3D%22a1+a2%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a2+a3%22
++order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a3+a4%22+order%3D%221%22+%2F%3E%3C
+bond+atomRefs2%3D%22a4+a5%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2
+%3D%22a5+a6%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a6+a7%22+order
+%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a7+a8%22+order%3D%221%22+%2F%3E%3Cbond+a
+tomRefs2%3D%22a8+a9%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a9+a
+10%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a11+a1%22+order%3D%222%22
++%2F%3E%3Cbond+atomRefs2%3D%22a12+a1%22+order%3D%221%22+%2F%3E%3Cbond+atom
+Refs2%3D%22a13+a2%22+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolecule%3E
+%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml9">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+9%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E2-hydroxydodecanoic+aci
+d%3C%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI
+%3D1%2FC12H24O3%2Fc1-2-3-4-5-6-7-8-9-10-11%2813%2912%2814%2915%2Fh
+11%2C13H%2C2-10H2%2C1H3%2C%28H%2C14%2C15%29%2Ff%2Fh14H%3C%2Fidentifier%3E%0A++
+%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22C%22+form
+alCharge%3D%220%22+hydrogenCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%22a1
+%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+2%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType%3D%22C%22+formalChar
+ge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a3%22+elem
+entType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A
+++++%3Catom+id%3D%22a4%22+elementType%3D%22C%22+formalCharge%3D%220%22
++hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a5%22+elementTyp
+e%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Ca
+tom+id%3D%22a6%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydro
+genCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a7%22+elementType%3D%22C%22+
+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id
+%3D%22a8%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCou
+nt%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a9%22+elementType%3D%22C%22+formal
+Charge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a10%22
++elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%221
+%22+%2F%3E%0A++++%3Catom+id%3D%22a11%22+elementType%3D%22C%22+formalChar
+ge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a12%22+ele
+mentType%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E
+%0A++++%3Catom+id%3D%22a13%22+elementType%3D%22O%22+formalCharge%3D%22
+0%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a14%22+element
+Type%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A+++
++%3Catom+id%3D%22a15%22+elementType%3D%22H%22+formalCharge%3D%220%22+h
+ydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a16%22+elementType
+%3D%22H%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++%3C%2Fato
+mArray%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D
+%22a1+a0%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22
+a2+a1%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomRefs2%3D%22a
+3+a2%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRefs2%3D%22a4
++a3%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5%22+atomRefs2%3D%22a5+
+a4%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b6%22+atomRefs2%3D%22a6+a
+5%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b7%22+atomRefs2%3D%22a7+a6
+%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b8%22+atomRefs2%3D%22a8+a7%22
++order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b9%22+atomRefs2%3D%22a9+a8%22+
+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b10%22+atomRefs2%3D%22a10+a9%22
++order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b11%22+atomRefs2%3D%22a11+a1
+0%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b12%22+atomRefs2%3D%22a12+
+a10%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b13%22+atomRefs2%3D%22a1
+3+a11%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b14%22+atomRefs2%3D%22
+a14+a11%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b15%22+atomRefs2
+%3D%22a12+a15%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b16%22+atomRef
+s2%3D%22a13+a16%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecul
+e%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml10">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+10%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E2-hydroxytetradecanoic
++acid%3C%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EI
+nChI%3D1%2FC14H28O3%2Fc1-2-3-4-5-6-7-8-9-10-11-12-13%2815%29
+14%2816%2917%2Fh13%2C15H%2C2-12H2%2C1H3%2C%28H%2C16%2C17%29%2Ff%2Fh16H%3C%2Fiden
+tifier%3E%3CatomArray%3E%3Catom+id%3D%22a1%22+elementType%3D%22C%22+%2F%3E
+%3Catom+id%3D%22a2%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a3%22+elem
+entType%3D%22C%22+%2F%3E%3Catom+id%3D%22a4%22+elementType%3D%22C%22+%2F%3E%3Cato
+m+id%3D%22a5%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a6%22+elementT
+ype%3D%22C%22+%2F%3E%3Catom+id%3D%22a7%22+elementType%3D%22C%22+%2F%3E%3Catom+id
+%3D%22a8%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a9%22+elementType%3D
+%22C%22+%2F%3E%3Catom+id%3D%22a10%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a
+11%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a12%22+elementType%3D%22
+C%22+%2F%3E%3Catom+id%3D%22a13%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a1
+4%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a15%22+elementType%3D%22O
+%22+%2F%3E%3Catom+id%3D%22a16%22+elementType%3D%22O%22+%2F%3E%3Catom+id%3D%22a17
+%22+elementType%3D%22O%22+%2F%3E%3C%2FatomArray%3E%3CbondArray%3E%3Cbond+a
+tomRefs2%3D%22a1+a2%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a2+a
+3%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a3+a4%22+order%3D%221%22+%2F
+%3E%3Cbond+atomRefs2%3D%22a4+a5%22+order%3D%221%22+%2F%3E%3Cbond+atomRef
+s2%3D%22a5+a6%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a6+a7%22+ord
+er%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a7+a8%22+order%3D%221%22+%2F%3E%3Cbond
++atomRefs2%3D%22a8+a9%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a9
++a10%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a10+a11%22+order%3D
+%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a11+a12%22+order%3D%221%22+%2F%3E%3Cbond+
+atomRefs2%3D%22a12+a13%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a
+13+a14%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a15+a1%22+order
+%3D%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a16+a1%22+order%3D%221%22+%2F%3E%3Cbond+
+atomRefs2%3D%22a17+a2%22+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolec
+ule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml11">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+11%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E3-hydroxydecanoic+acid
+%3C%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D
+1%2FC10H20O3%2Fc1-2-3-4-5-6-7-9%2811%298-10%2812%2913%2Fh9%2C11H%2C2
+-8H2%2C1H3%2C%28H%2C12%2C13%29%2Ff%2Fh12H%3C%2Fidentifier%3E%3CatomArray%3E%3C
+atom+id%3D%22a1%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a2%22+eleme
+ntType%3D%22C%22+%2F%3E%3Catom+id%3D%22a3%22+elementType%3D%22C%22+%2F%3E%3Catom
++id%3D%22a4%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a5%22+elementTy
+pe%3D%22C%22+%2F%3E%3Catom+id%3D%22a6%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D
+%22a7%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a8%22+elementType%3D%22
+C%22+%2F%3E%3Catom+id%3D%22a9%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a10
+%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a11%22+elementType%3D%22O%22
++%2F%3E%3Catom+id%3D%22a12%22+elementType%3D%22O%22+%2F%3E%3Catom+id%3D%22a13%22
++elementType%3D%22O%22+%2F%3E%3C%2FatomArray%3E%3CbondArray%3E%3Cbond+at
+omRefs2%3D%22a1+a2%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a2+a3
+%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a3+a4%22+order%3D%221%22+%2F%3E
+%3Cbond+atomRefs2%3D%22a4+a5%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs
+2%3D%22a5+a6%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a6+a7%22+orde
+r%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a7+a8%22+order%3D%221%22+%2F%3E%3Cbond+
+atomRefs2%3D%22a8+a9%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a9+
+a10%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a11+a1%22+order%3D%222
+%22+%2F%3E%3Cbond+atomRefs2%3D%22a12+a1%22+order%3D%221%22+%2F%3E%3Cbond+ato
+mRefs2%3D%22a13+a3%22+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolecule
+%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml12">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+12%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E3-hydroxydodecanoic+ac
+id%3C%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInCh
+I%3D1%2FC12H24O3%2Fc1-2-3-4-5-6-7-8-9-11%2813%2910-12%2814%2915%2F
+h11%2C13H%2C2-10H2%2C1H3%2C%28H%2C14%2C15%29%2Ff%2Fh14H%3C%2Fidentifier%3E%0A+
++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22C%22+for
+malCharge%3D%220%22+hydrogenCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%22a
+1%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D
+%222%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType%3D%22C%22+formalCha
+rge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a3%22+ele
+mentType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E
+%0A++++%3Catom+id%3D%22a4%22+elementType%3D%22C%22+formalCharge%3D%220
+%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a5%22+elementTy
+pe%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3C
+atom+id%3D%22a6%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a7%22+elementType%3D%22C%22
++formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+i
+d%3D%22a8%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCo
+unt%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a9%22+elementType%3D%22C%22+forma
+lCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a10
+%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%22
+1%22+%2F%3E%0A++++%3Catom+id%3D%22a11%22+elementType%3D%22C%22+formalCha
+rge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a12%22+el
+ementType%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F
+%3E%0A++++%3Catom+id%3D%22a13%22+elementType%3D%22O%22+formalCharge%3D
+%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a14%22+elemen
+tType%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++
+++%3Catom+id%3D%22a15%22+elementType%3D%22H%22+formalCharge%3D%220%22+
+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a16%22+elementTyp
+e%3D%22H%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++%3C%2Fat
+omArray%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2
+%3D%22a1+a0%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D
+%22a2+a1%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomRefs2%3D%22
+a3+a2%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRefs2%3D%22a
+4+a3%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5%22+atomRefs2%3D%22a5
++a4%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b6%22+atomRefs2%3D%22a6+
+a5%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b7%22+atomRefs2%3D%22a7+a
+6%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b8%22+atomRefs2%3D%22a8+a7
+%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b9%22+atomRefs2%3D%22a10+a8
+%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b10%22+atomRefs2%3D%22a10+a
+9%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b11%22+atomRefs2%3D%22a11+
+a9%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b12%22+atomRefs2%3D%22a12
++a10%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b13%22+atomRefs2%3D%22a
+13+a11%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b14%22+atomRefs2%3D
+%22a14+a11%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b15%22+atomRefs
+2%3D%22a12+a15%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b16%22+atomRe
+fs2%3D%22a13+a16%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecu
+le%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml13">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+13%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E3-hydroxyhexadecanoic+
+acid%3C%2Fname%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EIn
+ChI%3D1%2FC16H32O3%2Fc1-2-3-4-5-6-7-8-9-10-11-12-13-15%281
+7%2914-16%2818%2919%2Fh15%2C17H%2C2-14H2%2C1H3%2C%28H%2C18%2C19%29%2Ff%2Fh18H%3C
+%2Fidentifier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+eleme
+ntType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%223%22+%2F%3E%0A+
++++%3Catom+id%3D%22a1%22+elementType%3D%22C%22+formalCharge%3D%220%22+
+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType
+%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cat
+om+id%3D%22a3%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrog
+enCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a4%22+elementType%3D%22C%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D
+%22a5%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCoun
+t%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a6%22+elementType%3D%22C%22+formalC
+harge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a7%22+e
+lementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+
+%2F%3E%0A++++%3Catom+id%3D%22a8%22+elementType%3D%22C%22+formalCharge%3D
+%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a9%22+element
+Type%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A+++
++%3Catom+id%3D%22a10%22+elementType%3D%22C%22+formalCharge%3D%220%22+h
+ydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a11%22+elementType
+%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Cat
+om+id%3D%22a12%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydro
+genCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a13%22+elementType%3D%22C%22
++formalCharge%3D%220%22+hydrogenCount%3D%222%22+%2F%3E%0A++++%3Catom+i
+d%3D%22a14%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenC
+ount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a15%22+elementType%3D%22C%22+for
+malCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a
+16%22+elementType%3D%22O%22+formalCharge%3D%220%22+hydrogenCount
+%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a17%22+elementType%3D%22O%22+formalC
+harge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a18%22+
+elementType%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22
++%2F%3E%0A++++%3Catom+id%3D%22a19%22+elementType%3D%22H%22+formalCharg
+e%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a20%22+elem
+entType%3D%22H%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A
+++%3C%2FatomArray%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+ato
+mRefs2%3D%22a1+a0%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atom
+Refs2%3D%22a2+a1%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomR
+efs2%3D%22a3+a2%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRe
+fs2%3D%22a4+a3%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5%22+atomRef
+s2%3D%22a5+a4%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b6%22+atomRefs
+2%3D%22a6+a5%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b7%22+atomRefs2
+%3D%22a7+a6%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b8%22+atomRefs2%3D
+%22a8+a7%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b9%22+atomRefs2%3D%22
+a9+a8%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b10%22+atomRefs2%3D%22
+a10+a9%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b11%22+atomRefs2%3D
+%22a11+a10%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b12%22+atomRefs
+2%3D%22a12+a11%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b13%22+atomRe
+fs2%3D%22a14+a12%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b14%22+atom
+Refs2%3D%22a14+a13%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b15%22+at
+omRefs2%3D%22a15+a13%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b16%22+
+atomRefs2%3D%22a16+a14%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b17
+%22+atomRefs2%3D%22a17+a15%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b
+18%22+atomRefs2%3D%22a18+a15%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D
+%22b19%22+atomRefs2%3D%22a16+a19%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+i
+d%3D%22b20%22+atomRefs2%3D%22a17+a20%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondA
+rray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml14">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+14%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Epyridine%3C%2Fname%3E%3Cidenti
+fier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FC5H5N%2Fc1-2-4
+-6-5-3-1%2Fh1-5H%3C%2Fidentifier%3E%0A++%3CatomArray%3E%0A++++%3Cato
+m+id%3D%22a0%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydroge
+nCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a1%22+elementType%3D%22C%22+fo
+rmalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22
+a2%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount
+%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a3%22+elementType%3D%22C%22+formalCh
+arge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a4%22+el
+ementType%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F
+%3E%0A++++%3Catom+id%3D%22a5%22+elementType%3D%22N%22+formalCharge%3D%22
+0%22+hydrogenCount%3D%220%22+%2F%3E%0A++%3C%2FatomArray%3E%0A++%3CbondArra
+y%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a1+a0%22+order%3D%22D%22+%2F
+%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22a2+a0%22+order%3D%22S%22+%2F%3E
+%0A++++%3Cbond+id%3D%22b3%22+atomRefs2%3D%22a3+a1%22+order%3D%22S%22+%2F%3E%0A
+++++%3Cbond+id%3D%22b4%22+atomRefs2%3D%22a4+a2%22+order%3D%22D%22+%2F%3E%0A+
++++%3Cbond+id%3D%22b5%22+atomRefs2%3D%22a5+a3%22+order%3D%22D%22+%2F%3E%0A++
+++%3Cbond+id%3D%22b6%22+atomRefs2%3D%22a5+a4%22+order%3D%22S%22+%2F%3E%0A++%3C
+%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml15">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+15%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Eethyl+acetate%3C%2Fname%3E%3Ci
+dentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FC4H8O2%2F
+c1-3-6-4%282%295%2Fh3H2%2C1-2H3%3C%2Fidentifier%3E%0A++%3CatomArray%3E
+%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22C%22+formalCharge%3D%220
+%22+hydrogenCount%3D%223%22+%2F%3E%0A++++%3Catom+id%3D%22a1%22+elementTy
+pe%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%223%22+%2F%3E%0A++++%3C
+atom+id%3D%22a2%22+elementType%3D%22C%22+formalCharge%3D%220%22+hydr
+ogenCount%3D%222%22+%2F%3E%0A++++%3Catom+id%3D%22a3%22+elementType%3D%22C%22
++formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+i
+d%3D%22a4%22+elementType%3D%22O%22+formalCharge%3D%220%22+hydrogenCo
+unt%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a5%22+elementType%3D%22O%22+forma
+lCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++%3C%2FatomArray%3E%0A++
+%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a2+a0%22+or
+der%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22a3+a1%22+ord
+er%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomRefs2%3D%22a4+a3%22+orde
+r%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRefs2%3D%22a5+a2%22+order
+%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b5%22+atomRefs2%3D%22a5+a3%22+order%3D
+%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml16">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+16%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Esodium+hydroxide%3C%2Fname
+%3E%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FNa.H
+2O%2Fh%3B1H2%2Fq%2B1%3B%2Fp-1%2FfNa.HO%2Fh%3B1h%2Fqm%3B-1%3C%2Fidentifier%3E%0A+
++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22Na%22+fo
+rmalCharge%3D%221%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22
+a1%22+elementType%3D%22O%22+formalCharge%3D%22-1%22+hydrogenCoun
+t%3D%221%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+elementType%3D%22H%22+formalC
+harge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++%3C%2FatomArray%3E%0A++%3Cb
+ondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a1+a2%22+orde
+r%3D%22S%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml17">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+17%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Esodium+sulfate%3C%2Fname%3E%3C
+identifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2F2Na.H2
+O4S%2Fc%3B%3B1-5%282%2C3%294%2Fh%3B%3B%28H2%2C1%2C2%2C3%2C4%29%2Fq2*%2B1%3B%2Fp-2%2Ff2Na.O
+4S%2Fq2m%3B-2%3C%2Fidentifier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D
+%22a0%22+elementType%3D%22Na%22+formalCharge%3D%221%22+hydrogenCou
+nt%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a1%22+elementType%3D%22Na%22+forma
+lCharge%3D%221%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22
++elementType%3D%22O%22+formalCharge%3D%22-1%22+hydrogenCount%3D%22
+0%22+%2F%3E%0A++++%3Catom+id%3D%22a3%22+elementType%3D%22O%22+formalChar
+ge%3D%22-1%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a4%22+ele
+mentType%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E
+%0A++++%3Catom+id%3D%22a5%22+elementType%3D%22O%22+formalCharge%3D%220
+%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a6%22+elementTy
+pe%3D%22S%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++%3C%2Fa
+tomArray%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs
+2%3D%22a6+a2%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2
+%3D%22a6+a3%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomRefs2%3D
+%22a6+a4%22+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRefs2%3D%22
+a6+a5%22+order%3D%22D%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcm
+l%3E</cmlUrlEnc><cmlUrlEnc idRef="cml18">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+18%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Esodium+chloride%3C%2Fname%3E
+%3Cidentifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FClH.N
+a%2Fh1H%3B%2Fq%3B%2B1%2Fp-1%2FfCl.Na%2Fh1h%3B%2Fq-1%3Bm%3C%2Fidentifier%3E%0A++%3C
+atomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22Cl%22+form
+alCharge%3D%22-1%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a
+1%22+elementType%3D%22Na%22+formalCharge%3D%221%22+hydrogenCount
+%3D%220%22+%2F%3E%0A++%3C%2FatomArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml19">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+19%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3EHCl%3C%2Fname%3E%3Cidentifier+
+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FClH%2Fh1H%3C%2Fidentifi
+er%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22C
+l%22+formalCharge%3D%220%22+hydrogenCount%3D%221%22+%2F%3E%0A++++%3Catom
++id%3D%22a1%22+elementType%3D%22H%22+formalCharge%3D%220%22+hydrogen
+Count%3D%221%22+%2F%3E%0A++%3C%2FatomArray%3E%0A++%3CbondArray%3E%0A++++%3Cbon
+d+id%3D%22b1%22+atomRefs2%3D%22a0+a1%22+order%3D%22S%22+%2F%3E%0A++%3C%2FbondA
+rray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml20">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+20%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3ENa2SO4%3C%2Fname%3E%3Cidentifi
+er+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2F2Na.H2O4S%2Fc%3B%3B1
+-5%282%2C3%294%2Fh%3B%3B%28H2%2C1%2C2%2C3%2C4%29%2Fq2*%2B1%3B%2Fp-2%2Ff2Na.O4S%2Fq2m%3B-
+2%3C%2Fidentifier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+ele
+mentType%3D%22Na%22+formalCharge%3D%221%22+hydrogenCount%3D%220%22+%2F
+%3E%0A++++%3Catom+id%3D%22a1%22+elementType%3D%22Na%22+formalCharge%3D
+%221%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a2%22+element
+Type%3D%22O%22+formalCharge%3D%22-1%22+hydrogenCount%3D%220%22+%2F%3E%0A++
+++%3Catom+id%3D%22a3%22+elementType%3D%22O%22+formalCharge%3D%22-1%22+
+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a4%22+elementType
+%3D%22O%22+formalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Cat
+om+id%3D%22a5%22+elementType%3D%22O%22+formalCharge%3D%220%22+hydrog
+enCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a6%22+elementType%3D%22S%22+f
+ormalCharge%3D%220%22+hydrogenCount%3D%220%22+%2F%3E%0A++%3C%2FatomArray
+%3E%0A++%3CbondArray%3E%0A++++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a6+a2
+%22+order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b2%22+atomRefs2%3D%22a6+a3%22
++order%3D%22S%22+%2F%3E%0A++++%3Cbond+id%3D%22b3%22+atomRefs2%3D%22a6+a4%22+
+order%3D%22D%22+%2F%3E%0A++++%3Cbond+id%3D%22b4%22+atomRefs2%3D%22a6+a5%22+o
+rder%3D%22D%22+%2F%3E%0A++%3C%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml21">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+21%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3ENaOH%3C%2Fname%3E%3Cidentifier
++convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FNa.H2O%2Fh%3B1H2%2Fq%2B1
+%3B%2Fp-1%2FfNa.HO%2Fh%3B1h%2Fqm%3B-1%3C%2Fidentifier%3E%0A++%3CatomArray%3E
+%0A++++%3Catom+id%3D%22a0%22+elementType%3D%22Na%22+formalCharge%3D%22
+1%22+hydrogenCount%3D%220%22+%2F%3E%0A++++%3Catom+id%3D%22a1%22+elementT
+ype%3D%22O%22+formalCharge%3D%22-1%22+hydrogenCount%3D%221%22+%2F%3E%0A+++
++%3Catom+id%3D%22a2%22+elementType%3D%22H%22+formalCharge%3D%220%22+hy
+drogenCount%3D%221%22+%2F%3E%0A++%3C%2FatomArray%3E%0A++%3CbondArray%3E%0A++
+++%3Cbond+id%3D%22b1%22+atomRefs2%3D%22a1+a2%22+order%3D%22S%22+%2F%3E%0A++%3C
+%2FbondArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml22">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+22%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3E9-fluorene%3C%2Fname%3E%3Ciden
+tifier+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FC13H10%2Fc1-
+3-7-12-10%285-1%299-11-6-2-4-8-13%2811%2912%2Fh1-8H%2C9H2%3C%2Fide
+ntifier%3E%3CatomArray%3E%3Catom+id%3D%22a1%22+elementType%3D%22C%22+%2F
+%3E%3Catom+id%3D%22a2%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a3%22+ele
+mentType%3D%22C%22+%2F%3E%3Catom+id%3D%22a4%22+elementType%3D%22C%22+%2F%3E%3Cat
+om+id%3D%22a5%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a6%22+element
+Type%3D%22C%22+%2F%3E%3Catom+id%3D%22a7%22+elementType%3D%22C%22+%2F%3E%3Catom+i
+d%3D%22a8%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a9%22+elementType
+%3D%22C%22+%2F%3E%3Catom+id%3D%22a10%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22
+a11%22+elementType%3D%22C%22+%2F%3E%3Catom+id%3D%22a12%22+elementType%3D
+%22C%22+%2F%3E%3Catom+id%3D%22a13%22+elementType%3D%22C%22+%2F%3E%3C%2FatomArray
+%3E%3CbondArray%3E%3Cbond+atomRefs2%3D%22a1+a2%22+order%3D%222%22+%2F%3E%3Cb
+ond+atomRefs2%3D%22a2+a3%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D
+%22a3+a4%22+order%3D%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a4+a5%22+order%3D
+%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a5+a6%22+order%3D%221%22+%2F%3E%3Cbond+at
+omRefs2%3D%22a6+a7%22+order%3D%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a7+a8
+%22+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a8+a9%22+order%3D%222%22+%2F%3E
+%3Cbond+atomRefs2%3D%22a9+a10%22+order%3D%221%22+%2F%3E%3Cbond+atomRef
+s2%3D%22a10+a11%22+order%3D%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a11+a6%22+
+order%3D%221%22+%2F%3E%3Cbond+atomRefs2%3D%22a11+a12%22+order%3D%221%22+%2F%3E
+%3Cbond+atomRefs2%3D%22a12+a13%22+order%3D%221%22+%2F%3E%3Cbond+atomRe
+fs2%3D%22a13+a5%22+order%3D%222%22+%2F%3E%3Cbond+atomRefs2%3D%22a13+a1%22+
+order%3D%221%22+%2F%3E%3C%2FbondArray%3E%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc><cmlUrlEnc idRef="cml23">%3Ccml+xmlns%3D%22http%3A%2F%2Fwww.xml-cml.org%2Fschema%22+id%3D%22cml
+23%22%3E%3Cmolecule+id%3D%22m1%22%3E%3Cname%3Emethyl%3C%2Fname%3E%3Cidentifi
+er+convention%3D%22iupac%3Ainchi%22%3EInChI%3D1%2FCH4%2Fh1H4%3C%2Fiden
+tifier%3E%0A++%3CatomArray%3E%0A++++%3Catom+id%3D%22a0%22+elementTyp
+e%3D%22C%22+formalCharge%3D%220%22+hydrogenCount%3D%224%22+%2F%3E%0A++%3C%2Fat
+omArray%3E%0A%3C%2Fmolecule%3E%3C%2Fcml%3E</cmlUrlEnc></cmlPile></PAPER>
