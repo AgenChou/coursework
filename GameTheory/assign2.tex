@@ -1,0 +1,146 @@
+\documentclass[11pt,journal]{article}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{amsmath}
+%\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+%\else
+% normal IEEE
+\usepackage{cite}
+%\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in} 
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+	\title{Algorithmic Game Theory, Assignment 1}
+	
+	\author{Agata~Borkowska,~UID: 1690550}% <-this % stops a space
+		%\protect\\
+		%\thanks{}}
+	
+	% The paper headers
+
+
+
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	%\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	%\IEEEpeerreviewmaketitle
+	
+	
+	
+	\section{}
+	Note: here we use notation (x,y) to mean that the payoff for player I for the given strategy is x, and the payoff for player II is y. (LateX didn't want to cooperate)
+	
+	We are presented with the following payoff matrix
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c|c|}
+			
+			& swerve & straight \\
+			\hline
+			swerve &(0, 0) & (-2, 2) \\
+			\hline
+			straight & (2, -2) & (-30, -10) \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	Then for Player 1:
+	\[0 \cdot z_{11} + (-2)\cdot z_{12} \geq 2\cdot z_{11} + (-30) \cdot z_{12}  \]
+	\[ 2 \cdot z_{21} + (-30) \cdot z_{22} \geq 0 \cdot z_{21} + (-2) \cdot z_{22}  \]
+	
+	And for Player 2:
+	\[ 0 \cdot z_{11} + (-2) \cdot z_{21} \geq 2 \cdot z_{11} + (-10) \cdot z_{21}  \]
+	\[ 2 \cdot z_{12} + (-10) \cdot z_{22} \geq 0 \cdot z_{12} + (-2) \cdot z_{22} \]
+	
+	With
+	\[ z_{11} + z_{12} + z_{21} + z_{22} =1 \]
+	\[ z_{11}, z_{12}, z_{21}, z_{22} \geq 0  \]
+	
+	We can express this as a linear programming problem:
+	\begin{align*}
+		\text{Maximise: } & 0\cdot z_{11} + 0 \cdot z_{12} + 0 \cdot z{21} + z_{22} &\\
+		\text{subject to: } & &\\
+		 -&2\cdot z_{11} + 28\cdot z_{12} \geq 0\\
+		& 2 \cdot z_{21} - 28 \cdot z_{22}  \geq 0\\
+		 -&2 \cdot z_{11} + 8 \cdot z_{21} \geq 0\\
+		& 2 \cdot z_{12} -8 \cdot z_{22} \geq 0 \\
+	\end{align*}
+	
+	This gives the following probabilities:
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c|c|}
+			
+			& swerve & straight \\
+			\hline
+			swerve & 0 & $\frac{4}{19}$ \\
+			\hline
+			straight & $\frac{14}{19}$ & $\frac{1}{19}$ \\
+			\hline
+		\end{tabular}
+	\end{table}
+	And the probability of collision is $\dfrac{1}{19}$. 
+	
+	To check that this is indeed a correlated equilibrium, we substitute the values into the inequalities:
+	
+	\begin{align*}
+		0 - 2\cdot \dfrac{4}{19} \geq 0 - 30 \cdot \dfrac{4}{19}  &\Longrightarrow -2 \cdot \dfrac{4}{19} \geq -30 \cdot \dfrac{4}{19}  \\
+		2\cdot \dfrac{14}{19} -30 \cdot \dfrac{1}{19} \geq -2 \cdot \dfrac{1}{19} & \Longrightarrow 2 \cdot \dfrac{14}{19} \geq 28 \cdot \dfrac{1}{19}  \\
+		0 - 2 \cdot \dfrac{14}{19}  \geq 2 \cdot 0 - 8 \cdot \dfrac{14}{19} &  \Longrightarrow -2 \cdot \dfrac{14}{19} \geq -8 \cdot \dfrac{14}{19} \\
+		2 \cdot \dfrac{4}{19} -10 \cdot \dfrac{1}{19} \geq 0 - 2 \cdot \dfrac{1}{19} & \Longrightarrow 2 \cdot \dfrac{4}{19} \geq 8 \cdot \dfrac{1}{19}  \\
+	\end{align*}
+	All the inequalities hold, so we have found a correlated equilibrium. 
+	%\IEEEPARstart{}{} 
+	
+
+	
+	% that's all folks
+\end{document}
+
