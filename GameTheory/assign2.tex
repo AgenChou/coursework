@@ -11,6 +11,10 @@
 % requires cite.sty v4.0 or later (November 2003)
 \usepackage[nocompress]{cite}
 
+\usepackage{graphicx}
+
+\graphicspath{ {D:/Non-game stuff/CS notes/GameTheory/} }
+
 %\else
 % normal IEEE
 \usepackage{cite}
@@ -104,7 +108,7 @@
 	
 	We can express this as a linear programming problem:
 	\begin{align*}
-		\text{Maximise: } & 0\cdot z_{11} + 0 \cdot z_{12} + 0 \cdot z{21} + z_{22} &\\
+		\text{Maximise: } & 0\cdot z_{11} + 0 \cdot z_{12} + 0 \cdot z_{21} + z_{22} &\\
 		\text{subject to: } & &\\
 		 -&2\cdot z_{11} + 28\cdot z_{12} \geq 0\\
 		& 2 \cdot z_{21} - 28 \cdot z_{22}  \geq 0\\
@@ -139,7 +143,63 @@
 	All the inequalities hold, so we have found a correlated equilibrium. 
 	%\IEEEPARstart{}{} 
 	
+	\section{} 
+	To demonstrate that for the given auction we can run the VCG mechanism in polynomial time, we will reduce it to the problem of finding a maximal matching in a weighted graph.
+	
+	First note that each bidder has a valuation for each item, i.e. $v_i(s_j)$ is defined for each bidder $i$ and each item $s_j$. Furthermore for a subset $S'\subseteq S$ of items, containing a $s_j$ valued more than any other item in the set, the value of the subset is equal to the value of $s_j$. Therefore, we may just as well consider only singleton sets. Adding more items to the set will not increase its value.
+	
+	Now we can represent the auction as a (complete) bipartite graph, with one set of vertices being the bidders, the other set the items. The edges between the two sets will be weighted with the values $v_i(s_j) = v_{ij}$. The graph is shown below, with thick edges showing a matching.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.7]{matching.png}
+		\caption{Bipartite graph representing the auction}
+	\end{figure}
+	
+	It is of course possible that there will be more bidders than items, in which case some bidders will not get anything out of the auction, or more items than bidders, in which case adding the leftover items to some sets in the allocation will not change the value or the payoff for anyone.
 
+	We can find a matching of maximal weight in polynomial time. We now need to show that this matching will represent an allocation that would be achieved by the VCG mechanism, i.e. an optimal one.
+	
+	Let us assume bidder i is allocated item $s$ in the matching, while VCG would allocate $s'$. We have two possibilities. Firstly, let us say that the item $s'$ is not allocated to anyone else. Then VCG would give $s'$ to bidder i if and only if $v_i(s') \geq v_i(s)$. If it is strictly greater, then swapping $s$ for $s'$ would increase the value of the matching, contradicting its maximality. If $v_i(s) = v_i(s')$ then the value achieved by the matching is the same as that of the VCG mechanism.
+	
+	Now let us say that $s'$ given to the bidder i by VCG, is allocated to some other bidder j in the matching. Let us swap the edge $v_i(s)$ for $v_i(s')$ and remove $v_j(s')$. Now j is not allocated any items, so we can give them an item with the highest values, chosen from the set of $s$ and the items not allocated to anyone else. If that item has a value greater than $v_j(s')$, we increase the value of the matching - contradiction.
+	
+	Therefore VCG will find an alloation with the same value as the maximal matching on the weighted bipartite graph.
+	
+	\section{}	
+	
+	Recall that without fixing the opening bid, the expected revenue was the value of the second-highest bid, $x$. It was given by:
+	
+	\[\int^{1}_{0}x \cdot 2 \cdot (1-x) dx = \dfrac{1}{3}\]
+	
+	Where $ 2 \cdot (1-x)$ is the probability that two bids are greater or equal to x. It arises in two different ways: we can have bidder 1 bidding x, and bidder 2 submitting a greater bid, probability of which is $f(x)\cdot (1 - F(x)) = 1 - x$, where $f(x)$ is the probability density function and $F(x)$ is the cumulative density function. The other option is with the roles being reversed. Hence we arrive at $2\cdot(1-x)$.
+	
+	Now consider the scenario where for all $x \leq r$, for some $r \in [0,1]$, the revenue is fixed at r. For all $x \geq r$ the revenue is as before. When one player bids below r, and the other above, the probability of that is $2\cdot f(x)\cdot(1 - F(r))$. Otherwise the revenue is 0.
+	
+	Therefore, the expected revenue is given by:
+	
+	\[\int^{1}_{r}x \cdot 2 \cdot (1-x) dx + \int^{r}_{0}r\cdot 2\cdot f(x)\cdot(1 - F(r)) dx  \]
+	\[=\int^{1}_{r}x \cdot 2 \cdot (1-x) dx + \int^{r}_{0}r\cdot 2\cdot (1 - r) dx  \]
+	\[= 2 \cdot (\frac{x^2}{2} - \frac{x^3}{x})\Bigr| ^{1}_{r}  + 2\cdot(r - r^2)x \Bigr|_{0}^{r} \]
+	\[= \frac{1}{3} - 2(\frac{r^2}{2} - \frac{r^3}{3}) + 2r^2 - 2r^3\]
+	\[= \frac{1}{3} + r^2 - \frac{4r^3}{3} \]
+	
+	This function attains its maximum at  a value of r for which
+	\[ \frac{d}{dr} ( \frac{1}{3} + r^2 - \frac{4r^3}{3}  ) = 0  \]
+	\[\Rightarrow 2r - 4r^2 = 0 \]
+	
+	Which is at $r=0$ and $r = \frac{1}{2}$. Plotting the graph, we find that the maximum is at $r=\frac{1}{2}$. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.7]{save.png}
+		\caption{Plot of the expected revenue function}
+	\end{figure}
+	
+	At this point the expected revenue is $\frac{5}{12}$. Thus it is possible for the auctioneer to have expected revenue greater than $\frac{1}{3}$, and that happens when the value of the opening bid $r$ is $ \frac{1}{2} $.
+	
+
+	
 	
 	% that's all folks
 \end{document}
