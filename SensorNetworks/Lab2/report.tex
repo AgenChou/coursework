@@ -92,13 +92,35 @@
 	\[L = L_0 + 10nlog_{10}(\dfrac{d}{d_0})\] 
 	with $L$ being the relative path loss, $L_0$ the path loss at reference distance $d_0$, n being the path loss distance exponent, and d the distance at which we're looking.
 	
-	The model has 3 attributes: path loss exponent, reference distance, and reference loss. Reference distance and loss come together, and we shall look at them first. This pair of attributes describes how much power we lose at the reference distance from the source. It is included in the model to avoid taking $log_{10}(0)$ which tends to $-\infty$. NS-3 documentation mentions that if we are looking to find the loss at a distance smaller than the reference distance, the transmission power will be returned. Therefore there is no point in attempting to get a reading at a shorter distance, as it will not be meaningful. 
+	The model has 3 attributes: path loss exponent, reference distance, and reference loss. Reference distance and loss come together, and we shall look at them first. This pair of attributes describes how much power we lose at the reference distance from the source. It is included in the model to avoid taking $log_{10}(0)$ which tends to $-\infty$. Therefore there is no point in attempting to get a reading at a shorter distance, as it will not be meaningful. 
 	
 	Effectively, these attributes describe how much to add to the loss, to account for skipping the reference distance in the calculations. It should not come as a surprise that increasing the reference loss, decreases transmission range. 
 	
-	We have measured the transmission distance, with reference loss ranging from 7 to 20 dB in 0.5 dB intervals, at transmission power -10 dBm.
+	We have measured the transmission distance, with reference loss ranging from 7 to 20 dB in 0.5 dB intervals, at transmission power -10 dBm. The outcome is shown in the graph below.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.6]{graph_log_refloss.png}
+		\caption{Maximum distance reached for a given reference loss.}
+	\end{figure}
+	
+	It is not ideal to increase the reference distance, as it will limit the range at which we can take the readings. Attempting to find the loss at a distance less than the reference distance, will return the transmission power.
+
+	The other parameter in the model is the exponent $n$. Recall the model equation:
+		\[L = L_0 + 10nlog_{10}(\dfrac{d}{d_0})\] 
+		\[ = L_o + 10log_{10}((\dfrac{d}{d_0})^n)\]
+		
+	Therefore, we can expect an exponential decrease in the maximum distance reached, as we increase the exponent. Our findings, summarised in the graph in Fig. 3 indeed demonstrate this trend. (Readings taken at transmission power -10 dBm.)
 	
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.6]{graph_log_exponent.png}
+		\caption{Maximum distance reached for a given exponent.}
+	\end{figure}
+	
+	\section{Friis propagation loss model}
+	This model has been first introduced by H. Friis in 1946\footnote{H. Friis, "A note on simple transmission formula" in \emph{Proc. IRE}, 1946}. 
 	%\IEEEPARstart{}{} 
 	
 
