@@ -83,12 +83,12 @@
 		\caption{Maximum transmission distance for the given transmission power.}
 	\end{figure}
 
-	These results will be considered the "normal" output, to which we can compare the outcomes of any modifications.
+	These results will be considered the "normal" output, to which we can compare the outcomes of any modifications. Further readings may be taken at a different range of both power and output, when so requested.
 	
 	
 	
-	\section{Log-distance propagation loss model (Methods 1)}
-	The equation to calculate loss in the log-distance propagation model\footnote{\url{https://www.nsnam.org/docs/release/3.19/doxygen/classns3_1_1_log_distance_propagation_loss_model.html}} is:
+	\section{Log-distance propagation loss model\footnote{\url{https://www.nsnam.org/docs/release/3.19/doxygen/classns3_1_1_log_distance_propagation_loss_model.html}} (Methods 1)}
+	The equation to calculate loss in the log-distance propagation model is:
 	\[L = L_0 + 10nlog_{10}(\dfrac{d}{d_0})\] 
 	with $L$ being the relative path loss, $L_0$ the path loss at reference distance $d_0$, n being the path loss distance exponent, and d the distance at which we're looking.
 	
@@ -119,8 +119,29 @@
 		\caption{Maximum distance reached for a given exponent.}
 	\end{figure}
 	
-	\section{Friis propagation loss model}
-	This model has been first introduced by H. Friis in 1946\footnote{H. Friis, "A note on simple transmission formula" in \emph{Proc. IRE}, 1946}. 
+	\section{Friis propagation loss model\footnote{\url{https://www.nsnam.org/docs/release/3.19/doxygen/classns3_1_1_friis_propagation_loss_model.html}} (Methods 2a)}
+	This model has been first introduced by H. Friis in 1946\footnote{H. Friis, "A note on simple transmission formula" in \emph{Proc. IRE}, May 1946, pp 254-256}. In its simplest form, the loss is calculated as a ratio between transmitter's power and receiver's power. The equation is:
+	
+	\[\frac{P_r}{P_t} = G_tG_r(\frac{\lambda}{4\pi d})^2  \]
+	Where $d$ is the distance, $\lambda$ is the wavelength, $G_t$ and $G_r$ are antenna gains. They are inversely proportional to $\lambda ^2$, wavelength squared. 
+		
+	As described by Shaw,\footnote{J. Shaw, "Radiometry and the Friis transmission equation" in \emph{Am. J. Physics}, 2013, pp 33–37}, this simple form has multiple limitations. It does not give a meaningful answer for a distance $d$ shorter than the wavelength. It requires a single value of wavelength, which implies a very narrow bandwidth. It also only works for free space with no obstacles and no refraction taking place.
+	
+	Therefore, the NS-3 model and other modern applications often use a more complicated version of the equation, which is:
+	
+	\[P_r = \dfrac{P_tG_rG_t\lambda ^2}{(4\pi d)^2 L}\]
+	
+	The additional parameter $L$ is the system loss to correct for the idealistic assumptions.
+	
+	In the following simulation we will use $\lambda = 0.10$ m. The NS-3 model requires the following three attributes: minimum distance $d_0$, system loss $L$, and frequency $f$.
+	
+	The frequency can be calculated from the wavelength:
+	
+	\[ f = \dfrac{c}{\lambda} =  \dfrac{3\times 10^8}{0.1}= 3 \times 10^9 \approx 3 \text{GHz} \]
+	
+	We will leave the system loss as the default value of 1, and the minimum distance likewise as the default 0.5. m.
+	
+	
 	%\IEEEPARstart{}{} 
 	
 
