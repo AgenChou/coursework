@@ -8,8 +8,12 @@ FSD - Formal Systems Development, concentrating on B-method and using AtelierB t
 
 FoC - Foundations of Computing, java
 
-HPC - High-Performance Computing, using C and C++ with OpenMP
+GameTheory - Algorithmic Game Theory, just problem sheets
+
+HPC - High-Performance Computing, using C and C++ with OpenMP and MPi
 
 NLP - Natural Language Processing, iPython notebooks (Jupyter notebooks)
 
 Security - Advanced Security, using C
+
+SensorNetworks - Sensor Networks and Mobile Data Communications, with simulations in NS-3
