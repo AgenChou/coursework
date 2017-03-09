@@ -95,7 +95,6 @@ int main (int argc, char *argv[])
   uint32_t sinkNode = 1;
   uint32_t sourceNode = 0;
   double txp; //transmission power dB
-  double refLoss; // reference loss
   std::string m_CSVfileName = "transRangeOutput.csv"; //Output file
 
   CommandLine cmd;
@@ -115,20 +114,19 @@ int main (int argc, char *argv[])
   //Clear the last output file and write the column headers
   std::ofstream out (m_CSVfileName.c_str ());
   out << "Distance," <<
-  "Reference loss," <<
+  "TX power," <<
   "Packet rcvd?" <<
   std::endl;
   out.close ();
 
-  txp = 0.1; // Initial power value. Keep it constant
-  refLoss = 19; // 
+  txp = 0.1; //Initial power value
 
-  for (int p = 0; p < 20; p++) //Do this for 20 different power values starting at -10 dB with a 0.5 dB increment in each iteration
+  for (int p = 0; p < 5; p++) //Do this for 5 different power values starting at 0.1 dB with a 0.005 dB increment in each iteration
   {
 
-        distance = 170;
+        distance = 180;
 
-	for (int d = 0; d < 30; d++) //Do this for 40 different distance values starting at 10 m with a 5 m increment in each iteration
+	for (int d = 0; d < 20; d++) //Do this for 10 different distance values starting at 180 m with a 0.10 m increment in each iteration
         {
 
   		//Set Non-unicastMode rate
@@ -154,7 +152,7 @@ int main (int argc, char *argv[])
                 std::string atr3 = "ReferenceLoss";// The reference loss at reference distance (dB)
 
   		//Here, we add the propagation loss model to the channel, with all the required parameters
-  		wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(3), atr2, DoubleValue(1), atr3, DoubleValue(refLoss));
+  		wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(3), atr2, DoubleValue(1), atr3, DoubleValue(19.41));
 
   		wifiChannel.SetPropagationDelay ("ns3::ConstantSpeedPropagationDelayModel"); //Set up the propagation delay model
   		wifiPhy.SetChannel (wifiChannel.Create ());
@@ -177,7 +175,7 @@ int main (int argc, char *argv[])
   		Ipv4InterfaceContainer i = addressAdhoc.Assign (devices);
 
   		// Output on the screen current distance value and TX power
-  		NS_LOG_UNCOND ("Distance: " << distance << " Reference loss: " << refLoss);
+  		NS_LOG_UNCOND ("Distance: " << distance << " TX power: " << txp);
 
 
   		//Set the position of nodes
@@ -218,13 +216,13 @@ int main (int argc, char *argv[])
   		std::ofstream out (m_CSVfileName.c_str (), std::ios::app);
 
   		out << distance << ","
-      			<< refLoss  << ","
+      			<< txp << ","
       			<< rcvd << ","
       			<< std::endl;
 
   		out.close ();
 
-                distance = distance + 1; //Increase the distance by 0.1 m for next iteration
+                distance = distance + 0.05; //Increase the distance by 0.1 m for next iteration
 
 
 
@@ -233,7 +231,7 @@ int main (int argc, char *argv[])
 
         NS_LOG_UNCOND ("---------------------------------------------------------- ");
 
-        refLoss = refLoss + 0.1;  //Increase the power by 0.005 dB for next iteration
+        txp = txp + 0.005;  //Increase the power by 0.005 dB for next iteration
 
   }
   return 0;

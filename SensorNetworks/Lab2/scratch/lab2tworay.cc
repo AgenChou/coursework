@@ -119,12 +119,12 @@ int main (int argc, char *argv[])
   std::endl;
   out.close ();
 
-  txp = 1.1; //Initial power value
+  txp = 0.1; //Initial power value
 
   for (int p = 0; p < 5; p++) //Do this for 5 different power values starting at 0.1 dB with a 0.005 dB increment in each iteration
   {
 
-        distance = 180;
+        distance = 15;
 
 	for (int d = 0; d < 10; d++) //Do this for 10 different distance values starting at 180 m with a 0.10 m increment in each iteration
         {
@@ -147,12 +147,11 @@ int main (int argc, char *argv[])
                 //This is where the propagation loss model is defined
                 std::string lossModel = "ns3::TwoRayGroundPropagationLossModel";//define the name of the propagation loss model
                 //This is the list of attributes used by the propagation loss model used.
-                std::string atr1 = "Frequency"; //Set up exponent value of the path loss propagation model
-                std::string atr2 = "HeightAboveZ";// The distance at which the reference loss is calculated (m)
-                //std::string atr3 = "ReferenceLoss";// The reference loss at reference distance (dB)
+                std::string atr1 = "Frequency"; //Set up the frequency  value of the path loss propagation model
+                std::string atr2 = "HeightAboveZ";// The height of the antennas in the nodes (m)
 
   		//Here, we add the propagation loss model to the channel, with all the required parameters
-  		wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(3000000000), atr2, DoubleValue(0.1));
+  		wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(3000000000), atr2, DoubleValue(0.10));
 
   		wifiChannel.SetPropagationDelay ("ns3::ConstantSpeedPropagationDelayModel"); //Set up the propagation delay model
   		wifiPhy.SetChannel (wifiChannel.Create ());
@@ -222,7 +221,7 @@ int main (int argc, char *argv[])
 
   		out.close ();
 
-                distance = distance + 0.1; //Increase the distance by 0.1 m for next iteration
+                distance = distance + 0.01; //Increase the distance by 0.1 m for next iteration
 
 
 
