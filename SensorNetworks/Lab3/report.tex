@@ -79,7 +79,7 @@
 		\includegraphics[scale=0.6]{lab3topology2.png}
 		\caption{Topology of the network}
 	\end{figure}
-
+\pagebreak
 	\section{}
 	We begin by running the simulation with both Node0 and Node2 generating traffic.
 	\begin{figure}[h]
@@ -89,7 +89,7 @@
 	\end{figure}
 
 	The number of dropped packets increases as Node2 moves further away from Node1, until it comes outside its range at around 380m mark, after which point we only get packets arriving from Node0. Note that the number of those packets is then constant, following the trend from the second simulation (question 3).
-	
+	\pagebreak
 	\section{}
 	Now we only have Node0 generating traffic.
 		
@@ -104,7 +104,8 @@
 	It is worth noting that the number of packets dropped, averaging at 216, is much higher than at the beginning of the first simulation, due to Node1 not responding with CTS every single time Node0 requested transmission, because Node2 can be transmitting.
 
 	Note that when removing all traffic from Node2 to Node1, we also remove the single packet at the start; otherwise we would get additional 200 packets sent, one for each iteration.
-
+	
+	\pagebreak
 	\section{}
 	We now only have traffic from Node2 to Node1. The number of packets dropped is shown on the graph below.
 	\begin{figure}[h]
@@ -119,12 +120,36 @@
 
 	As before, we also remove the single packet at the start to initialise the traffic from a node. Otherwise we would get additional 200 packets, one for each iteration.
 
-	\pagebreak	
+	\pagebreak
 	
-	\begin{thebibliography}{1}
+	For easier comparison, here are the three graphs plotted together:
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.8]{graphall.png}
+			\caption{Comparison of the three simulations}
+		\end{figure}
+	
+	\pagebreak
+	\section{}
+	The original simulation uses packets of size 200 bytes, so we will increase the CTS/RTS limit to 350, thus avoiding any packets sending RTS/CTS. The results plotted against the number of iterations are shown below.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.8]{graph5a.png}
+		\caption{Number of packets dropped in each iteration}
+	\end{figure}
 
-		
-	\end{thebibliography}
+	The shape is very similar to that from the first iterations. To see the differences better, we plot both sets of results together:
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.8]{graph5.png}
+		\caption{Number of packets dropped, with RTS/CTS and without}
+	\end{figure}
+
+	Now we can clearly see that significantly more packets are dropped without the RTS/CTS exchange.
+	
+	
 	
 	
 	%\IEEEPARstart{}{} 
