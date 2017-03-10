@@ -80,28 +80,45 @@
 		\caption{Topology of the network}
 	\end{figure}
 
-	\section{Question 2}
-	
+	\section{}
+	We begin by running the simulation with both Node0 and Node2 generating traffic.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.6]{graph1.png}
 		\caption{Number of packets dropped plotted against Node2's position on the Y axis}
 	\end{figure}
+
+	The number of dropped packets increases as Node2 moves further away from Node1, until it comes outside its range at around 380m mark, after which point we only get packets arriving from Node0. Note that the number of those packets is then constant, following the trend from the second simulation (question 3).
 	
-	\section{Question 3}
+	\section{}
+	Now we only have Node0 generating traffic.
 		
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.6]{graph2.png}
 		\caption{Number of packets dropped plotted against Node2's position on the Y axis, when only Node0 is generating traffic}
 	\end{figure}
-	\section{Question 4}
+
+	As expected, the number of packets dropped stays constant throughout the simulation, because the conditions don't change and there's nothing to affect it.
 	
+	It is worth noting that the number of packets dropped, averaging at 216, is much higher than at the beginning of the first simulation, due to Node1 not responding with CTS every single time Node0 requested transmission, because Node2 can be transmitting.
+
+	Note that when removing all traffic from Node2 to Node1, we also remove the single packet at the start; otherwise we would get additional 200 packets sent, one for each iteration.
+
+	\section{}
+	We now only have traffic from Node2 to Node1. The number of packets dropped is shown on the graph below.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.6]{graph3.png}
 		\caption{Number of packets dropped plotted against Node2's position on the Y axis, when only Node2 is generating traffic}
 	\end{figure}
+	
+	We can observe that at 360 m mark (180 m from Node1, which is the same as the distance between Node0 and Node1), we see as many packets dropped as in the previous simulation of traffic from Node0 to Node1.
+	
+	After reaching the distance of 380 m (200 m away from Node1), Node2 moves outside its transmission range, and so no packets can be received by node one. This is reflected by a sudden drop all the way to 0 on the graph. The reason why we see no dropped packages is that even the RTS signals have not been received by Node1, so no packets began transmission.
+
+	As before, we also remove the single packet at the start to initialise the traffic from a node. Otherwise we would get additional 200 packets, one for each iteration.
+
 	\pagebreak	
 	
 	\begin{thebibliography}{1}
