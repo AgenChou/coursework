@@ -220,7 +220,7 @@ int main (int argc, char *argv[])
 
         aodv.Set("EnableHello", BooleanValue(false));
         aodv.Set("GratuitousReply", BooleanValue(false));
-        aodv.Set("ActiveRouteTimeout", ns3::TimeValue(Seconds(15.0))); //Here, we specify how long the pointers associated with a discovered route last
+        aodv.Set("ActiveRouteTimeout", ns3::TimeValue(Seconds(30.0))); //Here, we specify how long the pointers associated with a discovered route last
 
         list.Add (aodv, 100);
 
@@ -254,14 +254,14 @@ int main (int argc, char *argv[])
         source->Connect (remote);
 
         // 8. Generate traffic
-        uint32_t numPackets = 1;
+        uint32_t numPackets = 2;
         double interval = 20.0; // seconds
         uint32_t packetSize = 100; // bytes
         Time interPacketInterval = Seconds (interval);
 
         Simulator::Schedule (Seconds (1.0), &GenerateTraffic, source, packetSize, numPackets, interPacketInterval);
 
-        Simulator::Schedule (Seconds (40.0), &RouteBreak, lossModel, adhocNodes); //Here, we schedule a link breakage 40 secons into the simulation
+        Simulator::Schedule (Seconds (15.0), &RouteBreak, lossModel, adhocNodes); //Here, we schedule a link breakage 40 secons into the simulation
 
         // 9. Create ASCII tracing, run the simulation
         AsciiTraceHelper ascii;
