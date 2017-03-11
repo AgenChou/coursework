@@ -1,0 +1,89 @@
+\documentclass[11pt,journal]{article}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {/home/agata/Documents/coursework/SensorNetworks/Project/} }
+%\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+%\else
+% normal IEEE
+\usepackage{cite}
+%\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in} 
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+	\title{Sensor Networks and Mobile Data Communication, Assignment 4}
+	
+	\author{UID: 1690550}% <-this % stops a space
+		%\protect\\
+		%\thanks{}}
+	
+	% The paper headers
+
+
+
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	%\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	%\IEEEpeerreviewmaketitle
+	\section{Introduction}
+	The simulated problem involves a delay-tolerant network (DTN), with two stationary nodes 0 and 2, positioned 10000 m apart, and a mobile node 1, moving between them. The initial position of the nodes are shown in Fig. 1.
+	
+	
+	The propagation loss model is constant range, which means that up to the given maximum distance (200 m initially) the packets are transmitted with the given transmission power (1.5 dBm in this case). Beyond the maximum range, the transmission power drops to -1000 dBm, which is effectively 0\cite{range loss doc}. Note that with Node1 travelling along the $y=3$ line, it means that it needs to be at $x \leq 199.98 \approx 200$ to reach Node0, and at $ x > 9800$ to reach Node2.
+	
+	
+	
+	\begin{thebibliography}{1}
+		\bibitem{range loss doc}
+		Range Propagation Loss Model, NS-3 documentation, available online: \url{https://www.nsnam.org/doxygen/classns3_1_1_range_propagation_loss_model.html}
+	\end{thebibliography}
+	% that's all folks
+\end{document}
+
