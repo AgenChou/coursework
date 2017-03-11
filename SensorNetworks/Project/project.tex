@@ -73,7 +73,7 @@
 	% creates the second title. It will be ignored for other modes.
 	%\IEEEpeerreviewmaketitle
 	\section{Introduction}
-	The simulated problem involves a delay-tolerant network (DTN), with two stationary nodes 0 and 2, positioned 10000 m apart, and a mobile node 1, moving between them. The initial position of the nodes are shown in Fig. 1. We introduce the movement later; for now Node 1 is stationary.
+	The simulated problem involves a delay-tolerant network (DTN), with two stationary nodes 0 and 2, positioned 10000 m apart, and a mobile node 1, moving between them, starting from (0,3) in the x-y plane. The initial position of the nodes are shown in Fig. 1. We introduce the movement later; for now Node 1 is stationary.
 	
 	\begin{figure}[h]
 		\centering
@@ -118,13 +118,25 @@
 	
 	All nodes are set to unicast mode, with Node0 connected to Node1, and Node1 connected to Node2. They all follow the 802.11 standard, and adhere to AODV protocol with route timeout of 10 min. Note that this is longer than the simulation, which runs for 500 s. The transmission power remains constant at 1.5 dBm throughout the simulation. 
 	
-	The transmission rate is 2 Mbps. For packets of size 200 bytes, transfer of a single packet would take 0.0008 s, which is barely significant for this simulation.
-	
 	\subsection{Propagation Loss Model}
 	
 	The propagation loss model is constant range, which means that up to the given maximum distance (200 m initially) the packets are transmitted with the given transmission power (1.5 dBm in this case). Beyond the maximum range, the transmission power drops to -1000 dBm, which is effectively 0\cite{range loss doc}. Note that with Node1 travelling along the $y=3$ line, it means that it needs to be at $x \leq 199.98 \approx 200$ to reach Node0, and at $ x > 9800$ to reach Node2.
 	
+	\section{Methods}
+	\subsection{Task 1A}
+	To introduce movement of Node1, we first add \texttt{"ConstantVelocityMobilityModel"} using the Mobility Helper that already exists in the code. It is done by adding the following line at line 476:
 	
+	\texttt{mobilityMobileNode.SetMobilityModel("ns3::ConstantVelocityMobilityModel");}
+	
+	
+	After installing the Mobility Helper, we explicitly set the velocity of Node1, by:
+	
+	\texttt{(mobileNode.Get(0) -> GetObject<ConstantVelocityMobilityModel>()) -> SetVelocity (Vector(20.0, 0.0, 0.0));}
+	
+	This is a much more certain way of setting the velocity of the node, than setting it as an attribute while setting the Constant Velocity Mobility Model, which sometimes may not be parsed correctly.
+	
+		
+	Note that with the transmission range of 200 m, even with Node1 moving, its buffer gets overwritten multiple times, before it is out of range of Node0.
 	
 	\begin{thebibliography}{1}
 		\bibitem{range loss doc}

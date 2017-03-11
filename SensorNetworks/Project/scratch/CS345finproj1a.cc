@@ -473,9 +473,9 @@ int main (int argc, char *argv[])
         positionAllocMobileNode->Add (Vector (0.0, distance_between_node0_node1, 0.0)); //3D coordinates (x,y,z). Use only the x-y plane
         mobilityMobileNode.SetPositionAllocator (positionAllocMobileNode);
         
-        mobilityMobileNode.SetMobilityModel("ns3::ConstantVelocityMobilityModel");
+        mobilityMobileNode.SetMobilityModel("ns3::ConstantVelocityMobilityModel"); // we set the Mobility Model to "Constant Velocity"
         mobilityMobileNode.Install (mobileNode);
-        (mobileNode.Get(0)->GetObject<ConstantVelocityMobilityModel>())->SetVelocity(Vector(20.0, 0.0, 0.0));
+        (mobileNode.Get(0)->GetObject<ConstantVelocityMobilityModel>())->SetVelocity(Vector(20.0, 0.0, 0.0)); // we explicitly set the velocity of Node1 to 20 m/s
 
         // 6. Connect trace source to trace sink for Node 1
         std::ostringstream oss;
