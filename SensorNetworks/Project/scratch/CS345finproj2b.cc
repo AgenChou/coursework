@@ -37,6 +37,8 @@ uint16_t Pkt_no_being_sent_by_node1 = 0;
 uint16_t Pkt_no_last_seen_by_node1 = 0;
 uint16_t Pkt_no_being_sent_by_node0 = 1;
 
+uint16_t Number_mails_rcvd_at_node2 = 0;
+
 uint32_t capacity = 3;
 uint16_t head = 0;
 uint16_t tail = 0;
@@ -329,13 +331,17 @@ static void Node1ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                 if (Pkt_no_last_seen_by_node1 < Pkt_no_being_sent_by_node0)
                 {
                         NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " The packet received by 1 is a *UNIQUE* DATA packet.");
-                        Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0;
+                        // Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0; - need to move it after updating tail
                         Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
                         Node1SendAck = 1;
                         // strip packet contents and transfer contents to variables
                         node1_isbufferempty = header.Getisbufferempty ();  // header fields
+                        //we want to update the tail only with the first packet received, however the head keeps moving forward
                         node1_head = header.Gethead ();  // header fields
-                        node1_tail = header.Gettail ();  // header fields
+                        if (Pkt_no_last_seen_by_node1 == 0) {
+                                node1_tail = header.Gettail ();  // header fields
+                        }
+                        Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0;
                         node1_globalcounter = header.Getglobalcounter ();  // header fields
                 }
         }
@@ -390,6 +396,8 @@ static void Node2ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
 
         if (Pkt_no_last_seen_by_node2 < receivedpacket_globalcounter)
         {
+                // update mail count
+                Number_mails_rcvd_at_node2 += receivedpacket_head - (receivedpacket_tail - 1);
                 Pkt_no_last_seen_by_node2 = receivedpacket_globalcounter;
                 NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 2 received a packet.");
                 std::cout << "*------------*" <<  std::endl;
@@ -397,6 +405,7 @@ static void Node2ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                 std::cout << "The value of *head* is " << receivedpacket_head << std::endl;
                 std::cout << "The value of *tail* is " << receivedpacket_tail << std::endl;
                 std::cout << "The value of *globalcounter* is " << receivedpacket_globalcounter << std::endl;
+                std::cout << "The total number of mails received so far is " << Number_mails_rcvd_at_node2 << std::endl;
                 std::cout << "*------------*" <<  std::endl;
                 Node2SendAck = 1;
         }

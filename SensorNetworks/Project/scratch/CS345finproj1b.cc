@@ -447,9 +447,9 @@ int main (int argc, char *argv[])
         YansWifiChannelHelper wifiChannel;
 
 
-        std::string lossModel = "ns3::RangePropagationLossModel"; //Range propagation loss model
-        std::string atr1 = "MaxRange";
-        wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(200)); // maximum transmission range = 200 m
+        std::string lossModel = "ns3::FriisPropagationLossModel"; //Range propagation loss model
+        std::string atr1 = "Frequency";
+        wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(2400000000)); // maximum transmission range = 200 m
 
         wifiChannel.SetPropagationDelay ("ns3::ConstantSpeedPropagationDelayModel"); //set up the propagation delay model
         wifiPhy.SetChannel (wifiChannel.Create ());
