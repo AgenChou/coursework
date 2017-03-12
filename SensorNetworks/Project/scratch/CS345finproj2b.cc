@@ -332,7 +332,7 @@ static void Node1ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                 {
                         NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " The packet received by 1 is a *UNIQUE* DATA packet.");
                         // Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0; - need to move it after updating tail
-                        Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
+                        //Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
                         Node1SendAck = 1;
                         // strip packet contents and transfer contents to variables
                         node1_isbufferempty = header.Getisbufferempty ();  // header fields
@@ -342,6 +342,7 @@ static void Node1ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                                 node1_tail = header.Gettail ();  // header fields
                         }
                         Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0;
+                        Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
                         node1_globalcounter = header.Getglobalcounter ();  // header fields
                 }
         }
