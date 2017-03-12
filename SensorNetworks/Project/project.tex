@@ -25,7 +25,7 @@
 
 \addtolength{\topmargin}{-.875in}
 \addtolength{\textheight}{1.75in}
-
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 \begin{document}
 	\title{Sensor Networks and Mobile Data Communication, Assignment 4}
 	
@@ -134,10 +134,89 @@
 	\texttt{(mobileNode.Get(0) -> GetObject<ConstantVelocityMobilityModel>()) -> SetVelocity (Vector(20.0, 0.0, 0.0));}
 	
 	This is a much more certain way of setting the velocity of the node, than setting it as an attribute while setting the Constant Velocity Mobility Model, which sometimes may not be parsed correctly.
-	
 		
 	Note that with the transmission range of 200 m, even with Node1 moving, its buffer gets overwritten multiple times, before it is out of range of Node0.
 	
+	To work out the maximum distance between Node0 and Node1 for a given speed of Node1, we iterate over Node1's speeds, ranging from 20 to 200 m/s, at 10 m/s intervals, and over distances, ranging from 3 to 300 m. We do not expect to see anything at a range exceeding 200 m because of the propagation loss model. 
+	
+	In each iteration, we calculate the duration of the simulation by the following formula:
+	
+	\[\text{duration} = \dfrac{\text{Distance between Node0 and Node1}}{\text{speed of Node1}} + 10\]
+	
+	We add 10 at the end to make sure that Node1 goes past the x coordinate of Node2.
+	
+	Our findings are summarised in the graph in Fig 2.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.7]{graph1a.png}
+		\caption{Relationship between the speed of Node1 and the maximum distance along the y axis between Node0 and Node1, for which transmission occurs.}
+	\end{figure}
+	
+	\subsection{Tast 1B}
+	
+	Now we implement the Friis propagation loss model. It takes 3 parameters: frequency, which we are told to fix at 2.4 GHz, and System Loss and Minimum Loss, which we are leaving at 1 and 0 dB respectively. Recall that Friis model involves a relationship between the loss and the distance between nodes which is quadratic. I.e. the loss is proportional to the square of the distance. 
+	
+	It is done by replacing the three lines starting at line 459 with the following:\\	
+	\texttt{std::string lossModel = "ns3::FriisPropagationLossModel");}\\
+	\texttt{std::string atr1 = "Frequency";}\\
+	\texttt{wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(2400000000)); \\2.4 GHz = 2400000000 Hz}s
+	
+	The maximum distance away from Node0 and Node2 as a function of speed of Node1 is shown in Fig. 2.s
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.7]{graph1b.png}
+		\caption{Relationship between the speed of Node1 and the maximum distance along the y axis between Node0 and Node1, for which transmission occurs.}
+	\end{figure}
+	
+	\subsection{Task 2A}
+	
+	To count the number of mails received at Node2, we introduce a global variable, \texttt{Number\_mails\_rcvd\_at\_node2} at the start of the program, and set it to 0. Then in the \texttt{Node2ReceivePacket(...)} function we update it after parsing the message:
+	
+	\texttt{Number\_mails\_rcvd\_at\_node2 += receivedpacket\_head - (receivedpacket\_tail - 1)} 
+	
+	And add it to the logging: 
+	
+	\texttt{std::cout << "The total number of mails received so far is " << Number\_mails\_rcvd\_at\_node2 << std::endl;}
+	
+	The results are as shown in Fig. 4. Throughout the simulation, we consistently receive 1 packet, regardless of the speed of Node1 and distance from Node0, up to the transmission limits shown before. While disappointing, it is understandable, once we inspect contents of the Node1's buffer at each point. 
+	
+	Node0 sends its data across every 0.25 s, while generating a new message every second. So it first sends its message 1, receives acknowledgement from Node1, purges its buffer, and then creates message number 2, which is now the only message in the buffer.
+	
+	Meanwhile Node1 keeps replacing the content of its own buffer with the packet received from Node0. Each of these packets contain only a single message, and so Node1's buffer can contain at most 1 message at a time in this scenario. Thus there's only one message sent to Node2 in each iteration.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{graph2a.png}
+		\caption{Number of packets received at Node2}
+	\end{figure}
+	\pagebreak
+	\subsection{Task 2B}
+	
+	First note that in order to keep all messages in the buffer, we should not simply store the value  of the tail from the first data packet we receive, and keep updating the head. It is possible that we do not receive all messages between them. For example we may receive the first buffer load of Node0 with messages 1, 2, and 3, and the next packet may contain messages 5, 6, and 7. Thus we don't get message number 4, while keeping only one tail and head would imply otherwise. However in this simple simulation, this will not cause problems.
+	
+	This was tested by logging the contents of each packet received by Node1.
+	
+	Thus, we update Node1's tail only once, with the first packet received. To this end we survive 342 with an if statement:\\
+	\tab\texttt{if (Pkt\_no\_last\_seen\_by\_node1 == 0) \{ }\\
+	\tab\tab \texttt{node1\_tail = header.Gettail();}\\
+	\tab\texttt{\}}
+	
+	We also need to make sure that we update the variable \texttt{Pkt\_no\_last\_seen\_by\_node1} after that if statement, so we simply move line 334 further down.
+	
+	This time we can clearly see the number of messages decreasing as both speed of Node1 and distance from Node0 increases, because Node1 leaves the transmission range of Node0 quicker.	
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{graph2b.png}
+		\caption{Number of packets received at Node2}
+	\end{figure}
+	
+	\pagebreak
+	\subsection{Task 3A}
+	
+	\pagebreak
 	\begin{thebibliography}{1}
 		\bibitem{range loss doc}
 		Range Propagation Loss Model, NS-3 documentation, available online: \url{https://www.nsnam.org/doxygen/classns3_1_1_range_propagation_loss_model.html}
