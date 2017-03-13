@@ -147,7 +147,7 @@
 		\caption{Number of packets dropped, with RTS/CTS and without}
 	\end{figure}
 
-	Now we can clearly see that significantly more packets are dropped without the RTS/CTS exchange.
+	Now we can clearly see that significantly more packets are dropped without the RTS/CTS exchange. This happens because there is now no protocol in place to warn one node that the other is sending. When Node 0 and Node 2 start sending simultaneously, unaware that Node 1 is receiving, collisions happen, and the packets are dropped. 
 	
 	
 	
