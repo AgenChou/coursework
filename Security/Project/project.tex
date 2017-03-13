@@ -73,10 +73,73 @@
 	% creates the second title. It will be ignored for other modes.
 	%\IEEEpeerreviewmaketitle
 	\section{Part 1}
-
+	\subsection{Cross-site scripting}
+	Cross-site scripting (XSS) occurs when a user injects a client-side code into a web page, through a field taking user input. This code is then executed in another's client browser (as is the case with DOM-based and reflected attacks) or on the server side (stored attacks). It occurs when the website fails to validate user's input. It is considered to be of high, although not critical severity\cite{xss review}. It is the most common type of website attacks, which has been around since 1990s\cite{xss2}.
+	
+	The aim of XSS attacks is most often to access a client's usernames and passwords, and other data such as banking information, which is often stored in the browser.
+	
+	A real-life example of an XSS attack is a malicious script known as "Samy Worm", which in 2005 propagated across MySpace, making over 1 million users execute the payload within just 20 h. The  development of the worm and the details of the implementation were described by the author himself after MySpace has fixed its issues, and is still available online: \url{http://samy.pl/popular/tech.html}.
+	
+	\subsection{Directory traversal attacks}
+	Directory traversal attacks aim to access the parent directory and traverse the directory tree on the server, by providing user input which includes multiple \texttt{../} that traverse back to the root directory. Note that repeating \texttt{../} more times than necessary after reaching the root directory does not have any effect.
+	
+	It can be used to read or execute files stored on the server. The most common PoC of directory traversal is accessing \texttt{/etc/passwd}, where the passwords are stored on a Unix system.
+	
+	
+	\subsection{SQL code injection}
+	SQL code injection - as the name suggests - relies on inserting SQL code devised by the attacker into the server's database. The code may involve for example dropping the tables. It is another example of an attack which can be prevented by sanitizing user input correctly.
+	
+	Some of the most severe cases of SQL injection attacks involve an American hacker Albert Gonzalez, who in 2005-2007 used this technique on corporate systems to steal and later re-sell over 1.5 million credit card details\cite{Gonzalez}.
+	
+	
+	\subsection{Python code injection}
+	This time we are interested in injecting Python script into the website. It is a much less well known attack than for example SQL injection, but nevertheless can be harmful.
+	
+	\url{https://www.kevinlondon.com/2015/07/26/dangerous-python-functions.html}
+	
+	\subsection{Stack-based buffer overflow}
+	C is especially susceptible to stack-based buffer overflows. These types of attack rely on no bound-checking, thus allowing an attacker to access a memory address. It usually involves overwriting the memory that was not intended to be accessed, but can also mean reading it, thus revealing sensitive information.
+	
+	The best-known example of buffer overflow attacks is the Heartbleed bug present in the OpenSSL library. It was exploited in 2014, when hundreds of social insurance numbers were stolen from the Canada Revenue Agency\cite{heartbleed news}.
+	
+	\subsection{Heap-based buffer overflow}
+	Heap-based buffer overflow differs from a stack-based one in that it relies on dynamic memory allocation, and usually aims to corrupt the application's data, as reading or precise overwriting of data is much more difficult than in a stack overflow. 
+	
+	One of the more severe cases of such an attack was exploiting a bug in Internet Explorer's XML parser in 2014. It allowed for execution of an attacker's code in the browser. It is not the first issue of this kind with Internet Explorer. Another similar one has been discovered in December 2008 in IE7\cite{IE2}.
+	
+	\subsection{Format string vulnerability}
+	In C, printing formatted strings involves format specifiers, for example \texttt{\%s, \%d}. A format string attack occurs when a user-submitted string contains such specifiers. It may allow the attacker to read the content of the stack or perform a denial of service attack.
+	
+	A notable case of an exploit of this vulnerability occurred in 2000, when hackers gained root access to a host running an FTP daemon\cite{format string}.
+	
+	
+	
+	\section{Part 2}
 	%\IEEEPARstart{}{} 
 	
-
+\begin{thebibliography}{1}
+	
+	\bibitem{xss review}
+	I. Hydara et al., "Current state of research on cross-site scripting (XSS) - A systematic literature review" in \emph{Information and Software Technology}, vol. 58, 2015, pp 170-186
+	
+	\bibitem{xss2}
+	B. Gupta et al., "Cross-Site Scripting (XSS) Abuse and Defense: Exploitation on Several Testing Bed Environments and Its Defense" in \emph{Journal on Information Privacy and Security}, vol. 11, 2015
+	
+	\bibitem{Gonzalez}
+	S. Gaudin, "Government informant is called kingpin of largest U.S. data breaches" in \emph{ComputerWorld}, available:\\ \url{http://www.computerworld.com/article/2527161/government-it/government-informant-is-called-kingpin-of-largest-u-s--data-breaches.html}
+	
+	\bibitem{heartbleed news}
+	P. Evans, "Heartbleed bug: RCMP asked Revenue Canada to delay news of SIN thefts", CBC News, April 2014, available: \url{http://www.cbc.ca/news/business/heartbleed-bug-rcmp-asked-revenue-canada-to-delay-news-of-sin-thefts-1.2609192}
+	
+	\bibitem{IE heap}
+	"Microsoft Internet Explorer Heap Buffer Overflow Remote Code Execution Vulnerability", Zero-Day Initiative, April 2014, available: \url{http://www.zerodayinitiative.com/advisories/ZDI-14-034/}
+	
+	\bibitem{IE2}
+	K. Dubey "Microsoft announces emergency patch to fix Internet Explorer", \emph{Techshout.com}, Dec. 2008, available: \url{http://www.techshout.com/internet/2008/18/microsoft-announces-emergency-patch-to-fix-internet-explorer/}
+	
+	\bibitem{format string}
+	AJ Kumar, "Format String Bug Exploration", InfoSec Institute, May 2015, available: \url{http://resources.infosecinstitute.com/format-string-bug-exploration/#gref}
+\end{thebibliography}
 	
 	% that's all folks
 \end{document}
