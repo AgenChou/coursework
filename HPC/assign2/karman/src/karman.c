@@ -9,6 +9,8 @@
 #include "init.h"
 #include "simulation.h"
 
+MPI_Status stat;
+
 void write_bin(float **u, float **v, float **p, char **flag,
      int imax, int jmax, float xlength, float ylength, char *file);
 
@@ -172,6 +174,18 @@ int main(int argc, char *argv[])
         apply_boundary_conditions(u, v, flag, imax, jmax, ui, vi);
     }
 
+    // MPI code starts here
+    // We wat to split the array vertically
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+    MPI_Comm_rank(MPI_COMM_WORLD, &proc);
+    //compute size of chunks
+    if (proc_num > 0) {
+        int interval_size = imax / proc_num;
+    } else {
+        interval_size = imax;
+    }
+
     /* Main loop */
     for (t = 0.0; t < t_end; t += del_t, iters++) {
         set_timestep_interval(&del_t, imax, jmax, delx, dely, u, v, Re, tau);
@@ -184,6 +198,7 @@ int main(int argc, char *argv[])
         compute_rhs(f, g, rhs, flag, imax, jmax, del_t, delx, dely);
 
         if (ifluid > 0) {
+
             itersor = poisson(p, rhs, flag, imax, jmax, delx, dely,
                         eps, itermax, omega, &res, ifluid);
         } else {
