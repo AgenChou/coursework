@@ -222,6 +222,16 @@
 	
 	Additionally we have to increase the duration of the simulation to say 505 s, so that Node3 has time to reach Node2, and change how we calculate the total number of unique mails seen at Node2.
 	
+	\subsection{Task 2B}
+	We map the number of packets received at Node2 against the speed and y-distance of nodes 1 and 3. We finally see the phenomenon we were expecting earlier, where the transmission is much more erratic. At some speeds we receive packets very well, despite the slower speed being unreliable. 
+	
+	The results are presented in Fig. 6.
+		\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{graph3b.png}
+		\caption{Number of packets received at Node2}
+	\end{figure}
+	
 	\section{Concluding remarks}
 	
 	We have simulated a delay tolerant network. They have their uses in real life, for example in tracking movement of animals, by fitting them with a GPS sensor and a transceiver, which then transmits its data whenever they came in range of a stationary node, or in smart cars, which communicate with e.g. cellular network stations. 

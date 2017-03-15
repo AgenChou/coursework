@@ -188,7 +188,9 @@
 	
 	Biba's policy operates on the principle "no read down, no write up". Here we are interested only in writing files. With security levels and subjects defined as before, we want to prevent lower level security subjects to write up.
 	
-	Then root can write to the server and execute the www daemon. The server can query and write to MySQL server (i.e. execute) because the security level of the MySQL server is lower than that of the website server, and similarly execute things in the user's browser. However user cannot directly write to neither the server nor the MySQL server now.
+	We focus on the vulnerability in the function plotter, which is that the user is able to write to the files on the server.
+	
+	Then root can write to the server and execute the www daemon. The server can write to the user. However user cannot directly write to neither the server nor the root now.
 	
 	We need to define an additional subject, a transport layer at a security clearance lower than both the server and the user. This way the server and the user can communicate - the server writes to the transport layer, and the user reads from it.
 	

@@ -145,7 +145,9 @@
 	\subsection{Gathering the data}
 	After the main loop, we need to gather matrices p, u, and v, which are then printed to a file by the MASTER process. It is most efficient to do it in place. We also put an \texttt{MPI\_Barrier} before gathering, to ensure that the processes have finished their calculations.
 	
-	We elected to use \texttt{MPI\_Gatherv}. It requires defining our data pattern. Since we want to gather it on the MASTER process (process 0), we stop it from sending anything to itself, by defining first data chunk to be of size 0 and the following ones of (number of columns in each chunk) $\times$ (jmax+2). The displacement in each case is just the size of the chunk after the previous one.
+	We attempted to use \texttt{MPI\_Gatherv}. It requires defining our data pattern. Since we want to gather it on the MASTER process (process 0), we stop it from sending anything to itself, by defining first data chunk to be of size 0 and the following ones of (number of columns in each chunk) $\times$ (jmax+2). The displacement in each case is just the size of the chunk after the previous one.
+	
+	Unfortunately, as nice of an idea as it is, it did not work properly, so instead we used MPI\_Gather, and made sure that all the worker processes send data to MASTER, while MASTER doesn't send anything to itself, by a simple if-else statement, and defining MASTER's size of the chunk to send to 0.
 	
 	To avoid creating a copy of the array, which would be slower and memory inefficient, we use \texttt{MPI\_IN\_PLACE} as the parameter for the receiving buffer. 
 
