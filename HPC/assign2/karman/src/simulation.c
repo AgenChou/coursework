@@ -12,7 +12,7 @@ extern int nprocs, proc;
 
 /* Computation of tentative velocity field (f, g) */
 void compute_tentative_velocity(float **u, float **v, float **f, float **g,
-    char **flag, int imax, int jmax, float del_t, float delx, float dely,
+    char **flag, int imin, int iend, int imax, int jmax, float del_t, float delx, float dely,
     float gamma, float Re)
 {
     int  i, j;
@@ -72,20 +72,21 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
         f[0][j]    = u[0][j];
         f[imax][j] = u[imax][j];
     }
-    for (i=1; i<=imax; i++) {
+    for (i=imin; i<=iend; i++) {
         g[i][0]    = v[i][0];
         g[i][jmax] = v[i][jmax];
     }
+    // pass borders
 }
 
 
 /* Calculate the right hand side of the pressure equation */
-void compute_rhs(float **f, float **g, float **rhs, char **flag, int imax,
+void compute_rhs(float **f, float **g, float **rhs, char **flag, int imin, int iend, int imax,
     int jmax, float del_t, float delx, float dely)
 {
     int i, j;
 
-    for (i=1;i<=imax;i++) {
+    for (i=imin;i<=iend;i++) {
         for (j=1;j<=jmax;j++) {
             if (flag[i][j] & C_F) {
                 /* only for fluid and non-surface cells */
@@ -100,7 +101,7 @@ void compute_rhs(float **f, float **g, float **rhs, char **flag, int imax,
 
 
 /* Red/Black SOR to solve the poisson equation */
-int poisson(float **p, float **rhs, char **flag, int imax, int jmax,
+int poisson(float **p, float **rhs, char **flag, int imin, int imax, int jmax,
     float delx, float dely, float eps, int itermax, float omega,
     float *res, int ifull)
 {
@@ -115,19 +116,19 @@ int poisson(float **p, float **rhs, char **flag, int imax, int jmax,
     beta_2 = -omega/(2.0*(rdx2+rdy2));
 
     /* Calculate sum of squares */
-    for (i = 1; i <= imax; i++) {
+    for (i = imin; i <= iend; i++) {
         for (j=1; j<=jmax; j++) {
             if (flag[i][j] & C_F) { p0 += p[i][j]*p[i][j]; }
         }
     }
-   
-    p0 = sqrt(p0/ifull);
+    //MPI_Reduce(p0, p0_global, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+    p0 = sqrt(p0_global/ifull);
     if (p0 < 0.0001) { p0 = 1.0; }
 
     /* Red/Black SOR-iteration */
     for (iter = 0; iter < itermax; iter++) {
         for (rb = 0; rb <= 1; rb++) {
-            for (i = 1; i <= imax; i++) {
+            for (i = imin; i <= iend; i++) {
                 for (j = 1; j <= jmax; j++) {
                     if ((i+j) % 2 != rb) { continue; }
                     if (flag[i][j] == (C_F | B_NSEW)) {
@@ -150,11 +151,20 @@ int poisson(float **p, float **rhs, char **flag, int imax, int jmax,
                     }
                 } /* end of j */
             } /* end of i */
+            //send boundary to neighbours
+            if (proc > 0) {
+            //MPI_Send(&p[imin], jmax+2, MPI_FLOAT, proc-1, 2, MPI_COMM_WORLD);
+            }
+            if (proc < nprocs - 1) {
+            //MPI_Send(&p[iend], jmax+2, MPI_FLOAT, proc+1, 3, MPI_COMM_WORLD);
+            } 
+            //receive boundary from neighbours
         } /* end of rb */
         
         /* Partial computation of residual */
+        //reduction
         *res = 0.0;
-        for (i = 1; i <= imax; i++) {
+        for (i = imin; i <= imax; i++) {
             for (j = 1; j <= jmax; j++) {
                 if (flag[i][j] & C_F) {
                     /* only fluid cells */
@@ -166,7 +176,8 @@ int poisson(float **p, float **rhs, char **flag, int imax, int jmax,
                 }
             }
         }
-        *res = sqrt((*res)/ifull)/p0;
+        //MPI_Reduce(*res, *res_global, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+        *res = sqrt((*res_global)/ifull)/p0;
 
         /* convergence? */
         if (*res<eps) break;
@@ -180,11 +191,11 @@ int poisson(float **p, float **rhs, char **flag, int imax, int jmax,
  * velocity values and the new pressure matrix
  */
 void update_velocity(float **u, float **v, float **f, float **g, float **p,
-    char **flag, int imax, int jmax, float del_t, float delx, float dely)
+    char **flag, int imin, int imax, int jmax, float del_t, float delx, float dely)
 {
     int i, j;
 
-    for (i=1; i<=imax-1; i++) {
+    for (i=imin; i<=imax-1; i++) {
         for (j=1; j<=jmax; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i+1][j] & C_F)) {
@@ -192,7 +203,7 @@ void update_velocity(float **u, float **v, float **f, float **g, float **p,
             }
         }
     }
-    for (i=1; i<=imax; i++) {
+    for (i=imin; i<=imax; i++) {
         for (j=1; j<=jmax-1; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i][j+1] & C_F)) {
@@ -207,7 +218,7 @@ void update_velocity(float **u, float **v, float **f, float **g, float **p,
  * conditions (ie no particle moves more than one cell width in one
  * timestep). Otherwise the simulation becomes unstable.
  */
-void set_timestep_interval(float *del_t, int imax, int jmax, float delx,
+void set_timestep_interval(float *del_t, int imin, int imax, int jmax, float delx,
     float dely, float **u, float **v, float Re, float tau)
 {
     int i, j;
@@ -227,9 +238,12 @@ void set_timestep_interval(float *del_t, int imax, int jmax, float delx,
                 vmax = max(fabs(v[i][j]), vmax);
             }
         }
+        // Reduce umax and vmax
+        //MPI_Reduce(umax, umax_global, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD);
+        //MPI_Reduce(vmax, vmax_global, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD);
 
-        deltu = delx/umax;
-        deltv = dely/vmax; 
+        deltu = delx/umax_global;
+        deltv = dely/vmax_global; 
         deltRe = 1/(1/(delx*delx)+1/(dely*dely))*Re/2.0;
 
         if (deltu<deltv) {

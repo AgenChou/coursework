@@ -3,13 +3,14 @@
 #include <string.h>
 #include <getopt.h>
 #include <errno.h>
+#include <mpi.h>
 #include "alloc.h"
 #include "boundary.h"
 #include "datadef.h"
 #include "init.h"
 #include "simulation.h"
 
-MPI_Status stat;
+MPI_Status status;
 
 void write_bin(float **u, float **v, float **p, char **flag,
      int imax, int jmax, float xlength, float ylength, char *file);
@@ -25,8 +26,11 @@ static char *progname;
 
 int proc = 0;                       /* Rank of the current process */
 int nprocs = 0;                /* Number of processes in communicator */
-
+int interval_size;
+int imin;
+int iend;
 int *ileft, *iright;           /* Array bounds for each processor */
+int offset = 0;
 
 #define PACKAGE "karman"
 #define VERSION "1.0"
@@ -48,6 +52,9 @@ static struct option long_opts[] = {
 
 int main(int argc, char *argv[])
 {
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+    MPI_Comm_rank(MPI_COMM_WORLD, &proc);
     int verbose = 1;          /* Verbosity level */
     float xlength = 22.0;     /* Width of simulated domain */
     float ylength = 4.1;      /* Height of simulated domain */
@@ -174,17 +181,16 @@ int main(int argc, char *argv[])
         apply_boundary_conditions(u, v, flag, imax, jmax, ui, vi);
     }
 
-    // MPI code starts here
-    // We wat to split the array vertically
-    MPI_Init(&argc, &argv);
-    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
-    MPI_Comm_rank(MPI_COMM_WORLD, &proc);
+    // For calculating imin of each chunk
     //compute size of chunks
-    if (proc_num > 0) {
-        int interval_size = imax / proc_num;
-    } else {
-        interval_size = imax;
+    // CHECK IF DIVISIBLE
+    if (imax % nprocs != 0) {
+        printf("Array can't be divided, exiting\n");
+        return;
     }
+    interval_size = imax / nprocs;
+    imin = proc * interval_size + 1;
+    iend = imin + interval_size - 1;
 
     /* Main loop */
     for (t = 0.0; t < t_end; t += del_t, iters++) {
@@ -193,13 +199,13 @@ int main(int argc, char *argv[])
         ifluid = (imax * jmax) - ibound;
 
         compute_tentative_velocity(u, v, f, g, flag, imax, jmax,
-            del_t, delx, dely, gamma, Re);
+            del_t, delx, dely, gamma, Re); 
 
         compute_rhs(f, g, rhs, flag, imax, jmax, del_t, delx, dely);
-
+    
+        
         if (ifluid > 0) {
-
-            itersor = poisson(p, rhs, flag, imax, jmax, delx, dely,
+            itersor = poisson(ileft, rhs, flag, imin, iend, jmax, delx, dely,
                         eps, itermax, omega, &res, ifluid);
         } else {
             itersor = 0;
@@ -214,7 +220,8 @@ int main(int argc, char *argv[])
 
         apply_boundary_conditions(u, v, flag, imax, jmax, ui, vi);
     } /* End of main loop */
-  
+    // gather u, v, and p  
+    //MPI_Gather(&p, interval_size*jmax, MPI_FLOAT, ..., 0, MPI_COMM_WORLD);
     if (outfile != NULL && strcmp(outfile, "") != 0 && proc == 0) {
         write_bin(u, v, p, flag, imax, jmax, xlength, ylength, outfile);
     }
@@ -226,7 +233,7 @@ int main(int argc, char *argv[])
     free_matrix(p);
     free_matrix(rhs);
     free_matrix(flag);
-
+    MPI_Finalize();
     return 0;
 }
 
