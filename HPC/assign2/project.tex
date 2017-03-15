@@ -77,7 +77,7 @@
 	\begin{table}[h]
 		\centering
 		\begin{tabular}{c|c}
-			function & 1  \\
+			function & Runtime of functions (s) \\
 			\hline
 			poisson & 23.14 \\
 			compute\_tentative\_velocity & 1.10 \\
@@ -86,6 +86,7 @@
 			set\_timestep\_interval & 0.02 \\
 			update\_velocity & 0.02\\
 		\end{tabular}
+		\caption{Original runtime of functions}
 	\end{table}
 
 	We can see that the poisson function is by far the most expensive one, and so we shall focus on it first.
@@ -114,13 +115,17 @@
 	\subsection{Passing boundaries}
 	The processes have to exchange boundaries with their neighbours. It is done by passing the column imin to the neighbour process on the left, and iend to the neighbour on the right. Of course the 1st and last process have only a single neighbour, so to exchange boundaries we use the following:
 	\texttt{\\
-	\tab if (proc != nprocs -1) \{  \\
-	\tab \tab MPI\_Send(\&p[iend], jmax+2, MPI\_FLOAT, proc+1, 0, MPI\_COMM\_WORLD);\\
-	\tab \tab MPI\_Recv(\&p[iend+1], jmax+2, MPI\_FLOAT, proc+1, 1, MPI\_COMM\_WORLD);\\
+	\tab if (proc == 0) \{  \\
+	\tab \tab MPI\_Send(\&p[iend][0], jmax+2, MPI\_FLOAT, proc+1, 0, MPI\_COMM\_WORLD);\\
+	\tab \tab MPI\_Recv(\&p[iend+1][0], jmax+2, MPI\_FLOAT, proc+1, 1, MPI\_COMM\_WORLD);\\
 	\tab \}
+	\tab if (proc != nprocs -1) \{  \\
+	\tab \tab MPI\_Send(\&p[iend][0], jmax+2, MPI\_FLOAT, proc+1, 0, MPI\_COMM\_WORLD);\\
+	\tab \tab MPI\_Recv(\&p[iend+1][0], jmax+2, MPI\_FLOAT, proc+1, 1, MPI\_COMM\_WORLD);\\
+	\tab \}...
 	}
 
-	Similarly for a process to the left, if the process isn't 0, we send column imin, and receive imin-1. This is pictured in Fig. 2.
+	Similarly for a process to the left we send column imin, and receive imin-1,  and for the processes that aren't 0 or nprcos-1 we do both. While it could be possible to have just 2 statements: if a process isn't 0 else if a process isn't nprocs-1, we found that splitting it into three statements was easier to debug. This is pictured in Fig. 2.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[]{HPC_diag2.png}
@@ -148,10 +153,52 @@
 	
 	Before each MPI\_Gatherv statement, we put a barrier to make sure that all processes have finished their calculations by then.
 	
+	\subsection{Last tweaks}
+	After all of the above work we got it to a point where it ran and the output (karman.ppm) was visually similar to the original, although the .bin files differed. It took 4.27 seconds to run the poisson() function on this version.
+	
+	In an attempt to fix that, we have made sure that the left and riht boundaries are changed only once in the compute\_tentative\_velocity() function. To this end we added a flag. The first process to execute this function in each iteration changes the flag after updating the vertical boundaries, so that other processes will not do it. However, that still was not a solution, and since it increased the runtime to about 9 s, we removed it.
+	
+	We suspect that it has something to do with the rightmost boundary.
+	
+	
 	\subsection{Results}
-	\pagebreak
+	Unfortunately due to the limited resources and length of the queue, we weren't able to take readings throughout the process, and the development was happening on much fewer nodes and tasks per node, so it would be difficult to compare.
+	
+	We did however get a  few reading on 2 nodes and 32 processes, and the final average is 8.2 s (although we did see some better times during the tests, and it seems to vary from 1.8 to 8.2, with that being the upper limit).
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c}
+			function & run time (s)  \\
+			\hline
+			poisson & 8.2 \\
+			update\_velocity & 0.4 \\
+			compute\_tentative\_velocity & 0.02 \\
+			compute\_rhs & 0.02 \\
+		\end{tabular}
+	\caption{Runtime of function in the final version (note that the missing functions simply did not appear in the gprof file, due to how quick they were)}
+	\end{table}
+	
+	
+	And the visualisation of the final solution is shown in Fig. 3.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.7]{karman_final7.jpg}
+		\caption{Visualisation of the final solution}
+	\end{figure}
+
 	\section{Using OpenMP}
-	First we observe that in the \texttt{simulation.c} there are multiple loops, however not all of them may be worth parallelising.  
+	First we observe that in the \texttt{simulation.c} there are multiple loops, however not all of them may be worth parallelising. We do not expect to see much improvement in performance, knowing from previous assignment that OMP's pragmas have a lot of overhead.
+	
+	With the single pragma, we managed to get the average runtime of the program to be around 2 s. The solution is visually similar to the original, and does not differ from the one obtained with MPI code. However, this runtime is still possible to achieve with pure MPI approach. On the other hand the hybrid approach seems to be more consistent with running for less than 3 seconds.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.7]{karman_omp2.jpg}
+		\caption{Visualisation of the final solution with OpenMP}
+	\end{figure}
+
+	We have also attempted to add a pragma to the loops in the poisson() function, as this is still the most costly one. However we had no success, as OpenMP had issues with the continue statement in it. The pragma should be added inside the loop iterating over rb, and just above the one iterating over i.
 	
 
 	% that's all folks

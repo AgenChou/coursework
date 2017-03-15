@@ -190,7 +190,7 @@
 	
 	Then root can write to the server and execute the www daemon. The server can query and write to MySQL server (i.e. execute) because the security level of the MySQL server is lower than that of the website server, and similarly execute things in the user's browser. However user cannot directly write to neither the server nor the MySQL server now.
 	
-	To allow user to post comments and interact with the website, we should use JSON POST or a similar method that will prevent SQL and Python injections.
+	We need to define an additional subject, a transport layer at a security clearance lower than both the server and the user. This way the server and the user can communicate - the server writes to the transport layer, and the user reads from it.
 	
 	This also ensures tranquillity, because nothing can write up, so no files get contaminated, and there is no need to downgrade a subject. Tranquillity is necessary for the normal operation of a website, because for example if the www server had the user writing to it, it would get downgraded and would not be able to read its own PHP files anymore.
 	
