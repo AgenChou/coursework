@@ -1,0 +1,8 @@
+#!/bin/bash
+#MSUB -q cnode
+#MSUB -l nodes=2:ppn=16
+#MSUB -l pmem=128mb
+#MSUB -l walltime=00:1:00
+srun ./karman
+
+gprof karman > karman_final4.gprof
