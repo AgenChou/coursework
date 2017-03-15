@@ -85,7 +85,8 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
         }
     }
     /* f & g at external boundaries */
-        for (j = 1; j <= jmax; j++) {
+    
+            for (j = 1; j <= jmax; j++) {
                 f[0][j]    = u[0][j];
                 f[imax][j] = u[imax][j];
             }
@@ -349,12 +350,16 @@ void set_timestep_interval(float *del_t, int imin, int iend, int imax, int jmax,
     if (tau >= 1.0e-10) { /* else no time stepsize control */
         umax = 1.0e-10;
         vmax = 1.0e-10; 
-        for (i=0; i<=imax+1; i++) {
+        int imin_local;
+        int iend_local;
+        imin_local = imin == 1 ? 0 : imin;
+        iend_local = imax == iend ? imax+1 : iend;
+        for (i=imin_local; i<=iend_local; i++) {
             for (j=1; j<=jmax+1; j++) {
                 umax = max(fabs(u[i][j]), umax);
             }
         }
-        for (i=1; i<=imax+1; i++) {
+        for (i=imin; i<=iend_local; i++) {
             for (j=0; j<=jmax+1; j++) {
                 vmax = max(fabs(v[i][j]), vmax);
             }

@@ -186,12 +186,12 @@ int main(int argc, char *argv[])
     // compute size of chunks
     // CHECK IF DIVISIBLE
     if (imax % nprocs != 0) {
-        printf("nprocs = %d. Array can't be divided, exiting\n", nprocs);
+        printf("nprocs = %d. Array can't be divided\n", nprocs);
     }
    // if (imax % nprocs == 0) {
         interval_size = imax / nprocs;
         imin = proc * interval_size + 1;
-    //    iend = imin+interval_size - 1;
+     //   iend = imin+interval_size - 1;
     //} else {
     //    interval_size = (int) imax /nprocs + 1;
      //   imin = proc*interval_size + 1;
@@ -245,9 +245,9 @@ int main(int argc, char *argv[])
         MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &u[1][0], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
         MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &v[1][0], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
     } else {
-        MPI_Gather(&p[imin][0], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
-        MPI_Gather(&u[imin][0], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
-        MPI_Gather(&v[imin][0], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+        MPI_Gather(&p[imin][0], interval_size*(jmax+2), MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+        MPI_Gather(&u[imin][0], interval_size*(jmax+2), MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+        MPI_Gather(&v[imin][0], interval_size*(jmax+2), MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
     }
     if (outfile != NULL && strcmp(outfile, "") != 0 && proc == 0) {
         write_bin(u, v, p, flag, imax, jmax, xlength, ylength, outfile);
