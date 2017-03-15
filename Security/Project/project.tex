@@ -27,7 +27,7 @@
 \addtolength{\textheight}{1.75in}
 
 \begin{document}
-	\title{Sensor Networks and Mobile Data Communication, Assignment 4}
+	\title{CS915 Advanced Computer Security, Final Project}
 	
 	\author{UID: 1690550}% <-this % stops a space
 		%\protect\\
@@ -80,10 +80,28 @@
 	
 	A real-life example of an XSS attack is a malicious script known as "Samy Worm", which in 2005 propagated across MySpace, making over 1 million users execute the payload within just 20 h. The  development of the worm and the details of the implementation were described by the author himself after MySpace has fixed its issues, and is still available online: \url{http://samy.pl/popular/tech.html}.
 	
+	In the case of our website, we can perform an XSS attack on the Guestbook page. Posting a comment with the content as follows:
+	
+	\texttt{<script>alert("Hello!")</script>}
+	
+	Will cause this comment to be saved to the database as is and inserted into the document whenever anyone opens the page. It is a valid DOM element, and it will simply cause a pop-up with a message that the author of the website did not intend to be there. Note the double quotation marks (so that they do not get mixed up with the single ones in the SQL statement) and the lack of semicolon, which makes it a valid input.
+	
+	This vulnerability is found whenever we take user input and post it to the database, which is then displayed for other users.
+	
+	To prevent this sort of attacks, we need to strip user input of tags. For example, PHP function \texttt{strip\_tags()} is capable of that. So instead of \texttt{\$row['name']} and \texttt{\$row['comment]} we should have \texttt{strip\_tags(\$row['name'])} and \texttt{[strip\_tags(\$row['comment']}.
+	
 	\subsection{Directory traversal attacks}
 	Directory traversal attacks aim to access the parent directory and traverse the directory tree on the server, by providing user input which includes multiple \texttt{../} that traverse back to the root directory. Note that repeating \texttt{../} more times than necessary after reaching the root directory does not have any effect.
 	
-	It can be used to read or execute files stored on the server. The most common PoC of directory traversal is accessing \texttt{/etc/passwd}, where the passwords are stored on a Unix system.
+	It can be used to read or execute files stored on the server. The most common PoC of directory traversal is accessing \texttt{/etc/passwd}, where the passwords are stored on a Unix system. We can do it on the website by going to the following address:
+	
+	\texttt{127.0.0.1:4567/cats.php?page=/etc/passwd}
+	
+	We can also some files that we don't see on the website, for example:
+	
+	\texttt{127.0.01:4567/cgi-bin/basic.cgi?file=basic.cgi}
+	
+	A way to prevent it is to strip '../' or '\%2e\%2e\%2f' or any combination of them and do not store any files that are not necessary for the website in the website's directory.
 	
 	
 	\subsection{SQL code injection}
@@ -91,16 +109,38 @@
 	
 	Some of the most severe cases of SQL injection attacks involve an American hacker Albert Gonzalez, who in 2005-2007 used this technique on corporate systems to steal and later re-sell over 1.5 million credit card details\cite{Gonzalez}.
 	
+	This can be done easily on the guestbook page by adding the comment: 
+	
+	\texttt{first comment'),(now(), 'Eve', 'second comment')}
+	
+	It results in adding two comments instead of one.
+	
+	There are many methods of preventing SQL injections. It can be done by adjusting priviliges, or by simply sanitizing input, e.g. to escape all characters such as quotes, '\%' or '*'.
+	
 	
 	\subsection{Python code injection}
-	This time we are interested in injecting Python script into the website. It is a much less well known attack than for example SQL injection, but nevertheless can be harmful.
+	This time we are interested in injecting Python script into the website. It is a much less well known attack than for example SQL injection, but nevertheless can be harmful.\cite{Kevin London}
 	
-	\url{https://www.kevinlondon.com/2015/07/26/dangerous-python-functions.html}
+	In our website, the function plotter is written in Python and at line 30 of the file 'domain.cgi' we see the following statement:
+	
+	\texttt{v = eval( function )}
+	
+	Where \texttt{function} is unsanitized user input. Now if we input a function such as:
+	
+	\texttt{\_\_import\_\_('os').system('cp basic.cgi injected\_copy.cgi')}
+	
+	Python's \texttt{eval()} function is a known vulnerability, and we should avoid it whenever possible. Unfortunately, this is not easy in this case, so we have to make sure it can evaluate safely by using additional parameters. We need to define a dctionary of safe function, for example \texttt{safe\_dict = \{"x" : x, "y" : y, "tan" : tan\}}, and then change line 30 of 'domain.cgi' to:
+	
+	\texttt{v = eval(function, "\_\_builtins\_\_":None, safe\_dict)}
 	
 	\subsection{Stack-based buffer overflow}
-	C is especially susceptible to stack-based buffer overflows. These types of attack rely on no bound-checking, thus allowing an attacker to access a memory address. It usually involves overwriting the memory that was not intended to be accessed, but can also mean reading it, thus revealing sensitive information.
+	C is especially susceptible to stack-based buffer overflows. These types of attack rely on no bound-checking, thus allowing an attacker to exceed buffer size. It usually involves overwriting the memory that was not intended to be accessed, but can also mean reading it, thus revealing sensitive information.
 	
 	The best-known example of buffer overflow attacks is the Heartbleed bug present in the OpenSSL library. It was exploited in 2014, when hundreds of social insurance numbers were stolen from the Canada Revenue Agency\cite{heartbleed news}.
+	
+	Note that in the RPN calculator, we are allocated a buffer of size 2048 for terms in the calculation. Therefore we can exceed the buffer size by writing '2 ' 1026 times followed by '- ' 1025 times, which causes stack overflow.
+	
+	To prevent this, we can change the condition of the while loop in the main function of the RPN to be \texttt{while (pptr != NULL \&\& !finished \&\& stack\_top < MAX\_TERMS) }
 	
 	\subsection{Heap-based buffer overflow}
 	Heap-based buffer overflow differs from a stack-based one in that it relies on dynamic memory allocation, and usually aims to corrupt the application's data, as reading or precise overwriting of data is much more difficult than in a stack overflow. 
@@ -112,10 +152,26 @@
 	
 	A notable case of an exploit of this vulnerability occurred in 2000, when hackers gained root access to a host running an FTP daemon\cite{format string}.
 	
+	In our website this vulnerability is present in the RPN calculator. More precisely, the \texttt{interpret()} function is very lenient about comments. As soon as it sees '//', it does not read past it into the content of the comment. It simply returns the value of that input line as a string. That string is then used by \texttt{sprintf(...)}, which accepts format specifiers. Thus we can read the stack by adding them.
+	
+	For example, changing the first line of the default content of the calculator (the one we see when we first visit the page) to:
+	
+	\texttt{// RPN Calculator Syntax (This is a comment)\%s \%f \%s \%f}
+	
+	Results in a successful compilation and the following output:
+	
+	\texttt{[0.000000] // RPN Calculator Syntax (This is a comment)[\%f] \%s 0.000000  // RPN Calculator Syntax (This is a comment)\%s \%f \%s \%f 0.000000}
+	
+	(I suppose on the bright side we did get our original comment out at some point after all...)
+	
+	To prevent this attack, we need to inspect comment strings closer and strip it of format string specifiers. There are various ways to do that, for example replacing each '\%' with '\% '- i.e. '\%'followed by a white space.
+	
 	
 	
 	\section{Part 2}
 	%\IEEEPARstart{}{} 
+	
+	First to prove that we can create and remove files from another machine, we present the following script
 	
 \begin{thebibliography}{1}
 	
@@ -136,6 +192,9 @@
 	
 	\bibitem{IE2}
 	K. Dubey "Microsoft announces emergency patch to fix Internet Explorer", \emph{Techshout.com}, Dec. 2008, available: \url{http://www.techshout.com/internet/2008/18/microsoft-announces-emergency-patch-to-fix-internet-explorer/}
+	
+	\cite{Kevin London}
+	K. London, "Dangerous Python Functions, Part 1" in \emph{Kevin London's blog}, 26 June 2015, available: \emph{https://www.kevinlondon.com/2015/07/26/dangerous-python-functions.html}
 	
 	\bibitem{format string}
 	AJ Kumar, "Format String Bug Exploration", InfoSec Institute, May 2015, available: \url{http://resources.infosecinstitute.com/format-string-bug-exploration/#gref}

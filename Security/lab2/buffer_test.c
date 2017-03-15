@@ -31,7 +31,7 @@ void main (int argc, char** argv) {
         if (str_len > 100) {
                 int i;
                 for (i = 100; i < str_len + 1; i++) {
-                        argv[1][i] = NULL;
+                        //argv[1][i] = NULL;
                 }
         }
         
@@ -45,7 +45,7 @@ void main (int argc, char** argv) {
                 argv[1][index] = ' '; 
         }
         
-        snprintf(buf, sizeof buf, argv[1]);
+        snprintf(buf, sizeof buf, "%s",  argv[1]);
         buf [sizeof buf -1 ] = 0;
         
         printf("Buffer size is: (\%d) \n", strlen(buf));

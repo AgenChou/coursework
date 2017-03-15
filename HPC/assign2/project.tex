@@ -1,0 +1,110 @@
+\documentclass[11pt,journal]{article}
+%\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {/home/agata/Documents/coursework/SensorNetworks/Project/} }
+%\ifCLASSOPTIONcompsoc
+% IEEE Computer Society needs nocompress option
+% requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+%\else
+% normal IEEE
+\usepackage{cite}
+%\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in} 
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+	\title{High Performance Computing, Assignment 2}
+	
+	\author{UID: 1690550}% <-this % stops a space
+		%\protect\\
+		%\thanks{}}
+	
+	% The paper headers
+
+
+
+	% IEEEtran.cls defaults to using nonbold math in the Abstract.
+	% This preserves the distinction between vectors and scalars. However,
+	% if the journal you are submitting to favors bold math in the abstract,
+	% then you can use LaTeX's standard command \boldmath at the very start
+	% of the abstract to achieve this. Many IEEE journals frown on math
+	% in the abstract anyway. In particular, the Computer Society does
+	% not want either math or citations to appear in the abstract.
+	
+	% Note that keywords are not normally used for peerreview papers.
+	
+	% make the title area
+	\maketitle
+	
+	
+	% To allow for easy dual compilation without having to reenter the
+	% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+	% not be used in maketitle, but will appear (i.e., to be "transported")
+	% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+	% is not selected <OR> if conference mode is selected - because compsoc
+	% conference papers position the abstract like regular (non-compsoc)
+	% papers do!
+	%\IEEEdisplaynotcompsoctitleabstractindextext
+	% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+	% compsoc under a non-conference mode.
+	
+	
+	% For peer review papers, you can put extra information on the cover
+	% page as needed:
+	% \ifCLASSOPTIONpeerreview
+	% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+	% \fi
+	%
+	% For peerreview papers, this IEEEtran command inserts a page break and
+	% creates the second title. It will be ignored for other modes.
+	%\IEEEpeerreviewmaketitle
+	\section{Initial readings, before any changes were made}
+	After a clean make and running the code for the first time, we get the following results from gprof:
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c}
+			function & 1  \\
+			\hline
+			poisson & 23.14 \\
+			compute\_tentative\_velocity & 1.10 \\
+			compute\_rhs & 0.12 \\
+			apply\_boundary\_conditions & 0.02 \\
+			set\_timestep\_interval & 0.02 \\
+			update\_velocity & 0.02\\
+		\end{tabular}
+	\end{table}
+
+	We can see that the poisson function is by far the most expensive one, and so we shall focus on it first.
+	
+	\section{Domain Decomposition}
+	
+	We have the option to decompose the region in 1 or 2 directions. After some trial and error, we find that attempting to split the region both horizontally and vertically is not very helpful. It creates a lot of problems for communication between processes later, and generally we do not get much improvement this way.
+	
+	Instead, we split the region into vertical chunks, one for each process, as shown in Fig. 1. It is straightforward to calculate the number of chunks necessary. We can find the number of processes using:\\
+	\tab\\
+	\tab \texttt{int nprocs = 0}\\
+	\tab \texttt{MPI\_Comm\_size(MPI\_COMM\_WORLD, \&nprocs);}
+		
+
+
+	\section{Using OpenMP}
+	First we observe that in the \texttt{simulation.c} there are two for loops iterating over the region: one is calculating the u values, the other is calculating the values of v. 
+	
+
+	% that's all folks
+\end{document}
+
