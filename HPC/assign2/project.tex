@@ -7,7 +7,7 @@
 \usepackage{courier}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\graphicspath{ {/home/agata/Documents/coursework/SensorNetworks/Project/} }
+\graphicspath{ {/home/agata/Documents/coursework/HPC/assign2/} }
 %\ifCLASSOPTIONcompsoc
 % IEEE Computer Society needs nocompress option
 % requires cite.sty v4.0 or later (November 2003)
@@ -90,19 +90,68 @@
 
 	We can see that the poisson function is by far the most expensive one, and so we shall focus on it first.
 	
-	\section{Domain Decomposition}
+	\section{MPI approach}
+	\subsection{Domain Decomposition}
 	
 	We have the option to decompose the region in 1 or 2 directions. After some trial and error, we find that attempting to split the region both horizontally and vertically is not very helpful. It creates a lot of problems for communication between processes later, and generally we do not get much improvement this way. Additionally we can observe that the data is contiguous in columns, but not in rows.
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.6]{HPC_diag1.png}
+		\caption{Domain decomposition}
+	\end{figure}
 	Therefore we split the region into vertical chunks, one for each process, as shown in Fig. 1. It is straightforward to calculate the number of chunks necessary. We can find the number of processes using:\\
 	\tab\\
 	\tab \texttt{int nprocs = 0}\\
 	\tab \texttt{MPI\_Comm\_size(MPI\_COMM\_WORLD, \&nprocs);}
-		
+	
+	We put that right after initializing MPI and working out number of processes and assigning task ids, just above the main loop. For ease of calculations, we allow only a number of processes by which the size of the array is divisible. Otherwise we would get uneven chunks.
+	
+	Each process is assigned a chunk consisting of $interval\_size = \frac{imax}{nprocs} $ columns to balance the load.
+	
+	We had to define new variables, imin and iend to denote the first and the last column of a chunk respectively. They were added as parameters to each function in 'simulation.c' (and its header).
+	
+	\subsection{Passing boundaries}
+	The processes have to exchange boundaries with their neighbours. It is done by passing the column imin to the neighbour process on the left, and iend to the neighbour on the right. Of course the 1st and last process have only a single neighbour, so to exchange boundaries we use the following:
+	\texttt{\\
+	\tab if (proc != nprocs -1) \{  \\
+	\tab \tab MPI\_Send(\&p[iend], jmax+2, MPI\_FLOAT, proc+1, 0, MPI\_COMM\_WORLD);\\
+	\tab \tab MPI\_Recv(\&p[iend+1], jmax+2, MPI\_FLOAT, proc+1, 1, MPI\_COMM\_WORLD);\\
+	\tab \}
+	}
 
+	Similarly for a process to the left, if the process isn't 0, we send column imin, and receive imin-1. This is pictured in Fig. 2.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[]{HPC_diag2.png}
+		\caption{Boundary sharing}
+	\end{figure}	
+	
+	\subsection{Reductions}
+	There are a few places where reductions need to take place, and they are easy to miss. In each case we create a copy of the variable (naming convention: var\_global), to reduce to.
+	 \begin{itemize}
+	 	\item In poisson() function: p0 is the sum of squares of the values in p. We need MPI\_SUM.
+	 	\item In poisson() function: *res is a more complicated function, so we create a temporary variable and a global version of the latter. Later we can calculate *res using temp\_global
+	 	\item In set\_timestamp\_interval() function, both umax and vmax can be reduced with MPI\_MAX.
+	 \end{itemize}
+ 
 
+	
+	\subsection{Gathering the data}
+	After the main loop, we need to gather matrices p, u, and v, which are then printed to a file by the MASTER process. It is most efficient to do it in place. We also put an \texttt{MPI\_Barrier} before gathering, to ensure that the processes have finished their calculations.
+	
+	We elected to use \texttt{MPI\_Gatherv}. It requires defining our data pattern. Since we want to gather it on the MASTER process (process 0), we stop it from sending anything to itself, by defining first data chunk to be of size 0 and the following ones of (number of columns in each chunk) $\times$ (jmax+2). The displacement in each case is just the size of the chunk after the previous one.
+	
+	To avoid creating a copy of the array, which would be slower and memory inefficient, we use \texttt{MPI\_IN\_PLACE} as the parameter for the receiving buffer. 
+
+	Other than the main loop, there is one more place where gathering data has to happen - at the end of update\_velocity() function, output of which is used to apply boundary conditions.
+	
+	Before each MPI\_Gatherv statement, we put a barrier to make sure that all processes have finished their calculations by then.
+	
+	\subsection{Results}
+	\pagebreak
 	\section{Using OpenMP}
-	First we observe that in the \texttt{simulation.c} there are two for loops iterating over the region: one is calculating the u values, the other is calculating the values of v. 
+	First we observe that in the \texttt{simulation.c} there are multiple loops, however not all of them may be worth parallelising.  
 	
 
 	% that's all folks
