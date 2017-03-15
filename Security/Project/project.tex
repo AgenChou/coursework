@@ -84,7 +84,7 @@
 	
 	\texttt{<script>alert("Hello!")</script>}
 	
-	Will cause this comment to be saved to the database as is and inserted into the document whenever anyone opens the page. It is a valid DOM element, and it will simply cause a pop-up with a message that the author of the website did not intend to be there. Note the double quotation marks (so that they do not get mixed up with the single ones in the SQL statement) and the lack of semicolon, which makes it a valid input.
+	Will cause this comment to be saved to the database as is and in
 	
 	This vulnerability is found whenever we take user input and post it to the database, which is then displayed for other users.
 	
@@ -105,7 +105,7 @@
 	
 	
 	\subsection{SQL code injection}
-	SQL code injection - as the name suggests - relies on inserting SQL code devised by the attacker into the server's database. The code may involve for example dropping the tables. It is another example of an attack which can be prevented by sanitizing user input correctly.
+	SQL code injection relies on inserting SQL code devised by the attacker into the server's database. The code may involve for example dropping the tables. It is another example of an attack which can be prevented by sanitizing user input correctly.
 	
 	Some of the most severe cases of SQL injection attacks involve an American hacker Albert Gonzalez, who in 2005-2007 used this technique on corporate systems to steal and later re-sell over 1.5 million credit card details\cite{Gonzalez}.
 	
@@ -115,19 +115,17 @@
 	
 	It results in adding two comments instead of one.
 	
-	There are many methods of preventing SQL injections. It can be done by adjusting priviliges, or by simply sanitizing input, e.g. to escape all characters such as quotes, '\%' or '*'.
+	There are many methods of preventing SQL injections. It can be done by adjusting privileges, or by simply sanitizing input, e.g. to escape all characters such as quotes, '\%' or '*'.
 	
 	
 	\subsection{Python code injection}
-	This time we are interested in injecting Python script into the website. It is a much less well known attack than for example SQL injection, but nevertheless can be harmful.\cite{Kevin London}
-	
-	In our website, the function plotter is written in Python and at line 30 of the file 'domain.cgi' we see the following statement:
+	This time we are interested in injecting Python script into the website. In our website, the function plotter is written in Python and at line 30 of the file 'domain.cgi' we see the following statement:
 	
 	\texttt{v = eval( function )}
 	
 	Where \texttt{function} is unsanitized user input. Now if we input a function such as:
 	
-	\texttt{\_\_import\_\_('os').system('cp basic.cgi injected\_copy.cgi')}
+	\texttt{print("\textbackslash r \textbackslash n"+ open('/root/website/cgi-bin/basic.cgi', 'r').read() and sys.exit(0)}
 	
 	Python's \texttt{eval()} function is a known vulnerability, and we should avoid it whenever possible. Unfortunately, this is not easy in this case, so we have to make sure it can evaluate safely by using additional parameters. We need to define a dctionary of safe function, for example \texttt{safe\_dict = \{"x" : x, "y" : y, "tan" : tan\}}, and then change line 30 of 'domain.cgi' to:
 	
@@ -145,14 +143,18 @@
 	\subsection{Heap-based buffer overflow}
 	Heap-based buffer overflow differs from a stack-based one in that it relies on dynamic memory allocation, and usually aims to corrupt the application's data, as reading or precise overwriting of data is much more difficult than in a stack overflow. 
 	
-	One of the more severe cases of such an attack was exploiting a bug in Internet Explorer's XML parser in 2014. It allowed for execution of an attacker's code in the browser. It is not the first issue of this kind with Internet Explorer. Another similar one has been discovered in December 2008 in IE7\cite{IE2}.
+	One of the more severe cases of such an attack was exploiting a bug in Internet Explorer's XML parser in 2014. It allowed for execution of an attacker's code in the browser. It is not the first issue of this kind with Internet Explorer. 
+	
+	In the RPN calculator's header, \texttt{context.h} we are allocated 32 characters for a variable name using \texttt{malloc}, so if the user input contains a longer variable name, we get a buffer overflow. 
+	
+	To fix it, we need to check the length of the variable. Additionally I would prefer not to use dynamic memory allocation, and have all buffers of fixed size.
 	
 	\subsection{Format string vulnerability}
-	In C, printing formatted strings involves format specifiers, for example \texttt{\%s, \%d}. A format string attack occurs when a user-submitted string contains such specifiers. It may allow the attacker to read the content of the stack or perform a denial of service attack.
+	A format string attack occurs when a user-submitted string contains specifierssuch as \texttt{\%s} or \texttt{\%d}. It may allow the attacker to read the content of the stack or perform a denial of service attack.
 	
 	A notable case of an exploit of this vulnerability occurred in 2000, when hackers gained root access to a host running an FTP daemon\cite{format string}.
 	
-	In our website this vulnerability is present in the RPN calculator. More precisely, the \texttt{interpret()} function is very lenient about comments. As soon as it sees '//', it does not read past it into the content of the comment. It simply returns the value of that input line as a string. That string is then used by \texttt{sprintf(...)}, which accepts format specifiers. Thus we can read the stack by adding them.
+	In our website this vulnerability is present in the RPN calculator. More precisely, as soon as the \texttt{interpret()} function sees '//', it does not read past it into the content of the comment. It simply prints the comment with \texttt{printf()} which accepts specifiers.
 	
 	For example, changing the first line of the default content of the calculator (the one we see when we first visit the page) to:
 	
@@ -171,7 +173,59 @@
 	\section{Part 2}
 	%\IEEEPARstart{}{} 
 	
-	First to prove that we can create and remove files from another machine, we present the following script
+	First to prove that we can create and remove files from another machine, we turn our Python injection from earlier into a curl script which can be executed from a terminal. To this end we can notice that when the output of a function plotter is displayed, the address changes to \texttt{localhost/cgi-bin/domain.cgi}. We can execute this function from address bar by adding \texttt{?function=[python injection goes here]}.
+	
+	The vulnerabilities that allow for that are directory traversal and python injection, but especially the former.
+	
+	\subsection{Bell-LaPadula policy for file reading}
+	We begin with file reading, using the security conditions of BLP, summarised as "no read up". We define set os subjects $S = {\text{root}, \text{server}, \text{MySQL server}, \text{user}}$ and the set of objects to be all files.
+	
+	We further define security levels $I_0$, $I_1$, $I_2$, $I_3$. Root the has highest level, $I_3$, thus being able to read all files on the disc. The web server (www-data daemon) has clearance $I_2$ and the MySQL server $I_1$. Finally the user has clearance $I_0$. 
+	
+	This means that the root can read all files. The security level of the website server ($I_2$) is defined to restrict read access to \texttt{/var}. MySQL server reads only \texttt{/var/lib}. Finally the user does not read any files. Since \texttt{/var/lib} is a subdirectory in \texttt{/var}, the website server can read the database of comments.
+	
+	\subsection{Biba's Strict Integrity Policy}
+	
+	Biba's policy operates on the principle "no read down, no write up". Here we are interested only in writing files. With security levels and subjects defined as before, we want to prevent lower level security subjects to write up.
+	
+	Then root can write to the server and execute the www daemon. The server can query and write to MySQL server (i.e. execute) because the security level of the MySQL server is lower than that of the website server, and similarly execute things in the user's browser. However user cannot directly write to neither the server nor the MySQL server now.
+	
+	To allow user to post comments and interact with the website, we should use JSON POST or a similar method that will prevent SQL and Python injections.
+	
+	This also ensures tranquillity, because nothing can write up, so no files get contaminated, and there is no need to downgrade a subject. Tranquillity is necessary for the normal operation of a website, because for example if the www server had the user writing to it, it would get downgraded and would not be able to read its own PHP files anymore.
+	
+	\subsection{Clark-Wilson}
+	Note that the files intrinsic to the website's operation can be found in two places: in \texttt{/var/www} we have files used by the www daemon, and in \texttt{/root/website} we have a copy of the same files. Also note that shell scripts are in the parent directory of the latter. Therefore, let the user be able to write/delete files in the \texttt{/root/website} directory. This excludes sensitive data such as passwords.
+	
+	Constrained data items will be in the \texttt{/var/ww} directory, while the unconstrained ones in \texttt{/root/website}. To allow user to write to the latter, we need create a link such that whenever user attempts to write to disk, it is redirected to the latter directory. We only allow file types: .php, .html, .txt, and image files (i.e. we are specifically avoiding executables. Script will be stripped off files later).
+	
+	The transaction procedure (TP1) for writing to files is as follows:
+	\begin{enumerate}
+		\item User writes a file, which is stored in /texttt{/root/website}
+		\item If the files are of a type that isn't allowed, the audit fails
+		\item The website with the new file(s) is simulated in a forked shell
+		\item If the website attempts to write to a different directory than its own, the audit fails
+		\item If during the simulation, a file of a type that isn't allowed gets created, the audit fails
+		\item Else the simulation ran safely, so we can copy the files across to \texttt{/var/www}
+	\end{enumerate}
+
+	Steps 2-5 describe the Integrity Verification Procedure, all of which gets logged. The separation of duty is ensured by the triple: website user - the above transaction procedure - files in \texttt{/var/www}. User cannot write to the CDIs without the transaction procedure, because all attempts will be redirected to \texttt{/root/website}.
+	
+	To deal with low integrity data, the TP1 will reject anything with a file type that is potentially harmful.
+	
+	In the case of reading files, we can simply allow user to read any file in \texttt{/var/www}, assuming that only files intrinsic to the website's operation are there. However we can see that the file basic.cgi is not essential, so it may be better to simply keep a list of files that are necessary for the website to function.
+	
+	The transaction procedure (TP2) for reading files is as follows:
+	\begin{enumerate}
+		\item user requests read access to a file
+		\item if the file is in \texttt{/var/www} (or on the list), user gets read access
+		\item otherwise we reject, and log
+	\end{enumerate}
+	
+	
+	
+	
+	
 	
 \begin{thebibliography}{1}
 	
@@ -190,8 +244,6 @@
 	\bibitem{IE heap}
 	"Microsoft Internet Explorer Heap Buffer Overflow Remote Code Execution Vulnerability", Zero-Day Initiative, April 2014, available: \url{http://www.zerodayinitiative.com/advisories/ZDI-14-034/}
 	
-	\bibitem{IE2}
-	K. Dubey "Microsoft announces emergency patch to fix Internet Explorer", \emph{Techshout.com}, Dec. 2008, available: \url{http://www.techshout.com/internet/2008/18/microsoft-announces-emergency-patch-to-fix-internet-explorer/}
 	
 	\cite{Kevin London}
 	K. London, "Dangerous Python Functions, Part 1" in \emph{Kevin London's blog}, 26 June 2015, available: \emph{https://www.kevinlondon.com/2015/07/26/dangerous-python-functions.html}

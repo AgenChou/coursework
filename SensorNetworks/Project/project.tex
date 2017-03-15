@@ -160,7 +160,7 @@
 	It is done by replacing the three lines starting at line 459 with the following:\\	
 	\texttt{std::string lossModel = "ns3::FriisPropagationLossModel");}\\
 	\texttt{std::string atr1 = "Frequency";}\\
-	\texttt{wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(2400000000)); \\2.4 GHz = 2400000000 Hz}s
+	\texttt{wifiChannel.AddPropagationLoss (lossModel, atr1, DoubleValue(2400000000)); //2.4 GHz = 2400000000 Hz}
 	
 	The maximum distance away from Node0 and Node2 as a function of speed of Node1 is shown in Fig. 2.s
 	
@@ -215,6 +215,22 @@
 	
 	\pagebreak
 	\subsection{Task 3A}
+	
+	To add a second mobile node, there are multiple places in the code where changes have to be made. Firstly we copy all higher level code for Node1 and change it to be about the new Node3. This also includes adding a couple of variables such as \texttt{Node3Ack} or \texttt{node3\_head}. Then we increase the total number of nodes defined on line 551\footnote{line numbers referring to file \texttt{CS345finproj3.cc}}, and add it to the container of mobile nodes. We set the position, velocity and mobility model in the same fashion as we do for Node1. The position should be set to \texttt{Vector(-250.0, distance\_between\_node0\_node1, 0.0)}.
+	
+	We also need to connect Node3 to Node0 and Node2. It is important to note that especially Node2 cannot be in multicast mode, because then when it sends an acknowledgement for a packet received from Node1, Node3 will also pick that acknowledgement and stop sending. To sort out this issue, we create two receiving sockets for Node2 and add a parameter to function \texttt{Node2ReceivePacket}, which tells us which node the packet came from. Then each socket makes callback with a different parameter, and based on it we can send the acknowledgement directly to the relevant node. We also use this parameter for additional logging.
+	
+	Additionally we have to increase the duration of the simulation to say 505 s, so that Node3 has time to reach Node2, and change how we calculate the total number of unique mails seen at Node2.
+	
+	\section{Concluding remarks}
+	
+	We have simulated a delay tolerant network. They have their uses in real life, for example in tracking movement of animals, by fitting them with a GPS sensor and a transceiver, which then transmits its data whenever they came in range of a stationary node, or in smart cars, which communicate with e.g. cellular network stations. 
+	
+	We discovered that in general the reliability and robustness of the transmission decreases with the distance from the stationary nodes, and with the speed of mobile nodes.
+	
+	However, it is worth noting, that we started our simulation at 20 m/s which is 72 km/h - a realistic speed of a car travelling between urban areas. The speed reached in the simulations are closer to a speed of 360 km/h, which the speed of an F1 car, and much faster than any average ground vehicle (or animal) can achieve in a realistic situation (we are not talking about speed tests on a race circuit after all).
+	
+	It has to be pointed out though that we are not using a realistic propagation loss model, and to make it closer to reality, we should be using log-distance or Friis. There are also other tweaks that can be made to reflect real life situations better.
 	
 	\pagebreak
 	\begin{thebibliography}{1}

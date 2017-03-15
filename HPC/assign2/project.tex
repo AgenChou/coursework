@@ -92,9 +92,9 @@
 	
 	\section{Domain Decomposition}
 	
-	We have the option to decompose the region in 1 or 2 directions. After some trial and error, we find that attempting to split the region both horizontally and vertically is not very helpful. It creates a lot of problems for communication between processes later, and generally we do not get much improvement this way.
+	We have the option to decompose the region in 1 or 2 directions. After some trial and error, we find that attempting to split the region both horizontally and vertically is not very helpful. It creates a lot of problems for communication between processes later, and generally we do not get much improvement this way. Additionally we can observe that the data is contiguous in columns, but not in rows.
 	
-	Instead, we split the region into vertical chunks, one for each process, as shown in Fig. 1. It is straightforward to calculate the number of chunks necessary. We can find the number of processes using:\\
+	Therefore we split the region into vertical chunks, one for each process, as shown in Fig. 1. It is straightforward to calculate the number of chunks necessary. We can find the number of processes using:\\
 	\tab\\
 	\tab \texttt{int nprocs = 0}\\
 	\tab \texttt{MPI\_Comm\_size(MPI\_COMM\_WORLD, \&nprocs);}
