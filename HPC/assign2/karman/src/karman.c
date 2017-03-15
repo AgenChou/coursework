@@ -186,18 +186,22 @@ int main(int argc, char *argv[])
     // compute size of chunks
     // CHECK IF DIVISIBLE
     if (imax % nprocs != 0) {
-        printf("Array can't be divided, exiting\n");
-        return (1);
+        printf("nprocs = %d. Array can't be divided, exiting\n", nprocs);
     }
-    interval_size = imax / nprocs;
-    imin = proc * interval_size + 1;
-    iend = imin + interval_size - 1;
-
+   // if (imax % nprocs == 0) {
+        interval_size = imax / nprocs;
+        imin = proc * interval_size + 1;
+    //    iend = imin+interval_size - 1;
+    //} else {
+    //    interval_size = (int) imax /nprocs + 1;
+     //   imin = proc*interval_size + 1;
+        iend = (imin + interval_size - 1 > imax) ? imax : imin + interval_size -1;
+   // }
     /* Main loop */
     for (t = 0.0; t < t_end; t += del_t, iters++) {
         // Note that now we're also passing additional parameters to each of the functions, imin and ien
         set_timestep_interval(&del_t, imin, iend, imax, jmax, delx, dely, u, v, Re, tau);
-
+        
         ifluid = (imax * jmax) - ibound;
 
         compute_tentative_velocity(u, v, f, g, flag, imin, iend, imax, jmax,
@@ -217,7 +221,6 @@ int main(int argc, char *argv[])
             printf("%d t:%g, del_t:%g, SOR iters:%3d, res:%e, bcells:%d\n",
                 iters, t+del_t, del_t, itersor, res, ibound);
         }
-
         update_velocity(u, v, f, g, p, flag, imin, iend, imax, jmax, del_t, delx, dely);
 
         apply_boundary_conditions(u, v, flag, imax, jmax, ui, vi);
@@ -225,7 +228,7 @@ int main(int argc, char *argv[])
     // gather u, v, and p  
     MPI_Barrier(MPI_COMM_WORLD);
     // Proc 0 doesn't need to send to itself
-    int *sending_size = malloc(nprocs * sizeof(int));
+    /*int *sending_size = malloc(nprocs * sizeof(int));
     int *displacements = malloc(nprocs * sizeof(int));
     int sender;
     int disp = 0;
@@ -236,16 +239,16 @@ int main(int argc, char *argv[])
     }
     MPI_Gatherv(&p[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
     MPI_Gatherv(&u[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
-    MPI_Gatherv(&v[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
-    //if (proc == 0) {
-    //    MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &p[1], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
-    //    MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &u[1], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
-    //    MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &v[1], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
-    //} else {
-    //    MPI_Gather(&p[imin], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
-    //    MPI_Gather(&u[imin], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
-    //    MPI_Gather(&v[imin], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
-    //}
+    MPI_Gatherv(&v[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);*/
+    if (proc == 0) {
+        MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &p[1][0], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
+        MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &u[1][0], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
+        MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &v[1][0], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
+    } else {
+        MPI_Gather(&p[imin][0], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+        MPI_Gather(&u[imin][0], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+        MPI_Gather(&v[imin][0], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+    }
     if (outfile != NULL && strcmp(outfile, "") != 0 && proc == 0) {
         write_bin(u, v, p, flag, imax, jmax, xlength, ylength, outfile);
     }

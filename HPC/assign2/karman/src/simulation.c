@@ -20,8 +20,15 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
 {
     int  i, j;
     float du2dx, duvdy, duvdx, dv2dy, laplu, laplv;
-
-    for (i=imin; i<=iend; i++) {
+    // we need to avoid changing boundaries of f twice
+    //int bool_bounds_updated = 0;
+    // If we're in the right most chunk, ignore last column
+    // cf. original for statement had: i=1; i<imax-1; i++
+    int iend_local = iend;
+    if (iend_local == imax) {
+        iend_local -= 1;
+    }
+    for (i=imin; i<=iend_local; i++) {
         for (j=1; j<=jmax; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i+1][j] & C_F)) {
@@ -42,9 +49,17 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
             } else {
                 f[i][j] = u[i][j];
             }
-        }
-    }
+             
+            /*if (bool_bounds_updated == 0) {
+                f[0][j]    = u[0][j];
+                f[imax][j] = u[imax][j];
+            }*/
 
+        }
+        /*if (!bool_bounds_updated) {
+            bool_bounds_updated = 1;
+        }*/
+    }
     for (i=imin; i<=iend; i++) {
         for (j=1; j<=jmax-1; j++) {
             /* only if both adjacent cells are fluid cells */
@@ -69,32 +84,47 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
             }
         }
     }
-
     /* f & g at external boundaries */
-    for (j=1; j<=jmax; j++) {
-        f[0][j]    = u[0][j];
-        f[imax][j] = u[imax][j];
-    }
-    for (i=imin; i<=iend; i++) {
+        for (j = 1; j <= jmax; j++) {
+                f[0][j]    = u[0][j];
+                f[imax][j] = u[imax][j];
+            }
+    for (i=imin; i<=imax; i++) {
         g[i][0]    = v[i][0];
         g[i][jmax] = v[i][jmax];
     }
+    MPI_Barrier(MPI_COMM_WORLD);
     // pass borders - remember: size of a column is jmax+2!
-    // Pass and receive to the right, except for the rightmost process
-    if (proc != nprocs-1) {
-        MPI_Send(&f[iend], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
-        MPI_Send(&g[iend], jmax+2, MPI_FLOAT, proc+1, 2, MPI_COMM_WORLD);
+    // also pay attention to tags - 0 and 2 is going right, 1,3 coming left
+    if (proc == 0) {
+    // Pass only to the right
+        MPI_Send(&f[iend][0], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+        MPI_Send(&g[iend][0], jmax+2, MPI_FLOAT, proc+1, 2, MPI_COMM_WORLD);
 
-        MPI_Recv(&f[iend+1], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
-        MPI_Recv(&g[iend+1], jmax+2, MPI_FLOAT, proc+1, 3, MPI_COMM_WORLD, &status);
+        MPI_Recv(&f[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+        MPI_Recv(&g[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 3, MPI_COMM_WORLD, &status);
+    } else if (proc == nprocs-1) {
+    // pass only to the left
+        MPI_Recv(&f[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD, &status);
+        MPI_Recv(&g[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 2, MPI_COMM_WORLD, &status);
+
+        MPI_Send(&f[imin][0], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD);
+        MPI_Send(&g[imin][0], jmax+2, MPI_FLOAT, proc-1, 3, MPI_COMM_WORLD);
     }
-    // Pass and receive to and from left, except the first process
-    if (proc != 0) {
-        MPI_Send(&f[imin], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD);
-        MPI_Send(&g[imin], jmax+2, MPI_FLOAT, proc-1, 2, MPI_COMM_WORLD);
+    else {
+        // pass both ways
+        // to the right
+        MPI_Send(&f[iend][0], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+        MPI_Send(&g[iend][0], jmax+2, MPI_FLOAT, proc+1, 2, MPI_COMM_WORLD);
 
-        MPI_Recv(&f[imin-1], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD, &status);
-        MPI_Recv(&g[imin-1], jmax+2, MPI_FLOAT, proc-1, 3, MPI_COMM_WORLD, &status);
+        MPI_Recv(&f[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+        MPI_Recv(&g[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 3, MPI_COMM_WORLD, &status);
+        // and left
+        MPI_Send(&f[imin][0], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD);
+        MPI_Send(&g[imin][0], jmax+2, MPI_FLOAT, proc-1, 3, MPI_COMM_WORLD);
+
+        MPI_Recv(&f[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD, &status);
+        MPI_Recv(&g[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 2, MPI_COMM_WORLD, &status);
     }
 }
 
@@ -177,17 +207,32 @@ int poisson(float **p, float **rhs, char **flag, int imin, int iend, int imax, i
                     }
                 } /* end of j */
             } /* end of i */
-            // pass borders - remember: size of a column is jmax+2!
-            // Pass and receive to the right, except for the rightmost process
-            if (proc != nprocs-1) {
-                MPI_Send(&p[iend], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
-                MPI_Recv(&p[iend+1], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
-            }
-            // Pass and receive to and from left, except the first process
-            if (proc != 0) {
-                MPI_Send(&p[imin], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD);
-                MPI_Recv(&p[imin-1], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD, &status);
-            }
+    // pass borders
+    MPI_Barrier(MPI_COMM_WORLD);
+    // pass borders - remember: size of a column is jmax+2!
+    // also pay attention to tags - 0 and 2 is going right, 1,3 coming left
+    if (proc == 0) {
+    // Pass only to the right
+        MPI_Send(&p[iend][0], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+
+        MPI_Recv(&p[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+    } else if (proc == nprocs-1) {
+    // pass only to the left
+        MPI_Recv(&p[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD, &status);
+
+        MPI_Send(&p[imin][0], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD);
+    }
+    else {
+        // pass both ways
+        // to the right
+        MPI_Send(&p[iend][0], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+
+        MPI_Recv(&p[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+        // and left
+        MPI_Send(&p[imin][0], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD);
+
+        MPI_Recv(&p[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD, &status);
+    }
         } /* end of rb */
         
         /* Partial computation of residual */
@@ -207,7 +252,7 @@ int poisson(float **p, float **rhs, char **flag, int imin, int iend, int imax, i
                 }
             }
         }
-        MPI_Allreduce(&temp, &temp_global, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+        MPI_Allreduce(&temp, &temp_global, 1, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
         *res = sqrt((temp_global)/ifull)/p0;
 
         /* convergence? */
@@ -222,15 +267,16 @@ int poisson(float **p, float **rhs, char **flag, int imin, int iend, int imax, i
  * velocity values and the new pressure matrix
  */
 void update_velocity(float **u, float **v, float **f, float **g, float **p,
-    char **flag, int imin, int iend; int imax, int jmax, float del_t, float delx, float dely)
+    char **flag, int imin, int iend, int imax, int jmax, float del_t, float delx, float dely)
 {
     int i, j;
+    int iend_local = iend;
     // If we're in the right most chunk, ignore last column
     // cf. original for statement had: i=1; i<imax-1; i++
-    if (iend == imax) {
-        iend -= 1;
+    if (iend_local == imax) {
+        iend_local -= 1;
     }
-    for (i=imin; i<=iend; i++) {
+    for (i=imin; i<=iend_local; i++) {
         for (j=1; j<=jmax; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i+1][j] & C_F)) {
@@ -247,21 +293,35 @@ void update_velocity(float **u, float **v, float **f, float **g, float **p,
         }
     }
 
-    // pass boundaries
-    // Pass and receive to the right, except for the rightmost process
-    if (proc != nprocs-1) {
-        MPI_Send(&u[iend], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
-        MPI_Recv(&u[iend+1], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+    MPI_Barrier(MPI_COMM_WORLD);
+    // pass borders - remember: size of a column is jmax+2!
+    // also pay attention to tags - 0 and 2 is going right, 1,3 coming left
+    if (proc == 0) {
+    // Pass only to the right
+        MPI_Send(&u[iend][0], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+
+        MPI_Recv(&u[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+    } else if (proc == nprocs-1) {
+    // pass only to the left
+        MPI_Recv(&u[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD, &status);
+
+        MPI_Send(&u[imin][0], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD);
     }
-    // Pass and receive to and from left, except the first process
-    if (proc != 0) {
-        MPI_Send(&u[imin], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD);
-        MPI_Recv(&u[imin-1], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD, &status);
+    else {
+        // pass both ways
+        // to the right
+        MPI_Send(&u[iend][0], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+
+        MPI_Recv(&u[iend+1][0], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+        // and left
+        MPI_Send(&u[imin][0], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD);
+
+        MPI_Recv(&u[imin-1][0], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD, &status);
     }
     // gather u and v, because it is used by functions that come later
     MPI_Barrier(MPI_COMM_WORLD);
 
-    int *size_to_send = malloc(nprocs * sizeof(int));
+    /*int *size_to_send = malloc(nprocs * sizeof(int));
     int disp = 0;
     int *displacements = malloc(nprocs * sizeof(int));
     for (i = 0; i < nprocs; i++) {
@@ -270,7 +330,8 @@ void update_velocity(float **u, float **v, float **f, float **g, float **p,
         disp += size_to_send[i];
     }
         
-    MPI_Gatherv(&p[imin], size_to_send[proc], MPI_FLOAT, MPI_IN_PLACE, size_to_send, displacements,  MPI_FLOAT, 0, MPI_COMM_WORLD); 
+    MPI_Gatherv(&v[imin], size_to_send[proc], MPI_FLOAT, MPI_IN_PLACE, size_to_send, displacements,  MPI_FLOAT, 0, MPI_COMM_WORLD); */
+    MPI_Allgather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &v[1][0], (iend-imin+1)*(jmax+2), MPI_FLOAT, MPI_COMM_WORLD);
 }
 
 
