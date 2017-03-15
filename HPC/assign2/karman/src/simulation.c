@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <mpi.h>
 #include "datadef.h"
 #include "init.h"
 
@@ -8,17 +9,19 @@
 #define min(x,y) ((x)<(y)?(x):(y))
 
 extern int *ileft, *iright;
-extern int nprocs, proc;
+extern int proc, nprocs;
+MPI_Status status;
+//extern float p0_global, *res_global, umax_global, vmax_global;
 
 /* Computation of tentative velocity field (f, g) */
-void compute_tentative_velocity(float **u, float **v, float **f, float **g,
+void compute_tentative_velocity(float **u, float **v, float **f, float **g, 
     char **flag, int imin, int iend, int imax, int jmax, float del_t, float delx, float dely,
     float gamma, float Re)
 {
     int  i, j;
     float du2dx, duvdy, duvdx, dv2dy, laplu, laplv;
 
-    for (i=1; i<=imax-1; i++) {
+    for (i=imin; i<=iend; i++) {
         for (j=1; j<=jmax; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i+1][j] & C_F)) {
@@ -42,7 +45,7 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
         }
     }
 
-    for (i=1; i<=imax; i++) {
+    for (i=imin; i<=iend; i++) {
         for (j=1; j<=jmax-1; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i][j+1] & C_F)) {
@@ -76,7 +79,23 @@ void compute_tentative_velocity(float **u, float **v, float **f, float **g,
         g[i][0]    = v[i][0];
         g[i][jmax] = v[i][jmax];
     }
-    // pass borders
+    // pass borders - remember: size of a column is jmax+2!
+    // Pass and receive to the right, except for the rightmost process
+    if (proc != nprocs-1) {
+        MPI_Send(&f[iend], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+        MPI_Send(&g[iend], jmax+2, MPI_FLOAT, proc+1, 2, MPI_COMM_WORLD);
+
+        MPI_Recv(&f[iend+1], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+        MPI_Recv(&g[iend+1], jmax+2, MPI_FLOAT, proc+1, 3, MPI_COMM_WORLD, &status);
+    }
+    // Pass and receive to and from left, except the first process
+    if (proc != 0) {
+        MPI_Send(&f[imin], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD);
+        MPI_Send(&g[imin], jmax+2, MPI_FLOAT, proc-1, 2, MPI_COMM_WORLD);
+
+        MPI_Recv(&f[imin-1], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD, &status);
+        MPI_Recv(&g[imin-1], jmax+2, MPI_FLOAT, proc-1, 3, MPI_COMM_WORLD, &status);
+    }
 }
 
 
@@ -101,14 +120,14 @@ void compute_rhs(float **f, float **g, float **rhs, char **flag, int imin, int i
 
 
 /* Red/Black SOR to solve the poisson equation */
-int poisson(float **p, float **rhs, char **flag, int imin, int imax, int jmax,
+int poisson(float **p, float **rhs, char **flag, int imin, int iend, int imax, int jmax,
     float delx, float dely, float eps, int itermax, float omega,
     float *res, int ifull)
 {
     int i, j, iter;
     float add, beta_2, beta_mod;
     float p0 = 0.0;
-    
+    float p0_global = 0.0;   // for reduction
     int rb; /* Red-black value. */
 
     float rdx2 = 1.0/(delx*delx);
@@ -118,19 +137,26 @@ int poisson(float **p, float **rhs, char **flag, int imin, int imax, int jmax,
     /* Calculate sum of squares */
     for (i = imin; i <= iend; i++) {
         for (j=1; j<=jmax; j++) {
-            if (flag[i][j] & C_F) { p0 += p[i][j]*p[i][j]; }
+            if (flag[i][j] & C_F) { 
+                p0 += p[i][j]*p[i][j]; 
+            }
         }
     }
-    //MPI_Reduce(p0, p0_global, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+    // p0 is a sum of a matrix, so we need to reduce it, to gather it from all sub matrices 
+    MPI_Allreduce(&p0, &p0_global, 1, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
     p0 = sqrt(p0_global/ifull);
-    if (p0 < 0.0001) { p0 = 1.0; }
+    if (p0 < 0.0001) { 
+        p0 = 1.0; 
+    }
 
     /* Red/Black SOR-iteration */
     for (iter = 0; iter < itermax; iter++) {
         for (rb = 0; rb <= 1; rb++) {
             for (i = imin; i <= iend; i++) {
                 for (j = 1; j <= jmax; j++) {
-                    if ((i+j) % 2 != rb) { continue; }
+                    if ((i+j) % 2 != rb) { 
+                        continue; 
+                    }
                     if (flag[i][j] == (C_F | B_NSEW)) {
                         /* five point star for interior fluid cells */
                         p[i][j] = (1.-omega)*p[i][j] - 
@@ -151,19 +177,24 @@ int poisson(float **p, float **rhs, char **flag, int imin, int imax, int jmax,
                     }
                 } /* end of j */
             } /* end of i */
-            //send boundary to neighbours
-            if (proc > 0) {
-            //MPI_Send(&p[imin], jmax+2, MPI_FLOAT, proc-1, 2, MPI_COMM_WORLD);
+            // pass borders - remember: size of a column is jmax+2!
+            // Pass and receive to the right, except for the rightmost process
+            if (proc != nprocs-1) {
+                MPI_Send(&p[iend], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+                MPI_Recv(&p[iend+1], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
             }
-            if (proc < nprocs - 1) {
-            //MPI_Send(&p[iend], jmax+2, MPI_FLOAT, proc+1, 3, MPI_COMM_WORLD);
-            } 
-            //receive boundary from neighbours
+            // Pass and receive to and from left, except the first process
+            if (proc != 0) {
+                MPI_Send(&p[imin], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD);
+                MPI_Recv(&p[imin-1], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD, &status);
+            }
         } /* end of rb */
         
         /* Partial computation of residual */
-        //reduction
+        // This needs to be reduced
         *res = 0.0;
+        float temp = 0.0; // temporary variable to store the summation of add*add
+        float temp_global = 0.0;
         for (i = imin; i <= imax; i++) {
             for (j = 1; j <= jmax; j++) {
                 if (flag[i][j] & C_F) {
@@ -172,12 +203,12 @@ int poisson(float **p, float **rhs, char **flag, int imin, int imax, int jmax,
                         eps_W*(p[i][j]-p[i-1][j])) * rdx2  +
                         (eps_N*(p[i][j+1]-p[i][j]) -
                         eps_S*(p[i][j]-p[i][j-1])) * rdy2  -  rhs[i][j];
-                    *res += add*add;
+                    temp += add*add;
                 }
             }
         }
-        //MPI_Reduce(*res, *res_global, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
-        *res = sqrt((*res_global)/ifull)/p0;
+        MPI_Allreduce(&temp, &temp_global, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+        *res = sqrt((temp_global)/ifull)/p0;
 
         /* convergence? */
         if (*res<eps) break;
@@ -191,11 +222,15 @@ int poisson(float **p, float **rhs, char **flag, int imin, int imax, int jmax,
  * velocity values and the new pressure matrix
  */
 void update_velocity(float **u, float **v, float **f, float **g, float **p,
-    char **flag, int imin, int imax, int jmax, float del_t, float delx, float dely)
+    char **flag, int imin, int iend; int imax, int jmax, float del_t, float delx, float dely)
 {
     int i, j;
-
-    for (i=imin; i<=imax-1; i++) {
+    // If we're in the right most chunk, ignore last column
+    // cf. original for statement had: i=1; i<imax-1; i++
+    if (iend == imax) {
+        iend -= 1;
+    }
+    for (i=imin; i<=iend; i++) {
         for (j=1; j<=jmax; j++) {
             /* only if both adjacent cells are fluid cells */
             if ((flag[i][j] & C_F) && (flag[i+1][j] & C_F)) {
@@ -211,6 +246,31 @@ void update_velocity(float **u, float **v, float **f, float **g, float **p,
             }
         }
     }
+
+    // pass boundaries
+    // Pass and receive to the right, except for the rightmost process
+    if (proc != nprocs-1) {
+        MPI_Send(&u[iend], jmax+2, MPI_FLOAT, proc+1, 0, MPI_COMM_WORLD);
+        MPI_Recv(&u[iend+1], jmax+2, MPI_FLOAT, proc+1, 1, MPI_COMM_WORLD, &status);
+    }
+    // Pass and receive to and from left, except the first process
+    if (proc != 0) {
+        MPI_Send(&u[imin], jmax+2, MPI_FLOAT, proc-1, 0, MPI_COMM_WORLD);
+        MPI_Recv(&u[imin-1], jmax+2, MPI_FLOAT, proc-1, 1, MPI_COMM_WORLD, &status);
+    }
+    // gather u and v, because it is used by functions that come later
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    int *size_to_send = malloc(nprocs * sizeof(int));
+    int disp = 0;
+    int *displacements = malloc(nprocs * sizeof(int));
+    for (i = 0; i < nprocs; i++) {
+        size_to_send[i] = (proc == 0) ? 0 : (int) imax*(jmax+2)/nprocs;
+        displacements[i] = disp;
+        disp += size_to_send[i];
+    }
+        
+    MPI_Gatherv(&p[imin], size_to_send[proc], MPI_FLOAT, MPI_IN_PLACE, size_to_send, displacements,  MPI_FLOAT, 0, MPI_COMM_WORLD); 
 }
 
 
@@ -218,11 +278,11 @@ void update_velocity(float **u, float **v, float **f, float **g, float **p,
  * conditions (ie no particle moves more than one cell width in one
  * timestep). Otherwise the simulation becomes unstable.
  */
-void set_timestep_interval(float *del_t, int imin, int imax, int jmax, float delx,
+void set_timestep_interval(float *del_t, int imin, int iend, int imax, int jmax, float delx,
     float dely, float **u, float **v, float Re, float tau)
 {
     int i, j;
-    float umax, vmax, deltu, deltv, deltRe; 
+    float umax, umax_global, vmax, vmax_global, deltu, deltv, deltRe; 
 
     /* del_t satisfying CFL conditions */
     if (tau >= 1.0e-10) { /* else no time stepsize control */
@@ -239,8 +299,8 @@ void set_timestep_interval(float *del_t, int imin, int imax, int jmax, float del
             }
         }
         // Reduce umax and vmax
-        //MPI_Reduce(umax, umax_global, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD);
-        //MPI_Reduce(vmax, vmax_global, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD);
+        MPI_Allreduce(&umax, &umax_global, 1, MPI_FLOAT, MPI_MAX, MPI_COMM_WORLD);
+        MPI_Allreduce(&vmax, &vmax_global, 1, MPI_FLOAT, MPI_MAX, MPI_COMM_WORLD);
 
         deltu = delx/umax_global;
         deltv = dely/vmax_global; 

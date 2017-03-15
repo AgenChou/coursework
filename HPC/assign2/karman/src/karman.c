@@ -27,8 +27,8 @@ static char *progname;
 int proc = 0;                       /* Rank of the current process */
 int nprocs = 0;                /* Number of processes in communicator */
 int interval_size;
-int imin;
-int iend;
+int imin;                      /* start of a chunk */
+int iend;                      /* end of a chunk */
 int *ileft, *iright;           /* Array bounds for each processor */
 int offset = 0;
 
@@ -52,9 +52,6 @@ static struct option long_opts[] = {
 
 int main(int argc, char *argv[])
 {
-    MPI_Init(&argc, &argv);
-    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
-    MPI_Comm_rank(MPI_COMM_WORLD, &proc);
     int verbose = 1;          /* Verbosity level */
     float xlength = 22.0;     /* Width of simulated domain */
     float ylength = 4.1;      /* Height of simulated domain */
@@ -180,13 +177,17 @@ int main(int argc, char *argv[])
         init_flag(flag, imax, jmax, delx, dely, &ibound);
         apply_boundary_conditions(u, v, flag, imax, jmax, ui, vi);
     }
-
+    
+    /* MPI CODE STARTS HERE */
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+    MPI_Comm_rank(MPI_COMM_WORLD, &proc);
     // For calculating imin of each chunk
-    //compute size of chunks
+    // compute size of chunks
     // CHECK IF DIVISIBLE
     if (imax % nprocs != 0) {
         printf("Array can't be divided, exiting\n");
-        return;
+        return (1);
     }
     interval_size = imax / nprocs;
     imin = proc * interval_size + 1;
@@ -194,18 +195,19 @@ int main(int argc, char *argv[])
 
     /* Main loop */
     for (t = 0.0; t < t_end; t += del_t, iters++) {
-        set_timestep_interval(&del_t, imax, jmax, delx, dely, u, v, Re, tau);
+        // Note that now we're also passing additional parameters to each of the functions, imin and ien
+        set_timestep_interval(&del_t, imin, iend, imax, jmax, delx, dely, u, v, Re, tau);
 
         ifluid = (imax * jmax) - ibound;
 
-        compute_tentative_velocity(u, v, f, g, flag, imax, jmax,
+        compute_tentative_velocity(u, v, f, g, flag, imin, iend, imax, jmax,
             del_t, delx, dely, gamma, Re); 
 
-        compute_rhs(f, g, rhs, flag, imax, jmax, del_t, delx, dely);
+        compute_rhs(f, g, rhs, flag, imin, iend, imax, jmax, del_t, delx, dely);
     
         
         if (ifluid > 0) {
-            itersor = poisson(ileft, rhs, flag, imin, iend, jmax, delx, dely,
+            itersor = poisson(p, rhs, flag, imin, iend, imax, jmax, delx, dely,
                         eps, itermax, omega, &res, ifluid);
         } else {
             itersor = 0;
@@ -216,12 +218,34 @@ int main(int argc, char *argv[])
                 iters, t+del_t, del_t, itersor, res, ibound);
         }
 
-        update_velocity(u, v, f, g, p, flag, imax, jmax, del_t, delx, dely);
+        update_velocity(u, v, f, g, p, flag, imin, iend, imax, jmax, del_t, delx, dely);
 
         apply_boundary_conditions(u, v, flag, imax, jmax, ui, vi);
     } /* End of main loop */
     // gather u, v, and p  
-    //MPI_Gather(&p, interval_size*jmax, MPI_FLOAT, ..., 0, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+    // Proc 0 doesn't need to send to itself
+    int *sending_size = malloc(nprocs * sizeof(int));
+    int *displacements = malloc(nprocs * sizeof(int));
+    int sender;
+    int disp = 0;
+    for (sender = 0; sender < nprocs; sender++) {
+        sending_size[sender] = (proc == 0) ? 0 : interval_size*(jmax+2);
+        displacements[sender] = disp;
+        disp += sending_size[sender];
+    }
+    MPI_Gatherv(&p[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    MPI_Gatherv(&u[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    MPI_Gatherv(&v[imin], sending_size[proc], MPI_FLOAT, MPI_IN_PLACE, sending_size, displacements, MPI_FLOAT, 0, MPI_COMM_WORLD);
+    //if (proc == 0) {
+    //    MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &p[1], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
+    //    MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &u[1], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
+    //    MPI_Gather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, &v[1], interval_size*(jmax+2), MPI_FLOAT, 0, MPI_COMM_WORLD);
+    //} else {
+    //    MPI_Gather(&p[imin], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+    //    MPI_Gather(&u[imin], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+    //    MPI_Gather(&v[imin], interval_size*jmax, MPI_FLOAT, NULL, interval_size*(jmax+2), MPI_FLOAT,  0, MPI_COMM_WORLD);
+    //}
     if (outfile != NULL && strcmp(outfile, "") != 0 && proc == 0) {
         write_bin(u, v, p, flag, imax, jmax, xlength, ylength, outfile);
     }
