@@ -32,10 +32,16 @@ uint32_t Node0Pending = 0;
 uint32_t Node1SendAck = 0;
 uint32_t Node1Pending = 0;
 uint32_t Node2SendAck = 0;
+uint32_t Node2SendAck2 = 0;
+uint32_t Node2last_head = 0; // head from the previous message, to compare overlapping packets
+uint32_t Node3SendAck = 0;
+uint32_t Node3Pending = 0;
 uint16_t Pkt_no_last_seen_by_node2 = 0;
 uint16_t Pkt_no_being_sent_by_node1 = 0;
 uint16_t Pkt_no_last_seen_by_node1 = 0;
 uint16_t Pkt_no_being_sent_by_node0 = 1;
+uint16_t Pkt_no_being_sent_by_node3 = 0;
+uint16_t Pkt_no_last_seen_by_node3 = 0;
 
 uint16_t Number_mails_rcvd_at_node2 = 0;
 
@@ -52,13 +58,17 @@ uint16_t node1_tail = 0;
 uint16_t node1_globalcounter = 0;
 uint16_t node1_isbufferempty = 1;
 
+uint16_t node3_head = 0;
+uint16_t node3_tail = 0;
+uint16_t node3_globalcounter = 0;
+uint16_t node3_isbufferempty = 1;
 
 //----Experiment parameters
 
 double distance_between_node0_node2 = 10000; //x-axis distance
 double distance_between_node0_node1 = 3; //y-axis distance
 
-double duration = 500;
+double duration = 505;
 
 //--------------------Custom header code begin------------//
 
@@ -332,7 +342,7 @@ static void Node1ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                 {
                         NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " The packet received by 1 is a *UNIQUE* DATA packet.");
                         // Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0; - need to move it after updating tail
-                        Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
+                        //Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
                         Node1SendAck = 1;
                         // strip packet contents and transfer contents to variables
                         node1_isbufferempty = header.Getisbufferempty ();  // header fields
@@ -342,6 +352,7 @@ static void Node1ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                                 node1_tail = header.Gettail ();  // header fields
                         }
                         Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0;
+                        Pkt_no_being_sent_by_node1 = Pkt_no_last_seen_by_node1;
                         node1_globalcounter = header.Getglobalcounter ();  // header fields
                 }
         }
@@ -349,6 +360,7 @@ static void Node1ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
         {
                 NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " The packet received by 1 is an ACK packet.");
                 Node1Pending = 0;
+                Node1SendAck = 0;
         }
 
 
@@ -377,8 +389,8 @@ static void Node1SendPacket (Ptr<Socket> socket, uint32_t pktSize)
 
 
 //---Higher level code for node 2 BEGIN
-
-static void Node2ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> socket)
+// additional parameter: sender_node to find if we're receiving from Node 1 or Node 3
+static void Node2ReceivePacket (Ptr<OutputStreamWrapper> stream, int sender_node, Ptr<Socket> socket)
 {
         uint16_t receivedpacket_isbufferempty;
         uint16_t receivedpacket_head;
@@ -397,7 +409,13 @@ static void Node2ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
         if (Pkt_no_last_seen_by_node2 < receivedpacket_globalcounter)
         {
                 // update mail count
-                Number_mails_rcvd_at_node2 += receivedpacket_head - (receivedpacket_tail - 1);
+                if (receivedpacket_tail < Node2last_head) {
+                        Number_mails_rcvd_at_node2 += receivedpacket_head - Node2last_head;
+                } else {
+                        Number_mails_rcvd_at_node2 += receivedpacket_head - receivedpacket_tail + 1;
+                }
+                //Number_mails_rcvd_at_node2 += receivedpacket_head - local_tail + 1;
+                Node2last_head = receivedpacket_head;
                 Pkt_no_last_seen_by_node2 = receivedpacket_globalcounter;
                 NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 2 received a packet.");
                 std::cout << "*------------*" <<  std::endl;
@@ -406,8 +424,14 @@ static void Node2ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> soc
                 std::cout << "The value of *tail* is " << receivedpacket_tail << std::endl;
                 std::cout << "The value of *globalcounter* is " << receivedpacket_globalcounter << std::endl;
                 std::cout << "The total number of mails received so far is " << Number_mails_rcvd_at_node2 << std::endl;
+                std::cout << "Received from node " << sender_node << std::endl;
                 std::cout << "*------------*" <<  std::endl;
-                Node2SendAck = 1;
+                if (sender_node == 1) {
+                        Node2SendAck = 1; // reply to 1
+                } 
+                if (sender_node == 3) {
+                        Node2SendAck2 = 1; // reply to 3
+                }
         }
 }
 
@@ -418,8 +442,17 @@ static void Node2AckLoop (Ptr<Socket> socket, uint32_t pktSize)
         if (Node2SendAck == 1)
         {
 //              Pkt_no_last_seen_by_node2 = Pkt_no_being_sent_by_node1;
-                NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 2 sending an ACK.");
+                NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 2 sending an ACK to 1.");
                 Node2SendAck = 0;
+                XXheader.SetPacketType (0); // 0 for ack
+                p->AddHeader (XXheader);
+                socket->Send (p);
+        }
+        if (Node2SendAck2 == 1) 
+        {
+
+                NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 2 sending an ACK to 3.");
+                Node2SendAck2 = 0;
                 XXheader.SetPacketType (0); // 0 for ack
                 p->AddHeader (XXheader);
                 socket->Send (p);
@@ -429,6 +462,86 @@ static void Node2AckLoop (Ptr<Socket> socket, uint32_t pktSize)
 
 //---Higher level code for node 2 END
 
+
+
+//---Higher level code for node 3 BEGIN
+
+//Advanced declaration
+static void Node3SendPacket (Ptr<Socket> socket, uint32_t pktSize);
+
+static void Node3AckLoop (Ptr<Socket> socket, Ptr<Socket> socket2, uint32_t pktSize)
+{
+        if (Node3SendAck == 1)
+        {
+                NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 3 sending an ACK.");
+                Node3SendAck = 0;
+                socket->Send (Create<Packet> (pktSize));
+                Node3Pending = 1;
+                Simulator::Schedule (Seconds (0.0001), &Node3SendPacket, socket2, pktSize);
+        }
+        Simulator::Schedule (Seconds(0.01), &Node3AckLoop, socket, socket2, pktSize);
+}
+
+static void Node3ReceivePacket (Ptr<OutputStreamWrapper> stream, Ptr<Socket> socket)
+{
+//      NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " Node 1 received a packet. UNIFIED receiver.");
+
+        MyHeader header;
+        uint16_t type_of_packet;
+        Ptr<Packet> packet;
+        packet = socket->Recv();
+        packet->RemoveHeader(header);
+        type_of_packet = header.GetPacketType();
+        Pkt_no_being_sent_by_node0 = header.Getglobalcounter ();
+        if (type_of_packet == 1) //data
+        {
+                if (Pkt_no_last_seen_by_node3 < Pkt_no_being_sent_by_node0)
+                {
+                        NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " The packet received by 3 is a *UNIQUE* DATA packet.");
+                        // Pkt_no_last_seen_by_node1 = Pkt_no_being_sent_by_node0; - need to move it after updating tail
+                        // strip packet contents and transfer contents to variables
+                        node3_isbufferempty = header.Getisbufferempty ();  // header fields
+                        //we want to update the tail only with the first packet received, however the head keeps moving forward
+                        node3_head = header.Gethead ();  // header fields
+                        if (Pkt_no_last_seen_by_node3 == 0) {
+                                node3_tail = header.Gettail ();  // header fields
+                        }
+                        Pkt_no_last_seen_by_node3 = Pkt_no_being_sent_by_node0;
+                        Pkt_no_being_sent_by_node3 = Pkt_no_last_seen_by_node3;
+                        node3_globalcounter = header.Getglobalcounter ();  // header fields
+                }
+                        Node3SendAck = 1;
+        }
+        else
+        {
+                NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << " The packet received by 3 is an ACK packet.");
+                Node3Pending = 0;
+                Node3SendAck = 0;
+        }
+
+
+}
+
+
+static void Node3SendPacket (Ptr<Socket> socket, uint32_t pktSize)
+{
+        Ptr<Packet> p = Create<Packet> ();
+        MyHeader XXheader;
+        if (Node3Pending == 1)
+        {
+//              NS_LOG_UNCOND(Simulator::Now ().GetSeconds () << "Node 1 sending a packet.");
+                XXheader.SetPacketType (1); // 1 for data
+                XXheader.Setisbufferempty (node3_isbufferempty);  // header fields
+                XXheader.Sethead (node3_head);  // header fields
+                XXheader.Settail (node3_tail);  // header fields
+                XXheader.Setglobalcounter (node3_globalcounter);  // header fields
+                p->AddHeader (XXheader);
+                socket->Send (p);
+                Simulator::Schedule (Seconds(0.25), &Node3SendPacket, socket, pktSize);
+        }
+}
+
+//---Higher level code for node 1 END
 
 //This is the main function
 int main (int argc, char *argv[])
@@ -442,8 +555,8 @@ int main (int argc, char *argv[])
 
         // 1. Create the nodes
         NodeContainer adhocNodes;
-        adhocNodes.Create(3);  //All 3 nodes are members of adhocNodes
-        NodeContainer mobileNode = NodeContainer (adhocNodes.Get(1)); //Node 1 is defined as the mobileNode (i.e., the bus)
+        adhocNodes.Create(4);  //All 4 nodes are members of adhocNodes
+        NodeContainer mobileNode = NodeContainer (adhocNodes.Get(1), adhocNodes.Get(3)); //Node 1 is defined as the mobileNode (i.e., the bus)
         NodeContainer stationaryNodes = NodeContainer (adhocNodes.Get(0), adhocNodes.Get(2)); //Node 0 and Node 2 are defined as stationaryNodes (i.e., the villages)
 
         // 2. Set up physical layer
@@ -480,22 +593,29 @@ int main (int argc, char *argv[])
 
         Ptr<ListPositionAllocator> positionAllocMobileNode = CreateObject<ListPositionAllocator> ();
         positionAllocMobileNode->Add (Vector (0.0, distance_between_node0_node1, 0.0)); //3D coordinates (x,y,z). Use only the x-y plane
+        positionAllocMobileNode->Add (Vector (-250.0, distance_between_node0_node1, 0.0)); //3D coordinates (x,y,z). Use only the x-y plane
         mobilityMobileNode.SetPositionAllocator (positionAllocMobileNode);
         
         mobilityMobileNode.SetMobilityModel("ns3::ConstantVelocityMobilityModel");
         mobilityMobileNode.Install (mobileNode);
         (mobileNode.Get(0)->GetObject<ConstantVelocityMobilityModel>())->SetVelocity(Vector(20.0, 0.0, 0.0));
+        (mobileNode.Get(1)->GetObject<ConstantVelocityMobilityModel>())->SetVelocity(Vector(20.0, 0.0, 0.0));
 
         // 6. Connect trace source to trace sink for Node 1
         std::ostringstream oss;
         oss <<
         "/NodeList/" << mobileNode.Get (0)->GetId () <<
         "/$ns3::MobilityModel/CourseChange";
+        std::ostringstream oss2;
+        oss2 <<
+        "/NodeList/" << mobileNode.Get (1)->GetId () <<
+        "/$ns3::MobilityModel/CourseChange";
 
         AsciiTraceHelper asciiTraceHelper;
         Ptr<OutputStreamWrapper> locationStream = asciiTraceHelper.CreateFileStream ("Location.txt");
 
         Config::Connect (oss.str (), MakeBoundCallback (&CourseChangeSink, locationStream));
+        Config::Connect (oss2.str (), MakeBoundCallback (&CourseChangeSink, locationStream));
 
         // 7. Assign positions to Node 0 and Node 2
         MobilityHelper mobilityStaNodes;
@@ -526,7 +646,7 @@ int main (int argc, char *argv[])
 
         // 10. Receive sides here; we connect the receiving sockets of each node to their respective callbacks
         // These callbacks basically define what the node does next upon receiving a packet
-
+        
         //---node 0's receive side BEGIN
         TypeId tid0 = TypeId::LookupByName ("ns3::UdpSocketFactory");
         Ptr<Socket> Node0Recv = Socket::CreateSocket (adhocNodes.Get (0), tid0);
@@ -549,11 +669,27 @@ int main (int argc, char *argv[])
         TypeId tid2 = TypeId::LookupByName ("ns3::UdpSocketFactory");
         Ptr<Socket> Node2Recv = Socket::CreateSocket (adhocNodes.Get (2), tid2);
         InetSocketAddress local2 = InetSocketAddress (Ipv4Address::GetAny (), 9);
+        // get a second socket, for Node3
+        TypeId tid2b = TypeId::LookupByName ("ns3::UdpSocketFactory");
+        Ptr<Socket> Node2Recv2 = Socket::CreateSocket (adhocNodes.Get (2), tid2b);
+        InetSocketAddress local2b = InetSocketAddress (Ipv4Address::GetAny (), 8); //different port
+        
         Node2Recv->Bind (local2);
+        Node2Recv2->Bind (local2b);
         Ptr<OutputStreamWrapper> Node2rcvdStream = asciiTraceHelper.CreateFileStream ("Node2_Rcvd.txt");
-        Node2Recv->SetRecvCallback (MakeBoundCallback (&Node2ReceivePacket, Node2rcvdStream));
+        Ptr<OutputStreamWrapper> Node2rcvdStream2 = asciiTraceHelper.CreateFileStream ("Node2_Rcvd2.txt");
+        Node2Recv->SetRecvCallback (MakeBoundCallback (&Node2ReceivePacket, Node2rcvdStream, 1));
+        Node2Recv2->SetRecvCallback (MakeBoundCallback (&Node2ReceivePacket, Node2rcvdStream2, 3));
         //---node 2's receive side END
 
+        //---node 3's receive side BEGIN
+        TypeId tid3 = TypeId::LookupByName ("ns3::UdpSocketFactory");
+        Ptr<Socket> Node3Recv = Socket::CreateSocket (adhocNodes.Get (3), tid3);
+        InetSocketAddress local3 = InetSocketAddress (Ipv4Address::GetAny (), 9);
+        Node3Recv->Bind (local3);
+        Ptr<OutputStreamWrapper> Node3rcvdStream = asciiTraceHelper.CreateFileStream ("Node3_Rcvd.txt");
+        Node3Recv->SetRecvCallback (MakeBoundCallback (&Node3ReceivePacket, Node3rcvdStream));
+        //---node 1's receive side  END
 
         // 11. Generate traffic
         uint32_t packetSize = 200; //bytes
@@ -563,8 +699,16 @@ int main (int argc, char *argv[])
         Ptr<Socket> source = Socket::CreateSocket (adhocNodes.Get (0), tid0);
         InetSocketAddress SocketAddressof1 = InetSocketAddress (interfaces.GetAddress (1, 0), 9);
         source->Connect (SocketAddressof1);
+        source->SetAllowBroadcast(true); 
+        // node 0 --> node 3 connection
+        Ptr<Socket> source2 = Socket::CreateSocket (adhocNodes.Get (0), tid0);
+        InetSocketAddress SocketAddressof3 = InetSocketAddress (interfaces.GetAddress (3, 0), 9);
+        source2->Connect (SocketAddressof3);
+        
         Node0Pending = 1;
         Simulator::Schedule (Seconds (0.0001), &Node0SendPacket, source, packetSize);
+        Simulator::Schedule (Seconds (0.0001), &Node0SendPacket, source2, packetSize);
+
 
 	//Start node 1's ACK loop (node 1 ---> node 0, socket 9)
 	//We define the node 1---> node 2 connection here as well (socket 9)
@@ -584,9 +728,31 @@ int main (int argc, char *argv[])
 	//Start node 2's ACK loop (node 2---> node 1, socket 9)
 	//Fire up Node2AckLoop
         Ptr<Socket> sourceSocketforNode2 = Socket::CreateSocket (adhocNodes.Get (2), tid2);
-        sourceSocketforNode2->Connect (SocketAddressof1);
+        InetSocketAddress SocketAddressof1b = InetSocketAddress (interfaces.GetAddress (1, 0), 9);
+        sourceSocketforNode2->Connect (SocketAddressof1b);
+        //sourceSocketforNode2->SetAllowBroadcast(true); 
         Simulator::Schedule (Seconds (0.0001), &Node2AckLoop, sourceSocketforNode2, packetSize);
+        
+        // Ack loop to node 3
+        Ptr<Socket> sourceSocketforNode2SECOND = Socket::CreateSocket (adhocNodes.Get (2), tid2);
+        InetSocketAddress SocketAddressof3b = InetSocketAddress (interfaces.GetAddress (3, 0), 9);
+        sourceSocketforNode2SECOND->Connect (SocketAddressof3b);
+        Simulator::Schedule (Seconds (0.0001), &Node2AckLoop, sourceSocketforNode2SECOND, packetSize);
 
+	//Start node 3's ACK loop (node 3 ---> node 0, socket 9)
+	//We define the node 3---> node 2 connection here as well (socket 9)
+	//We need 2 sockets: the first one is used by Node 3 to send ACKs to Node 0
+	//The second one is used by Node 3 the send the packet to Node 2
+	//Fire up Node1AckLoop
+        Ptr<Socket> sourceSocketforNode3 = Socket::CreateSocket (adhocNodes.Get (3), tid3);
+        InetSocketAddress SocketAddressof0b = InetSocketAddress (interfaces.GetAddress (0, 0), 9);
+        sourceSocketforNode3->Connect (SocketAddressof0b);
+
+        Ptr<Socket> sourceSocketforNode3SECOND = Socket::CreateSocket (adhocNodes.Get (3), tid3);
+        InetSocketAddress SocketAddressof2b = InetSocketAddress (interfaces.GetAddress (2, 0), 8);
+        sourceSocketforNode3SECOND->Connect (SocketAddressof2b);
+
+        Simulator::Schedule (Seconds (0.0001), &Node3AckLoop, sourceSocketforNode3, sourceSocketforNode3SECOND, packetSize);
 //        wifiPhy.EnableAsciiAll(asciiTraceHelper.CreateFileStream ("PacketsContent.txt"));
 
         Simulator::Schedule (Seconds(0.0001), &Node0DataGen);
