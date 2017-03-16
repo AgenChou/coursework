@@ -178,7 +178,7 @@
 	The vulnerabilities that allow for that are directory traversal and python injection, but especially the former.
 	
 	\subsection{Bell-LaPadula policy for file reading}
-	We begin with file reading, using the security conditions of BLP, summarised as "no read up". We define set os subjects $S = {\text{root}, \text{server}, \text{MySQL server}, \text{user}}$ and the set of objects to be all files.
+	We begin with file reading, using the security conditions of BLP, summarised as "no read up". We define set os subjects $S = \{\text{root}, \text{server}, \text{MySQL server}, \text{user}\}$ and the set of objects to be all files.
 	
 	We further define security levels $I_0$, $I_1$, $I_2$, $I_3$. Root the has highest level, $I_3$, thus being able to read all files on the disc. The web server (www-data daemon) has clearance $I_2$ and the MySQL server $I_1$. Finally the user has clearance $I_0$. 
 	
@@ -186,7 +186,7 @@
 	
 	\subsection{Biba's Strict Integrity Policy}
 	
-	Biba's policy operates on the principle "no read down, no write up". Here we are interested only in writing files. With security levels and subjects defined as before, we want to prevent lower level security subjects to write up.
+	Biba's policy operates on the principle "no read down, no write up". Here we are interested only in writing to files. With security levels and subjects defined as before, we want to prevent lower level security subjects to write up.
 	
 	We focus on the vulnerability in the function plotter, which is that the user is able to write to the files on the server.
 	
@@ -199,21 +199,19 @@
 	\subsection{Clark-Wilson}
 	Note that the files intrinsic to the website's operation can be found in two places: in \texttt{/var/www} we have files used by the www daemon, and in \texttt{/root/website} we have a copy of the same files. Also note that shell scripts are in the parent directory of the latter. Therefore, let the user be able to write/delete files in the \texttt{/root/website} directory. This excludes sensitive data such as passwords.
 	
-	Constrained data items will be in the \texttt{/var/ww} directory, while the unconstrained ones in \texttt{/root/website}. To allow user to write to the latter, we need create a link such that whenever user attempts to write to disk, it is redirected to the latter directory. We only allow file types: .php, .html, .txt, and image files (i.e. we are specifically avoiding executables. Script will be stripped off files later).
-	
-	The transaction procedure (TP1) for writing to files is as follows:
+	Constrained data items will be in the \texttt{/var/ww} directory, while the unconstrained ones in \texttt{/root/website}. To allow user to write to the latter, we need to first go through the following Integrity verification procedure:
 	\begin{enumerate}
-		\item User writes a file, which is stored in /texttt{/root/website}
-		\item If the files are of a type that isn't allowed, the audit fails
-		\item The website with the new file(s) is simulated in a forked shell
-		\item If the website attempts to write to a different directory than its own, the audit fails
-		\item If during the simulation, a file of a type that isn't allowed gets created, the audit fails
-		\item Else the simulation ran safely, so we can copy the files across to \texttt{/var/www}
+		\item User's input is redirected to write to /root/website, which is a copy of the current /var/www
+		\item if the User attempts to create any files such as executables or code, the audit fails (i.e. user can create text file, image files, etc.)
+		\item Files with embedded script may get through, so we simulate the website on the new state of /root/website, in a forked shell, with no access to other directories
+		\item If there is an attempt to access the outside of this directory, the audit fails
+		\item otherwise the audit passes and we can start the Transaction Procedure TP1
 	\end{enumerate}
-
-	Steps 2-5 describe the Integrity Verification Procedure, all of which gets logged. The separation of duty is ensured by the triple: website user - the above transaction procedure - files in \texttt{/var/www}. User cannot write to the CDIs without the transaction procedure, because all attempts will be redirected to \texttt{/root/website}.
+	The IPV validates input to the TP1, thus taking care of low integrity data before TP1 uses it.
 	
-	To deal with low integrity data, the TP1 will reject anything with a file type that is potentially harmful.
+	The transaction procedure (TP1) is as follows: once the audit passes, TP1 copies files across from /root/website to /var/www. User cannot write to the CDIs without the transaction procedure, because all attempts will be redirected to \texttt{/root/website}.
+	
+	The IPV is performed by a subject (call it Audit) with a read/write/execute permissions to the /root/website directory. The TP is ran by a subject with a read permission to /root/website and a write/delete permission to /var/www. This ensures separation of duty.
 	
 	In the case of reading files, we can simply allow user to read any file in \texttt{/var/www}, assuming that only files intrinsic to the website's operation are there. However we can see that the file basic.cgi is not essential, so it may be better to simply keep a list of files that are necessary for the website to function.
 	

